@@ -1,101 +1,257 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>K2 Collection</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>K2 Collection | Elegant Jewellery</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:Arial,Helvetica,sans-serif;background:#f8f5f0;color:#1c1c1c;line-height:1.5}
+header{background:#1c1c1c;color:#fff;text-align:center;padding:28px 20px}
+.logo{font-family:Georgia,serif;font-size:34px;letter-spacing:4px}
+.tagline{color:#d4af6a;margin-top:6px;font-size:14px;letter-spacing:1.5px}
+nav{background:#fff;border-bottom:1px solid #e5ded3;display:flex;justify-content:center;gap:30px;padding:15px;position:sticky;top:0;z-index:10}
+nav a{color:#1c1c1c;text-decoration:none;font-weight:bold;font-size:14px}
+nav a:hover{color:#b08d57}
+.hero{min-height:360px;display:flex;align-items:center;justify-content:center;text-align:center;padding:55px 20px;background:linear-gradient(135deg,#f8f5f0,#efe5d5)}
+.hero h1{font-family:Georgia,serif;font-size:48px;margin-bottom:12px}
+.hero p{font-size:18px;color:#666;margin-bottom:25px}
+.shop-btn{display:inline-block;background:#b08d57;color:#fff;text-decoration:none;padding:13px 30px;border-radius:28px;font-weight:bold}
+.shop-btn:hover{background:#8f6f3f}
+.section-title{text-align:center;padding:42px 20px 20px}
+.section-title h2{font-family:Georgia,serif;font-size:32px}
+.section-title p{color:#777;margin-top:7px}
+.categories{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;padding:10px 20px 30px}
+.category{padding:10px 18px;border:1px solid #b08d57;border-radius:25px;color:#7b5d32;background:#fff;text-decoration:none;cursor:pointer}
+.category.active,.category:hover{background:#b08d57;color:#fff}
+.shop-tools{max-width:1100px;margin:0 auto;padding:5px 20px 28px;display:flex;justify-content:center;gap:12px;flex-wrap:wrap}
+#search{width:min(440px,100%);padding:13px 18px;border:1px solid #d9cdbd;border-radius:28px;background:#fff;font-size:15px;outline:none}
+#search:focus{border-color:#b08d57;box-shadow:0 0 0 3px rgba(176,141,87,.12)}
+.clear-btn{padding:12px 20px;border:1px solid #b08d57;border-radius:25px;background:#fff;color:#7b5d32;cursor:pointer}
+.clear-btn:hover{background:#b08d57;color:#fff}
+.products{max-width:1200px;margin:auto;padding:5px 20px 60px;display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.product{background:#fff;border-radius:14px;padding:15px;text-align:center;box-shadow:0 8px 25px rgba(0,0,0,.07);transition:.25s}
+.product:hover{transform:translateY(-6px);box-shadow:0 14px 30px rgba(0,0,0,.13)}
+.product img{width:100%;height:250px;object-fit:contain;background:#f8f5f0;border-radius:10px}
+.product h3{font-size:19px;margin:16px 4px 7px}
+.price{color:#b08d57;font-size:21px;font-weight:bold;margin-bottom:15px}
+.buy-btn{display:inline-block;background:#b08d57;color:#fff;text-decoration:none;padding:11px 25px;border-radius:25px;font-weight:bold}
+.buy-btn:hover{background:#8f6f3f}
+.no-results{display:none;text-align:center;padding:20px;color:#777;grid-column:1/-1}
+.about{background:#1c1c1c;color:#fff;text-align:center;padding:50px 20px}
+.about h2{font-family:Georgia,serif;color:#d4af6a;margin-bottom:10px}
+.about p{max-width:650px;margin:auto;color:#ddd}
+footer{background:#111;color:#aaa;text-align:center;padding:22px;font-size:13px}
+footer span{color:#d4af6a}
+@media(max-width:800px){.products{grid-template-columns:repeat(2,1fr)}.hero h1{font-size:38px}}
+@media(max-width:520px){nav{gap:15px;flex-wrap:wrap}.hero h1{font-size:31px}.products{grid-template-columns:1fr}.product img{height:270px}}
 
-    <style>
-    body {
-        font-family: Arial;
-        background-color: #ffe6f0;
-        text-align: center;
-        margin: 0;
-    }
+.trending-section{padding:70px 6%;background:#fffaf7}
+.section-heading{text-align:center;margin-bottom:34px}
+.eyebrow{font-size:12px;letter-spacing:2px;font-weight:700;color:#b58b45}
+.section-heading h2{margin:8px 0 8px;font-size:34px}
+.section-heading p{margin:0;color:#666}
+.trending-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;max-width:1100px;margin:auto}
+.trend-card{background:#fff;border-radius:18px;overflow:hidden;box-shadow:0 8px 25px rgba(0,0,0,.08);transition:transform .25s ease,box-shadow .25s ease}
+.trend-card:hover{transform:translateY(-6px);box-shadow:0 14px 32px rgba(0,0,0,.13)}
+.trend-image-wrap{position:relative;height:260px;background:#f6f0eb;display:flex;align-items:center;justify-content:center}
+.trend-image-wrap img{width:100%;height:100%;object-fit:cover}
+.trend-badge{position:absolute;top:14px;left:14px;z-index:2;background:#111;color:#fff;padding:7px 11px;border-radius:20px;font-size:12px;font-weight:700}
+.trend-content{padding:20px}
+.trend-content h3{margin:0 0 8px;font-size:20px}
+.trend-content p{margin:0 0 16px;color:#666;line-height:1.5}
+.trend-link{color:#b58b45;text-decoration:none;font-weight:700}
+@media(max-width:800px){.trending-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:560px){.trending-section{padding:50px 5%}.trending-grid{grid-template-columns:1fr}.trend-image-wrap{height:280px}.section-heading h2{font-size:29px}}
 
-    h1 {
-        background-color: #d63384;
-        color: white;
-        padding: 20px;
-        margin: 0;
-    }
-
-    .welcome {
-        padding: 20px;
-    }
-
-    .product {
-        background-color: white;
-        width: 280px;
-        margin: 20px auto;
-        padding: 15px;
-        border-radius: 15px;
-    }
-
-    .product img {
-        width: 100%;
-        height: 250px;
-        object-fit: contain;
-        border-radius: 10px;
-    }
-
-    .price {
-        font-size: 20px;
-        font-weight: bold;
-    }
-
-    button {
-        background-color: #d63384;
-        color: white;
-        border: none;
-        padding: 12px 25px;
-        border-radius: 20px;
-    }
 </style>
 </head>
-
 <body>
 
-    <h1>💎 K2 COLLECTION 💎</h1>
+<header>
+  <div class="logo">💎 K2 COLLECTION 💎</div>
+  <div class="tagline">ELEGANT JEWELLERY • TIMELESS BEAUTY</div>
+</header>
 
-    <div class="welcome">
-        <h2>Welcome to K2 Collection</h2>
-        <p>Beautiful Jewellery for Every Occasion ✨</p>
+<nav>
+  <a href="#home">Home</a>
+  <a href="#shop">Shop</a>
+  <a href="#categories">Categories</a>
+  <a href="#about">About</a>
+</nav>
+
+
+<section id="trending" class="trending-section">
+  <div class="section-heading">
+    <span class="eyebrow">HOT RIGHT NOW</span>
+    <h2>Trending Now 🔥</h2>
+    <p>Fresh styles customers are loving right now.</p>
+  </div>
+
+  <div class="trending-grid">
+    <article class="trend-card">
+      <div class="trend-image-wrap">
+        <span class="trend-badge">🔥 Trending</span>
+        <img src="ring.jpg" alt="Trendy Ring">
+      </div>
+      <div class="trend-content">
+        <h3>Modern Statement Rings</h3>
+        <p>Minimal sparkle with a stylish everyday look.</p>
+        <a href="#shop" class="trend-link">Explore Style →</a>
+      </div>
+    </article>
+
+    <article class="trend-card">
+      <div class="trend-image-wrap">
+        <span class="trend-badge">⭐ Popular</span>
+        <img src="necklace.jpg" alt="Layered Necklace Style">
+      </div>
+      <div class="trend-content">
+        <h3>Layered Necklace Looks</h3>
+        <p>Elegant pendant styles made for effortless layering.</p>
+        <a href="#shop" class="trend-link">Explore Style →</a>
+      </div>
+    </article>
+
+    <article class="trend-card">
+      <div class="trend-image-wrap">
+        <span class="trend-badge">✨ Trending</span>
+        <img src="bracelet.jpg" alt="Trendy Bracelet">
+      </div>
+      <div class="trend-content">
+        <h3>Chic Everyday Bracelets</h3>
+        <p>Simple, polished pieces that complete your look.</p>
+        <a href="#shop" class="trend-link">Explore Style →</a>
+      </div>
+    </article>
+  </div>
+</section>
+
+<section class="hero" id="home">
+  <div>
+    <h1>Discover Your Perfect Shine ✨</h1>
+    <p>Elegant jewellery for every occasion</p>
+    <a class="shop-btn" href="#shop">Shop Collection</a>
+  </div>
+</section>
+
+<section id="categories">
+  <div class="section-title">
+    <h2>Shop by Category</h2>
+    <p>Find a style that speaks to you</p>
+  </div>
+  <div class="categories">
+    <button class="category active" data-filter="All">💎 All</button>
+    <button class="category" data-filter="Rings">💍 Rings</button>
+    <button class="category" data-filter="Bracelets">✨ Bracelets</button>
+    <button class="category" data-filter="Necklaces">📿 Necklaces</button>
+  </div>
+</section>
+
+<section id="shop">
+  <div class="section-title">
+    <h2>Featured Collection</h2>
+    <p>Search or choose a category to explore</p>
+  </div>
+
+  <div class="shop-tools">
+    <input id="search" type="search" placeholder="🔍 Search jewellery...">
+    <button class="clear-btn" id="clearSearch">Clear</button>
+  </div>
+
+  <div class="products" id="productGrid">
+    <div class="product" data-category="Rings" data-name="beautiful ring ring">
+      <img src="ring.jpg" alt="Beautiful Ring">
+      <h3>Beautiful Ring 💍</h3>
+      <p class="price">₹283</p>
+      <a class="buy-btn" href="https://www.amazon.in/gp/aw/d/B0CZ42S5JJ?linkCode=ll2&tag=k2collection0-21" target="_blank" rel="noopener">Buy Now</a>
     </div>
 
-    <!-- Ring Product -->
-    <div class="product">
-        <img src="ring.jpg" alt="Beautiful Ring">
-        <h2>Beautiful Ring 💍</h2>
-        <p class="price">₹283</p>
-
-        <a href="https://www.amazon.in/gp/aw/d/B0CZ42S5JJ?linkCode=ll2&tag=k2collection0-21"
-           target="_blank">
-            <button>Buy Now</button>
-        </a>
+    <div class="product" data-category="Bracelets" data-name="beautiful bracelet bracelet">
+      <img src="bracelet.jpg" alt="Beautiful Bracelet">
+      <h3>Beautiful Bracelet ✨</h3>
+      <p class="price">₹379</p>
+      <a class="buy-btn" href="https://link.amazon/B0ck3Vpwg" target="_blank" rel="noopener">Buy Now</a>
     </div>
 
-    <!-- Bracelet Product -->
-    <div class="product">
-        <img src="bracelet.jpg" alt="Beautiful Bracelet">
-        <h2>Beautiful Bracelet ✨</h2>
-        <p class="price">₹379</p>
-
-        <a href="https://link.amazon/B0ck3Vpwg"
-           target="_blank">
-            <button>Buy Now</button>
-        </a>
+    <div class="product" data-category="Necklaces" data-name="beautiful necklace necklace">
+      <img src="necklace.jpg" alt="Beautiful Necklace">
+      <h3>Beautiful Necklace 💎</h3>
+      <p class="price">₹249</p>
+      <a class="buy-btn" href="https://link.amazon/B0doWg1YB" target="_blank" rel="noopener">Buy Now</a>
     </div>
 
-    <!-- Necklace Product -->
-    <div class="product">
-        <img src="necklace.jpg" alt="Beautiful Necklace">
-        <h2>Beautiful Necklace 💎</h2>
-        <p class="price">₹249</p>
+    <div class="no-results" id="noResults">No jewellery found. Try another search. 💎</div>
+  </div>
+</section>
 
-        <a href="https://link.amazon/B0doWg1YB"
-           target="_blank">
-            <button>Buy Now</button>
-        </a>
-    </div>
+<section class="about" id="about">
+  <h2>About K2 Collection</h2>
+  <p>Discover elegant jewellery chosen to add a beautiful touch to everyday moments and special occasions.</p>
+</section>
 
+<footer>
+  © 2026 <span>K2 Collection</span> • All Rights Reserved
+</footer>
+
+<script>
+const products = [...document.querySelectorAll('.product')];
+const categoryButtons = [...document.querySelectorAll('.category')];
+const search = document.getElementById('search');
+const clearSearch = document.getElementById('clearSearch');
+const noResults = document.getElementById('noResults');
+let selectedCategory = 'All';
+
+function filterProducts(){
+  const rawQuery = search.value.trim().toLowerCase();
+  const aliases = {
+    'necklace': 'necklaces',
+    'necklaces': 'necklaces',
+    'bracelet': 'bracelets',
+    'bracelets': 'bracelets',
+    'ring': 'rings',
+    'rings': 'rings',
+    'jewellery': 'jewellery',
+    'jewelry': 'jewellery'
+  };
+  const query = aliases[rawQuery] || rawQuery;
+  let visible = 0;
+
+  products.forEach(product => {
+    const categoryMatch = selectedCategory === 'All' || product.dataset.category === selectedCategory;
+    const productText = (
+      product.dataset.name + ' ' +
+      product.dataset.category + ' ' +
+      product.querySelector('h3').textContent
+    ).toLowerCase();
+    const textMatch = !query || productText.includes(query);
+    const show = categoryMatch && textMatch;
+    product.style.display = show ? '' : 'none';
+    if(show) visible++;
+  });
+
+  noResults.style.display = visible ? 'none' : 'block';
+}
+
+categoryButtons.forEach(button => {
+  button.addEventListener('click', () => {
+    categoryButtons.forEach(b => b.classList.remove('active'));
+    button.classList.add('active');
+    selectedCategory = button.dataset.filter;
+    filterProducts();
+    document.getElementById('shop').scrollIntoView({behavior:'smooth'});
+  });
+});
+
+search.addEventListener('input', filterProducts);
+
+clearSearch.addEventListener('click', () => {
+  search.value = '';
+  selectedCategory = 'All';
+  categoryButtons.forEach(b => b.classList.toggle('active', b.dataset.filter === 'All'));
+  filterProducts();
+});
+</script>
 </body>
-    </html>
+</html>
