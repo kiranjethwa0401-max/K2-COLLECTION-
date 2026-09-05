@@ -1,293 +1,406 @@
-import pandas as pd
-import openpyxl
-from openpyxl.styles import Font, PatternFill, Alignment, Border, Side
-from openpyxl.utils import get_column_letter
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>K2 Collection | Elegant Jewellery</title>
+<meta name="description" content="K2 Collection - elegant and trendy jewellery picks for women.">
 
-# Master Dataset: All 17 Jewelry Items with 'k2collection0-21' Tag
-data = [
-    # --- BRACELETS (1-5) ---
-    {
-        "Category": "Bracelets",
-        "Image Filename": "bracelet-1.jpg",
-        "Product Name": "Shining Diva Fashion Latest Stylish 18k Gold Plated Bracelet for Women & Girls",
-        "Price (INR)": 299,
-        "Affiliate Link": "https://www.amazon.in/Shining-Diva-Fashion-Bracelet-13867b/dp/B08CZ81X49?linkCode=ll2&tag=k2collection0-21"
-    },
-    {
-        "Category": "Bracelets",
-        "Image Filename": "bracelet-2.jpg",
-        "Product Name": "Yellow Chimes Charm Bracelet for Women Gold Plated Heart Charm Bracelet",
-        "Price (INR)": 349,
-        "Affiliate Link": "https://www.amazon.in/Yellow-Chimes-Bracelet-Jewellery-Girlfriend/dp/B07P8R4FQC?linkCode=ll2&tag=k2collection0-21"
-    },
-    {
-        "Category": "Bracelets",
-        "Image Filename": "bracelet-3.jpg",
-        "Product Name": "GIVA 925 Silver Zircon Adjustable Chain Bracelet",
-        "Price (INR)": 1499,
-        "Affiliate Link": "https://www.amazon.in/GIVA-Silver-Zircon-Adjustable-Bracelet/dp/B09GV62G8S?linkCode=ll2&tag=k2collection0-21"
-    },
-    {
-        "Category": "Bracelets",
-        "Image Filename": "bracelet-4.jpg",
-        "Product Name": "Zaveri Pearls Cubic Zirconia Non-Precious Metal Bangle Bracelet for Women",
-        "Price (INR)": 399,
-        "Affiliate Link": "https://www.amazon.in/Zaveri-Pearls-Cubic-Zirconia-Bracelet/dp/B08K3L3X4X?linkCode=ll2&tag=k2collection0-21"
-    },
-    {
-        "Category": "Bracelets",
-        "Image Filename": "bracelet-5.jpg",
-        "Product Name": "YouBella Jewellery Crystal Charm Bracelet for Women and Girls",
-        "Price (INR)": 279,
-        "Affiliate Link": "https://www.amazon.in/YouBella-Jewellery-Crystal-Charm-Bracelet/dp/B07N328S8Y?linkCode=ll2&tag=k2collection0-21"
-    },
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:Arial,Helvetica,sans-serif;background:#f8f5f0;color:#1c1c1c;line-height:1.5}
 
-    # --- NECKLACES (1-6) ---
-    {
-        "Category": "Necklaces",
-        "Image Filename": "necklace-1.jpg",
-        "Product Name": "Versatile Vault Pearl Double Layered Jewellery Set",
-        "Price (INR)": 259,
-        "Affiliate Link": "https://www.amazon.in/Versatile-Vault-Jewellery-Layered-Necklace/dp/B0CG2K9J2P?linkCode=ll2&tag=k2collection0-21"
-    },
-    {
-        "Category": "Necklaces",
-        "Image Filename": "necklace-2.jpg",
-        "Product Name": "Shining Diva Fashion Fancy Pearl Choker Necklace Set",
-        "Price (INR)": 399,
-        "Affiliate Link": "https://www.amazon.in/Shining-Diva-Fashion-Necklace-sd10234s/dp/B0BTDPN82D?linkCode=ll2&tag=k2collection0-21"
-    },
-    {
-        "Category": "Necklaces",
-        "Image Filename": "necklace-3.jpg",
-        "Product Name": "Double Strand Pearl Necklace and Earrings Jewellery Set",
-        "Price (INR)": 279,
-        "Affiliate Link": "https://www.amazon.in/Double-Strand-Necklace-Earrings-Jewellery/dp/B0CP91XQ9J?linkCode=ll2&tag=k2collection0-21"
-    },
-    {
-        "Category": "Necklaces",
-        "Image Filename": "necklace-4.jpg",
-        "Product Name": "Women Gold-Plated White Pearl-Beaded Layered Choker Necklace Jewellery Set",
-        "Price (INR)": 425,
-        "Affiliate Link": "https://www.amazon.in/Wardrobe-Gold-Plated-Pearl-Beaded-necklace-Jewellery/dp/B0CJ74NX6Z?linkCode=ll2&tag=k2collection0-21"
-    },
-    {
-        "Category": "Necklaces",
-        "Image Filename": "necklace-5.jpg",
-        "Product Name": "Shining Diva Fashion Latest Stylish 18k Gold Plated Combo Pearl Necklace Earrings Bracelet Jewellery Set",
-        "Price (INR)": 498,
-        "Affiliate Link": "https://www.amazon.in/Shining-Diva-Fashion-Jewellery-sd10333s/dp/B0BXJB7T4B?linkCode=ll2&tag=k2collection0-21"
-    },
-    {
-        "Category": "Necklaces",
-        "Image Filename": "necklace-6.jpg",
-        "Product Name": "Invisible Necklace for Women | Invisible Chain | Handmade Jewellery",
-        "Price (INR)": 249,
-        "Affiliate Link": "https://www.amazon.in/Invisible-Necklace-Women-Handmade-Jewellery/dp/B0GNMHJC44?linkCode=ll2&tag=k2collection0-21"
-    },
+header{background:#1c1c1c;color:#fff;text-align:center;padding:28px 20px}
+.logo{font-family:Georgia,serif;font-size:34px;letter-spacing:4px}
+.tagline{color:#d4af6a;margin-top:6px;font-size:14px;letter-spacing:1.5px}
 
-    # --- RINGS (1-6) ---
-    {
-        "Category": "Rings",
-        "Image Filename": "ring-1.jpg",
-        "Product Name": "Nilu's Collection Copper Rose Gold Plated Elegant American Diamond Studded Sparkling Adjustable Finger Ring (Style 2)",
-        "Price (INR)": 289,
-        "Affiliate Link": "https://www.amazon.in/Nilus-Collection-American-Sparkling-Adjustable/dp/B0CZ42S5JJ?linkCode=ll2&tag=k2collection0-21"
-    },
-    {
-        "Category": "Rings",
-        "Image Filename": "ring-2.jpg",
-        "Product Name": "ZAVERI PEARLS Set of 3 Rose Gold Contemporary Cubic Zirconia Brass Adjustable Rings For Women-ZPFK11177",
-        "Price (INR)": 345,
-        "Affiliate Link": "https://www.amazon.in/Zaveri-Pearls-Contemporary-Zirconia-Women-ZPFK11177/dp/B09FKBV55G?linkCode=ll2&tag=k2collection0-21"
-    },
-    {
-        "Category": "Rings",
-        "Image Filename": "ring-3.jpg",
-        "Product Name": "12.25 Ratti/10x8 Oval Shape Natural Purple Amethyst Gemstone Silver Plated Adjustable Ring For Women",
-        "Price (INR)": 639,
-        "Affiliate Link": "https://www.amazon.in/LMDLACHAMA-Natural-Amethyst-Gemstone-Adjustable/dp/B0DFH63SPY?linkCode=ll2&tag=k2collection0-21"
-    },
-    {
-        "Category": "Rings",
-        "Image Filename": "ring-4.jpg",
-        "Product Name": "Sunflower Fidget Rings for Women Gold Anxiety Crystal Rings Cubic Zirconia Sunflower Open Adjustable Fidget Ring",
-        "Price (INR)": 599,
-        "Affiliate Link": "https://www.amazon.in/KONPJE-Sunflower-Adjustable-Zirconia-Rhinestone/dp/B0DCJ34XFS?linkCode=ll2&tag=k2collection0-21"
-    },
-    {
-        "Category": "Rings",
-        "Image Filename": "ring-5.jpg",
-        "Product Name": "Shining Diva Fashion Latest Stylish Rose Gold Plated Adjustable Solitaire Ring for Women and Girls (11922r)",
-        "Price (INR)": 239,
-        "Affiliate Link": "https://www.amazon.in/Valentine-Gift-Girlfriend-Adjustable-Solitaire/dp/B09QKTDS2N?linkCode=ll2&tag=k2collection0-21"
-    },
-    {
-        "Category": "Rings",
-        "Image Filename": "ring-6.jpg",
-        "Product Name": "Nilu's Collection Floral Adjustable Finger Ring for Women",
-        "Price (INR)": 286,
-        "Affiliate Link": "https://www.amazon.in/Nilus-Collection-American-Sparkling-Adjustable/dp/B0D1QVVPJW?linkCode=ll2&tag=k2collection0-21"
-    }
-]
+nav{background:#fff;border-bottom:1px solid #e5ded3;display:flex;justify-content:center;gap:30px;padding:15px;position:sticky;top:0;z-index:10}
+nav a{color:#1c1c1c;text-decoration:none;font-weight:bold;font-size:14px}
+nav a:hover{color:#b08d57}
 
-# ---------------------------------------------------------
-# 1. Export to CSV
-# ---------------------------------------------------------
-df = pd.DataFrame(data)
-csv_filename = "affiliate_product_catalog.csv"
-df.to_csv(csv_filename, index=False, encoding="utf-8-sig")
+.hero{min-height:380px;display:flex;align-items:center;justify-content:center;text-align:center;padding:55px 20px;background:linear-gradient(135deg,#f8f5f0,#efe5d5)}
+.hero h1{font-family:Georgia,serif;font-size:48px;margin-bottom:12px}
+.hero p{font-size:18px;color:#666;margin-bottom:25px}
 
-# ---------------------------------------------------------
-# 2. Export to Styled Excel (.xlsx) using OpenPyXL
-# ---------------------------------------------------------
-excel_filename = "affiliate_product_catalog.xlsx"
-wb = openpyxl.Workbook()
+.shop-btn,.buy-btn{display:inline-block;background:#b08d57;color:#fff;text-decoration:none;padding:13px 30px;border-radius:28px;font-weight:bold}
 
-# Sheet 1: Master Catalog
-ws = wb.active
-ws.title = "Master Catalog"
+.section-title{text-align:center;padding:45px 20px 20px}
+.section-title h2{font-family:Georgia,serif;font-size:32px}
+.section-title p{color:#777;margin-top:7px}
 
-# Visual Styles
-header_fill = PatternFill(start_color="1E293B", end_color="1E293B", fill_type="solid") # Dark Slate Fill
-header_font = Font(name="Calibri", size=11, bold=True, color="FFFFFF")
-title_font = Font(name="Calibri", size=16, bold=True, color="1E293B")
-subtitle_font = Font(name="Calibri", size=11, italic=True, color="64748B")
-data_font = Font(name="Calibri", size=11)
-bold_font = Font(name="Calibri", size=11, bold=True)
-price_font = Font(name="Calibri", size=11, color="0F766E") # Teal Accent
+.categories{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;padding:10px 20px 30px}
+.category{padding:10px 18px;border:1px solid #b08d57;border-radius:25px;color:#7b5d32;background:#fff;cursor:pointer;font-weight:600}
+.category.active,.category:hover{background:#b08d57;color:#fff}
 
-border_thin = Side(border_style="thin", color="E2E8F0")
-border_cell = Border(left=border_thin, right=border_thin, top=border_thin, bottom=border_thin)
-border_header = Border(bottom=Side(border_style="medium", color="0F172A"))
-border_total = Border(top=Side(border_style="thin", color="0F172A"), bottom=Side(border_style="double", color="0F172A"))
+.shop-tools{max-width:1100px;margin:0 auto;padding:5px 20px 28px;display:flex;justify-content:center;gap:12px;flex-wrap:wrap}
+#search{width:min(480px,100%);padding:13px 18px;border:1px solid #d9cdbd;border-radius:28px;background:#fff;font-size:15px;outline:none}
+.clear-btn{padding:12px 20px;border:1px solid #b08d57;border-radius:25px;background:#fff;color:#7b5d32;cursor:pointer}
 
-# Title & Subtitle Headers
-ws.append(["Affiliate Product Catalog (Tag: k2collection0-21)"])
-ws.append(["Complete 17-Item Collection Across Bracelets, Necklaces, and Rings"])
-ws.append([]) # Blank spacer row
+.products{max-width:1200px;margin:auto;padding:5px 20px 60px;display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.product{background:#fff;border-radius:16px;overflow:hidden;box-shadow:0 8px 25px rgba(0,0,0,.07);transition:.25s}
+.product:hover{transform:translateY(-6px);box-shadow:0 14px 30px rgba(0,0,0,.13)}
+.image-wrap{height:270px;background:#f8f5f0;display:flex;align-items:center;justify-content:center}
+.product img{width:100%;height:100%;object-fit:contain}
+.product-body{padding:18px;text-align:center}
+.pill{display:inline-block;background:#f3eadc;color:#8a693b;border-radius:20px;padding:5px 10px;font-size:11px;font-weight:bold;text-transform:uppercase;letter-spacing:1px}
+.product h3{font-size:18px;margin:12px 4px 8px}
+.product p{color:#666;font-size:14px;min-height:44px;margin-bottom:16px}
+.buy-btn{padding:11px 22px}
 
-ws.cell(row=1, column=1).font = title_font
-ws.cell(row=2, column=1).font = subtitle_font
+.no-results{display:none;text-align:center;padding:20px;color:#777;grid-column:1/-1}
+.disclosure{max-width:850px;margin:0 auto 35px;padding:0 20px;text-align:center;color:#777;font-size:12px}
 
-# Table Column Headers
-headers = ["S.No", "Category", "Image Filename", "Product Name", "Price (₹)", "Affiliate Link"]
-ws.append(headers)
+.about{background:#1c1c1c;color:#fff;text-align:center;padding:50px 20px}
+.about h2{font-family:Georgia,serif;color:#d4af6a;margin-bottom:10px}
+.about p{max-width:650px;margin:auto;color:#ddd}
 
-header_row_idx = 4
-for col_idx, header in enumerate(headers, 1):
-    cell = ws.cell(row=header_row_idx, column=col_idx)
-    cell.fill = header_fill
-    cell.font = header_font
-    cell.alignment = Alignment(horizontal="center" if header in ["S.No", "Category", "Image Filename", "Price (₹)"] else "left", vertical="center")
-    cell.border = border_header
+footer{background:#111;color:#aaa;text-align:center;padding:22px;font-size:13px}
+footer span{color:#d4af6a}
 
-# Populate Data Rows
-zebra_fill = PatternFill(start_color="F8FAFC", end_color="F8FAFC", fill_type="solid")
+@media(max-width:800px){
+.products{grid-template-columns:repeat(2,1fr)}
+.hero h1{font-size:38px}
+}
 
-for idx, item in enumerate(data, 1):
-    row_num = header_row_idx + idx
-    price_val = item["Price (INR)"]
-    
-    ws.append([
-        idx,
-        item["Category"],
-        item["Image Filename"],
-        item["Product Name"],
-        price_val,
-        item["Affiliate Link"]
-    ])
-    
-    is_even = idx % 2 == 0
-    row_fill = zebra_fill if is_even else None
-    
-    for col_num in range(1, 7):
-        cell = ws.cell(row=row_num, column=col_num)
-        cell.font = data_font
-        cell.border = border_cell
-        if row_fill:
-            cell.fill = row_fill
-            
-        if col_num in [1, 2, 3]:
-            cell.alignment = Alignment(horizontal="center", vertical="center")
-        elif col_num == 4:
-            cell.alignment = Alignment(horizontal="left", vertical="center")
-        elif col_num == 5:
-            cell.alignment = Alignment(horizontal="right", vertical="center")
-            cell.number_format = "₹#,##0"
-            cell.font = price_font
-        elif col_num == 6:
-            cell.alignment = Alignment(horizontal="left", vertical="center")
+@media(max-width:520px){
+nav{gap:15px;flex-wrap:wrap}
+.hero h1{font-size:31px}
+.products{grid-template-columns:1fr}
+.image-wrap{height:290px}
+}
+</style>
+</head>
 
-# Total Row at Bottom
-total_row_idx = header_row_idx + len(data) + 1
-ws.cell(row=total_row_idx, column=4, value="Total Catalog Value:").font = bold_font
-ws.cell(row=total_row_idx, column=4).alignment = Alignment(horizontal="right", vertical="center")
+<body>
 
-total_price_cell = ws.cell(row=total_row_idx, column=5, value=f"=SUM(E{header_row_idx+1}:E{total_row_idx-1})")
-total_price_cell.font = bold_font
-total_price_cell.number_format = "₹#,##0"
-total_price_cell.alignment = Alignment(horizontal="right", vertical="center")
+<header>
+<div class="logo">💎 K2 COLLECTION 💎</div>
+<div class="tagline">ELEGANT JEWELLERY • TIMELESS BEAUTY</div>
+</header>
 
-for c in range(1, 7):
-    ws.cell(row=total_row_idx, column=c).border = border_total
+<nav>
+<a href="#home">Home</a>
+<a href="#shop">Shop</a>
+<a href="#categories">Categories</a>
+<a href="#about">About</a>
+</nav>
 
-# ---------------------------------------------------------
-# Sheet 2: Category Summary & Dynamic Excel Metrics
-# ---------------------------------------------------------
-ws2 = wb.create_sheet(title="Category Summary")
-ws2.append(["Category Summary & Metrics"])
-ws2.cell(row=1, column=1).font = title_font
-ws2.append([])
+<section class="hero" id="home">
+<div>
+<h1>Discover Your Perfect Shine ✨</h1>
+<p>Elegant jewellery for every occasion</p>
+<a class="shop-btn" href="#shop">Shop Collection</a>
+</div>
+</section>
 
-headers_s2 = ["Category", "Item Count", "Min Price (₹)", "Max Price (₹)", "Avg Price (₹)", "Total Value (₹)"]
-ws2.append(headers_s2)
+<section id="categories">
+<div class="section-title">
+<h2>Shop by Category</h2>
+<p>Find a style that speaks to you</p>
+</div>
 
-for col_idx, header in enumerate(headers_s2, 1):
-    cell = ws2.cell(row=3, column=col_idx)
-    cell.fill = header_fill
-    cell.font = header_font
-    cell.alignment = Alignment(horizontal="center", vertical="center")
+<div class="categories">
+<button class="category active" data-filter="All">💎 All</button>
+<button class="category" data-filter="Rings">💍 Rings</button>
+<button class="category" data-filter="Bracelets">✨ Bracelets</button>
+<button class="category" data-filter="Necklaces">📿 Necklaces</button>
+</div>
+</section>
 
-categories = ["Bracelets", "Necklaces", "Rings"]
-for idx, cat in enumerate(categories, 4):
-    ws2.cell(row=idx, column=1, value=cat).alignment = Alignment(horizontal="center")
-    ws2.cell(row=idx, column=2, value=f'=COUNTIF(\'Master Catalog\'!B5:B21, "{cat}")').alignment = Alignment(horizontal="center")
-    ws2.cell(row=idx, column=3, value=f'=MINIFS(\'Master Catalog\'!E5:E21, \'Master Catalog\'!B5:B21, "{cat}")').number_format = "₹#,##0"
-    ws2.cell(row=idx, column=4, value=f'=MAXIFS(\'Master Catalog\'!E5:E21, \'Master Catalog\'!B5:B21, "{cat}")').number_format = "₹#,##0"
-    ws2.cell(row=idx, column=5, value=f'=AVERAGEIFS(\'Master Catalog\'!E5:E21, \'Master Catalog\'!B5:B21, "{cat}")').number_format = "₹#,##0"
-    ws2.cell(row=idx, column=6, value=f'=SUMIFS(\'Master Catalog\'!E5:E21, \'Master Catalog\'!B5:B21, "{cat}")').number_format = "₹#,##0"
-    
-    for c in range(1, 7):
-        ws2.cell(row=idx, column=c).border = border_cell
-        ws2.cell(row=idx, column=c).font = data_font
+<section id="shop">
 
-# Total Summary Metrics
-tot_s2 = 7
-ws2.cell(row=tot_s2, column=1, value="Total / Overall").font = bold_font
-ws2.cell(row=tot_s2, column=1).alignment = Alignment(horizontal="center")
-ws2.cell(row=tot_s2, column=2, value="=SUM(B4:B6)").font = bold_font
-ws2.cell(row=tot_s2, column=3, value="=MIN(C4:C6)").number_format = "₹#,##0"
-ws2.cell(row=tot_s2, column=4, value="=MAX(D4:D6)").number_format = "₹#,##0"
-ws2.cell(row=tot_s2, column=5, value="=AVERAGE('Master Catalog'!E5:E21)").number_format = "₹#,##0"
-ws2.cell(row=tot_s2, column=6, value="=SUM(F4:F6)").number_format = "₹#,##0"
+<div class="section-title">
+<h2>Our Collection</h2>
+<p>15 hand-picked jewellery styles</p>
+</div>
 
-for c in range(1, 7):
-    ws2.cell(row=tot_s2, column=c).border = border_total
+<div class="shop-tools">
+<input id="search" type="search" placeholder="🔍 Search jewellery...">
+<button class="clear-btn" id="clearSearch">Clear</button>
+</div>
 
-# Set Optimized Column Widths
-ws.column_dimensions["A"].width = 8
-ws.column_dimensions["B"].width = 14
-ws.column_dimensions["C"].width = 20
-ws.column_dimensions["D"].width = 55
-ws.column_dimensions["E"].width = 14
-ws.column_dimensions["F"].width = 70
+<div class="products" id="productGrid">
 
-ws2.column_dimensions["A"].width = 16
-ws2.column_dimensions["B"].width = 14
-ws2.column_dimensions["C"].width = 15
-ws2.column_dimensions["D"].width = 15
-ws2.column_dimensions["E"].width = 15
-ws2.column_dimensions["F"].width = 18
+<!-- NECKLACES -->
 
-wb.save(excel_filename)
+<article class="product" data-category="Necklaces" data-name="pearl double layered jewellery set necklace">
+<div class="image-wrap">
+<img src="necklace-1.jpg" alt="Pearl Double Layered Jewellery Set" loading="lazy">
+</div>
+<div class="product-body">
+<span class="pill">Necklace</span>
+<h3>Pearl Double Layered Jewellery Set</h3>
+<p>Elegant pearl layers with matching bracelet and earrings.</p>
+<a class="buy-btn" href="https://www.amazon.in/Versatile-Vault-Jewellery-Gold-Tone-Artificial/dp/B0H5FS8DJ6?linkCode=ll2&tag=k2collection0-21" target="_blank" rel="noopener sponsored">View on Amazon →</a>
+</div>
+</article>
+
+<article class="product" data-category="Necklaces" data-name="shining diva fashion jewellery set necklace">
+<div class="image-wrap">
+<img src="necklace-2.jpg" alt="Shining Diva Fashion Jewellery Set" loading="lazy">
+</div>
+<div class="product-body">
+<span class="pill">Necklace</span>
+<h3>Shining Diva Fashion Jewellery Set</h3>
+<p>Elegant necklace and earring set for a stylish look.</p>
+<a class="buy-btn" href="https://www.amazon.in/Shining-Diva-Fashion-Jewellery-15219s/dp/B0CV4XL72Z?psc=1&linkCode=ll2&tag=k2collection0-21" target="_blank" rel="noopener sponsored">View on Amazon →</a>
+</div>
+</article>
+
+<article class="product" data-category="Necklaces" data-name="double strand pearl necklace set necklace">
+<div class="image-wrap">
+<img src="necklace-3.jpg" alt="Double Strand Pearl Necklace Set" loading="lazy">
+</div>
+<div class="product-body">
+<span class="pill">Necklace</span>
+<h3>Double Strand Pearl Necklace Set</h3>
+<p>Classic double-strand pearl style with matching earrings.</p>
+<a class="buy-btn" href="https://www.amazon.in/Double-Strand-Necklace-Earrings-Jewellery/dp/B0H7WLPZ1L?linkCode=ll2&tag=k2collection0-21" target="_blank" rel="noopener sponsored">View on Amazon →</a>
+</div>
+</article>
+
+<article class="product" data-category="Necklaces" data-name="gold plated pearl beaded jewellery set necklace">
+<div class="image-wrap">
+<img src="necklace-4.jpg" alt="Gold Plated Pearl Beaded Jewellery Set" loading="lazy">
+</div>
+<div class="product-body">
+<span class="pill">Necklace</span>
+<h3>Gold Plated Pearl Beaded Jewellery Set</h3>
+<p>A graceful pearl-beaded design for special occasions.</p>
+<a class="buy-btn" href="https://www.amazon.in/Wardrobe-Gold-Plated-Pearl-Beaded-necklace-Jewellery/dp/B0CJ74NX6Z?linkCode=ll2&tag=k2collection0-21" target="_blank" rel="noopener sponsored">View on Amazon →</a>
+</div>
+</article>
+
+<article class="product" data-category="Necklaces" data-name="pearl necklace earrings bracelet set necklace">
+<div class="image-wrap">
+<img src="necklace-5.jpg" alt="Pearl Necklace Earrings Bracelet Set" loading="lazy">
+</div>
+<div class="product-body">
+<span class="pill">Necklace</span>
+<h3>Pearl Necklace, Earrings & Bracelet Set</h3>
+<p>A coordinated pearl set for an elegant finish.</p>
+<a class="buy-btn" href="https://www.amazon.in/dp/B0BXJB7T4B?th=1&linkCode=ll2&tag=k2collection0-21" target="_blank" rel="noopener sponsored">View on Amazon →</a>
+</div>
+</article>
+
+<!-- BRACELETS -->
+
+<article class="product" data-category="Bracelets" data-name="nilu's collection sparkling bracelet bracelet">
+<div class="image-wrap">
+<img src="bracelet-1.jpg" alt="Nilu's Collection Sparkling Bracelet" loading="lazy">
+</div>
+<div class="product-body">
+<span class="pill">Bracelet</span>
+<h3>Nilu's Collection Sparkling Bracelet</h3>
+<p>Rose-gold style bracelet with sparkling stone detailing.</p>
+<a class="buy-btn" href="https://www.amazon.in/Nilus-Collection-Bracelet-American-Amti-Tarnish/dp/B0GL86G9FZ?linkCode=ll2&tag=k2collection0-21" target="_blank" rel="noopener sponsored">View on Amazon →</a>
+</div>
+</article>
+
+<article class="product" data-category="Bracelets" data-name="minutiae infinity crystal bracelet bracelet">
+<div class="image-wrap">
+<img src="bracelet-2.jpg" alt="MINUTIAE Infinity Crystal Bracelet" loading="lazy">
+</div>
+<div class="product-body">
+<span class="pill">Bracelet</span>
+<h3>MINUTIAE Infinity Crystal Bracelet</h3>
+<p>Elegant infinity design with crystal sparkle.</p>
+<a class="buy-btn" href="https://www.amazon.in/MINUTIAE-Infinity-Crystals-Zirconia-Adjustable/dp/B094H79X6L?linkCode=ll2&tag=k2collection0-21" target="_blank" rel="noopener sponsored">View on Amazon →</a>
+</div>
+</article>
+
+<article class="product" data-category="Bracelets" data-name="shining diva stainless steel bracelet bracelet">
+<div class="image-wrap">
+<img src="bracelet-3.jpg" alt="Shining Diva Stainless Steel Bracelet" loading="lazy">
+</div>
+<div class="product-body">
+<span class="pill">Bracelet</span>
+<h3>Shining Diva Stainless Steel Bracelet</h3>
+<p>Polished everyday bracelet with stone detailing.</p>
+<a class="buy-btn" href="https://www.amazon.in/Shining-Diva-Fashion-Stainless-15747b/dp/B0CN11XNPG?linkCode=ll2&tag=k2collection0-21" target="_blank" rel="noopener sponsored">View on Amazon →</a>
+</div>
+</article>
+
+<article class="product" data-category="Bracelets" data-name="shining diva rose gold bangle bracelet bracelet">
+<div class="image-wrap">
+<img src="bracelet-4.jpg" alt="Shining Diva Rose Gold Bangle Bracelet" loading="lazy">
+</div>
+<div class="product-body">
+<span class="pill">Bracelet</span>
+<h3>Shining Diva Rose Gold Bangle Bracelet</h3>
+<p>Stylish rose-gold bangle with crystal detailing.</p>
+<a class="buy-btn" href="https://www.amazon.in/Shining-Diva-Fashion-Bangle-Bracelet/dp/B07NPWRJVH?linkCode=ll2&tag=k2collection0-21" target="_blank" rel="noopener sponsored">View on Amazon →</a>
+</div>
+</article>
+
+<article class="product" data-category="Bracelets" data-name="versatile vault pearl bracelet bracelet">
+<div class="image-wrap">
+<img src="bracelet-5.jpg" alt="Versatile Vault Pearl Bracelet" loading="lazy">
+</div>
+<div class="product-body">
+<span class="pill">Bracelet</span>
+<h3>Versatile Vault Pearl Bracelet</h3>
+<p>Elegant double-layer pearl bracelet with pendant detail.</p>
+<a class="buy-btn" href="https://www.amazon.in/Versatile-Vault-Adjustable-Jewellery-Accessories/dp/B0H271K2RC?linkCode=ll2&tag=k2collection0-21" target="_blank" rel="noopener sponsored">View on Amazon →</a>
+</div>
+</article>
+
+<!-- RINGS -->
+
+<article class="product" data-category="Rings" data-name="shining diva rose gold solitaire ring ring">
+<div class="image-wrap">
+<img src="ring-1.jpg" alt="Shining Diva Rose Gold Solitaire Ring" loading="lazy">
+</div>
+<div class="product-body">
+<span class="pill">Ring</span>
+<h3>Shining Diva Rose Gold Solitaire Ring</h3>
+<p>Elegant adjustable solitaire style for everyday sparkle.</p>
+<a class="buy-btn" href="https://www.amazon.in/Valentine-Gift-Girlfriend-Adjustable-Solitaire/dp/B09QKTDS2N?linkCode=ll2&tag=k2collection0-21" target="_blank" rel="noopener sponsored">View on Amazon →</a>
+</div>
+</article>
+
+<article class="product" data-category="Rings" data-name="zaveri pearls set of 3 rings ring">
+<div class="image-wrap">
+<img src="ring-2.jpg" alt="Zaveri Pearls Set of 3 Rings" loading="lazy">
+</div>
+<div class="product-body">
+<span class="pill">Ring</span>
+<h3>Zaveri Pearls Set of 3 Rings</h3>
+<p>Three sleek rose-gold contemporary rings with zirconia sparkle.</p>
+<a class="buy-btn" href="https://www.amazon.in/Zaveri-Pearls-Contemporary-Zirconia-Women-ZPFK11177/dp/B09FKBV55G?linkCode=ll2&tag=k2collection0-21" target="_blank" rel="noopener sponsored">View on Amazon →</a>
+</div>
+</article>
+
+<article class="product" data-category="Rings" data-name="natural purple amethyst adjustable ring ring">
+<div class="image-wrap">
+<img src="ring-3.jpg" alt="Natural Purple Amethyst Adjustable Ring" loading="lazy">
+</div>
+<div class="product-body">
+<span class="pill">Ring</span>
+<h3>Natural Purple Amethyst Adjustable Ring</h3>
+<p>A statement amethyst gemstone design with an adjustable fit.</p>
+<a class="buy-btn" href="https://www.amazon.in/LMDLACHAMA-Natural-Amethyst-Gemstone-Adjustable/dp/B0DFH63SPY?linkCode=ll2&tag=k2collection0-21" target="_blank" rel="noopener sponsored">View on Amazon →</a>
+</div>
+</article>
+
+<article class="product" data-category="Rings" data-name="konpje sunflower adjustable ring ring">
+<div class="image-wrap">
+<img src="ring-4.jpg" alt="KONPJE Sunflower Adjustable Ring" loading="lazy">
+</div>
+<div class="product-body">
+<span class="pill">Ring</span>
+<h3>KONPJE Sunflower Adjustable Ring</h3>
+<p>Floral sunflower design with sparkling rhinestone detail.</p>
+<a class="buy-btn" href="https://www.amazon.in/KONPJE-Sunflower-Adjustable-Zirconia-Rhinestone/dp/B0DCJ34XFS?linkCode=ll2&tag=k2collection0-21" target="_blank" rel="noopener sponsored">View on Amazon →</a>
+</div>
+</article>
+
+<article class="product" data-category="Rings" data-name="nilu's collection floral sparkling ring ring">
+<div class="image-wrap">
+<img src="ring-5.jpg" alt="Nilu's Collection Floral Sparkling Ring" loading="lazy">
+</div>
+<div class="product-body">
+<span class="pill">Ring</span>
+<h3>Nilu's Collection Floral Sparkling Ring</h3>
+<p>Rose-gold floral cluster design with sparkling stone detailing.</p>
+<a class="buy-btn" href="https://www.amazon.in/Nilus-Collection-American-Sparkling-Adjustable/dp/B0D1QVVPJW?linkCode=ll2&tag=k2collection0-21" target="_blank" rel="noopener sponsored">View on Amazon →</a>
+</div>
+</article>
+
+<div class="no-results" id="noResults">
+No jewellery found. Try another search. 💎
+</div>
+
+</div>
+</section>
+
+<div class="disclosure">
+<strong>Affiliate Disclosure:</strong>
+K2 Collection may earn a commission from qualifying purchases made through Amazon links.
+</div>
+
+<section class="about" id="about">
+<h2>About K2 Collection</h2>
+<p>Discover elegant jewellery chosen to add a beautiful touch to everyday moments and special occasions.</p>
+</section>
+
+<footer>
+© 2026 <span>K2 Collection</span> • All Rights Reserved
+</footer>
+
+<script>
+const products=[...document.querySelectorAll('.product')];
+const categoryButtons=[...document.querySelectorAll('.category')];
+const search=document.getElementById('search');
+const clearSearch=document.getElementById('clearSearch');
+const noResults=document.getElementById('noResults');
+let selectedCategory='All';
+
+function filterProducts(){
+const rawQuery=search.value.trim().toLowerCase();
+
+const aliases={
+'necklace':'necklaces',
+'necklaces':'necklaces',
+'bracelet':'bracelets',
+'bracelets':'bracelets',
+'ring':'rings',
+'rings':'rings',
+'jewellery':'jewellery',
+'jewelry':'jewellery'
+};
+
+const query=aliases[rawQuery]||rawQuery;
+let visible=0;
+
+products.forEach(product=>{
+const categoryMatch=
+selectedCategory==='All'||
+product.dataset.category===selectedCategory;
+
+const productText=
+(product.dataset.name+' '+
+product.dataset.category+' '+
+product.querySelector('h3').textContent).toLowerCase();
+
+const textMatch=!query||productText.includes(query);
+const show=categoryMatch&&textMatch;
+
+product.style.display=show?'':'none';
+
+if(show) visible++;
+});
+
+noResults.style.display=visible?'none':'block';
+}
+
+categoryButtons.forEach(button=>{
+button.addEventListener('click',()=>{
+categoryButtons.forEach(b=>b.classList.remove('active'));
+button.classList.add('active');
+
+selectedCategory=button.dataset.filter;
+filterProducts();
+
+document.getElementById('shop')
+.scrollIntoView({behavior:'smooth'});
+});
+});
+
+search.addEventListener('input',filterProducts);
+
+clearSearch.addEventListener('click',()=>{
+search.value='';
+selectedCategory='All';
+
+categoryButtons.forEach(b=>
+b.classList.toggle('active',b.dataset.filter==='All')
+);
+
+filterProducts();
+});
+</script>
+
+</body>
+</html>
