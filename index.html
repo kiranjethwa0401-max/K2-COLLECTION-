@@ -5,51 +5,245 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>K2 Collection | Elegant Jewellery</title>
 <meta name="description" content="K2 Collection - elegant and trendy jewellery picks for women.">
+
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
 body{font-family:Arial,Helvetica,sans-serif;background:#f8f5f0;color:#1c1c1c;line-height:1.5}
+
 header{background:#1c1c1c;color:#fff;text-align:center;padding:28px 20px}
 .logo{font-family:Georgia,serif;font-size:34px;letter-spacing:4px}
 .tagline{color:#d4af6a;margin-top:6px;font-size:14px;letter-spacing:1.5px}
-nav{background:#fff;border-bottom:1px solid #e5ded3;display:flex;justify-content:center;gap:30px;padding:15px;position:sticky;top:0;z-index:10}
+
+nav{
+  background:#fff;
+  border-bottom:1px solid #e5ded3;
+  display:flex;
+  justify-content:center;
+  gap:30px;
+  padding:15px;
+  position:sticky;
+  top:0;
+  z-index:10
+}
 nav a{color:#1c1c1c;text-decoration:none;font-weight:bold;font-size:14px}
 nav a:hover{color:#b08d57}
-.hero{min-height:380px;display:flex;align-items:center;justify-content:center;text-align:center;padding:55px 20px;background:linear-gradient(135deg,#f8f5f0,#efe5d5)}
+
+.hero{
+  min-height:380px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  padding:55px 20px;
+  background:linear-gradient(135deg,#f8f5f0,#efe5d5)
+}
 .hero h1{font-family:Georgia,serif;font-size:48px;margin-bottom:12px}
 .hero p{font-size:18px;color:#666;margin-bottom:25px}
-.shop-btn{display:inline-block;background:#b08d57;color:#fff;text-decoration:none;padding:13px 30px;border-radius:28px;font-weight:bold}
+
+.shop-btn{
+  display:inline-block;
+  background:#b08d57;
+  color:#fff;
+  text-decoration:none;
+  padding:13px 30px;
+  border-radius:28px;
+  font-weight:bold
+}
+
 .section-title{text-align:center;padding:45px 20px 20px}
 .section-title h2{font-family:Georgia,serif;font-size:32px}
 .section-title p{color:#777;margin-top:7px}
-.categories{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;padding:10px 20px 30px}
-.category{padding:10px 18px;border:1px solid #b08d57;border-radius:25px;color:#7b5d32;background:#fff;cursor:pointer;font-weight:600}
-.category.active,.category:hover{background:#b08d57;color:#fff}
-.shop-tools{max-width:1100px;margin:0 auto;padding:5px 20px 28px;display:flex;justify-content:center;gap:12px;flex-wrap:wrap}
-#search{width:min(480px,100%);padding:13px 18px;border:1px solid #d9cdbd;border-radius:28px;background:#fff;font-size:15px;outline:none}
-.clear-btn{padding:12px 20px;border:1px solid #b08d57;border-radius:25px;background:#fff;color:#7b5d32;cursor:pointer}
-.products{max-width:1200px;margin:auto;padding:5px 20px 60px;display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
-.product{background:#fff;border-radius:16px;overflow:hidden;box-shadow:0 8px 25px rgba(0,0,0,.07);transition:.25s}
-.product:hover{transform:translateY(-6px);box-shadow:0 14px 30px rgba(0,0,0,.13)}
-.image-wrap{height:270px;background:#f8f5f0;display:flex;align-items:center;justify-content:center}
-.product img{width:100%;height:100%;object-fit:contain}
-.product-body{padding:18px;text-align:center}
-.pill{display:inline-block;background:#f3eadc;color:#8a693b;border-radius:20px;padding:5px 10px;font-size:11px;font-weight:bold;text-transform:uppercase;letter-spacing:1px}
-.product h3{font-size:18px;margin:12px 4px 8px}
-.product p{color:#666;font-size:14px;min-height:44px;margin-bottom:16px}
-.buy-btn{display:inline-block;background:#b08d57;color:#fff;text-decoration:none;padding:11px 22px;border-radius:25px;font-weight:bold}
-.no-results{display:none;text-align:center;padding:20px;color:#777;grid-column:1/-1}
-.disclosure{max-width:850px;margin:0 auto 35px;padding:0 20px;text-align:center;color:#777;font-size:12px}
-.about{background:#1c1c1c;color:#fff;text-align:center;padding:50px 20px}
-.about h2{font-family:Georgia,serif;color:#d4af6a;margin-bottom:10px}
-.about p{max-width:650px;margin:auto;color:#ddd}
-footer{background:#111;color:#aaa;text-align:center;padding:22px;font-size:13px}
+
+.categories{
+  display:flex;
+  justify-content:center;
+  gap:12px;
+  flex-wrap:wrap;
+  padding:10px 20px 30px
+}
+
+.category{
+  padding:10px 18px;
+  border:1px solid #b08d57;
+  border-radius:25px;
+  color:#7b5d32;
+  background:#fff;
+  cursor:pointer;
+  font-weight:600
+}
+
+.category.active,.category:hover{
+  background:#b08d57;
+  color:#fff
+}
+
+.shop-tools{
+  max-width:1100px;
+  margin:0 auto;
+  padding:5px 20px 28px;
+  display:flex;
+  justify-content:center;
+  gap:12px;
+  flex-wrap:wrap
+}
+
+#search{
+  width:min(480px,100%);
+  padding:13px 18px;
+  border:1px solid #d9cdbd;
+  border-radius:28px;
+  background:#fff;
+  font-size:15px;
+  outline:none
+}
+
+.clear-btn{
+  padding:12px 20px;
+  border:1px solid #b08d57;
+  border-radius:25px;
+  background:#fff;
+  color:#7b5d32;
+  cursor:pointer
+}
+
+.products{
+  max-width:1200px;
+  margin:auto;
+  padding:5px 20px 60px;
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:24px
+}
+
+.product{
+  background:#fff;
+  border-radius:16px;
+  overflow:hidden;
+  box-shadow:0 8px 25px rgba(0,0,0,.07);
+  transition:.25s
+}
+
+.product:hover{
+  transform:translateY(-6px);
+  box-shadow:0 14px 30px rgba(0,0,0,.13)
+}
+
+.image-wrap{
+  height:270px;
+  background:#f8f5f0;
+  display:flex;
+  align-items:center;
+  justify-content:center
+}
+
+.product img{
+  width:100%;
+  height:100%;
+  object-fit:contain
+}
+
+.product-body{
+  padding:18px;
+  text-align:center
+}
+
+.pill{
+  display:inline-block;
+  background:#f3eadc;
+  color:#8a693b;
+  border-radius:20px;
+  padding:5px 10px;
+  font-size:11px;
+  font-weight:bold;
+  text-transform:uppercase;
+  letter-spacing:1px
+}
+
+.product h3{
+  font-size:18px;
+  margin:12px 4px 8px
+}
+
+.product p{
+  color:#666;
+  font-size:14px;
+  min-height:44px;
+  margin-bottom:16px
+}
+
+.buy-btn{
+  display:inline-block;
+  background:#b08d57;
+  color:#fff;
+  text-decoration:none;
+  padding:11px 22px;
+  border-radius:25px;
+  font-weight:bold
+}
+
+.no-results{
+  display:none;
+  text-align:center;
+  padding:20px;
+  color:#777;
+  grid-column:1/-1
+}
+
+.disclosure{
+  max-width:850px;
+  margin:0 auto 35px;
+  padding:0 20px;
+  text-align:center;
+  color:#777;
+  font-size:12px
+}
+
+.about{
+  background:#1c1c1c;
+  color:#fff;
+  text-align:center;
+  padding:50px 20px
+}
+
+.about h2{
+  font-family:Georgia,serif;
+  color:#d4af6a;
+  margin-bottom:10px
+}
+
+.about p{
+  max-width:650px;
+  margin:auto;
+  color:#ddd
+}
+
+footer{
+  background:#111;
+  color:#aaa;
+  text-align:center;
+  padding:22px;
+  font-size:13px
+}
+
 footer span{color:#d4af6a}
-@media(max-width:800px){.products{grid-template-columns:repeat(2,1fr)}.hero h1{font-size:38px}}
-@media(max-width:520px){nav{gap:15px;flex-wrap:wrap}.hero h1{font-size:31px}.products{grid-template-columns:1fr}.image-wrap{height:290px}}
+
+@media(max-width:800px){
+  .products{grid-template-columns:repeat(2,1fr)}
+  .hero h1{font-size:38px}
+}
+
+@media(max-width:520px){
+  nav{gap:15px;flex-wrap:wrap}
+  .hero h1{font-size:31px}
+  .products{grid-template-columns:1fr}
+  .image-wrap{height:290px}
+}
 </style>
 </head>
+
 <body>
+
 <header>
   <div class="logo">💎 K2 COLLECTION 💎</div>
   <div class="tagline">ELEGANT JEWELLERY • TIMELESS BEAUTY</div>
@@ -75,6 +269,7 @@ footer span{color:#d4af6a}
     <h2>Shop by Category</h2>
     <p>Find a style that speaks to you</p>
   </div>
+
   <div class="categories">
     <button class="category active" data-filter="All">💎 All</button>
     <button class="category" data-filter="Rings">💍 Rings</button>
@@ -84,18 +279,24 @@ footer span{color:#d4af6a}
 </section>
 
 <section id="shop">
+
   <div class="section-title">
     <h2>Our Collection</h2>
     <p>15 hand-picked jewellery styles</p>
   </div>
+
   <div class="shop-tools">
     <input id="search" type="search" placeholder="🔍 Search jewellery...">
     <button class="clear-btn" id="clearSearch">Clear</button>
   </div>
+
   <div class="products" id="productGrid">
 
+    <!-- 1 -->
     <article class="product" data-category="Necklaces" data-name="pearl double layered jewellery set necklace">
-      <div class="image-wrap"><img src="necklace-1.jpg" alt="Pearl Double Layered Jewellery Set" loading="lazy"></div>
+      <div class="image-wrap">
+        <img src="necklace-1.jpg" alt="Pearl Double Layered Jewellery Set" loading="lazy">
+      </div>
       <div class="product-body">
         <span class="pill">Necklace</span>
         <h3>Pearl Double Layered Jewellery Set</h3>
@@ -103,8 +304,12 @@ footer span{color:#d4af6a}
         <a class="buy-btn" href="https://www.amazon.in/Versatile-Vault-Jewellery-Gold-Tone-Artificial/dp/B0H5FS8DJ6?linkCode=ll2&tag=k2collection0-21" target="_blank" rel="noopener sponsored">View on Amazon →</a>
       </div>
     </article>
+
+    <!-- 2 -->
     <article class="product" data-category="Necklaces" data-name="shining diva fashion jewellery set necklace">
-      <div class="image-wrap"><img src="necklace-2.jpg" alt="Shining Diva Fashion Jewellery Set" loading="lazy"></div>
+      <div class="image-wrap">
+        <img src="necklace-2.jpg" alt="Shining Diva Fashion Jewellery Set" loading="lazy">
+      </div>
       <div class="product-body">
         <span class="pill">Necklace</span>
         <h3>Shining Diva Fashion Jewellery Set</h3>
@@ -112,8 +317,12 @@ footer span{color:#d4af6a}
         <a class="buy-btn" href="https://www.amazon.in/Shining-Diva-Fashion-Jewellery-15219s/dp/B0CV4XL72Z?psc=1&linkCode=ll2&tag=k2collection0-21" target="_blank" rel="noopener sponsored">View on Amazon →</a>
       </div>
     </article>
+
+    <!-- 3 -->
     <article class="product" data-category="Necklaces" data-name="double strand pearl necklace set necklace">
-      <div class="image-wrap"><img src="necklace-3.jpg" alt="Double Strand Pearl Necklace Set" loading="lazy"></div>
+      <div class="image-wrap">
+        <img src="necklace-3.jpg" alt="Double Strand Pearl Necklace Set" loading="lazy">
+      </div>
       <div class="product-body">
         <span class="pill">Necklace</span>
         <h3>Double Strand Pearl Necklace Set</h3>
@@ -121,8 +330,12 @@ footer span{color:#d4af6a}
         <a class="buy-btn" href="https://www.amazon.in/Double-Strand-Necklace-Earrings-Jewellery/dp/B0H7WLPZ1L?linkCode=ll2&tag=k2collection0-21" target="_blank" rel="noopener sponsored">View on Amazon →</a>
       </div>
     </article>
+
+    <!-- 4 -->
     <article class="product" data-category="Necklaces" data-name="gold plated pearl beaded jewellery set necklace">
-      <div class="image-wrap"><img src="necklace-4.jpg" alt="Gold Plated Pearl Beaded Jewellery Set" loading="lazy"></div>
+      <div class="image-wrap">
+        <img src="necklace-4.jpg" alt="Gold Plated Pearl Beaded Jewellery Set" loading="lazy">
+      </div>
       <div class="product-body">
         <span class="pill">Necklace</span>
         <h3>Gold Plated Pearl Beaded Jewellery Set</h3>
@@ -130,8 +343,12 @@ footer span{color:#d4af6a}
         <a class="buy-btn" href="https://www.amazon.in/Wardrobe-Gold-Plated-Pearl-Beaded-necklace-Jewellery/dp/B0CJ74NX6Z?linkCode=ll2&tag=k2collection0-21" target="_blank" rel="noopener sponsored">View on Amazon →</a>
       </div>
     </article>
-    <article class="product" data-category="Necklaces" data-name="pearl necklace, earrings & bracelet set necklace">
-      <div class="image-wrap"><img src="necklace-5.jpg" alt="Pearl Necklace, Earrings & Bracelet Set" loading="lazy"></div>
+
+    <!-- 5 -->
+    <article class="product" data-category="Necklaces" data-name="pearl necklace earrings bracelet set necklace">
+      <div class="image-wrap">
+        <img src="necklace-5.jpg" alt="Pearl Necklace, Earrings & Bracelet Set" loading="lazy">
+      </div>
       <div class="product-body">
         <span class="pill">Necklace</span>
         <h3>Pearl Necklace, Earrings & Bracelet Set</h3>
@@ -139,8 +356,12 @@ footer span{color:#d4af6a}
         <a class="buy-btn" href="https://www.amazon.in/dp/B0BXJB7T4B?linkCode=ll2&tag=k2collection0-21" target="_blank" rel="noopener sponsored">View on Amazon →</a>
       </div>
     </article>
+
+    <!-- 6 -->
     <article class="product" data-category="Bracelets" data-name="nilu's collection sparkling bracelet bracelet">
-      <div class="image-wrap"><img src="bracelet-1.jpg" alt="Nilu's Collection Sparkling Bracelet" loading="lazy"></div>
+      <div class="image-wrap">
+        <img src="bracelet-1.jpg" alt="Nilu's Collection Sparkling Bracelet" loading="lazy">
+      </div>
       <div class="product-body">
         <span class="pill">Bracelet</span>
         <h3>Nilu's Collection Sparkling Bracelet</h3>
@@ -148,8 +369,12 @@ footer span{color:#d4af6a}
         <a class="buy-btn" href="https://www.amazon.in/Nilus-Collection-Bracelet-American-Amti-Tarnish/dp/B0GL86G9FZ?linkCode=ll2&tag=k2collection0-21" target="_blank" rel="noopener sponsored">View on Amazon →</a>
       </div>
     </article>
+
+    <!-- 7 -->
     <article class="product" data-category="Bracelets" data-name="minutiae infinity crystal bracelet bracelet">
-      <div class="image-wrap"><img src="bracelet-2.jpg" alt="MINUTIAE Infinity Crystal Bracelet" loading="lazy"></div>
+      <div class="image-wrap">
+        <img src="bracelet-2.jpg" alt="MINUTIAE Infinity Crystal Bracelet" loading="lazy">
+      </div>
       <div class="product-body">
         <span class="pill">Bracelet</span>
         <h3>MINUTIAE Infinity Crystal Bracelet</h3>
@@ -157,8 +382,12 @@ footer span{color:#d4af6a}
         <a class="buy-btn" href="https://www.amazon.in/MINUTIAE-Infinity-Crystals-Zirconia-Adjustable/dp/B094H79X6L?linkCode=ll2&tag=k2collection0-21" target="_blank" rel="noopener sponsored">View on Amazon →</a>
       </div>
     </article>
+
+    <!-- 8 -->
     <article class="product" data-category="Bracelets" data-name="shining diva stainless steel bracelet bracelet">
-      <div class="image-wrap"><img src="bracelet-3.jpg" alt="Shining Diva Stainless Steel Bracelet" loading="lazy"></div>
+      <div class="image-wrap">
+        <img src="bracelet-3.jpg" alt="Shining Diva Stainless Steel Bracelet" loading="lazy">
+      </div>
       <div class="product-body">
         <span class="pill">Bracelet</span>
         <h3>Shining Diva Stainless Steel Bracelet</h3>
@@ -166,8 +395,12 @@ footer span{color:#d4af6a}
         <a class="buy-btn" href="https://www.amazon.in/Shining-Diva-Fashion-Stainless-15747b/dp/B0CN11XNPG?linkCode=ll2&tag=k2collection0-21" target="_blank" rel="noopener sponsored">View on Amazon →</a>
       </div>
     </article>
+
+    <!-- 9 -->
     <article class="product" data-category="Bracelets" data-name="shining diva rose gold bangle bracelet bracelet">
-      <div class="image-wrap"><img src="bracelet-4.jpg" alt="Shining Diva Rose Gold Bangle Bracelet" loading="lazy"></div>
+      <div class="image-wrap">
+        <img src="bracelet-4.jpg" alt="Shining Diva Rose Gold Bangle Bracelet" loading="lazy">
+      </div>
       <div class="product-body">
         <span class="pill">Bracelet</span>
         <h3>Shining Diva Rose Gold Bangle Bracelet</h3>
@@ -175,8 +408,12 @@ footer span{color:#d4af6a}
         <a class="buy-btn" href="https://www.amazon.in/Shining-Diva-Fashion-Bangle-Bracelet/dp/B07NPWRJVH?linkCode=ll2&tag=k2collection0-21" target="_blank" rel="noopener sponsored">View on Amazon →</a>
       </div>
     </article>
+
+    <!-- 10 -->
     <article class="product" data-category="Bracelets" data-name="versatile vault pearl bracelet bracelet">
-      <div class="image-wrap"><img src="bracelet-5.jpg" alt="Versatile Vault Pearl Bracelet" loading="lazy"></div>
+      <div class="image-wrap">
+        <img src="bracelet-5.jpg" alt="Versatile Vault Pearl Bracelet" loading="lazy">
+      </div>
       <div class="product-body">
         <span class="pill">Bracelet</span>
         <h3>Versatile Vault Pearl Bracelet</h3>
@@ -184,8 +421,12 @@ footer span{color:#d4af6a}
         <a class="buy-btn" href="https://www.amazon.in/Versatile-Vault-Adjustable-Jewellery-Accessories/dp/B0H271K2RC?linkCode=ll2&tag=k2collection0-21" target="_blank" rel="noopener sponsored">View on Amazon →</a>
       </div>
     </article>
+
+    <!-- 11 -->
     <article class="product" data-category="Rings" data-name="shining diva rose gold solitaire ring ring">
-      <div class="image-wrap"><img src="ring-1.jpg" alt="Shining Diva Rose Gold Solitaire Ring" loading="lazy"></div>
+      <div class="image-wrap">
+        <img src="ring-1.jpg" alt="Shining Diva Rose Gold Solitaire Ring" loading="lazy">
+      </div>
       <div class="product-body">
         <span class="pill">Ring</span>
         <h3>Shining Diva Rose Gold Solitaire Ring</h3>
@@ -193,8 +434,12 @@ footer span{color:#d4af6a}
         <a class="buy-btn" href="https://www.amazon.in/Valentine-Gift-Girlfriend-Adjustable-Solitaire/dp/B09QKTDS2N?linkCode=ll2&tag=k2collection0-21" target="_blank" rel="noopener sponsored">View on Amazon →</a>
       </div>
     </article>
+
+    <!-- 12 -->
     <article class="product" data-category="Rings" data-name="zaveri pearls set of 3 rings ring">
-      <div class="image-wrap"><img src="ring-2.jpg" alt="Zaveri Pearls Set of 3 Rings" loading="lazy"></div>
+      <div class="image-wrap">
+        <img src="ring-2.jpg" alt="Zaveri Pearls Set of 3 Rings" loading="lazy">
+      </div>
       <div class="product-body">
         <span class="pill">Ring</span>
         <h3>Zaveri Pearls Set of 3 Rings</h3>
@@ -202,8 +447,12 @@ footer span{color:#d4af6a}
         <a class="buy-btn" href="https://www.amazon.in/Zaveri-Pearls-Contemporary-Zirconia-Women-ZPFK11177/dp/B09FKBV55G?linkCode=ll2&tag=k2collection0-21" target="_blank" rel="noopener sponsored">View on Amazon →</a>
       </div>
     </article>
+
+    <!-- 13 -->
     <article class="product" data-category="Rings" data-name="natural purple amethyst adjustable ring ring">
-      <div class="image-wrap"><img src="ring-3.jpg" alt="Natural Purple Amethyst Adjustable Ring" loading="lazy"></div>
+      <div class="image-wrap">
+        <img src="ring-3.jpg" alt="Natural Purple Amethyst Adjustable Ring" loading="lazy">
+      </div>
       <div class="product-body">
         <span class="pill">Ring</span>
         <h3>Natural Purple Amethyst Adjustable Ring</h3>
@@ -211,8 +460,12 @@ footer span{color:#d4af6a}
         <a class="buy-btn" href="https://www.amazon.in/LMDLACHAMA-Natural-Amethyst-Gemstone-Adjustable/dp/B0DFH63SPY?linkCode=ll2&tag=k2collection0-21" target="_blank" rel="noopener sponsored">View on Amazon →</a>
       </div>
     </article>
+
+    <!-- 14 -->
     <article class="product" data-category="Rings" data-name="konpje sunflower adjustable ring ring">
-      <div class="image-wrap"><img src="ring-4.jpg" alt="KONPJE Sunflower Adjustable Ring" loading="lazy"></div>
+      <div class="image-wrap">
+        <img src="ring-4.jpg" alt="KONPJE Sunflower Adjustable Ring" loading="lazy">
+      </div>
       <div class="product-body">
         <span class="pill">Ring</span>
         <h3>KONPJE Sunflower Adjustable Ring</h3>
@@ -220,8 +473,12 @@ footer span{color:#d4af6a}
         <a class="buy-btn" href="https://www.amazon.in/KONPJE-Sunflower-Adjustable-Zirconia-Rhinestone/dp/B0DCJ34XFS?linkCode=ll2&tag=k2collection0-21" target="_blank" rel="noopener sponsored">View on Amazon →</a>
       </div>
     </article>
+
+    <!-- 15 -->
     <article class="product" data-category="Rings" data-name="nilu's collection floral sparkling ring ring">
-      <div class="image-wrap"><img src="ring-5.jpg" alt="Nilu's Collection Floral Sparkling Ring" loading="lazy"></div>
+      <div class="image-wrap">
+        <img src="ring-5.jpg" alt="Nilu's Collection Floral Sparkling Ring" loading="lazy">
+      </div>
       <div class="product-body">
         <span class="pill">Ring</span>
         <h3>Nilu's Collection Floral Sparkling Ring</h3>
@@ -229,20 +486,30 @@ footer span{color:#d4af6a}
         <a class="buy-btn" href="https://www.amazon.in/Nilus-Collection-American-Sparkling-Adjustable/dp/B0D1QVVPJW?linkCode=ll2&tag=k2collection0-21" target="_blank" rel="noopener sponsored">View on Amazon →</a>
       </div>
     </article>
-    <div class="no-results" id="noResults">No jewellery found. Try another search. 💎</div>
+
+    <div class="no-results" id="noResults">
+      No jewellery found. Try another search. 💎
+    </div>
+
   </div>
 </section>
 
 <div class="disclosure">
-  <strong>Affiliate Disclosure:</strong> K2 Collection may earn a commission from qualifying purchases made through Amazon links.
+  <strong>Affiliate Disclosure:</strong>
+  K2 Collection may earn a commission from qualifying purchases made through Amazon links.
 </div>
 
 <section class="about" id="about">
   <h2>About K2 Collection</h2>
-  <p>Discover elegant jewellery chosen to add a beautiful touch to everyday moments and special occasions.</p>
+  <p>
+    Discover elegant jewellery chosen to add a beautiful touch to everyday moments
+    and special occasions.
+  </p>
 </section>
 
-<footer>© 2026 <span>K2 Collection</span> • All Rights Reserved</footer>
+<footer>
+  © 2026 <span>K2 Collection</span> • All Rights Reserved
+</footer>
 
 <script>
 const products = [...document.querySelectorAll('.product')];
@@ -250,44 +517,103 @@ const categoryButtons = [...document.querySelectorAll('.category')];
 const search = document.getElementById('search');
 const clearSearch = document.getElementById('clearSearch');
 const noResults = document.getElementById('noResults');
+
 let selectedCategory = 'All';
 
 function filterProducts(){
+
   const rawQuery = search.value.trim().toLowerCase();
+
   const aliases = {
-    'necklace':'necklaces','necklaces':'necklaces',
-    'bracelet':'bracelets','bracelets':'bracelets',
-    'ring':'rings','rings':'rings',
-    'jewellery':'jewellery','jewelry':'jewellery'
+    'necklace':'necklaces',
+    'necklaces':'necklaces',
+    'bracelet':'bracelets',
+    'bracelets':'bracelets',
+    'ring':'rings',
+    'rings':'rings',
+    'jewellery':'jewellery',
+    'jewelry':'jewellery'
   };
+
   const query = aliases[rawQuery] || rawQuery;
+
   let visible = 0;
+
   products.forEach(product => {
-    const categoryMatch = selectedCategory === 'All' || product.dataset.category === selectedCategory;
-    const productText = (product.dataset.name + ' ' + product.dataset.category + ' ' + product.querySelector('h3').textContent).toLowerCase();
-    const textMatch = !query || productText.includes(query);
-    const show = categoryMatch && textMatch;
-    product.style.display = show ? '' : 'none';
+
+    const categoryMatch =
+      selectedCategory === 'All' ||
+      product.dataset.category === selectedCategory;
+
+    const productText =
+      (
+        product.dataset.name +
+        ' ' +
+        product.dataset.category +
+        ' ' +
+        product.querySelector('h3').textContent
+      ).toLowerCase();
+
+    const textMatch =
+      !query || productText.includes(query);
+
+    const show =
+      categoryMatch && textMatch;
+
+    product.style.display =
+      show ? '' : 'none';
+
     if(show) visible++;
   });
-  noResults.style.display = visible ? 'none' : 'block';
+
+  noResults.style.display =
+    visible ? 'none' : 'block';
 }
+
 categoryButtons.forEach(button => {
+
   button.addEventListener('click', () => {
-    categoryButtons.forEach(b => b.classList.remove('active'));
+
+    categoryButtons.forEach(b =>
+      b.classList.remove('active')
+    );
+
     button.classList.add('active');
-    selectedCategory = button.dataset.filter;
+
+    selectedCategory =
+      button.dataset.filter;
+
     filterProducts();
-    document.getElementById('shop').scrollIntoView({behavior:'smooth'});
+
+    document.getElementById('shop')
+      .scrollIntoView({
+        behavior:'smooth'
+      });
   });
+
 });
-search.addEventListener('input', filterProducts);
+
+search.addEventListener(
+  'input',
+  filterProducts
+);
+
 clearSearch.addEventListener('click', () => {
+
   search.value = '';
+
   selectedCategory = 'All';
-  categoryButtons.forEach(b => b.classList.toggle('active', b.dataset.filter === 'All'));
+
+  categoryButtons.forEach(b =>
+    b.classList.toggle(
+      'active',
+      b.dataset.filter === 'All'
+    )
+  );
+
   filterProducts();
 });
 </script>
+
 </body>
 </html>
