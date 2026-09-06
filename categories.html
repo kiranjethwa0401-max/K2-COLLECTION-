@@ -1,105 +1,216 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>K2 Collection | Categories</title>
+<title>K2 Collection | Categories</title>
 
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f8f5f0;
-            margin: 0;
-            text-align: center;
-        }
+<style>
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
 
-        header {
-            background-color: #1c1c1c;
-            color: #fff;
-            padding: 20px;
-        }
+html{
+    scroll-behavior:smooth;
+}
 
-        header h1 {
-            margin: 0;
-        }
+body{
+    font-family:Arial,Helvetica,sans-serif;
+    background:#f8f5f0;
+    color:#1c1c1c;
+    line-height:1.5;
+}
 
-        nav {
-            background-color: #fff;
-            border-bottom: 1px solid #e5ded3;
-            padding: 15px;
-        }
+/* HEADER */
+header{
+    background:#1c1c1c;
+    color:#fff;
+    text-align:center;
+    padding:28px 20px;
+}
 
-        nav a {
-            text-decoration: none;
-            color: #1c1c1c;
-            font-weight: bold;
-            margin: 0 12px;
-        }
+.logo{
+    font-family:Georgia,serif;
+    font-size:34px;
+    letter-spacing:4px;
+}
 
-        nav a:hover {
-            color: #b08d57;
-        }
+.tagline{
+    color:#d4af6a;
+    margin-top:6px;
+    font-size:14px;
+    letter-spacing:1.5px;
+}
 
-        .container {
-            padding: 30px 15px;
-        }
+/* NAVIGATION */
+nav{
+    background:#fff;
+    border-bottom:1px solid #e5ded3;
+    display:flex;
+    justify-content:center;
+    gap:30px;
+    padding:15px;
+    position:sticky;
+    top:0;
+    z-index:10;
+}
 
-        h2 {
-            color: #1c1c1c;
-            margin-bottom: 25px;
-        }
+nav a{
+    color:#1c1c1c;
+    text-decoration:none;
+    font-weight:bold;
+    font-size:14px;
+}
 
-        .category {
-            background-color: #fff;
-            width: 90%;
-            max-width: 500px;
-            margin: 20px auto;
-            padding: 25px;
-            border-radius: 15px;
-            box-shadow: 0 8px 25px rgba(0,0,0,.07);
-        }
+nav a:hover{
+    color:#b08d57;
+}
 
-        .category h3 {
-            color: #b08d57;
-            font-size: 24px;
-            margin-bottom: 10px;
-        }
+/* MAIN */
+.container{
+    max-width:1100px;
+    margin:auto;
+    padding:50px 20px 60px;
+}
 
-        .category p {
-            color: #666;
-            font-size: 16px;
-        }
+.section-title{
+    text-align:center;
+    margin-bottom:35px;
+}
 
-        .button {
-            display: inline-block;
-            background-color: #b08d57;
-            color: #fff;
-            padding: 12px 25px;
-            border-radius: 25px;
-            text-decoration: none;
-            font-weight: bold;
-            margin-top: 10px;
-        }
+.section-title h2{
+    font-family:Georgia,serif;
+    font-size:32px;
+}
 
-        .button:hover {
-            background-color: #7b5d32;
-        }
+.section-title p{
+    color:#777;
+    margin-top:7px;
+}
 
-        footer {
-            background-color: #1c1c1c;
-            color: #fff;
-            padding: 20px;
-            margin-top: 30px;
-        }
-    </style>
+/* CATEGORY CARDS */
+.categories{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:24px;
+    max-width:900px;
+    margin:auto;
+}
+
+.category{
+    background:#fff;
+    border-radius:16px;
+    padding:35px 25px;
+    text-align:center;
+    border:1px solid #e5ded3;
+    box-shadow:0 8px 25px rgba(0,0,0,.07);
+    transition:.25s;
+}
+
+.category:hover{
+    transform:translateY(-6px);
+    box-shadow:0 14px 30px rgba(0,0,0,.13);
+}
+
+.category-icon{
+    font-size:45px;
+    margin-bottom:12px;
+}
+
+.category h3{
+    font-family:Georgia,serif;
+    font-size:25px;
+    margin-bottom:10px;
+    color:#1c1c1c;
+}
+
+.category p{
+    color:#666;
+    font-size:15px;
+    margin-bottom:20px;
+}
+
+/* BUTTON */
+.button{
+    display:inline-block;
+    background:#b08d57;
+    color:#fff;
+    text-decoration:none;
+    padding:12px 25px;
+    border-radius:28px;
+    font-weight:bold;
+}
+
+.button:hover{
+    background:#7b5d32;
+}
+
+/* ABOUT */
+.about{
+    background:#1c1c1c;
+    color:#fff;
+    text-align:center;
+    padding:45px 20px;
+}
+
+.about h2{
+    font-family:Georgia,serif;
+    color:#d4af6a;
+    margin-bottom:10px;
+}
+
+.about p{
+    max-width:650px;
+    margin:auto;
+    color:#ddd;
+}
+
+/* FOOTER */
+footer{
+    background:#111;
+    color:#aaa;
+    text-align:center;
+    padding:22px;
+    font-size:13px;
+}
+
+footer span{
+    color:#d4af6a;
+}
+
+/* MOBILE */
+@media(max-width:650px){
+
+    nav{
+        gap:15px;
+        flex-wrap:wrap;
+    }
+
+    .logo{
+        font-size:27px;
+    }
+
+    .categories{
+        grid-template-columns:1fr;
+    }
+
+    .section-title h2{
+        font-size:28px;
+    }
+}
+</style>
+
 </head>
 
 <body>
 
 <header>
-    <h1>💎 K2 COLLECTION 💎</h1>
-    <p>ELEGANT JEWELLERY • TIMELESS BEAUTY</p>
+    <div class="logo">💎 K2 COLLECTION 💎</div>
+    <div class="tagline">ELEGANT JEWELLERY • TIMELESS BEAUTY</div>
 </header>
 
 <nav>
@@ -109,40 +220,59 @@
     <a href="index.html#about">About</a>
 </nav>
 
-<div class="container">
+<main class="container">
 
-    <h2>✨ Shop By Category ✨</h2>
+```
+<div class="section-title">
+    <h2>Shop By Category</h2>
+    <p>Find a style that speaks to you</p>
+</div>
+
+<div class="categories">
 
     <div class="category">
-        <h3>💍 Rings</h3>
-        <p>Explore beautiful and elegant rings.</p>
-        <a class="button" href="shop.html">View Rings</a>
+        <div class="category-icon">💍</div>
+        <h3>Rings</h3>
+        <p>Explore beautiful and elegant rings for every occasion.</p>
+        <a class="button" href="shop.html">View Rings →</a>
     </div>
 
     <div class="category">
-        <h3>📿 Necklaces</h3>
-        <p>Discover stylish necklaces for every look.</p>
-        <a class="button" href="shop.html">View Necklaces</a>
+        <div class="category-icon">📿</div>
+        <h3>Necklaces</h3>
+        <p>Discover stylish necklaces for every beautiful look.</p>
+        <a class="button" href="shop.html">View Necklaces →</a>
     </div>
 
     <div class="category">
-        <h3>✨ Bracelets</h3>
-        <p>Find beautiful bracelets and stylish designs.</p>
-        <a class="button" href="shop.html">View Bracelets</a>
+        <div class="category-icon">✨</div>
+        <h3>Bracelets</h3>
+        <p>Find beautiful bracelets and elegant designs.</p>
+        <a class="button" href="shop.html">View Bracelets →</a>
     </div>
 
     <div class="category">
-        <h3>🛍️ All Products</h3>
-        <p>See the complete K2 Collection.</p>
-        <a class="button" href="shop.html">View All Products</a>
+        <div class="category-icon">🛍️</div>
+        <h3>All Products</h3>
+        <p>See the complete collection of K2 jewellery picks.</p>
+        <a class="button" href="shop.html">View All Products →</a>
     </div>
 
 </div>
+```
+
+</main>
+
+<section class="about">
+    <h2>About K2 Collection</h2>
+    <p>
+        Discover elegant jewellery chosen to add a beautiful touch
+        to everyday moments and special occasions.
+    </p>
+</section>
 
 <footer>
-    <p>Affiliate Disclosure</p>
-    <p>K2 Collection may earn a commission from qualifying purchases made through Amazon links.</p>
-    <p>© 2026 K2 Collection • All Rights Reserved</p>
+    © 2026 <span>K2 Collection</span> • All Rights Reserved
 </footer>
 
 </body>
