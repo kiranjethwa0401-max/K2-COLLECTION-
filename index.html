@@ -230,8 +230,12 @@ footer{
     }
 
     .price{
-        font-size:16px;
-    }
+    display:none;
+}
+
+.product-card img{
+    cursor:pointer;
+}
 
     .buy-btn{
         padding:8px 12px;
@@ -907,7 +911,24 @@ buttons.forEach(button => {
     });
 
 });
+document.querySelectorAll(".product-card").forEach(card => {
 
+    const image = card.querySelector("img");
+    const button = card.querySelector(".buy-btn");
+
+    if (image && button && button.href && button.href !== window.location.href + "#") {
+
+        const link = document.createElement("a");
+
+        link.href = button.href;
+        link.target = "_blank";
+        link.rel = "nofollow sponsored noopener";
+
+        image.parentNode.insertBefore(link, image);
+        link.appendChild(image);
+    }
+
+});
 </script>
 
 </body>
