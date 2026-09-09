@@ -148,10 +148,7 @@ nav a{
 }
 
 .price{
-    font-size:18px;
-    font-weight:bold;
-    color:#111;
-    margin-bottom:12px;
+    display:none !important;
 }
 
 .buy-btn{
@@ -916,16 +913,16 @@ document.querySelectorAll(".product-card").forEach(card => {
     const image = card.querySelector("img");
     const button = card.querySelector(".buy-btn");
 
-    if (image && button && button.href && button.href !== window.location.href + "#") {
+    if (image && button) {
+        const url = button.getAttribute("href");
 
-        const link = document.createElement("a");
+        if (url && url !== "#") {
+            image.style.cursor = "pointer";
 
-        link.href = button.href;
-        link.target = "_blank";
-        link.rel = "nofollow sponsored noopener";
-
-        image.parentNode.insertBefore(link, image);
-        link.appendChild(image);
+            image.addEventListener("click", function () {
+                window.open(url, "_blank", "noopener,noreferrer");
+            });
+        }
     }
 
 });
