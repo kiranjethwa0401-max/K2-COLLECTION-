@@ -129,8 +129,15 @@ nav a:hover{
 .category h3{
     font-family:Georgia,serif;
     font-size:25px;
-    margin-bottom:10px;
+    margin-bottom:8px;
     color:#1c1c1c;
+}
+
+.category-count{
+    color:#b08d57;
+    font-weight:bold;
+    font-size:14px;
+    margin-bottom:10px;
 }
 
 .category p{
@@ -139,20 +146,91 @@ nav a:hover{
     margin-bottom:20px;
 }
 
-/* BUTTON */
+/* BUTTONS */
 
 .button{
     display:inline-block;
     background:#b08d57;
     color:#fff;
     text-decoration:none;
-    padding:12px 25px;
+    padding:11px 20px;
     border-radius:28px;
     font-weight:bold;
+    border:none;
+    cursor:pointer;
+    font-size:13px;
+    margin:4px 2px;
 }
 
 .button:hover{
     background:#7b5d32;
+}
+
+.button-outline{
+    display:inline-block;
+    background:#fff;
+    color:#7b5d32;
+    border:1px solid #b08d57;
+    padding:10px 18px;
+    border-radius:28px;
+    font-weight:bold;
+    cursor:pointer;
+    font-size:13px;
+    margin:4px 2px;
+}
+
+.button-outline:hover{
+    background:#f5ecdf;
+}
+
+.delete-button{
+    display:inline-block;
+    background:#fff;
+    color:#a33;
+    border:1px solid #d9aaaa;
+    padding:10px 18px;
+    border-radius:28px;
+    font-weight:bold;
+    cursor:pointer;
+    font-size:13px;
+    margin:4px 2px;
+}
+
+.delete-button:hover{
+    background:#fff0f0;
+}
+
+/* ALL PRODUCTS CARD */
+
+.all-products{
+    grid-column:1 / -1;
+}
+
+/* TRASH LINK */
+
+.trash-box{
+    max-width:900px;
+    margin:28px auto 0;
+    text-align:center;
+    background:#1c1c1c;
+    color:#fff;
+    border-radius:16px;
+    padding:22px;
+}
+
+.trash-box p{
+    color:#ccc;
+    margin-bottom:12px;
+}
+
+.trash-button{
+    display:inline-block;
+    background:#d4af6a;
+    color:#1c1c1c;
+    text-decoration:none;
+    padding:10px 22px;
+    border-radius:25px;
+    font-weight:bold;
 }
 
 /* ABOUT */
@@ -211,6 +289,10 @@ footer span{
         font-size:28px;
     }
 
+    .all-products{
+        grid-column:auto;
+    }
+
 }
 
 </style>
@@ -219,9 +301,12 @@ footer span{
 
 <body>
 
+
 <header>
 
-    <div class="logo">💎 K2 COLLECTION 💎</div>
+    <div class="logo">
+        💎 K2 COLLECTION 💎
+    </div>
 
     <div class="tagline">
         ELEGANT JEWELLERY • TIMELESS BEAUTY
@@ -229,20 +314,30 @@ footer span{
 
 </header>
 
+
 <nav>
 
     <a href="index.html">Home</a>
+
     <a href="shop.html">Shop</a>
+
     <a href="categories.html">Categories</a>
+
+    <a href="dashboard.html">Dashboard</a>
+
     <a href="index.html#about">About</a>
 
 </nav>
 
+
 <main class="container">
+
 
 <div class="section-title">
 
-    <h2>Shop By Category</h2>
+    <h2>
+        Shop By Category
+    </h2>
 
     <p>
         Find a style that speaks to you
@@ -254,76 +349,162 @@ footer span{
 <div class="categories">
 
 
+<!-- RINGS -->
+
 <div class="category">
 
-    <div class="category-icon">💍</div>
+    <div class="category-icon">
+        💍
+    </div>
 
     <h3>
         Rings
     </h3>
 
+    <div class="category-count">
+        <span id="ringsCount">0</span> Products
+    </div>
+
     <p>
         Explore beautiful and elegant rings for every occasion.
     </p>
 
-    <a class="button" href="shop.html?category=Rings">
-        View Rings →
+    <a
+        class="button"
+        href="shop.html?category=Rings"
+    >
+        View Products →
     </a>
+
+    <button
+        class="button-outline"
+        onclick="editCategory('Rings')"
+    >
+        ✏️ Edit
+    </button>
+
+    <button
+        class="delete-button"
+        onclick="deleteCategory('Rings')"
+    >
+        🗑️ Delete
+    </button>
 
 </div>
 
 
+<!-- NECKLACES -->
+
 <div class="category">
 
-    <div class="category-icon">📿</div>
+    <div class="category-icon">
+        📿
+    </div>
 
     <h3>
         Necklaces
     </h3>
 
+    <div class="category-count">
+        <span id="necklacesCount">0</span> Products
+    </div>
+
     <p>
         Discover stylish necklaces for every beautiful look.
     </p>
 
-    <a class="button" href="shop.html?category=Necklaces">
-        View Necklaces →
+    <a
+        class="button"
+        href="shop.html?category=Necklaces"
+    >
+        View Products →
     </a>
+
+    <button
+        class="button-outline"
+        onclick="editCategory('Necklaces')"
+    >
+        ✏️ Edit
+    </button>
+
+    <button
+        class="delete-button"
+        onclick="deleteCategory('Necklaces')"
+    >
+        🗑️ Delete
+    </button>
 
 </div>
 
 
+<!-- BRACELETS -->
+
 <div class="category">
 
-    <div class="category-icon">✨</div>
+    <div class="category-icon">
+        ✨
+    </div>
 
     <h3>
         Bracelets
     </h3>
 
+    <div class="category-count">
+        <span id="braceletsCount">0</span> Products
+    </div>
+
     <p>
         Find beautiful bracelets and elegant designs.
     </p>
 
-    <a class="button" href="shop.html?category=Bracelets">
-        View Bracelets →
+    <a
+        class="button"
+        href="shop.html?category=Bracelets"
+    >
+        View Products →
     </a>
+
+    <button
+        class="button-outline"
+        onclick="editCategory('Bracelets')"
+    >
+        ✏️ Edit
+    </button>
+
+    <button
+        class="delete-button"
+        onclick="deleteCategory('Bracelets')"
+    >
+        🗑️ Delete
+    </button>
 
 </div>
 
 
-<div class="category">
+<!-- ALL PRODUCTS -->
 
-    <div class="category-icon">🛍️</div>
+<div class="category all-products">
+
+    <div class="category-icon">
+        🛍️
+    </div>
 
     <h3>
         All Products
     </h3>
 
+    <div class="category-count">
+        <span id="allProductsCount">0</span> Products
+    </div>
+
     <p>
         See the complete collection of K2 jewellery picks.
     </p>
 
-    <a class="button" href="shop.html">
+    <a
+        class="button"
+        href="shop.html"
+    >
         View All Products →
     </a>
 
@@ -331,6 +512,29 @@ footer span{
 
 
 </div>
+
+
+<!-- TRASH -->
+
+<div class="trash-box">
+
+    <h3>
+        🗑️ Trash / Draft
+    </h3>
+
+    <p>
+        Deleted products are kept here and can be restored later.
+    </p>
+
+    <a
+        class="trash-button"
+        href="trash.html"
+    >
+        Open Trash →
+    </a>
+
+</div>
+
 
 </main>
 
@@ -354,6 +558,304 @@ footer span{
     © 2026 <span>K2 Collection</span> • All Rights Reserved
 
 </footer>
+
+
+
+<script>
+
+/* ==========================================
+   K2 COLLECTION - CATEGORY MANAGEMENT
+========================================== */
+
+
+/* STATIC PRODUCTS */
+
+const staticProducts = [
+
+    /* NECKLACES */
+
+    {
+        id:"necklace-1",
+        name:"Pearl Double Layered Jewellery Set",
+        category:"Necklaces"
+    },
+
+    {
+        id:"necklace-2",
+        name:"Shining Diva Fashion Jewellery Set",
+        category:"Necklaces"
+    },
+
+    {
+        id:"necklace-3",
+        name:"Double Strand Pearl Necklace Set",
+        category:"Necklaces"
+    },
+
+    {
+        id:"necklace-4",
+        name:"Gold Plated Pearl Beaded Jewellery Set",
+        category:"Necklaces"
+    },
+
+    {
+        id:"necklace-5",
+        name:"Pearl Necklace, Earrings & Bracelet Set",
+        category:"Necklaces"
+    },
+
+    {
+        id:"necklace-6",
+        name:"0001-Rubans Necklace",
+        category:"Necklaces"
+    },
+
+    {
+        id:"necklace-7",
+        name:"0002-ZAVERI PEARLS",
+        category:"Necklaces"
+    },
+
+    {
+        id:"necklace-8",
+        name:"0003-Pearl Flower Stud Earrings",
+        category:"Necklaces"
+    },
+
+    {
+        id:"necklace-9",
+        name:"0004-Shidara Premium Jewellery",
+        category:"Necklaces"
+    },
+
+    {
+        id:"necklace-10",
+        name:"0005-Red Stone Floral Jewellery",
+        category:"Necklaces"
+    },
+
+
+    /* BRACELETS */
+
+    {
+        id:"bracelet-1",
+        name:"Nilu's Collection Sparkling Bracelet",
+        category:"Bracelets"
+    },
+
+    {
+        id:"bracelet-2",
+        name:"MINUTIAE Infinity Crystal Bracelet",
+        category:"Bracelets"
+    },
+
+    {
+        id:"bracelet-3",
+        name:"Nilu's Collection Heart Adjustable Bracelet",
+        category:"Bracelets"
+    },
+
+    {
+        id:"bracelet-4",
+        name:"Shining Diva Rose Gold Bangle Bracelet",
+        category:"Bracelets"
+    },
+
+    {
+        id:"bracelet-5",
+        name:"Versatile Vault Pearl Bracelet",
+        category:"Bracelets"
+    },
+
+
+    /* RINGS */
+
+    {
+        id:"ring-1",
+        name:"Shining Diva Rose Gold Solitaire Ring",
+        category:"Rings"
+    },
+
+    {
+        id:"ring-2",
+        name:"Zaveri Pearls Set of 3 Rings",
+        category:"Rings"
+    },
+
+    {
+        id:"ring-3",
+        name:"Natural Purple Amethyst Adjustable Ring",
+        category:"Rings"
+    },
+
+    {
+        id:"ring-4",
+        name:"KONPJE Sunflower Adjustable Ring",
+        category:"Rings"
+    },
+
+    {
+        id:"ring-5",
+        name:"Nilu's Collection Floral Sparkling Ring",
+        category:"Rings"
+    }
+
+];
+
+
+/* LOAD DYNAMIC PRODUCTS */
+
+let addedProducts = [];
+
+try{
+
+    addedProducts =
+        JSON.parse(localStorage.getItem("k2Products")) || [];
+
+}catch(error){
+
+    addedProducts = [];
+
+}
+
+
+/* DELETED STATIC PRODUCTS */
+
+let deletedStatic = [];
+
+try{
+
+    deletedStatic =
+        JSON.parse(localStorage.getItem("k2DeletedStatic")) || [];
+
+}catch(error){
+
+    deletedStatic = [];
+
+}
+
+
+/* ACTIVE STATIC PRODUCTS */
+
+const activeStaticProducts =
+    staticProducts.filter(product =>
+        !deletedStatic.includes(product.id)
+    );
+
+
+/* ALL ACTIVE PRODUCTS */
+
+const allProducts = [
+    ...activeStaticProducts,
+    ...addedProducts
+];
+
+
+/* CATEGORY COUNT */
+
+function getCategoryCount(category){
+
+    return allProducts.filter(product =>
+        product.category === category
+    ).length;
+
+}
+
+
+/* SHOW COUNTS */
+
+document.getElementById("ringsCount").textContent =
+    getCategoryCount("Rings");
+
+document.getElementById("necklacesCount").textContent =
+    getCategoryCount("Necklaces");
+
+document.getElementById("braceletsCount").textContent =
+    getCategoryCount("Bracelets");
+
+document.getElementById("allProductsCount").textContent =
+    allProducts.length;
+
+
+/* ==========================================
+   EDIT CATEGORY
+========================================== */
+
+function editCategory(category){
+
+    const newName =
+        prompt(
+            "Enter new name for " + category + ":",
+            category
+        );
+
+    if(newName === null){
+        return;
+    }
+
+    const cleanedName =
+        newName.trim();
+
+    if(cleanedName === ""){
+        alert("Category name cannot be empty.");
+        return;
+    }
+
+    if(cleanedName === category){
+        return;
+    }
+
+    alert(
+        "Category rename will be connected to products in the next management step."
+    );
+
+}
+
+
+/* ==========================================
+   DELETE CATEGORY
+========================================== */
+
+function deleteCategory(category){
+
+    const count =
+        getCategoryCount(category);
+
+    const confirmed =
+        confirm(
+            "Delete the " +
+            category +
+            " category?\n\n" +
+            "It currently contains " +
+            count +
+            " product(s).\n\n" +
+            "The category will not permanently delete your products."
+        );
+
+    if(!confirmed){
+        return;
+    }
+
+    /*
+       We do NOT permanently delete products here.
+       This keeps the products safe.
+    */
+
+    localStorage.setItem(
+        "k2CategoryDeleted_" + category,
+        "true"
+    );
+
+    alert(
+        category +
+        " category has been moved to draft status."
+    );
+
+    location.reload();
+
+}
+
+</script>
 
 
 </body>
