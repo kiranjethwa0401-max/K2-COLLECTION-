@@ -1,1 +1,677 @@
+<!DOCTYPE html>
+<html lang="en">
 
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>K2 Collection | Trash / Draft</title>
+
+<style>
+
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
+
+body{
+    font-family:Arial,Helvetica,sans-serif;
+    background:#f8f5f0;
+    color:#222;
+}
+
+/* HEADER */
+
+header{
+    background:#1c1c1c;
+    color:white;
+    padding:18px 40px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.logo{
+    font-family:Georgia,serif;
+    font-size:26px;
+    color:#d4af6a;
+}
+
+.header-links a{
+    color:white;
+    text-decoration:none;
+    margin-left:22px;
+    font-size:14px;
+}
+
+.header-links a:hover{
+    color:#d4af6a;
+}
+
+/* MAIN */
+
+.container{
+    max-width:1200px;
+    margin:40px auto;
+    padding:0 20px;
+}
+
+.page-title{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:25px;
+}
+
+.page-title h1{
+    font-family:Georgia,serif;
+    font-size:32px;
+    color:#1c1c1c;
+}
+
+.back-btn{
+    text-decoration:none;
+    background:#1c1c1c;
+    color:white;
+    padding:11px 18px;
+    border-radius:6px;
+    font-size:14px;
+}
+
+.back-btn:hover{
+    background:#b08d57;
+}
+
+/* INFO */
+
+.info-box{
+    background:#fff;
+    border-left:4px solid #b08d57;
+    padding:16px 18px;
+    margin-bottom:25px;
+    border-radius:6px;
+    box-shadow:0 3px 12px rgba(0,0,0,.05);
+}
+
+.info-box strong{
+    color:#b08d57;
+}
+
+/* TRASH GRID */
+
+#trashContainer{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:22px;
+}
+
+.trash-card{
+    background:white;
+    border-radius:10px;
+    overflow:hidden;
+    box-shadow:0 5px 18px rgba(0,0,0,.08);
+}
+
+.product-image{
+    width:100%;
+    height:230px;
+    object-fit:cover;
+    background:#eee;
+}
+
+.product-info{
+    padding:18px;
+}
+
+.product-name{
+    font-family:Georgia,serif;
+    font-size:19px;
+    margin-bottom:8px;
+}
+
+.category{
+    font-size:13px;
+    color:#777;
+    margin-bottom:8px;
+}
+
+.price{
+    font-weight:bold;
+    color:#b08d57;
+    margin-bottom:8px;
+}
+
+.deleted-date{
+    font-size:12px;
+    color:#999;
+    margin-bottom:15px;
+}
+
+.buttons{
+    display:flex;
+    gap:8px;
+}
+
+.restore-btn,
+.delete-btn{
+    flex:1;
+    border:none;
+    padding:10px 8px;
+    border-radius:5px;
+    cursor:pointer;
+    font-size:13px;
+}
+
+.restore-btn{
+    background:#1c1c1c;
+    color:white;
+}
+
+.restore-btn:hover{
+    background:#b08d57;
+}
+
+.delete-btn{
+    background:#f3dddd;
+    color:#a33;
+}
+
+.delete-btn:hover{
+    background:#d9534f;
+    color:white;
+}
+
+/* EMPTY */
+
+.empty{
+    grid-column:1/-1;
+    background:white;
+    padding:60px 20px;
+    text-align:center;
+    border-radius:10px;
+    box-shadow:0 5px 18px rgba(0,0,0,.06);
+}
+
+.empty-icon{
+    font-size:50px;
+    margin-bottom:15px;
+}
+
+.empty h2{
+    font-family:Georgia,serif;
+    margin-bottom:8px;
+}
+
+.empty p{
+    color:#777;
+}
+
+/* BOTTOM */
+
+.bottom-actions{
+    margin-top:30px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.empty-trash-btn{
+    border:none;
+    background:#8b2e2e;
+    color:white;
+    padding:12px 20px;
+    border-radius:6px;
+    cursor:pointer;
+}
+
+.empty-trash-btn:hover{
+    background:#b33;
+}
+
+/* RESPONSIVE */
+
+@media(max-width:900px){
+    #trashContainer{
+        grid-template-columns:repeat(2,1fr);
+    }
+}
+
+@media(max-width:600px){
+    header{
+        padding:15px 20px;
+    }
+
+    .header-links a{
+        margin-left:10px;
+        font-size:12px;
+    }
+
+    .page-title{
+        flex-direction:column;
+        align-items:flex-start;
+        gap:15px;
+    }
+
+    #trashContainer{
+        grid-template-columns:1fr;
+    }
+
+    .bottom-actions{
+        flex-direction:column;
+        gap:15px;
+        align-items:stretch;
+    }
+}
+
+</style>
+</head>
+
+<body>
+
+<header>
+
+    <div class="logo">
+        K2 Collection
+    </div>
+
+    <div class="header-links">
+        <a href="dashboard.html">Dashboard</a>
+        <a href="all-products.html">All Products</a>
+        <a href="categories.html">Categories</a>
+    </div>
+
+</header>
+
+
+<div class="container">
+
+    <div class="page-title">
+
+        <h1>🗑️ Trash / Draft</h1>
+
+        <a href="all-products.html" class="back-btn">
+            ← Back to Products
+        </a>
+
+    </div>
+
+
+    <div class="info-box">
+        <strong>Trash:</strong>
+        Deleted products yahan temporarily rahenge.
+        Aap unhe <strong>Restore</strong> kar sakti hain ya
+        <strong>Permanent Delete</strong> kar sakti hain.
+    </div>
+
+
+    <div id="trashContainer"></div>
+
+
+    <div class="bottom-actions">
+
+        <a href="dashboard.html" class="back-btn">
+            Dashboard
+        </a>
+
+        <button class="empty-trash-btn" onclick="emptyTrash()">
+            Empty Trash
+        </button>
+
+    </div>
+
+</div>
+
+
+<script>
+
+function getTrash(){
+
+    return JSON.parse(
+        localStorage.getItem("k2Trash") || "[]"
+    );
+
+}
+
+
+function saveTrash(trash){
+
+    localStorage.setItem(
+        "k2Trash",
+        JSON.stringify(trash)
+    );
+
+}
+
+
+/* DISPLAY TRASH */
+
+function displayTrash(){
+
+    const container =
+        document.getElementById("trashContainer");
+
+    const trash = getTrash();
+
+    container.innerHTML = "";
+
+    if(trash.length === 0){
+
+        container.innerHTML = `
+            <div class="empty">
+
+                <div class="empty-icon">
+                    🗑️
+                </div>
+
+                <h2>Trash is Empty</h2>
+
+                <p>
+                    Deleted products yahan dikhai denge.
+                </p>
+
+            </div>
+        `;
+
+        return;
+    }
+
+
+    trash.forEach((item,index)=>{
+
+        const card =
+            document.createElement("div");
+
+        card.className = "trash-card";
+
+
+        const image =
+            item.image ||
+            "https://via.placeholder.com/500x400?text=K2+Collection";
+
+
+        const price =
+            item.price
+            ? "₹" + item.price
+            : "Price not available";
+
+
+        const deletedDate =
+            item.deletedAt
+            ? new Date(item.deletedAt).toLocaleString()
+            : "Recently deleted";
+
+
+        card.innerHTML = `
+
+            <img
+                src="${image}"
+                class="product-image"
+                alt="${escapeHTML(item.name || "Product")}"
+            >
+
+            <div class="product-info">
+
+                <div class="product-name">
+                    ${escapeHTML(item.name || "Unnamed Product")}
+                </div>
+
+                <div class="category">
+                    Category:
+                    ${escapeHTML(item.category || "Other")}
+                </div>
+
+                <div class="price">
+                    ${price}
+                </div>
+
+                <div class="deleted-date">
+                    Deleted:
+                    ${deletedDate}
+                </div>
+
+                <div class="buttons">
+
+                    <button
+                        class="restore-btn"
+                        onclick="restoreProduct(${index})"
+                    >
+                        ↩ Restore
+                    </button>
+
+                    <button
+                        class="delete-btn"
+                        onclick="permanentDelete(${index})"
+                    >
+                        🗑 Permanent Delete
+                    </button>
+
+                </div>
+
+            </div>
+
+        `;
+
+        container.appendChild(card);
+
+    });
+
+}
+
+
+/* RESTORE */
+
+function restoreProduct(index){
+
+    const trash = getTrash();
+
+    const item = trash[index];
+
+    if(!item){
+        return;
+    }
+
+
+    const confirmRestore =
+        confirm(
+            "Kya aap is product ko restore karna chahti hain?"
+        );
+
+    if(!confirmRestore){
+        return;
+    }
+
+
+    /* DYNAMIC PRODUCT */
+
+    if(item.type === "dynamic"){
+
+        const products =
+            JSON.parse(
+                localStorage.getItem("k2Products") || "[]"
+            );
+
+
+        const restoredProduct = {
+
+            id: item.originalId || Date.now(),
+
+            name: item.name || "",
+
+            category: item.category || "Other",
+
+            price: item.price || "",
+
+            image: item.image || "",
+
+            link: item.link || "",
+
+            description: item.description || ""
+
+        };
+
+
+        products.push(restoredProduct);
+
+
+        localStorage.setItem(
+            "k2Products",
+            JSON.stringify(products)
+        );
+
+    }
+
+
+    /* STATIC PRODUCT */
+
+    if(item.type === "static"){
+
+        let deletedStatic =
+            JSON.parse(
+                localStorage.getItem("k2DeletedStatic") || "[]"
+            );
+
+
+        deletedStatic =
+            deletedStatic.filter(
+                id => String(id) !== String(item.originalId)
+            );
+
+
+        localStorage.setItem(
+            "k2DeletedStatic",
+            JSON.stringify(deletedStatic)
+        );
+
+    }
+
+
+    /* REMOVE FROM TRASH */
+
+    trash.splice(index,1);
+
+    saveTrash(trash);
+
+
+    alert("Product restored successfully!");
+
+
+    displayTrash();
+
+}
+
+
+/* PERMANENT DELETE */
+
+function permanentDelete(index){
+
+    const trash = getTrash();
+
+    const item = trash[index];
+
+    if(!item){
+        return;
+    }
+
+
+    const confirmDelete =
+        confirm(
+            "WARNING!\n\n" +
+            "Permanent Delete ke baad product restore nahi hoga.\n\n" +
+            "Kya aap continue karna chahti hain?"
+        );
+
+
+    if(!confirmDelete){
+        return;
+    }
+
+
+    /*
+      Static products:
+      k2DeletedStatic me ID rehne di ja rahi hai,
+      isliye product website par hidden rahega.
+
+      Dynamic products:
+      woh pehle hi k2Products se remove ho chuke hain.
+    */
+
+
+    trash.splice(index,1);
+
+    saveTrash(trash);
+
+
+    alert("Product permanently deleted!");
+
+
+    displayTrash();
+
+}
+
+
+/* EMPTY TRASH */
+
+function emptyTrash(){
+
+    const trash = getTrash();
+
+    if(trash.length === 0){
+
+        alert("Trash already empty.");
+
+        return;
+    }
+
+
+    const confirmEmpty =
+        confirm(
+            "WARNING!\n\n" +
+            "Trash ke saare products permanently delete ho jayenge.\n\n" +
+            "Kya aap continue karna chahti hain?"
+        );
+
+
+    if(!confirmEmpty){
+        return;
+    }
+
+
+    /*
+      Static deleted products ko hidden hi rakha jayega.
+      Dynamic products already k2Products se remove hain.
+    */
+
+    saveTrash([]);
+
+
+    alert("Trash emptied successfully!");
+
+
+    displayTrash();
+
+}
+
+
+/* SECURITY */
+
+function escapeHTML(text){
+
+    return String(text)
+        .replace(/&/g,"&amp;")
+        .replace(/</g,"&lt;")
+        .replace(/>/g,"&gt;")
+        .replace(/"/g,"&quot;")
+        .replace(/'/g,"&#039;");
+
+}
+
+
+/* START */
+
+displayTrash();
+
+</script>
+
+</body>
+</html>
