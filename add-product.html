@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -142,6 +143,7 @@ textarea{
     font-size:14px;
     color:#777;
 }
+
 .photo-preview-box{
     position:relative;
     width:180px;
@@ -176,7 +178,7 @@ textarea{
 .remove-photo:hover{
     background:#b08d57;
 }
-    
+
 footer{
     background:#111;
     color:#aaa;
@@ -280,25 +282,16 @@ footer{
                      class="photo-name">
                 </div>
 
-               <div class="photo-preview-box" id="photoBox">
+                <div class="photo-preview-box" id="photoBox">
 
-    <img id="photoPreview"
-         alt="Product Preview">
+                    <img id="photoPreview"
+                         alt="Product Preview">
 
-    <button type="button"
-            class="remove-photo"
-            id="removePhoto">×</button>
+                    <button type="button"
+                            class="remove-photo"
+                            id="removePhoto">×</button>
 
-</div>
-                     style="
-                        display:none;
-                        margin-top:15px;
-                        width:180px;
-                        height:180px;
-                        object-fit:cover;
-                        border-radius:10px;
-                        border:1px solid #ddd;
-                     ">
+                </div>
 
             </div>
 
@@ -333,6 +326,7 @@ footer{
 <footer>
     © 2026 K2 Collection • Elegant Jewellery
 </footer>
+
 <script>
 
 const productPhoto = document.getElementById("productPhoto");
@@ -378,5 +372,7 @@ removePhoto.addEventListener("click", function(){
 photoBox.style.display = "none";
 
 </script>
+
 </body>
 </html>
+```
