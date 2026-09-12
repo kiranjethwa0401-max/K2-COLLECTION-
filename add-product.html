@@ -128,6 +128,11 @@ textarea{
     background:#967544;
 }
 
+.add-btn:disabled{
+    background:#aaa;
+    cursor:not-allowed;
+}
+
 .note{
     background:#f8f5f0;
     border-left:4px solid #b08d57;
@@ -188,6 +193,7 @@ footer{
 }
 
 @media(max-width:600px){
+
     header{
         flex-direction:column;
         gap:12px;
@@ -212,14 +218,19 @@ footer{
 <body>
 
 <header>
-    <div class="logo">K2 Collection</div>
+
+    <div class="logo">
+        K2 Collection
+    </div>
 
     <nav>
         <a href="index.html">Home</a>
         <a href="all-products.html">All Products</a>
         <a href="dashboard.html">Dashboard</a>
     </nav>
+
 </header>
+
 
 <div class="container">
 
@@ -229,97 +240,163 @@ footer{
         Add a new jewellery product to your K2 Collection
     </p>
 
+
     <div class="form-box">
 
         <div class="note">
-            <strong>Note:</strong> Abhi ye product form hai.
-            Product ki actual website listing baad mein connect karenge.
+            <strong>Note:</strong>
+            Product add karne ke baad woh automatically
+            <strong>All Products</strong> page mein show hoga.
+            Aap baad mein product ko Trash / Draft mein move bhi kar sakti hain.
         </div>
 
-        <form>
+
+        <form id="productForm">
+
+            <!-- PRODUCT NAME -->
 
             <div class="form-group">
+
                 <label>Product Name</label>
 
-                <input type="text"
-                       id="productName"
-                       placeholder="Example: Elegant Pearl Necklace">
+                <input
+                    type="text"
+                    id="productName"
+                    placeholder="Example: Elegant Pearl Necklace"
+                >
+
             </div>
+
+
+            <!-- CATEGORY + PRICE -->
 
             <div class="row">
 
                 <div class="form-group">
+
                     <label>Category</label>
 
                     <select id="productCategory">
-                        <option value="">Select Category</option>
-                        <option>Necklaces</option>
-                        <option>Bracelets</option>
-                        <option>Rings</option>
+
+                        <option value="">
+                            Select Category
+                        </option>
+
+                        <option value="Necklaces">
+                            Necklaces
+                        </option>
+
+                        <option value="Bracelets">
+                            Bracelets
+                        </option>
+
+                        <option value="Rings">
+                            Rings
+                        </option>
+
                     </select>
+
                 </div>
 
+
                 <div class="form-group">
+
                     <label>Price</label>
 
-                    <input type="text"
-                           id="productPrice"
-                           placeholder="Example: ₹499">
+                    <input
+                        type="text"
+                        id="productPrice"
+                        placeholder="Example: ₹499"
+                    >
+
                 </div>
 
             </div>
+
 
             <!-- PRODUCT PHOTO -->
 
             <div class="form-group">
 
-                <label>📸 Upload Product Photo</label>
+                <label>
+                    📸 Upload Product Photo
+                </label>
 
-                <input type="file"
-                       id="productPhoto"
-                       accept="image/jpeg,image/png,image/webp">
+                <input
+                    type="file"
+                    id="productPhoto"
+                    accept="image/jpeg,image/png,image/webp"
+                >
 
-                <div id="photoName"
-                     class="photo-name">
+                <div
+                    id="photoName"
+                    class="photo-name">
                 </div>
 
-                <div class="photo-preview-box"
-                     id="photoBox">
 
-                    <img id="photoPreview"
-                         alt="Product Preview">
+                <div
+                    class="photo-preview-box"
+                    id="photoBox"
+                >
 
-                    <button type="button"
-                            class="remove-photo"
-                            id="removePhoto">×</button>
+                    <img
+                        id="photoPreview"
+                        alt="Product Preview"
+                    >
+
+                    <button
+                        type="button"
+                        class="remove-photo"
+                        id="removePhoto"
+                    >
+                        ×
+                    </button>
 
                 </div>
 
             </div>
 
+
+            <!-- AMAZON LINK -->
+
             <div class="form-group">
 
-                <label>Amazon Affiliate Link</label>
+                <label>
+                    Amazon Affiliate Link
+                </label>
 
-                <input type="url"
-                       id="affiliateLink"
-                       placeholder="Paste your Amazon affiliate link here">
+                <input
+                    type="url"
+                    id="affiliateLink"
+                    placeholder="Paste your Amazon affiliate link here"
+                >
 
             </div>
 
+
+            <!-- DESCRIPTION -->
+
             <div class="form-group">
 
-                <label>Product Description</label>
+                <label>
+                    Product Description
+                </label>
 
                 <textarea
                     id="productDescription"
-                    placeholder="Write a short description about this jewellery product"></textarea>
+                    placeholder="Write a short description about this jewellery product"
+                ></textarea>
 
             </div>
 
-            <button type="button"
-                    class="add-btn"
-                    id="addProductBtn">
+
+            <!-- BUTTON -->
+
+            <button
+                type="submit"
+                class="add-btn"
+                id="addProductBtn"
+            >
                 Add Product
             </button>
 
@@ -329,114 +406,211 @@ footer{
 
 </div>
 
+
 <footer>
     © 2026 K2 Collection • Elegant Jewellery
 </footer>
 
+
 <script>
 
-const productPhoto = document.getElementById("productPhoto");
-const photoPreview = document.getElementById("photoPreview");
-const photoName = document.getElementById("photoName");
-const removePhoto = document.getElementById("removePhoto");
-const photoBox = document.getElementById("photoBox");
+const productForm =
+    document.getElementById("productForm");
 
-const productName = document.getElementById("productName");
-const productCategory = document.getElementById("productCategory");
-const productPrice = document.getElementById("productPrice");
-const affiliateLink = document.getElementById("affiliateLink");
-const productDescription = document.getElementById("productDescription");
-const addProductBtn = document.getElementById("addProductBtn");
+const productPhoto =
+    document.getElementById("productPhoto");
+
+const photoPreview =
+    document.getElementById("photoPreview");
+
+const photoName =
+    document.getElementById("photoName");
+
+const removePhoto =
+    document.getElementById("removePhoto");
+
+const photoBox =
+    document.getElementById("photoBox");
+
+const productName =
+    document.getElementById("productName");
+
+const productCategory =
+    document.getElementById("productCategory");
+
+const productPrice =
+    document.getElementById("productPrice");
+
+const affiliateLink =
+    document.getElementById("affiliateLink");
+
+const productDescription =
+    document.getElementById("productDescription");
+
+const addProductBtn =
+    document.getElementById("addProductBtn");
+
 
 let selectedPhoto = "";
+
+
+/* PHOTO PREVIEW */
 
 productPhoto.addEventListener("change", function(){
 
     const file = this.files[0];
 
-    if(file){
-
-        photoName.textContent = "Selected: " + file.name;
-
-        const reader = new FileReader();
-
-        reader.onload = function(e){
-
-            selectedPhoto = e.target.result;
-
-            photoPreview.src = selectedPhoto;
-
-            photoBox.style.display = "block";
-            removePhoto.style.display = "block";
-
-        };
-
-        reader.readAsDataURL(file);
+    if(!file){
+        return;
     }
 
+
+    if(!file.type.startsWith("image/")){
+
+        alert("Please select a valid image.");
+
+        this.value = "";
+
+        return;
+    }
+
+
+    photoName.textContent =
+        "Selected: " + file.name;
+
+
+    const reader =
+        new FileReader();
+
+
+    reader.onload = function(e){
+
+        selectedPhoto =
+            e.target.result;
+
+        photoPreview.src =
+            selectedPhoto;
+
+        photoBox.style.display =
+            "block";
+
+        removePhoto.style.display =
+            "block";
+
+    };
+
+
+    reader.readAsDataURL(file);
+
 });
+
+
+/* REMOVE PHOTO */
 
 removePhoto.addEventListener("click", function(){
 
     productPhoto.value = "";
+
     photoPreview.src = "";
+
     photoName.textContent = "";
+
     selectedPhoto = "";
 
-    photoBox.style.display = "none";
-    removePhoto.style.display = "none";
+    photoBox.style.display =
+        "none";
+
+    removePhoto.style.display =
+        "none";
 
 });
+
 
 photoBox.style.display = "none";
 
 
-addProductBtn.addEventListener("click", function(){
+/* ADD PRODUCT */
 
-    const name = productName.value.trim();
-    const category = productCategory.value;
-    const price = productPrice.value.trim();
-    const link = affiliateLink.value.trim();
-    const description = productDescription.value.trim();
+productForm.addEventListener("submit", function(e){
+
+    e.preventDefault();
+
+
+    const name =
+        productName.value.trim();
+
+    const category =
+        productCategory.value;
+
+    const price =
+        productPrice.value.trim();
+
+    const link =
+        affiliateLink.value.trim();
+
+    const description =
+        productDescription.value.trim();
+
+
+    /* VALIDATION */
 
     if(name === ""){
 
         alert("Please enter Product Name.");
-        productName.focus();
-        return;
 
+        productName.focus();
+
+        return;
     }
+
 
     if(category === ""){
 
         alert("Please select Category.");
-        productCategory.focus();
-        return;
 
+        productCategory.focus();
+
+        return;
     }
+
 
     if(price === ""){
 
         alert("Please enter Price.");
-        productPrice.focus();
-        return;
 
+        productPrice.focus();
+
+        return;
     }
+
 
     if(selectedPhoto === ""){
 
         alert("Please upload Product Photo.");
-        return;
 
+        return;
     }
+
 
     if(link === ""){
 
         alert("Please enter Amazon Affiliate Link.");
-        affiliateLink.focus();
-        return;
 
+        affiliateLink.focus();
+
+        return;
     }
+
+
+    /* BUTTON LOCK */
+
+    addProductBtn.disabled = true;
+
+    addProductBtn.textContent =
+        "Adding Product...";
+
+
+    /* NEW PRODUCT */
 
     const newProduct = {
 
@@ -457,10 +631,20 @@ addProductBtn.addEventListener("click", function(){
     };
 
 
+    /* GET EXISTING PRODUCTS */
+
     let products =
-        JSON.parse(localStorage.getItem("k2Products")) || [];
+        JSON.parse(
+            localStorage.getItem("k2Products") || "[]"
+        );
+
+
+    /* ADD NEW PRODUCT */
 
     products.push(newProduct);
+
+
+    /* SAVE */
 
     localStorage.setItem(
         "k2Products",
@@ -468,9 +652,17 @@ addProductBtn.addEventListener("click", function(){
     );
 
 
-    alert("Product added successfully! ❤️");
+    /* SUCCESS */
 
-    window.location.href = "all-products.html";
+    alert(
+        "Product added successfully! ❤️"
+    );
+
+
+    /* GO TO ALL PRODUCTS */
+
+    window.location.href =
+        "all-products.html";
 
 });
 
