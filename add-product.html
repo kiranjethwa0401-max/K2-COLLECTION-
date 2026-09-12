@@ -142,7 +142,41 @@ textarea{
     font-size:14px;
     color:#777;
 }
+.photo-preview-box{
+    position:relative;
+    width:180px;
+    margin-top:15px;
+}
 
+.photo-preview-box img{
+    display:block;
+    width:180px;
+    height:180px;
+    object-fit:cover;
+    border-radius:10px;
+    border:1px solid #ddd;
+}
+
+.remove-photo{
+    position:absolute;
+    top:-10px;
+    right:-10px;
+    width:28px;
+    height:28px;
+    border:none;
+    border-radius:50%;
+    background:#1c1c1c;
+    color:white;
+    font-size:20px;
+    line-height:28px;
+    cursor:pointer;
+    display:none;
+}
+
+.remove-photo:hover{
+    background:#b08d57;
+}
+    
 footer{
     background:#111;
     color:#aaa;
@@ -246,8 +280,16 @@ footer{
                      class="photo-name">
                 </div>
 
-                <img id="photoPreview"
-                     alt="Product Preview"
+               <div class="photo-preview-box" id="photoBox">
+
+    <img id="photoPreview"
+         alt="Product Preview">
+
+    <button type="button"
+            class="remove-photo"
+            id="removePhoto">×</button>
+
+</div>
                      style="
                         display:none;
                         margin-top:15px;
@@ -291,12 +333,13 @@ footer{
 <footer>
     © 2026 K2 Collection • Elegant Jewellery
 </footer>
-
 <script>
 
 const productPhoto = document.getElementById("productPhoto");
 const photoPreview = document.getElementById("photoPreview");
 const photoName = document.getElementById("photoName");
+const removePhoto = document.getElementById("removePhoto");
+const photoBox = document.getElementById("photoBox");
 
 productPhoto.addEventListener("change", function(){
 
@@ -311,23 +354,29 @@ productPhoto.addEventListener("change", function(){
         reader.onload = function(e){
 
             photoPreview.src = e.target.result;
-            photoPreview.style.display = "block";
+            photoBox.style.display = "block";
+            removePhoto.style.display = "block";
 
         };
 
         reader.readAsDataURL(file);
 
-    }else{
-
-        photoName.textContent = "";
-        photoPreview.style.display = "none";
-        photoPreview.src = "";
-
     }
 
 });
 
-</script>
+removePhoto.addEventListener("click", function(){
 
+    productPhoto.value = "";
+    photoPreview.src = "";
+    photoName.textContent = "";
+    photoBox.style.display = "none";
+    removePhoto.style.display = "none";
+
+});
+
+photoBox.style.display = "none";
+
+</script>
 </body>
 </html>
