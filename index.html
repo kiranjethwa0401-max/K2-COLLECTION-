@@ -1,7 +1,7 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 
-    
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -34,6 +34,7 @@ header{
     padding:18px 20px;
     text-align:center;
     border-bottom:1px solid #D4AF6A;
+    position:relative;
 }
 
 .logo{
@@ -47,6 +48,25 @@ header{
     color:#806f4a;
     font-size:14px;
 }
+
+/* ================= DASHBOARD TOP RIGHT ================= */
+
+.dashboard-link{
+    position:absolute;
+    top:12px;
+    right:18px;
+    color:#B08D57;
+    text-decoration:none;
+    font-size:12px;
+    font-weight:bold;
+    z-index:10;
+}
+
+.dashboard-link:hover{
+    color:#806f4a;
+}
+
+/* ================= NAVIGATION ================= */
 
 nav{
     background:#D4AF6A;
@@ -240,6 +260,12 @@ footer{
         font-size:13px;
     }
 
+    .dashboard-link{
+        top:8px;
+        right:10px;
+        font-size:11px;
+    }
+
 }
 
 </style>
@@ -255,6 +281,8 @@ footer{
 Elegant Jewellery • Trendy Styles • Beautiful Choices
 </div>
 
+<a href="dashboard.html" class="dashboard-link">Dashboard</a>
+
 </header>
 
 
@@ -264,8 +292,7 @@ Elegant Jewellery • Trendy Styles • Beautiful Choices
 <a href="all-products.html">All Products</a>
 <a href="#products">Collection</a>
 <a href="#about">About</a>
-<a href="dashboard.html">Dashboard</a>
-    
+
 </nav>
 
 
@@ -914,6 +941,8 @@ document.querySelectorAll(".product-card").forEach(card => {
     }
 
 });
+
+
 /* ==========================================
    LOAD DASHBOARD PRODUCTS ON HOME
 ========================================== */
@@ -1019,7 +1048,9 @@ function loadDashboardProductsOnHome(){
 /* LOAD DASHBOARD PRODUCTS */
 
 loadDashboardProductsOnHome();
+
 </script>
 
 </body>
 </html>
+```
