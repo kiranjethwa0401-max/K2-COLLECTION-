@@ -1806,6 +1806,12 @@ footer span{
 ========================================== */
 
 
+/* ADMIN MODE */
+
+const isAdmin =
+    new URLSearchParams(window.location.search).get("admin") === "true";
+
+
 /* CURRENT FILTER */
 
 let currentCategory = "All";
@@ -2508,10 +2514,25 @@ function clearSearch(){
 /* ==========================================
    START
 ========================================== */
-
 loadAddedProducts();
 
 hideDeletedStaticProducts();
+
+
+/* HIDE DELETE BUTTONS FOR CUSTOMERS */
+
+if(!isAdmin){
+
+    document
+        .querySelectorAll(".delete-btn")
+        .forEach(btn => {
+
+            btn.remove();
+
+        });
+
+}
+
 
 applyFilters();
 
