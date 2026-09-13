@@ -914,7 +914,111 @@ document.querySelectorAll(".product-card").forEach(card => {
     }
 
 });
+/* ==========================================
+   LOAD DASHBOARD PRODUCTS ON HOME
+========================================== */
 
+function loadDashboardProductsOnHome(){
+
+    const productsSection =
+        document.getElementById("products");
+
+    if(!productsSection){
+        return;
+    }
+
+    let addedProducts = [];
+
+    try{
+
+        addedProducts =
+            JSON.parse(
+                localStorage.getItem("k2Products") || "[]"
+            );
+
+    }catch(error){
+
+        addedProducts = [];
+
+    }
+
+
+    addedProducts.forEach(product => {
+
+        const card =
+            document.createElement("div");
+
+        card.className = "product-card";
+
+        card.dataset.category =
+            product.category || "";
+
+        const image =
+            product.image || "";
+
+        const link =
+            product.link || "#";
+
+        const name =
+            product.name || "K2 Collection Product";
+
+        const description =
+            product.description ||
+            "Beautiful K2 Collection jewellery.";
+
+
+        card.innerHTML = `
+
+            <a
+                href="${link}"
+                target="_blank"
+                rel="nofollow sponsored noopener"
+                style="display:block;text-decoration:none;"
+            >
+
+                <img
+                    src="${image}"
+                    alt="${name}"
+                >
+
+            </a>
+
+
+            <div class="product-info">
+
+                <h3>
+                    ${name}
+                </h3>
+
+                <p>
+                    ${description}
+                </p>
+
+
+                <a
+                    class="buy-btn"
+                    href="${link}"
+                    target="_blank"
+                    rel="nofollow sponsored noopener"
+                >
+                    Buy Now →
+                </a>
+
+            </div>
+
+        `;
+
+
+        productsSection.appendChild(card);
+
+    });
+
+}
+
+
+/* LOAD DASHBOARD PRODUCTS */
+
+loadDashboardProductsOnHome();
 </script>
 
 </body>
