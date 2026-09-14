@@ -259,7 +259,7 @@ body{
 
     <br><br>
 
-    Products added through your K2 Collection dashboard are shown below.
+    All K2 Collection products connected with Amazon are shown below.
 
 </div>
 
@@ -289,27 +289,244 @@ body{
 
 <script>
 
-/* =================================
+/* ==========================================
    K2 COLLECTION
    AMAZON PRODUCTS
-================================= */
+   OLD + DASHBOARD PRODUCTS
+========================================== */
 
 
-/* GET PRODUCTS */
+/* ==========================================
+   OLD 20 K2 PRODUCTS
+========================================== */
 
-let products = [];
+const oldProducts = [
+
+    /* NECKLACES */
+
+    {
+        name:"Pearl Double Layered Jewellery Set",
+        image:"necklace-1.jpg",
+        category:"Necklaces",
+        link:"https://www.amazon.in/dp/B0H5FS8DJ6?tag=k2collection0-21"
+    },
+
+    {
+        name:"Shining Diva Fashion Jewellery Set",
+        image:"necklace-2.jpg",
+        category:"Necklaces",
+        link:"https://www.amazon.in/dp/B0CV4XL72Z?tag=k2collection0-21"
+    },
+
+    {
+        name:"Double Strand Pearl Necklace Set",
+        image:"necklace-3.jpg",
+        category:"Necklaces",
+        link:"https://www.amazon.in/dp/B0H7WLPZ1L?tag=k2collection0-21"
+    },
+
+    {
+        name:"Gold Plated Pearl Beaded Jewellery Set",
+        image:"necklace-4.jpg",
+        category:"Necklaces",
+        link:"https://www.amazon.in/dp/B0CJ74NX6Z?tag=k2collection0-21"
+    },
+
+    {
+        name:"Pearl Necklace, Earrings & Bracelet Set",
+        image:"necklace-5.jpg",
+        category:"Necklaces",
+        link:"https://www.amazon.in/dp/B0BXJB7T4B?tag=k2collection0-21"
+    },
+
+    {
+        name:"0001-Rubans Necklace",
+        image:"0001 Nacklace.jpg",
+        category:"Necklaces",
+        link:"https://www.amazon.in/dp/B0D6RVTXLP?tag=k2collection0-21"
+    },
+
+    {
+        name:"0002-ZAVERI PEARLS",
+        image:"0002 nacklace.jpg",
+        category:"Necklaces",
+        link:"https://www.amazon.in/dp/B084KK1XL6?tag=k2collection0-21"
+    },
+
+    {
+        name:"0003-Pearl Flower Stud Earrings",
+        image:"0003 nacklace.jpg",
+        category:"Necklaces",
+        link:"https://www.amazon.in/dp/B0H6KG2Q4X?tag=k2collection0-21"
+    },
+
+    {
+        name:"0004-Shidara1 Pcs Premium",
+        image:"0004 nacklace.jpg",
+        category:"Necklaces",
+        link:"https://www.amazon.in/dp/B0GVPNLFDC?tag=k2collection0-21"
+    },
+
+    {
+        name:"0005-Red Stone Floral",
+        image:"0005 nacklace.jpg",
+        category:"Necklaces",
+        link:"https://www.amazon.in/dp/B0H6SSJ19R?tag=k2collection0-21"
+    },
+
+
+    /* BRACELETS */
+
+    {
+        name:"Nilu's Collection Sparkling Bracelet",
+        image:"bracelet-1.jpg",
+        category:"Bracelets",
+        link:"https://www.amazon.in/dp/B0GL86G9FZ?tag=k2collection0-21"
+    },
+
+    {
+        name:"MINUTIAE Infinity Crystal Bracelet",
+        image:"bracelet-2.jpg",
+        category:"Bracelets",
+        link:"https://www.amazon.in/dp/B094H79X6L?tag=k2collection0-21"
+    },
+
+    {
+        name:"Nilu's Collection Heart Adjustable Bracelet",
+        image:"bracelet-3.jpg",
+        category:"Bracelets",
+        link:"https://www.amazon.in/dp/B0B2R5JWV1?tag=k2collection0-21"
+    },
+
+    {
+        name:"Shining Diva Rose Gold Bangle Bracelet",
+        image:"bracelet-4.jpg",
+        category:"Bracelets",
+        link:"https://www.amazon.in/dp/B07NPWRJVH?tag=k2collection0-21"
+    },
+
+    {
+        name:"Versatile Vault Pearl Bracelet",
+        image:"bracelet-5.jpg",
+        category:"Bracelets",
+        link:"https://www.amazon.in/dp/B0H271K2RC?tag=k2collection0-21"
+    },
+
+
+    /* RINGS */
+
+    {
+        name:"Shining Diva Rose Gold Solitaire Ring",
+        image:"ring-1.jpg",
+        category:"Rings",
+        link:"https://www.amazon.in/dp/B09QKTDS2N?tag=k2collection0-21"
+    },
+
+    {
+        name:"Zaveri Pearls Set of 3 Rings",
+        image:"ring-2.jpg",
+        category:"Rings",
+        link:"https://www.amazon.in/dp/B09FKBV55G?tag=k2collection0-21"
+    },
+
+    {
+        name:"Natural Purple Amethyst Adjustable Ring",
+        image:"ring-3.jpg",
+        category:"Rings",
+        link:"https://www.amazon.in/dp/B0DFH63SPY?tag=k2collection0-21"
+    },
+
+    {
+        name:"KONPJE Sunflower Adjustable Ring",
+        image:"ring-4.jpg",
+        category:"Rings",
+        link:"https://www.amazon.in/dp/B0DCJ34XFS?tag=k2collection0-21"
+    },
+
+    {
+        name:"Nilu's Collection Floral Sparkling Ring",
+        image:"ring-5.jpg",
+        category:"Rings",
+        link:"https://www.amazon.in/dp/B0D1QVVPJW?tag=k2collection0-21"
+    }
+
+];
+
+
+/* ==========================================
+   GET DASHBOARD PRODUCTS
+========================================== */
+
+let dashboardProducts = [];
 
 try{
 
-    products =
+    dashboardProducts =
         JSON.parse(localStorage.getItem("k2Products")) || [];
 
 }catch(error){
 
-    products = [];
+    dashboardProducts = [];
 
 }
 
+
+/* ==========================================
+   COMBINE PRODUCTS
+========================================== */
+
+const allProducts = [...oldProducts];
+
+
+/* ==========================================
+   ADD DASHBOARD PRODUCTS
+   WITHOUT DUPLICATES
+========================================== */
+
+dashboardProducts.forEach(product => {
+
+    const name =
+        product.name ||
+        product.title ||
+        product.productName ||
+        "";
+
+    if(!name) return;
+
+
+    const normalizedName =
+        name
+        .toLowerCase()
+        .replace(/\s+/g," ")
+        .trim();
+
+
+    const alreadyExists =
+        allProducts.some(item => {
+
+            const oldName =
+                (item.name || "")
+                .toLowerCase()
+                .replace(/\s+/g," ")
+                .trim();
+
+            return oldName === normalizedName;
+
+        });
+
+
+    if(!alreadyExists){
+
+        allProducts.push(product);
+
+    }
+
+});
+
+
+/* ==========================================
+   ELEMENTS
+========================================== */
 
 const productsBox =
     document.getElementById("productsBox");
@@ -318,21 +535,25 @@ const emptyBox =
     document.getElementById("emptyBox");
 
 
-/* CHECK PRODUCTS */
+/* ==========================================
+   EMPTY CHECK
+========================================== */
 
-if(products.length === 0){
+if(allProducts.length === 0){
 
     emptyBox.style.display = "block";
 
 }
 
 
-/* SHOW PRODUCTS */
+/* ==========================================
+   SHOW ALL PRODUCTS
+========================================== */
 
-products.forEach(product => {
+allProducts.forEach(product => {
 
 
-    /* FIND AMAZON LINK */
+    /* AMAZON LINK */
 
     const amazonLink =
         product.amazonLink ||
@@ -351,7 +572,10 @@ products.forEach(product => {
     const image =
         product.image ||
         product.imageUrl ||
+        product.imageURL ||
         product.photo ||
+        product.photoUrl ||
+        product.photoURL ||
         product.productImage ||
         "";
 
@@ -425,18 +649,46 @@ products.forEach(product => {
 
     /* IMAGE */
 
-    const imageHTML = image
+    let imageHTML = "";
 
-        ? `
 
-            <img
-                src="${image}"
-                alt="${name}"
-            >
+    if(image){
 
-          `
+        if(amazonLink){
 
-        : `
+            imageHTML = `
+
+                <a
+                    href="${amazonLink}"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+
+                    <img
+                        src="${image}"
+                        alt="${name}"
+                    >
+
+                </a>
+
+            `;
+
+        }else{
+
+            imageHTML = `
+
+                <img
+                    src="${image}"
+                    alt="${name}"
+                >
+
+            `;
+
+        }
+
+    }else{
+
+        imageHTML = `
 
             <div
                 style="
@@ -451,7 +703,9 @@ products.forEach(product => {
                 💎
             </div>
 
-          `;
+        `;
+
+    }
 
 
     /* CARD HTML */
