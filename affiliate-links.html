@@ -1,1 +1,884 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>K2 Collection | Affiliate Links</title>
+
+<style>
+
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
+
+body{
+    font-family:Arial,Helvetica,sans-serif;
+    background:#f7f3ec;
+    color:#2b241d;
+}
+
+/* HEADER */
+
+.header{
+    background:#17120d;
+    color:white;
+    padding:22px 30px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:20px;
+    flex-wrap:wrap;
+}
+
+.logo{
+    font-size:25px;
+    font-weight:bold;
+    letter-spacing:2px;
+    color:#d8b46a;
+}
+
+.header-right{
+    display:flex;
+    align-items:center;
+    gap:15px;
+}
+
+.back-btn{
+    text-decoration:none;
+    color:#17120d;
+    background:#d8b46a;
+    padding:11px 18px;
+    border-radius:8px;
+    font-weight:bold;
+}
+
+.back-btn:hover{
+    background:#f0d28c;
+}
+
+/* PAGE */
+
+.container{
+    max-width:1250px;
+    margin:auto;
+    padding:35px 20px 60px;
+}
+
+.page-title{
+    font-size:32px;
+    margin-bottom:8px;
+}
+
+.page-subtitle{
+    color:#777;
+    margin-bottom:28px;
+}
+
+/* STATS */
+
+.stats{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:18px;
+    margin-bottom:28px;
+}
+
+.stat{
+    background:white;
+    border-radius:14px;
+    padding:22px;
+    box-shadow:0 5px 20px rgba(0,0,0,.06);
+    border:1px solid #eee3d2;
+}
+
+.stat h3{
+    font-size:28px;
+    color:#a47b27;
+    margin-bottom:5px;
+}
+
+.stat p{
+    color:#777;
+}
+
+/* SEARCH */
+
+.search-box{
+    background:white;
+    padding:20px;
+    border-radius:14px;
+    margin-bottom:25px;
+    box-shadow:0 5px 20px rgba(0,0,0,.05);
+}
+
+.search-box input{
+    width:100%;
+    padding:14px 16px;
+    border:1px solid #ddd;
+    border-radius:8px;
+    font-size:15px;
+    outline:none;
+}
+
+.search-box input:focus{
+    border-color:#c9a227;
+}
+
+/* PRODUCTS */
+
+.products{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:20px;
+}
+
+.product-card{
+    background:white;
+    border-radius:15px;
+    padding:22px;
+    box-shadow:0 5px 20px rgba(0,0,0,.06);
+    border:1px solid #eee3d2;
+}
+
+.product-top{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-start;
+    gap:15px;
+}
+
+.product-name{
+    font-size:18px;
+    font-weight:bold;
+    margin-bottom:8px;
+    line-height:1.4;
+}
+
+.category{
+    display:inline-block;
+    background:#fff5d8;
+    color:#9a741d;
+    padding:5px 10px;
+    border-radius:20px;
+    font-size:12px;
+    font-weight:bold;
+}
+
+.source{
+    font-size:12px;
+    color:#888;
+    margin-top:10px;
+}
+
+.link-box{
+    margin-top:18px;
+    background:#f7f4ef;
+    border-radius:8px;
+    padding:12px;
+    word-break:break-all;
+    font-size:13px;
+    color:#555;
+    border:1px solid #eee;
+}
+
+.buttons{
+    display:flex;
+    gap:10px;
+    margin-top:15px;
+}
+
+.btn{
+    flex:1;
+    border:none;
+    padding:11px 12px;
+    border-radius:8px;
+    cursor:pointer;
+    font-weight:bold;
+    text-align:center;
+    text-decoration:none;
+    font-size:14px;
+}
+
+.copy-btn{
+    background:#17120d;
+    color:white;
+}
+
+.copy-btn:hover{
+    background:#33271c;
+}
+
+.amazon-btn{
+    background:#d8b46a;
+    color:#17120d;
+}
+
+.amazon-btn:hover{
+    background:#e9cb85;
+}
+
+/* EMPTY */
+
+.empty{
+    background:white;
+    padding:40px;
+    border-radius:15px;
+    text-align:center;
+    color:#777;
+    grid-column:1/-1;
+}
+
+/* FOOTER */
+
+.footer{
+    text-align:center;
+    padding:25px;
+    color:#888;
+    font-size:13px;
+}
+
+/* MOBILE */
+
+@media(max-width:800px){
+
+    .stats{
+        grid-template-columns:1fr;
+    }
+
+    .products{
+        grid-template-columns:1fr;
+    }
+
+    .header{
+        padding:18px;
+    }
+
+    .page-title{
+        font-size:27px;
+    }
+}
+
+@media(max-width:500px){
+
+    .buttons{
+        flex-direction:column;
+    }
+
+    .product-top{
+        flex-direction:column;
+    }
+
+}
+
+</style>
+</head>
+
+<body>
+
+<header class="header">
+
+    <div class="logo">
+        👑 K2 COLLECTION
+    </div>
+
+    <div class="header-right">
+        <a href="dashboard.html" class="back-btn">
+            ← Dashboard
+        </a>
+    </div>
+
+</header>
+
+
+<main class="container">
+
+    <h1 class="page-title">
+        Affiliate Links
+    </h1>
+
+    <p class="page-subtitle">
+        Manage and copy your Amazon affiliate links for K2 Collection products.
+    </p>
+
+
+    <!-- STATS -->
+
+    <section class="stats">
+
+        <div class="stat">
+            <h3 id="totalLinks">0</h3>
+            <p>Total Affiliate Links</p>
+        </div>
+
+        <div class="stat">
+            <h3 id="oldProducts">20</h3>
+            <p>K2 Collection Products</p>
+        </div>
+
+        <div class="stat">
+            <h3 id="dashboardProducts">0</h3>
+            <p>Dashboard Added Products</p>
+        </div>
+
+    </section>
+
+
+    <!-- SEARCH -->
+
+    <div class="search-box">
+
+        <input
+            type="text"
+            id="searchInput"
+            placeholder="Search product or category..."
+            oninput="searchProducts()"
+        >
+
+    </div>
+
+
+    <!-- PRODUCTS -->
+
+    <section class="products" id="productsContainer"></section>
+
+</main>
+
+
+<footer class="footer">
+    © 2026 K2 Collection • Amazon Affiliate Jewellery Store
+</footer>
+
+
+<script>
+
+/* AMAZON TAG */
+
+const affiliateTag = "k2collection0-21";
+
+
+/* OLD K2 PRODUCTS */
+
+const oldProducts = [
+
+{
+    name:"Pearl Double Layered Jewellery Set",
+    category:"Necklaces",
+    image:"necklace-1.jpg",
+    asin:"B0H5FS8DJ6"
+},
+
+{
+    name:"Shining Diva Fashion Jewellery Set",
+    category:"Necklaces",
+    image:"necklace-2.jpg",
+    asin:"B0CV4XL72Z"
+},
+
+{
+    name:"Double Strand Pearl Necklace Set",
+    category:"Necklaces",
+    image:"necklace-3.jpg",
+    asin:"B0H7WLPZ1L"
+},
+
+{
+    name:"Gold Plated Pearl Beaded Jewellery Set",
+    category:"Necklaces",
+    image:"necklace-4.jpg",
+    asin:"B0CJ74NX6Z"
+},
+
+{
+    name:"Pearl Necklace, Earrings & Bracelet Set",
+    category:"Necklaces",
+    image:"necklace-5.jpg",
+    asin:"B0BXJB7T4B"
+},
+
+{
+    name:"0001-Rubans Necklace",
+    category:"Necklaces",
+    image:"0001 Nacklace.jpg",
+    asin:"B0D6RVTXLP"
+},
+
+{
+    name:"0002-ZAVERI PEARLS",
+    category:"Necklaces",
+    image:"0002 nacklace.jpg",
+    asin:"B084KK1XL6"
+},
+
+{
+    name:"0003-Pearl Flower Stud Earrings",
+    category:"Necklaces",
+    image:"0003 nacklace.jpg",
+    asin:"B0H6KG2Q4X"
+},
+
+{
+    name:"0004-Shidara1 Pcs Premium",
+    category:"Necklaces",
+    image:"0004 nacklace.jpg",
+    asin:"B0GVPNLFDC"
+},
+
+{
+    name:"0005-Red Stone Floral",
+    category:"Necklaces",
+    image:"0005 nacklace.jpg",
+    asin:"B0H6SSJ19R"
+},
+
+{
+    name:"Nilu's Collection Sparkling Bracelet",
+    category:"Bracelets",
+    image:"bracelet-1.jpg",
+    asin:"B0GL86G9FZ"
+},
+
+{
+    name:"MINUTIAE Infinity Crystal Bracelet",
+    category:"Bracelets",
+    image:"bracelet-2.jpg",
+    asin:"B094H79X6L"
+},
+
+{
+    name:"Nilu's Collection Heart Adjustable Bracelet",
+    category:"Bracelets",
+    image:"bracelet-3.jpg",
+    asin:"B0B2R5JWV1"
+},
+
+{
+    name:"Shining Diva Rose Gold Bangle Bracelet",
+    category:"Bracelets",
+    image:"bracelet-4.jpg",
+    asin:"B07NPWRJVH"
+},
+
+{
+    name:"Versatile Vault Pearl Bracelet",
+    category:"Bracelets",
+    image:"bracelet-5.jpg",
+    asin:"B0H271K2RC"
+},
+
+{
+    name:"Shining Diva Rose Gold Solitaire Ring",
+    category:"Rings",
+    image:"ring-1.jpg",
+    asin:"B09QKTDS2N"
+},
+
+{
+    name:"Zaveri Pearls Set of 3 Rings",
+    category:"Rings",
+    image:"ring-2.jpg",
+    asin:"B09FKBV55G"
+},
+
+{
+    name:"Natural Purple Amethyst Adjustable Ring",
+    category:"Rings",
+    image:"ring-3.jpg",
+    asin:"B0DFH63SPY"
+},
+
+{
+    name:"KONPJE Sunflower Adjustable Ring",
+    category:"Rings",
+    image:"ring-4.jpg",
+    asin:"B0DCJ34XFS"
+},
+
+{
+    name:"Nilu's Collection Floral Sparkling Ring",
+    category:"Rings",
+    image:"ring-5.jpg",
+    asin:"B0D1QVVPJW"
+};
+
+
+/* MAKE OLD AMAZON LINKS */
+
+oldProducts.forEach(product => {
+
+    product.amazonLink =
+        "https://www.amazon.in/dp/" +
+        product.asin +
+        "?tag=" +
+        affiliateTag;
+
+});
+
+
+/* GET DASHBOARD PRODUCTS */
+
+let dashboardProducts = [];
+
+try{
+
+    dashboardProducts =
+        JSON.parse(localStorage.getItem("k2Products")) || [];
+
+}catch(error){
+
+    dashboardProducts = [];
+
+}
+
+
+/* NORMALIZE */
+
+function normalizeName(name){
+
+    return String(name || "")
+        .toLowerCase()
+        .replace(/[^a-z0-9]/g,"");
+
+}
+
+
+/* GET PRODUCT NAME */
+
+function getProductName(product){
+
+    return (
+        product.name ||
+        product.title ||
+        product.productName ||
+        "Unnamed Product"
+    );
+
+}
+
+
+/* GET CATEGORY */
+
+function getCategory(product){
+
+    return (
+        product.category ||
+        product.type ||
+        "Jewellery"
+    );
+
+}
+
+
+/* GET AMAZON LINK */
+
+function getAmazonLink(product){
+
+    return (
+        product.amazonLink ||
+        product.amazonUrl ||
+        product.amazonURL ||
+        product.amazon ||
+        product.productLink ||
+        product.productURL ||
+        product.link ||
+        product.url ||
+        ""
+    );
+
+}
+
+
+/* COMBINE PRODUCTS */
+
+const allProducts = [...oldProducts];
+
+const existingNames = new Set(
+    oldProducts.map(product =>
+        normalizeName(product.name)
+    )
+);
+
+
+dashboardProducts.forEach(product => {
+
+    const name = getProductName(product);
+
+    const normalized = normalizeName(name);
+
+    if(!existingNames.has(normalized)){
+
+        allProducts.push({
+
+            name:name,
+
+            category:getCategory(product),
+
+            image:
+                product.image ||
+                product.imageUrl ||
+                product.imageURL ||
+                product.photo ||
+                product.photoUrl ||
+                product.photoURL ||
+                product.productImage ||
+                "",
+
+            amazonLink:getAmazonLink(product),
+
+            isDashboard:true
+
+        });
+
+        existingNames.add(normalized);
+
+    }
+
+});
+
+
+/* UPDATE STATS */
+
+document.getElementById("totalLinks").textContent =
+    allProducts.length;
+
+document.getElementById("oldProducts").textContent =
+    oldProducts.length;
+
+document.getElementById("dashboardProducts").textContent =
+    allProducts.filter(product => product.isDashboard).length;
+
+
+/* ESCAPE HTML */
+
+function escapeHTML(value){
+
+    return String(value || "")
+        .replace(/&/g,"&amp;")
+        .replace(/</g,"&lt;")
+        .replace(/>/g,"&gt;")
+        .replace(/"/g,"&quot;")
+        .replace(/'/g,"&#039;");
+
+}
+
+
+/* RENDER */
+
+function renderProducts(list){
+
+    const container =
+        document.getElementById("productsContainer");
+
+    if(!list.length){
+
+        container.innerHTML = `
+            <div class="empty">
+                <h3>No products found</h3>
+                <p>Try another product name or category.</p>
+            </div>
+        `;
+
+        return;
+
+    }
+
+
+    container.innerHTML = list.map((product,index) => {
+
+        const name =
+            escapeHTML(product.name);
+
+        const category =
+            escapeHTML(product.category);
+
+        const link =
+            product.amazonLink || "";
+
+        const safeLink =
+            escapeHTML(link);
+
+        const source =
+            product.isDashboard
+            ? "Dashboard Added Product"
+            : "K2 Collection Product";
+
+
+        return `
+
+        <div class="product-card">
+
+            <div class="product-top">
+
+                <div>
+
+                    <div class="product-name">
+                        ${name}
+                    </div>
+
+                    <span class="category">
+                        ${category}
+                    </span>
+
+                    <div class="source">
+                        ${source}
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="link-box">
+
+                ${safeLink || "No Amazon link available"}
+
+            </div>
+
+
+            <div class="buttons">
+
+                ${
+                    link
+                    ?
+                    `
+                    <button
+                        class="btn copy-btn"
+                        onclick="copyLink(${index})"
+                    >
+                        📋 Copy Link
+                    </button>
+
+                    <a
+                        class="btn amazon-btn"
+                        href="${safeLink}"
+                        target="_blank"
+                        rel="noopener"
+                    >
+                        View on Amazon →
+                    </a>
+                    `
+                    :
+                    `
+                    <button
+                        class="btn copy-btn"
+                        disabled
+                        style="opacity:.5;cursor:not-allowed;"
+                    >
+                        No Link
+                    </button>
+                    `
+                }
+
+            </div>
+
+        </div>
+
+        `;
+
+    }).join("");
+
+}
+
+
+/* COPY LINK */
+
+function copyLink(index){
+
+    const product = allProducts[index];
+
+    if(!product || !product.amazonLink){
+
+        alert("Amazon link available nahi hai.");
+
+        return;
+
+    }
+
+
+    navigator.clipboard.writeText(product.amazonLink)
+    .then(() => {
+
+        alert("Affiliate link copied! ✅");
+
+    })
+    .catch(() => {
+
+        const textArea =
+            document.createElement("textarea");
+
+        textArea.value =
+            product.amazonLink;
+
+        document.body.appendChild(textArea);
+
+        textArea.select();
+
+        document.execCommand("copy");
+
+        textArea.remove();
+
+        alert("Affiliate link copied! ✅");
+
+    });
+
+}
+
+
+/* SEARCH */
+
+function searchProducts(){
+
+    const search =
+        document.getElementById("searchInput")
+        .value
+        .toLowerCase()
+        .trim();
+
+
+    if(!search){
+
+        renderProducts(allProducts);
+
+        return;
+
+    }
+
+
+    const filtered =
+        allProducts.filter(product => {
+
+            const name =
+                String(product.name || "")
+                .toLowerCase();
+
+            const category =
+                String(product.category || "")
+                .toLowerCase();
+
+            return (
+                name.includes(search) ||
+                category.includes(search)
+            );
+
+        });
+
+
+    renderProducts(filtered);
+
+}
+
+
+/* INITIAL LOAD */
+
+renderProducts(allProducts);
+
+</script>
+
+</body>
+</html>
+```
 
