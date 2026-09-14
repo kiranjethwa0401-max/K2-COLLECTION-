@@ -881,45 +881,334 @@ and discover beautiful pieces for every occasion.
 
 
 <script>
+```html
+<script>
 
-const buttons = document.querySelectorAll(".category-btn");
-const products = document.querySelectorAll(".product-card");
+/* ==========================================
+   K2 COLLECTION CATEGORY SYSTEM
+========================================== */
 
-buttons.forEach(button => {
 
-    button.addEventListener("click", () => {
+/* ------------------------------------------
+   GET CORRECT CATEGORY
+------------------------------------------ */
 
-        const selectedCategory = button.dataset.category;
+function getCorrectCategory(product){
 
-        buttons.forEach(btn => {
-            btn.classList.remove("active");
-        });
+    const name =
+        (product.name || "").toLowerCase();
 
-        button.classList.add("active");
+    const description =
+        (product.description || "").toLowerCase();
 
-        products.forEach(product => {
+    const savedCategory =
+        (product.category || "").trim().toLowerCase();
 
-            const productCategory = product.dataset.category;
 
-            if(
-                selectedCategory === "All" ||
-                productCategory === selectedCategory
-            ){
+    /* Dashboard category has first priority */
 
-                product.style.display = "block";
+    if(savedCategory === "rings"){
+        return "Rings";
+    }
 
-            }else{
+    if(savedCategory === "bracelets"){
+        return "Bracelets";
+    }
 
-                product.style.display = "none";
+    if(savedCategory === "necklaces"){
+        return "Necklaces";
+    }
+
+
+    /* Backup protection */
+
+    if(
+        name.includes("ring") ||
+        description.includes("ring")
+    ){
+        return "Rings";
+    }
+
+
+    if(
+        name.includes("bracelet") ||
+        name.includes("bangle") ||
+        description.includes("bracelet") ||
+        description.includes("bangle")
+    ){
+        return "Bracelets";
+    }
+
+
+    if(
+        name.includes("necklace") ||
+        name.includes("choker") ||
+        name.includes("pendant") ||
+        description.includes("necklace") ||
+        description.includes("choker") ||
+        description.includes("pendant")
+    ){
+        return "Necklaces";
+    }
+
+
+    return "";
+}
+
+
+/* ------------------------------------------
+   CATEGORY FILTER
+------------------------------------------ */
+
+function setupCategoryFilters(){
+
+    const buttons =
+        document.querySelectorAll(".category-btn");
+
+    const products =
+        document.querySelectorAll(".product-card");
+
+
+    buttons.forEach(button => {
+
+        button.onclick = function(){
+
+            const selectedCategory =
+                button.dataset.category;
+
+
+            /* Active button */
+
+            buttons.forEach(btn => {
+                btn.classList.remove("active");
+            });
+
+            button.classList.add("active");
+
+
+            /* Show correct products only */
+
+            products.forEach(product => {
+
+                const productCategory =
+                    product.dataset.category;
+
+
+                if(
+                    selectedCategory === "All" ||
+                    productCategory === selectedCategory
+                ){
+
+                    product.style.display = "block";
+
+                }else{
+
+                    product.style.display = "none";
+
+                }
+
+            });
+
+        };
+
+    });
+
+}
+
+
+/* ------------------------------------------
+   LOAD DASHBOARD PRODUCTS
+------------------------------------------ */
+
+function loadDashboardProductsOnHome(){
+
+    const productsSection =
+        document.getElementById("products");
+
+    if(!productsSection){
+        return;
+    }
+
+
+    let addedProducts = [];
+
+
+    try{
+
+        addedProducts =
+            JSON.parse(
+                localStorage.getItem("k2Products") || "[]"
+            );
+
+    }catch(error){
+
+        addedProducts = [];
+
+    }
+
+
+    addedProducts.forEach(product => {
+
+
+        /* Get ONE correct category */
+
+        const correctCategory =
+            getCorrectCategory(product);
+
+
+        /* Do not display products
+           without a valid category */
+
+        if(!correctCategory){
+            return;
+        }
+
+
+        const card =
+            document.createElement("div");
+
+
+        card.className =
+            "product-card";
+
+
+        /* IMPORTANT:
+           One product gets ONE category */
+
+        card.dataset.category =
+            correctCategory;
+
+
+        const image =
+            product.image || "";
+
+        const link =
+            product.link || "#";
+
+        const name =
+            product.name ||
+            "K2 Collection Product";
+
+        const description =
+            product.description ||
+            "Beautiful K2 Collection jewellery.";
+
+
+        card.innerHTML = `
+
+            <a
+                href="${link}"
+                target="_blank"
+                rel="nofollow sponsored noopener"
+                style="display:block;text-decoration:none;"
+            >
+
+                <img
+                    src="${image}"
+                    alt="${name}"
+                >
+
+            </a>
+
+
+            <div class="product-info">
+
+                <h3>
+                    ${name}
+                </h3>
+
+
+                <p>
+                    ${description}
+                </p>
+
+
+                <a
+                    class="buy-btn"
+                    href="${link}"
+                    target="_blank"
+                    rel="nofollow sponsored noopener"
+                >
+                    Buy Now →
+                </a>
+
+            </div>
+
+        `;
+
+
+        productsSection.appendChild(card);
+
+    });
+
+
+    /* Activate category system
+       AFTER all products are loaded */
+
+    setupCategoryFilters();
+
+}
+
+
+/* ------------------------------------------
+   MAKE EXISTING PRODUCT IMAGES CLICKABLE
+------------------------------------------ */
+
+function makeProductImagesClickable(){
+
+    document
+        .querySelectorAll(".product-card")
+        .forEach(card => {
+
+            const image =
+                card.querySelector("img");
+
+            const button =
+                card.querySelector(".buy-btn");
+
+
+            if(image && button){
+
+                const url =
+                    button.getAttribute("href");
+
+
+                if(url && url !== "#"){
+
+                    image.style.cursor =
+                        "pointer";
+
+
+                    image.onclick =
+                        function(){
+
+                            window.open(
+                                url,
+                                "_blank",
+                                "noopener,noreferrer"
+                            );
+
+                        };
+
+                }
 
             }
 
         });
 
-    });
+}
 
-});
 
+/* ------------------------------------------
+   START K2 COLLECTION
+------------------------------------------ */
+
+loadDashboardProductsOnHome();
+
+makeProductImagesClickable();
+
+</script>
+```
 
 document.querySelectorAll(".product-card").forEach(card => {
 
