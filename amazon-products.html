@@ -3,6 +3,7 @@
 <html lang="en">
 
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -28,6 +29,7 @@ body{
     background:linear-gradient(135deg,#1c1c1c,#111);
     color:#fff;
     padding:22px 30px;
+
     display:flex;
     justify-content:space-between;
     align-items:center;
@@ -53,7 +55,7 @@ body{
 }
 
 .back:hover{
-    background:#9a7848;
+    background:#967442;
 }
 
 /* MAIN */
@@ -127,6 +129,362 @@ body{
 
 .product-info h3{
     font-family:Georgia,serif;
-    font-size:16p
-```
+    font-size:16px;
+    line-height:1.4;
+    margin-bottom:9px;
+}
 
+.category{
+    display:inline-block;
+    background:#f1e7d5;
+    color:#7b5d32;
+    padding:5px 9px;
+    border-radius:15px;
+    font-size:11px;
+    margin-bottom:13px;
+}
+
+.amazon-btn{
+    display:block;
+    width:100%;
+    text-align:center;
+    text-decoration:none;
+    background:#b08d57;
+    color:#fff;
+    padding:11px;
+    border-radius:8px;
+    font-size:13px;
+    font-weight:bold;
+}
+
+.amazon-btn:hover{
+    background:#967442;
+}
+
+/* EMPTY */
+
+.empty{
+    background:#fff;
+    border:1px solid #e5ded3;
+    border-radius:14px;
+    padding:45px 20px;
+    text-align:center;
+    color:#777;
+}
+
+.empty-icon{
+    font-size:45px;
+    margin-bottom:12px;
+}
+
+/* MOBILE */
+
+@media(max-width:1000px){
+
+    .products{
+        grid-template-columns:repeat(3,1fr);
+    }
+
+}
+
+@media(max-width:750px){
+
+    .products{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+}
+
+@media(max-width:500px){
+
+    .header{
+        padding:18px;
+    }
+
+    .container{
+        padding:25px 15px;
+    }
+
+    .products{
+        grid-template-columns:1fr;
+    }
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+
+<!-- HEADER -->
+
+<header class="header">
+
+    <div class="logo">
+        💎 K2 <span>COLLECTION</span>
+    </div>
+
+    <a href="dashboard.html" class="back">
+        ← Dashboard
+    </a>
+
+</header>
+
+
+<!-- MAIN -->
+
+<main class="container">
+
+
+<div class="page-title">
+
+    <h1>
+        🛒 Amazon Products
+    </h1>
+
+    <p>
+        Your K2 Collection products connected with Amazon.
+    </p>
+
+</div>
+
+
+<div class="info">
+
+    <strong>
+        Amazon Affiliate Products
+    </strong>
+
+    <br><br>
+
+    Products added through your K2 Collection dashboard are shown below.
+
+</div>
+
+
+<div class="products" id="productsBox"></div>
+
+
+<div class="empty" id="emptyBox" style="display:none;">
+
+    <div class="empty-icon">
+        🛒
+    </div>
+
+    <h2>
+        No Products Found
+    </h2>
+
+    <p>
+        Add a product from the Add Product section.
+    </p>
+
+</div>
+
+
+</main>
+
+
+<script>
+
+/* =================================
+   K2 COLLECTION
+   AMAZON PRODUCTS
+================================= */
+
+
+/* GET PRODUCTS */
+
+let products = [];
+
+try{
+
+    products =
+        JSON.parse(localStorage.getItem("k2Products")) || [];
+
+}catch(error){
+
+    products = [];
+
+}
+
+
+const productsBox =
+    document.getElementById("productsBox");
+
+const emptyBox =
+    document.getElementById("emptyBox");
+
+
+/* CHECK PRODUCTS */
+
+if(products.length === 0){
+
+    emptyBox.style.display = "block";
+
+}
+
+
+/* SHOW PRODUCTS */
+
+products.forEach(product => {
+
+
+    /* FIND AMAZON LINK */
+
+    const amazonLink =
+        product.amazonLink ||
+        product.amazonUrl ||
+        product.amazonURL ||
+        product.amazon ||
+        product.productLink ||
+        product.productURL ||
+        product.link ||
+        product.url ||
+        "";
+
+
+    /* IMAGE */
+
+    const image =
+        product.image ||
+        product.imageUrl ||
+        product.photo ||
+        product.productImage ||
+        "";
+
+
+    /* NAME */
+
+    const name =
+        product.name ||
+        product.title ||
+        product.productName ||
+        "K2 Collection Product";
+
+
+    /* CATEGORY */
+
+    const category =
+        product.category ||
+        product.type ||
+        "Jewellery";
+
+
+    /* CARD */
+
+    const card =
+        document.createElement("div");
+
+    card.className = "product";
+
+
+    /* AMAZON BUTTON */
+
+    let amazonButton = "";
+
+
+    if(amazonLink){
+
+        amazonButton = `
+
+            <a
+                href="${amazonLink}"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="amazon-btn"
+            >
+                View on Amazon →
+            </a>
+
+        `;
+
+    }else{
+
+        amazonButton = `
+
+            <div
+                style="
+                    background:#eee;
+                    color:#777;
+                    text-align:center;
+                    padding:11px;
+                    border-radius:8px;
+                    font-size:13px;
+                "
+            >
+                Amazon Link Not Added
+            </div>
+
+        `;
+
+    }
+
+
+    /* IMAGE */
+
+    const imageHTML = image
+
+        ? `
+
+            <img
+                src="${image}"
+                alt="${name}"
+            >
+
+          `
+
+        : `
+
+            <div
+                style="
+                    height:220px;
+                    display:flex;
+                    align-items:center;
+                    justify-content:center;
+                    background:#f1eee8;
+                    font-size:50px;
+                "
+            >
+                💎
+            </div>
+
+          `;
+
+
+    /* CARD HTML */
+
+    card.innerHTML = `
+
+        ${imageHTML}
+
+        <div class="product-info">
+
+            <h3>
+                ${name}
+            </h3>
+
+            <span class="category">
+                ${category}
+            </span>
+
+            ${amazonButton}
+
+        </div>
+
+    `;
+
+
+    productsBox.appendChild(card);
+
+});
+
+
+</script>
+
+</body>
+
+</html>
+```
