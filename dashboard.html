@@ -452,5 +452,715 @@ td{
         <span>💎</span> All Products
     </a>
 
-    <a
+    <a href="add-product.html">
+        <span>➕</span> Add Product
+    </a>
+
+    <a href="categories.html">
+        <span>📂</span> Categories
+    </a>
+
+
+    <div class="menu-title">
+        Management
+    </div>
+
+    <!-- AMAZON PRODUCTS - ACTIVE -->
+
+    <a href="amazon-products.html">
+        <span>🛒</span> Amazon Products
+    </a>
+
+    <!-- OTHER OPTIONS - WILL DO NEXT -->
+
+    <a href="#">
+        <span>🔗</span> Affiliate Links
+    </a>
+
+    <a href="#">
+        <span>⭐</span> Featured Products
+    </a>
+
+    <a href="#">
+        <span>✨</span> Collections
+    </a>
+
+
+    <div class="menu-title">
+        Deleted / Draft
+    </div>
+
+    <a href="trash.html">
+        <span>🗑️</span> Trash / Draft
+    </a>
+
+
+    <div class="menu-title">
+        Settings
+    </div>
+
+    <a href="#">
+        <span>📈</span> Overview
+    </a>
+
+    <a href="#">
+        <span>⚙️</span> General Settings
+    </a>
+
+</aside>
+
+
+
+<!-- MAIN -->
+
+<div class="main">
+
+
+<!-- TOP BAR -->
+
+<div class="topbar">
+
+    <div class="search">
+        <input
+            type="text"
+            placeholder="Search dashboard..."
+        >
+    </div>
+
+    <div class="top-right">
+
+        <div class="notification">
+            🔔
+        </div>
+
+        <div class="profile">
+
+            <div class="profile-icon">
+                K
+            </div>
+
+            <strong>
+                K2 Admin
+            </strong>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+<!-- CONTENT -->
+
+<div class="content">
+
+
+<!-- WELCOME -->
+
+<div class="welcome">
+
+    <h1>
+        Welcome to K2 Collection 💎
+    </h1>
+
+    <p>
+        Manage your jewellery collection, products and categories from here.
+    </p>
+
+</div>
+
+
+
+<!-- STATS -->
+
+<div class="stats">
+
+
+<div class="stat">
+
+    <div class="stat-icon">
+        💎
+    </div>
+
+    <h3 id="totalProducts">
+        0
+    </h3>
+
+    <p>
+        Total Products
+    </p>
+
+</div>
+
+
+<div class="stat">
+
+    <div class="stat-icon">
+        📂
+    </div>
+
+    <h3 id="totalCategories">
+        3
+    </h3>
+
+    <p>
+        Categories
+    </p>
+
+</div>
+
+
+<div class="stat">
+
+    <div class="stat-icon">
+        🔗
+    </div>
+
+    <h3 id="affiliateProducts">
+        0
+    </h3>
+
+    <p>
+        Affiliate Products
+    </p>
+
+</div>
+
+
+<div class="stat">
+
+    <div class="stat-icon">
+        ⭐
+    </div>
+
+    <h3 id="featuredProducts">
+        0
+    </h3>
+
+    <p>
+        Featured Products
+    </p>
+
+</div>
+
+
+</div>
+
+
+
+<!-- QUICK ACTIONS -->
+
+<div class="section-heading">
+
+    <h2>
+        Quick Actions
+    </h2>
+
+</div>
+
+
+<div class="quick-actions">
+
+
+<a href="add-product.html" class="action">
+
+    <div class="action-icon">
+        ➕
+    </div>
+
+    <h3>
+        Add Product
+    </h3>
+
+    <p>
+        Add a new jewellery product
+    </p>
+
+</a>
+
+
+<a href="categories.html" class="action">
+
+    <div class="action-icon">
+        📂
+    </div>
+
+    <h3>
+        Manage Categories
+    </h3>
+
+    <p>
+        View and manage categories
+    </p>
+
+</a>
+
+
+<a href="#" class="action">
+
+    <div class="action-icon">
+        🔗
+    </div>
+
+    <h3>
+        Affiliate Links
+    </h3>
+
+    <p>
+        Manage Amazon affiliate links
+    </p>
+
+</a>
+
+
+<a href="#" class="action">
+
+    <div class="action-icon">
+        ⭐
+    </div>
+
+    <h3>
+        Featured Products
+    </h3>
+
+    <p>
+        Manage featured jewellery
+    </p>
+
+</a>
+
+
+</div>
+
+
+
+<!-- LOWER CONTENT -->
+
+<div class="dashboard-grid">
+
+
+<!-- RECENT PRODUCTS -->
+
+<div class="card">
+
+    <div class="card-title">
+        Recently Added Products
+    </div>
+
+    <table>
+
+        <thead>
+
+            <tr>
+
+                <th>
+                    PRODUCT
+                </th>
+
+                <th>
+                    CATEGORY
+                </th>
+
+                <th>
+                    STATUS
+                </th>
+
+            </tr>
+
+        </thead>
+
+        <tbody id="recentProducts">
+
+        </tbody>
+
+    </table>
+
+</div>
+
+
+
+<!-- RIGHT SIDE -->
+
+<div>
+
+
+<!-- PRODUCTS BY CATEGORY -->
+
+<div class="card">
+
+    <div class="card-title">
+        Products by Category
+    </div>
+
+
+    <div class="category-item">
+
+        <div class="category-row">
+
+            <span>
+                Rings
+            </span>
+
+            <strong id="ringsCount">
+                0
+            </strong>
+
+        </div>
+
+        <div class="progress">
+            <span id="ringsBar" style="width:0%"></span>
+        </div>
+
+    </div>
+
+
+    <div class="category-item">
+
+        <div class="category-row">
+
+            <span>
+                Necklaces
+            </span>
+
+            <strong id="necklacesCount">
+                0
+            </strong>
+
+        </div>
+
+        <div class="progress">
+            <span id="necklacesBar" style="width:0%"></span>
+        </div>
+
+    </div>
+
+
+    <div class="category-item">
+
+        <div class="category-row">
+
+            <span>
+                Bracelets
+            </span>
+
+            <strong id="braceletsCount">
+                0
+            </strong>
+
+        </div>
+
+        <div class="progress">
+            <span id="braceletsBar" style="width:0%"></span>
+        </div>
+
+    </div>
+
+</div>
+
+
+<br>
+
+
+<!-- RECENT ACTIVITY -->
+
+<div class="card">
+
+    <div class="card-title">
+        Recent Activity
+    </div>
+
+    <div class="activity">
+
+        <strong>
+            💎 K2 Collection Dashboard
+        </strong>
+
+        <p>
+            Dashboard is ready
+        </p>
+
+    </div>
+
+    <div class="activity">
+
+        <strong>
+            📂 Categories
+        </strong>
+
+        <p>
+            Manage Rings, Necklaces and Bracelets
+        </p>
+
+    </div>
+
+    <div class="activity">
+
+        <strong>
+            🗑️ Trash / Draft
+        </strong>
+
+        <p>
+            Deleted products can be restored
+        </p>
+
+    </div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+
+<script>
+
+/* ================================
+   K2 COLLECTION DASHBOARD
+================================ */
+
+
+/* STATIC PRODUCTS */
+
+const staticProducts = [
+
+    {
+        name:"Pearl Double Layered Jewellery Set",
+        category:"Necklaces",
+        image:"necklace-1.jpg"
+    },
+
+    {
+        name:"Shining Diva Fashion Jewellery Set",
+        category:"Necklaces",
+        image:"necklace-2.jpg"
+    },
+
+    {
+        name:"Double Strand Pearl Necklace Set",
+        category:"Necklaces",
+        image:"necklace-3.jpg"
+    },
+
+    {
+        name:"Shining Diva Rose Gold Solitaire Ring",
+        category:"Rings",
+        image:"ring-1.jpg"
+    },
+
+    {
+        name:"Zaveri Pearls Set of 3 Rings",
+        category:"Rings",
+        image:"ring-2.jpg"
+    }
+
+];
+
+
+/* GET DYNAMIC PRODUCTS */
+
+let addedProducts = [];
+
+try{
+
+    addedProducts =
+        JSON.parse(localStorage.getItem("k2Products")) || [];
+
+}catch(error){
+
+    addedProducts = [];
+
+}
+
+
+/* TOTAL PRODUCTS */
+
+const totalProducts =
+    staticProducts.length + addedProducts.length;
+
+document.getElementById("totalProducts").textContent =
+    totalProducts;
+
+
+/* AFFILIATE PRODUCTS */
+
+document.getElementById("affiliateProducts").textContent =
+    totalProducts;
+
+
+/* CATEGORY COUNTS */
+
+const rings =
+    staticProducts.filter(p => p.category === "Rings").length +
+    addedProducts.filter(p => p.category === "Rings").length;
+
+const necklaces =
+    staticProducts.filter(p => p.category === "Necklaces").length +
+    addedProducts.filter(p => p.category === "Necklaces").length;
+
+const bracelets =
+    staticProducts.filter(p => p.category === "Bracelets").length +
+    addedProducts.filter(p => p.category === "Bracelets").length;
+
+
+document.getElementById("ringsCount").textContent =
+    rings;
+
+document.getElementById("necklacesCount").textContent =
+    necklaces;
+
+document.getElementById("braceletsCount").textContent =
+    bracelets;
+
+
+/* CATEGORY PROGRESS */
+
+function percentage(count){
+
+    if(totalProducts === 0){
+        return 0;
+    }
+
+    return Math.round((count / totalProducts) * 100);
+
+}
+
+
+document.getElementById("ringsBar").style.width =
+    percentage(rings) + "%";
+
+document.getElementById("necklacesBar").style.width =
+    percentage(necklaces) + "%";
+
+document.getElementById("braceletsBar").style.width =
+    percentage(bracelets) + "%";
+
+
+/* RECENT PRODUCTS */
+
+const recentBox =
+    document.getElementById("recentProducts");
+
+
+const allProducts =
+    [...addedProducts].reverse();
+
+
+if(allProducts.length === 0){
+
+    staticProducts.slice(0,5).forEach(product => {
+
+        recentBox.innerHTML += `
+
+        <tr>
+
+            <td>
+
+                <div class="product-cell">
+
+                    <img
+                        src="${product.image}"
+                        alt=""
+                    >
+
+                    <span>
+                        ${product.name}
+                    </span>
+
+                </div>
+
+            </td>
+
+            <td>
+                ${product.category}
+            </td>
+
+            <td>
+
+                <span class="badge">
+                    Active
+                </span>
+
+            </td>
+
+        </tr>
+
+        `;
+
+    });
+
+}else{
+
+    allProducts.slice(0,5).forEach(product => {
+
+        recentBox.innerHTML += `
+
+        <tr>
+
+            <td>
+
+                <div class="product-cell">
+
+                    <img
+                        src="${product.image}"
+                        alt=""
+                    >
+
+                    <span>
+                        ${product.name}
+                    </span>
+
+                </div>
+
+            </td>
+
+            <td>
+                ${product.category}
+            </td>
+
+            <td>
+
+                <span class="badge">
+                    Active
+                </span>
+
+            </td>
+
+        </tr>
+
+        `;
+
+    });
+
+}
+
+
+/* FEATURED PRODUCTS */
+
+let featured = [];
+
+try{
+
+    featured =
+        JSON.parse(localStorage.getItem("k2Featured")) || [];
+
+}catch(error){
+
+    featured = [];
+
+}
+
+document.getElementById("featuredProducts").textContent =
+    featured.length;
+
+
+</script>
+
+</body>
+
+</html>
 ```
