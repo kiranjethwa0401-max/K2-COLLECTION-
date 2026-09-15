@@ -21,8 +21,6 @@ body{
     color:#2b241d;
 }
 
-/* HEADER */
-
 .header{
     background:#17120d;
     color:white;
@@ -60,8 +58,6 @@ body{
     background:#f0d28c;
 }
 
-/* PAGE */
-
 .container{
     max-width:1250px;
     margin:auto;
@@ -77,8 +73,6 @@ body{
     color:#777;
     margin-bottom:28px;
 }
-
-/* STATS */
 
 .stats{
     display:grid;
@@ -105,8 +99,6 @@ body{
     color:#777;
 }
 
-/* SEARCH */
-
 .search-box{
     background:white;
     padding:20px;
@@ -128,8 +120,6 @@ body{
     border-color:#c9a227;
 }
 
-/* PRODUCTS */
-
 .products{
     display:grid;
     grid-template-columns:repeat(2,1fr);
@@ -142,13 +132,6 @@ body{
     padding:22px;
     box-shadow:0 5px 20px rgba(0,0,0,.06);
     border:1px solid #eee3d2;
-}
-
-.product-top{
-    display:flex;
-    justify-content:space-between;
-    align-items:flex-start;
-    gap:15px;
 }
 
 .product-name{
@@ -221,8 +204,6 @@ body{
     background:#e9cb85;
 }
 
-/* EMPTY */
-
 .empty{
     background:white;
     padding:40px;
@@ -232,16 +213,12 @@ body{
     grid-column:1/-1;
 }
 
-/* FOOTER */
-
 .footer{
     text-align:center;
     padding:25px;
     color:#888;
     font-size:13px;
 }
-
-/* MOBILE */
 
 @media(max-width:800px){
 
@@ -265,10 +242,6 @@ body{
 @media(max-width:500px){
 
     .buttons{
-        flex-direction:column;
-    }
-
-    .product-top{
         flex-direction:column;
     }
 
@@ -305,8 +278,6 @@ body{
     </p>
 
 
-    <!-- STATS -->
-
     <section class="stats">
 
         <div class="stat">
@@ -315,7 +286,7 @@ body{
         </div>
 
         <div class="stat">
-            <h3 id="oldProducts">20</h3>
+            <h3 id="oldProducts">0</h3>
             <p>K2 Collection Products</p>
         </div>
 
@@ -326,8 +297,6 @@ body{
 
     </section>
 
-
-    <!-- SEARCH -->
 
     <div class="search-box">
 
@@ -341,8 +310,6 @@ body{
     </div>
 
 
-    <!-- PRODUCTS -->
-
     <section class="products" id="productsContainer"></section>
 
 </main>
@@ -355,157 +322,159 @@ body{
 
 <script>
 
-/* AMAZON TAG */
+/* AMAZON AFFILIATE TAG */
 
 const affiliateTag = "k2collection0-21";
 
 
-/* OLD K2 PRODUCTS */
+/* ORIGINAL K2 COLLECTION PRODUCTS */
 
 const oldProducts = [
 
-{
-    name:"Pearl Double Layered Jewellery Set",
-    category:"Necklaces",
-    image:"necklace-1.jpg",
-    asin:"B0H5FS8DJ6"
-},
+    {
+        name:"Pearl Double Layered Jewellery Set",
+        category:"Necklaces",
+        image:"necklace-1.jpg",
+        asin:"B0H5FS8DJ6"
+    },
 
-{
-    name:"Shining Diva Fashion Jewellery Set",
-    category:"Necklaces",
-    image:"necklace-2.jpg",
-    asin:"B0CV4XL72Z"
-},
+    {
+        name:"Shining Diva Fashion Jewellery Set",
+        category:"Necklaces",
+        image:"necklace-2.jpg",
+        asin:"B0CV4XL72Z"
+    },
 
-{
-    name:"Double Strand Pearl Necklace Set",
-    category:"Necklaces",
-    image:"necklace-3.jpg",
-    asin:"B0H7WLPZ1L"
-},
+    {
+        name:"Double Strand Pearl Necklace Set",
+        category:"Necklaces",
+        image:"necklace-3.jpg",
+        asin:"B0H7WLPZ1L"
+    },
 
-{
-    name:"Gold Plated Pearl Beaded Jewellery Set",
-    category:"Necklaces",
-    image:"necklace-4.jpg",
-    asin:"B0CJ74NX6Z"
-},
+    {
+        name:"Gold Plated Pearl Beaded Jewellery Set",
+        category:"Necklaces",
+        image:"necklace-4.jpg",
+        asin:"B0CJ74NX6Z"
+    },
 
-{
-    name:"Pearl Necklace, Earrings & Bracelet Set",
-    category:"Necklaces",
-    image:"necklace-5.jpg",
-    asin:"B0BXJB7T4B"
-},
+    {
+        name:"Pearl Necklace, Earrings & Bracelet Set",
+        category:"Necklaces",
+        image:"necklace-5.jpg",
+        asin:"B0BXJB7T4B"
+    },
 
-{
-    name:"0001-Rubans Necklace",
-    category:"Necklaces",
-    image:"0001 Nacklace.jpg",
-    asin:"B0D6RVTXLP"
-},
+    {
+        name:"0001-Rubans Necklace",
+        category:"Necklaces",
+        image:"0001 Nacklace.jpg",
+        asin:"B0D6RVTXLP"
+    },
 
-{
-    name:"0002-ZAVERI PEARLS",
-    category:"Necklaces",
-    image:"0002 nacklace.jpg",
-    asin:"B084KK1XL6"
-},
+    {
+        name:"0002-ZAVERI PEARLS",
+        category:"Necklaces",
+        image:"0002 nacklace.jpg",
+        asin:"B084KK1XL6"
+    },
 
-{
-    name:"0003-Pearl Flower Stud Earrings",
-    category:"Necklaces",
-    image:"0003 nacklace.jpg",
-    asin:"B0H6KG2Q4X"
-},
+    {
+        name:"0003-Pearl Flower Stud Earrings",
+        category:"Necklaces",
+        image:"0003 nacklace.jpg",
+        asin:"B0H6KG2Q4X"
+    },
 
-{
-    name:"0004-Shidara1 Pcs Premium",
-    category:"Necklaces",
-    image:"0004 nacklace.jpg",
-    asin:"B0GVPNLFDC"
-},
+    {
+        name:"0004-Shidara1 Pcs Premium",
+        category:"Necklaces",
+        image:"0004 nacklace.jpg",
+        asin:"B0GVPNLFDC"
+    },
 
-{
-    name:"0005-Red Stone Floral",
-    category:"Necklaces",
-    image:"0005 nacklace.jpg",
-    asin:"B0H6SSJ19R"
-},
+    {
+        name:"0005-Red Stone Floral",
+        category:"Necklaces",
+        image:"0005 nacklace.jpg",
+        asin:"B0H6SSJ19R"
+    },
 
-{
-    name:"Nilu's Collection Sparkling Bracelet",
-    category:"Bracelets",
-    image:"bracelet-1.jpg",
-    asin:"B0GL86G9FZ"
-},
+    {
+        name:"Nilu's Collection Sparkling Bracelet",
+        category:"Bracelets",
+        image:"bracelet-1.jpg",
+        asin:"B0GL86G9FZ"
+    },
 
-{
-    name:"MINUTIAE Infinity Crystal Bracelet",
-    category:"Bracelets",
-    image:"bracelet-2.jpg",
-    asin:"B094H79X6L"
-},
+    {
+        name:"MINUTIAE Infinity Crystal Bracelet",
+        category:"Bracelets",
+        image:"bracelet-2.jpg",
+        asin:"B094H79X6L"
+    },
 
-{
-    name:"Nilu's Collection Heart Adjustable Bracelet",
-    category:"Bracelets",
-    image:"bracelet-3.jpg",
-    asin:"B0B2R5JWV1"
-},
+    {
+        name:"Nilu's Collection Heart Adjustable Bracelet",
+        category:"Bracelets",
+        image:"bracelet-3.jpg",
+        asin:"B0B2R5JWV1"
+    },
 
-{
-    name:"Shining Diva Rose Gold Bangle Bracelet",
-    category:"Bracelets",
-    image:"bracelet-4.jpg",
-    asin:"B07NPWRJVH"
-},
+    {
+        name:"Shining Diva Rose Gold Bangle Bracelet",
+        category:"Bracelets",
+        image:"bracelet-4.jpg",
+        asin:"B07NPWRJVH"
+    },
 
-{
-    name:"Versatile Vault Pearl Bracelet",
-    category:"Bracelets",
-    image:"bracelet-5.jpg",
-    asin:"B0H271K2RC"
-},
+    {
+        name:"Versatile Vault Pearl Bracelet",
+        category:"Bracelets",
+        image:"bracelet-5.jpg",
+        asin:"B0H271K2RC"
+    },
 
-{
-    name:"Shining Diva Rose Gold Solitaire Ring",
-    category:"Rings",
-    image:"ring-1.jpg",
-    asin:"B09QKTDS2N"
-},
+    {
+        name:"Shining Diva Rose Gold Solitaire Ring",
+        category:"Rings",
+        image:"ring-1.jpg",
+        asin:"B09QKTDS2N"
+    },
 
-{
-    name:"Zaveri Pearls Set of 3 Rings",
-    category:"Rings",
-    image:"ring-2.jpg",
-    asin:"B09FKBV55G"
-},
+    {
+        name:"Zaveri Pearls Set of 3 Rings",
+        category:"Rings",
+        image:"ring-2.jpg",
+        asin:"B09FKBV55G"
+    },
 
-{
-    name:"Natural Purple Amethyst Adjustable Ring",
-    category:"Rings",
-    image:"ring-3.jpg",
-    asin:"B0DFH63SPY"
-},
+    {
+        name:"Natural Purple Amethyst Adjustable Ring",
+        category:"Rings",
+        image:"ring-3.jpg",
+        asin:"B0DFH63SPY"
+    },
 
-{
-    name:"KONPJE Sunflower Adjustable Ring",
-    category:"Rings",
-    image:"ring-4.jpg",
-    asin:"B0DCJ34XFS"
-},
+    {
+        name:"KONPJE Sunflower Adjustable Ring",
+        category:"Rings",
+        image:"ring-4.jpg",
+        asin:"B0DCJ34XFS"
+    },
 
-{
-    name:"Nilu's Collection Floral Sparkling Ring",
-    category:"Rings",
-    image:"ring-5.jpg",
-    asin:"B0D1QVVPJW"
-};
+    {
+        name:"Nilu's Collection Floral Sparkling Ring",
+        category:"Rings",
+        image:"ring-5.jpg",
+        asin:"B0D1QVVPJW"
+    }
+
+];
 
 
-/* MAKE OLD AMAZON LINKS */
+/* CREATE AMAZON AFFILIATE LINKS */
 
 oldProducts.forEach(product => {
 
@@ -525,7 +494,13 @@ let dashboardProducts = [];
 try{
 
     dashboardProducts =
-        JSON.parse(localStorage.getItem("k2Products")) || [];
+        JSON.parse(
+            localStorage.getItem("k2Products") || "[]"
+        );
+
+    if(!Array.isArray(dashboardProducts)){
+        dashboardProducts = [];
+    }
 
 }catch(error){
 
@@ -534,7 +509,7 @@ try{
 }
 
 
-/* NORMALIZE */
+/* NORMALIZE TEXT */
 
 function normalizeName(name){
 
@@ -545,7 +520,7 @@ function normalizeName(name){
 }
 
 
-/* GET PRODUCT NAME */
+/* PRODUCT NAME */
 
 function getProductName(product){
 
@@ -559,7 +534,7 @@ function getProductName(product){
 }
 
 
-/* GET CATEGORY */
+/* PRODUCT CATEGORY */
 
 function getCategory(product){
 
@@ -572,7 +547,7 @@ function getCategory(product){
 }
 
 
-/* GET AMAZON LINK */
+/* AMAZON LINK */
 
 function getAmazonLink(product){
 
@@ -604,17 +579,49 @@ const existingNames = new Set(
 
 dashboardProducts.forEach(product => {
 
-    const name = getProductName(product);
+    const name =
+        getProductName(product);
 
-    const normalized = normalizeName(name);
+    const normalized =
+        normalizeName(name);
+
 
     if(!existingNames.has(normalized)){
 
+        let amazonLink =
+            getAmazonLink(product);
+
+
+        /*
+        If only an Amazon normal URL was saved,
+        automatically add the K2 affiliate tag.
+        */
+
+        if(
+            amazonLink &&
+            amazonLink.includes("amazon.in") &&
+            !amazonLink.includes("tag=")
+        ){
+
+            amazonLink +=
+                (amazonLink.includes("?") ? "&" : "?") +
+                "tag=" +
+                affiliateTag;
+
+        }
+
+
         allProducts.push({
+
+            id:
+                product.id ||
+                Date.now() +
+                Math.random(),
 
             name:name,
 
-            category:getCategory(product),
+            category:
+                getCategory(product),
 
             image:
                 product.image ||
@@ -626,11 +633,13 @@ dashboardProducts.forEach(product => {
                 product.productImage ||
                 "",
 
-            amazonLink:getAmazonLink(product),
+            amazonLink:
+                amazonLink,
 
             isDashboard:true
 
         });
+
 
         existingNames.add(normalized);
 
@@ -639,16 +648,22 @@ dashboardProducts.forEach(product => {
 });
 
 
-/* UPDATE STATS */
+/* UPDATE COUNTERS */
 
 document.getElementById("totalLinks").textContent =
-    allProducts.length;
-    
+    allProducts.filter(product =>
+        product.amazonLink
+    ).length;
+
+
 document.getElementById("oldProducts").textContent =
     allProducts.length;
-    
+
+
 document.getElementById("dashboardProducts").textContent =
-    allProducts.filter(product => product.isDashboard).length;
+    allProducts.filter(product =>
+        product.isDashboard
+    ).length;
 
 
 /* ESCAPE HTML */
@@ -665,20 +680,32 @@ function escapeHTML(value){
 }
 
 
-/* RENDER */
+/* RENDER PRODUCTS */
 
 function renderProducts(list){
 
     const container =
-        document.getElementById("productsContainer");
+        document.getElementById(
+            "productsContainer"
+        );
+
 
     if(!list.length){
 
         container.innerHTML = `
+
             <div class="empty">
-                <h3>No products found</h3>
-                <p>Try another product name or category.</p>
+
+                <h3>
+                    No products found
+                </h3>
+
+                <p>
+                    Try another product name or category.
+                </p>
+
             </div>
+
         `;
 
         return;
@@ -686,7 +713,8 @@ function renderProducts(list){
     }
 
 
-    container.innerHTML = list.map((product,index) => {
+    container.innerHTML =
+        list.map((product,index) => {
 
         const name =
             escapeHTML(product.name);
@@ -710,30 +738,25 @@ function renderProducts(list){
 
         <div class="product-card">
 
-            <div class="product-top">
+            <div class="product-name">
+                ${name}
+            </div>
 
-                <div>
+            <span class="category">
+                ${category}
+            </span>
 
-                    <div class="product-name">
-                        ${name}
-                    </div>
-
-                    <span class="category">
-                        ${category}
-                    </span>
-
-                    <div class="source">
-                        ${source}
-                    </div>
-
-                </div>
-
+            <div class="source">
+                ${source}
             </div>
 
 
             <div class="link-box">
 
-                ${safeLink || "No Amazon link available"}
+                ${
+                    safeLink ||
+                    "No Amazon link available"
+                }
 
             </div>
 
@@ -744,6 +767,7 @@ function renderProducts(list){
                     link
                     ?
                     `
+
                     <button
                         class="btn copy-btn"
                         onclick="copyLink(${index})"
@@ -755,13 +779,15 @@ function renderProducts(list){
                         class="btn amazon-btn"
                         href="${safeLink}"
                         target="_blank"
-                        rel="noopener"
+                        rel="nofollow sponsored noopener"
                     >
                         View on Amazon →
                     </a>
+
                     `
                     :
                     `
+
                     <button
                         class="btn copy-btn"
                         disabled
@@ -769,6 +795,7 @@ function renderProducts(list){
                     >
                         No Link
                     </button>
+
                     `
                 }
 
@@ -783,71 +810,21 @@ function renderProducts(list){
 }
 
 
-/* COPY LINK */
+/* COPY AFFILIATE LINK */
 
 function copyLink(index){
 
-    const product = allProducts[index];
-
-    if(!product || !product.amazonLink){
-
-        alert("Amazon link available nahi hai.");
-
-        return;
-
-    }
-
-
-    navigator.clipboard.writeText(product.amazonLink)
-    .then(() => {
-
-        alert("Affiliate link copied! ✅");
-
-    })
-    .catch(() => {
-
-        const textArea =
-            document.createElement("textarea");
-
-        textArea.value =
-            product.amazonLink;
-
-        document.body.appendChild(textArea);
-
-        textArea.select();
-
-        document.execCommand("copy");
-
-        textArea.remove();
-
-        alert("Affiliate link copied! ✅");
-
-    });
-
-}
-
-
-/* SEARCH */
-
-function searchProducts(){
-
     const search =
-        document.getElementById("searchInput")
-        .value
+        document.getElementById(
+            "searchInput"
+        ).value
         .toLowerCase()
         .trim();
 
 
-    if(!search){
-
-        renderProducts(allProducts);
-
-        return;
-
-    }
-
-
-    const filtered =
+    const list =
+        search
+        ?
         allProducts.filter(product => {
 
             const name =
@@ -858,7 +835,114 @@ function searchProducts(){
                 String(product.category || "")
                 .toLowerCase();
 
-            return (
+            return(
+                name.includes(search) ||
+                category.includes(search)
+            );
+
+        })
+        :
+        allProducts;
+
+
+    const product =
+        list[index];
+
+
+    if(
+        !product ||
+        !product.amazonLink
+    ){
+
+        alert(
+            "Amazon affiliate link available nahi hai."
+        );
+
+        return;
+
+    }
+
+
+    navigator.clipboard
+        .writeText(
+            product.amazonLink
+        )
+        .then(() => {
+
+            alert(
+                "Affiliate link copied! ✅"
+            );
+
+        })
+        .catch(() => {
+
+            const textArea =
+                document.createElement(
+                    "textarea"
+                );
+
+            textArea.value =
+                product.amazonLink;
+
+            document.body.appendChild(
+                textArea
+            );
+
+            textArea.select();
+
+            document.execCommand(
+                "copy"
+            );
+
+            textArea.remove();
+
+            alert(
+                "Affiliate link copied! ✅"
+            );
+
+        });
+
+}
+
+
+/* SEARCH */
+
+function searchProducts(){
+
+    const search =
+        document.getElementById(
+            "searchInput"
+        ).value
+        .toLowerCase()
+        .trim();
+
+
+    if(!search){
+
+        renderProducts(
+            allProducts
+        );
+
+        return;
+
+    }
+
+
+    const filtered =
+        allProducts.filter(product => {
+
+            const name =
+                String(
+                    product.name || ""
+                ).toLowerCase();
+
+            const category =
+                String(
+                    product.category || ""
+                ).toLowerCase();
+
+
+            return(
                 name.includes(search) ||
                 category.includes(search)
             );
@@ -866,14 +950,18 @@ function searchProducts(){
         });
 
 
-    renderProducts(filtered);
+    renderProducts(
+        filtered
+    );
 
 }
 
 
 /* INITIAL LOAD */
 
-renderProducts(allProducts);
+renderProducts(
+    allProducts
+);
 
 </script>
 
