@@ -2170,6 +2170,57 @@ loadAddedProducts();
 
 hideDeletedStaticProducts();
 
+/* ==========================================
+   READ CATEGORY FROM URL
+========================================== */
+
+const urlCategory =
+    new URLSearchParams(window.location.search)
+        .get("category");
+
+if(urlCategory){
+
+    const validCategories = [
+        "Rings",
+        "Bracelets",
+        "Necklaces"
+    ];
+
+    const matchedCategory =
+        validCategories.find(
+            category =>
+                category.toLowerCase() ===
+                urlCategory.toLowerCase()
+        );
+
+    if(matchedCategory){
+
+        currentCategory =
+            matchedCategory;
+
+        document
+            .querySelectorAll(".filter")
+            .forEach(button => {
+
+                button.classList.remove("active");
+
+                if(
+                    button.textContent
+                        .trim()
+                        .toLowerCase() ===
+                    matchedCategory.toLowerCase()
+                ){
+
+                    button.classList.add("active");
+
+                }
+
+            });
+
+    }
+
+}
+
 /* HIDE DELETE BUTTONS FOR CUSTOMERS */
 
 if(!isAdmin){
