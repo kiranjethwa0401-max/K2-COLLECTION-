@@ -643,10 +643,10 @@ dashboardProducts.forEach(product => {
 
 document.getElementById("totalLinks").textContent =
     allProducts.length;
-
+    
 document.getElementById("oldProducts").textContent =
-    oldProducts.length;
-
+    allProducts.length;
+    
 document.getElementById("dashboardProducts").textContent =
     allProducts.filter(product => product.isDashboard).length;
 
