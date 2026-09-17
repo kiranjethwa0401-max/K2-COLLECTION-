@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 
@@ -656,7 +657,7 @@ async function loadNewArrivals(){
 
         const response = await fetch(
             SUPABASE_URL +
-            "/rest/v1/products?select=*&order=created_at.desc&limit=6",
+            "/rest/v1/products?select=*&order=created_at.desc&limit=10",
             {
                 headers:{
                     "apikey":SUPABASE_KEY,
@@ -746,3 +747,4 @@ loadNewArrivals();
 
 </body>
 </html>
+```
