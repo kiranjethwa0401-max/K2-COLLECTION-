@@ -926,12 +926,19 @@ td{
 
 </div>
 
-
+```html
 <script>
 
 /* ================================
    K2 COLLECTION DASHBOARD
+   SUPABASE CONNECTION
 ================================ */
+
+const SUPABASE_URL =
+    "https://mixhdtkzrcjtcfefdbyf.supabase.co";
+
+const SUPABASE_KEY =
+    "sb_publishable_l_ViECvF-pUEp0Bzf_0aHA_09R-QHIo";
 
 
 /* STATIC PRODUCTS */
@@ -971,98 +978,203 @@ const staticProducts = [
 ];
 
 
-/* GET DYNAMIC PRODUCTS */
+/* ================================
+   LOAD PRODUCTS FROM SUPABASE
+================================ */
 
-let addedProducts = [];
+async function loadSupabaseProducts(){
 
-try{
+    try{
 
-    addedProducts =
-        JSON.parse(localStorage.getItem("k2Products")) || [];
+        const response = await fetch(
+            SUPABASE_URL +
+            "/rest/v1/products?select=*",
+            {
+                method:"GET",
 
-}catch(error){
-
-    addedProducts = [];
-
-}
-
-
-/* TOTAL PRODUCTS */
-
-const totalProducts =
-    staticProducts.length + addedProducts.length;
-
-document.getElementById("totalProducts").textContent =
-    totalProducts;
+                headers:{
+                    "apikey":SUPABASE_KEY,
+                    "Authorization":"Bearer " + SUPABASE_KEY
+                }
+            }
+        );
 
 
-/* AFFILIATE PRODUCTS */
+        if(!response.ok){
 
-document.getElementById("affiliateProducts").textContent =
-    totalProducts;
+            throw new Error(
+                "Supabase error: " +
+                response.status
+            );
 
-
-/* CATEGORY COUNTS */
-
-const rings =
-    staticProducts.filter(p => p.category === "Rings").length +
-    addedProducts.filter(p => p.category === "Rings").length;
-
-const necklaces =
-    staticProducts.filter(p => p.category === "Necklaces").length +
-    addedProducts.filter(p => p.category === "Necklaces").length;
-
-const bracelets =
-    staticProducts.filter(p => p.category === "Bracelets").length +
-    addedProducts.filter(p => p.category === "Bracelets").length;
+        }
 
 
-document.getElementById("ringsCount").textContent =
-    rings;
-
-document.getElementById("necklacesCount").textContent =
-    necklaces;
-
-document.getElementById("braceletsCount").textContent =
-    bracelets;
+        const supabaseProducts =
+            await response.json();
 
 
-/* CATEGORY PROGRESS */
+        updateDashboard(supabaseProducts);
 
-function percentage(count){
 
-    if(totalProducts === 0){
-        return 0;
+    }catch(error){
+
+        console.error(
+            "Supabase connection error:",
+            error
+        );
+
+
+        /* If Supabase is not available,
+           show static products */
+
+        updateDashboard([]);
+
     }
 
-    return Math.round((count / totalProducts) * 100);
-
 }
 
 
-document.getElementById("ringsBar").style.width =
-    percentage(rings) + "%";
+/* ================================
+   UPDATE DASHBOARD
+================================ */
 
-document.getElementById("necklacesBar").style.width =
-    percentage(necklaces) + "%";
+function updateDashboard(supabaseProducts){
 
-document.getElementById("braceletsBar").style.width =
-    percentage(bracelets) + "%";
-
-
-/* RECENT PRODUCTS */
-
-const recentBox =
-    document.getElementById("recentProducts");
+    const databaseProducts =
+        Array.isArray(supabaseProducts)
+            ? supabaseProducts
+            : [];
 
 
-const allProducts =
-    [...addedProducts].reverse();
+    /* TOTAL PRODUCTS */
+
+    const totalProducts =
+        staticProducts.length +
+        databaseProducts.length;
 
 
-if(allProducts.length === 0){
+    document.getElementById(
+        "totalProducts"
+    ).textContent =
+        totalProducts;
 
-    staticProducts.slice(0,5).forEach(product => {
+
+    /* AFFILIATE PRODUCTS */
+
+    document.getElementById(
+        "affiliateProducts"
+    ).textContent =
+        totalProducts;
+
+
+    /* CATEGORY COUNTS */
+
+    const rings =
+        staticProducts.filter(
+            p => p.category === "Rings"
+        ).length
+        +
+        databaseProducts.filter(
+            p => p.category === "Rings"
+        ).length;
+
+
+    const necklaces =
+        staticProducts.filter(
+            p => p.category === "Necklaces"
+        ).length
+        +
+        databaseProducts.filter(
+            p => p.category === "Necklaces"
+        ).length;
+
+
+    const bracelets =
+        staticProducts.filter(
+            p => p.category === "Bracelets"
+        ).length
+        +
+        databaseProducts.filter(
+            p => p.category === "Bracelets"
+        ).length;
+
+
+    document.getElementById(
+        "ringsCount"
+    ).textContent =
+        rings;
+
+
+    document.getElementById(
+        "necklacesCount"
+    ).textContent =
+        necklaces;
+
+
+    document.getElementById(
+        "braceletsCount"
+    ).textContent =
+        bracelets;
+
+
+    /* CATEGORY PROGRESS */
+
+    function percentage(count){
+
+        if(totalProducts === 0){
+            return 0;
+        }
+
+        return Math.round(
+            (count / totalProducts) * 100
+        );
+
+    }
+
+
+    document.getElementById(
+        "ringsBar"
+    ).style.width =
+        percentage(rings) + "%";
+
+
+    document.getElementById(
+        "necklacesBar"
+    ).style.width =
+        percentage(necklaces) + "%";
+
+
+    document.getElementById(
+        "braceletsBar"
+    ).style.width =
+        percentage(bracelets) + "%";
+
+
+    /* RECENT PRODUCTS */
+
+    const recentBox =
+        document.getElementById(
+            "recentProducts"
+        );
+
+
+    recentBox.innerHTML = "";
+
+
+    const recentProducts =
+        databaseProducts.length > 0
+            ? [...databaseProducts].reverse().slice(0,5)
+            : staticProducts.slice(0,5);
+
+
+    recentProducts.forEach(product => {
+
+        const image =
+            product.image ||
+            product.image_url ||
+            "";
+
 
         recentBox.innerHTML += `
 
@@ -1072,13 +1184,31 @@ if(allProducts.length === 0){
 
                 <div class="product-cell">
 
-                    <img
-                        src="${product.image}"
-                        alt=""
-                    >
+                    ${
+                        image
+                        ?
+                        `<img
+                            src="${image}"
+                            alt=""
+                        >`
+                        :
+                        `<div
+                            style="
+                            width:42px;
+                            height:42px;
+                            border-radius:8px;
+                            background:#eee;
+                            display:flex;
+                            align-items:center;
+                            justify-content:center;
+                            "
+                        >
+                            💎
+                        </div>`
+                    }
 
                     <span>
-                        ${product.name}
+                        ${product.name || "Unnamed Product"}
                     </span>
 
                 </div>
@@ -1086,7 +1216,7 @@ if(allProducts.length === 0){
             </td>
 
             <td>
-                ${product.category}
+                ${product.category || "—"}
             </td>
 
             <td>
@@ -1103,72 +1233,43 @@ if(allProducts.length === 0){
 
     });
 
-}else{
 
-    allProducts.slice(0,5).forEach(product => {
+    /* FEATURED PRODUCTS */
 
-        recentBox.innerHTML += `
+    let featured = [];
 
-        <tr>
+    try{
 
-            <td>
+        featured =
+            JSON.parse(
+                localStorage.getItem(
+                    "k2Featured"
+                )
+            ) || [];
 
-                <div class="product-cell">
+    }catch(error){
 
-                    <img
-                        src="${product.image}"
-                        alt=""
-                    >
+        featured = [];
 
-                    <span>
-                        ${product.name}
-                    </span>
+    }
 
-                </div>
 
-            </td>
-
-            <td>
-                ${product.category}
-            </td>
-
-            <td>
-
-                <span class="badge">
-                    Active
-                </span>
-
-            </td>
-
-        </tr>
-
-        `;
-
-    });
+    document.getElementById(
+        "featuredProducts"
+    ).textContent =
+        featured.length;
 
 }
 
 
-/* FEATURED PRODUCTS */
+/* ================================
+   START
+================================ */
 
-let featured = [];
-
-try{
-
-    featured =
-        JSON.parse(localStorage.getItem("k2Featured")) || [];
-
-}catch(error){
-
-    featured = [];
-
-}
-
-document.getElementById("featuredProducts").textContent =
-    featured.length;
-
+loadSupabaseProducts();
 
 </script>
+
 
 </body>
 
