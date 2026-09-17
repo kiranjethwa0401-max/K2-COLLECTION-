@@ -115,12 +115,18 @@ body{
     border-color:#b08d57;
 }
 
+/* PRODUCT IMAGE - FIXED */
+
 .product img{
     width:100%;
-    height:220px;
-    object-fit:cover;
+    height:280px;
+    object-fit:contain;
     display:block;
+    background:#fff;
+    padding:10px;
 }
+
+/* PRODUCT INFO */
 
 .product-info{
     padding:17px;
@@ -192,6 +198,10 @@ body{
         grid-template-columns:repeat(2,1fr);
     }
 
+    .product img{
+        height:250px;
+    }
+
 }
 
 @media(max-width:500px){
@@ -206,6 +216,10 @@ body{
 
     .products{
         grid-template-columns:1fr;
+    }
+
+    .product img{
+        height:300px;
     }
 
 }
@@ -691,7 +705,7 @@ allProducts.forEach(product => {
 
             <div
                 style="
-                    height:220px;
+                    height:280px;
                     display:flex;
                     align-items:center;
                     justify-content:center;
@@ -740,4 +754,3 @@ allProducts.forEach(product => {
 </body>
 
 </html>
-```
