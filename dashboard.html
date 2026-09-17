@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 
@@ -470,25 +471,19 @@ td{
     </a>
 
 
-    <!-- AFFILIATE LINKS - ACTIVE -->
-
     <a href="affiliate-links.html">
         <span>🔗</span> Affiliate Links
     </a>
 
-
-    <!-- FEATURED PRODUCTS - NEXT -->
 
     <a href="#">
         <span>⭐</span> Featured Products
     </a>
 
 
-    <!-- COLLECTIONS - NEXT -->
-
-   <a href="collections.html">
-    <span>✨</span> Collections
-</a> 
+    <a href="collections.html">
+        <span>✨</span> Collections
+    </a>
 
 
     <div class="menu-title">
@@ -704,8 +699,6 @@ td{
 
 </a>
 
-
-<!-- AFFILIATE LINKS - ACTIVE -->
 
 <a href="affiliate-links.html" class="action">
 
@@ -926,13 +919,13 @@ td{
 
 </div>
 
-```html
+
 <script>
 
-/* ================================
+/* =====================================
    K2 COLLECTION DASHBOARD
    SUPABASE CONNECTION
-================================ */
+===================================== */
 
 const SUPABASE_URL =
     "https://mixhdtkzrcjtcfefdbyf.supabase.co";
@@ -941,63 +934,122 @@ const SUPABASE_KEY =
     "sb_publishable_l_ViECvF-pUEp0Bzf_0aHA_09R-QHIo";
 
 
-/* STATIC PRODUCTS */
+/* =====================================
+   CATEGORY HELPER
+===================================== */
 
-const staticProducts = [
+function getCategory(product){
 
-    {
-        name:"Pearl Double Layered Jewellery Set",
-        category:"Necklaces",
-        image:"necklace-1.jpg"
-    },
+    const savedCategory =
+        product.category ||
+        product.Category ||
+        "";
 
-    {
-        name:"Shining Diva Fashion Jewellery Set",
-        category:"Necklaces",
-        image:"necklace-2.jpg"
-    },
+    if(savedCategory){
 
-    {
-        name:"Double Strand Pearl Necklace Set",
-        category:"Necklaces",
-        image:"necklace-3.jpg"
-    },
+        const category =
+            String(savedCategory).toLowerCase();
 
-    {
-        name:"Shining Diva Rose Gold Solitaire Ring",
-        category:"Rings",
-        image:"ring-1.jpg"
-    },
+        if(category.includes("ring")){
+            return "Rings";
+        }
 
-    {
-        name:"Zaveri Pearls Set of 3 Rings",
-        category:"Rings",
-        image:"ring-2.jpg"
+        if(category.includes("bracelet")){
+            return "Bracelets";
+        }
+
+        if(category.includes("necklace")){
+            return "Necklaces";
+        }
+
     }
 
-];
+
+    const text = (
+        (product.name || "") +
+        " " +
+        (product.title || "") +
+        " " +
+        (product.description || "")
+    ).toLowerCase();
 
 
-/* ================================
-   LOAD PRODUCTS FROM SUPABASE
-================================ */
+    if(text.includes("ring")){
+        return "Rings";
+    }
+
+
+    if(
+        text.includes("bracelet") ||
+        text.includes("bangle")
+    ){
+        return "Bracelets";
+    }
+
+
+    return "Necklaces";
+
+}
+
+
+/* =====================================
+   PRODUCT IMAGE
+===================================== */
+
+function getImage(product){
+
+    return (
+        product.image ||
+        product.image_url ||
+        product.imageUrl ||
+        product.photo ||
+        product.photo_url ||
+        ""
+    );
+
+}
+
+
+/* =====================================
+   PRODUCT NAME
+===================================== */
+
+function getName(product){
+
+    return (
+        product.name ||
+        product.Name ||
+        product.title ||
+        product.product_name ||
+        "Unnamed Product"
+    );
+
+}
+
+
+/* =====================================
+   LOAD SUPABASE PRODUCTS
+===================================== */
 
 async function loadSupabaseProducts(){
 
     try{
 
-        const response = await fetch(
-            SUPABASE_URL +
-            "/rest/v1/products?select=*",
-            {
-                method:"GET",
+        const response =
+            await fetch(
+                SUPABASE_URL +
+                "/rest/v1/products?select=*",
+                {
+                    method:"GET",
 
-                headers:{
-                    "apikey":SUPABASE_KEY,
-                    "Authorization":"Bearer " + SUPABASE_KEY
+                    headers:{
+                        "apikey":SUPABASE_KEY,
+                        "Authorization":
+                            "Bearer " +
+                            SUPABASE_KEY
+                    }
                 }
-            }
-        );
+            );
 
 
         if(!response.ok){
@@ -1010,23 +1062,25 @@ async function loadSupabaseProducts(){
         }
 
 
-        const supabaseProducts =
+        const products =
             await response.json();
 
 
-        updateDashboard(supabaseProducts);
+        updateDashboard(
+            Array.isArray(products)
+                ? products
+                : []
+        );
 
 
-    }catch(error){
+    }
+    catch(error){
 
         console.error(
             "Supabase connection error:",
             error
         );
 
-
-        /* If Supabase is not available,
-           show static products */
 
         updateDashboard([]);
 
@@ -1035,24 +1089,31 @@ async function loadSupabaseProducts(){
 }
 
 
-/* ================================
+/* =====================================
    UPDATE DASHBOARD
-================================ */
+===================================== */
 
-function updateDashboard(supabaseProducts){
+function updateDashboard(products){
 
     const databaseProducts =
-        Array.isArray(supabaseProducts)
-            ? supabaseProducts
+        Array.isArray(products)
+            ? products
             : [];
 
 
-    /* TOTAL PRODUCTS */
+    /*
+       IMPORTANT:
+       Supabase is the main product source.
+
+       Static products are NOT added here.
+       This prevents double counting.
+    */
 
     const totalProducts =
-        staticProducts.length +
         databaseProducts.length;
 
+
+    /* TOTAL PRODUCTS */
 
     document.getElementById(
         "totalProducts"
@@ -1062,42 +1123,52 @@ function updateDashboard(supabaseProducts){
 
     /* AFFILIATE PRODUCTS */
 
+    const affiliateCount =
+        databaseProducts.filter(product => {
+
+            return Boolean(
+                product.amazon_link ||
+                product.amazonLink ||
+                product.affiliate_link ||
+                product.affiliateLink ||
+                product.link
+            );
+
+        }).length;
+
+
     document.getElementById(
         "affiliateProducts"
     ).textContent =
-        totalProducts;
+        affiliateCount;
 
 
     /* CATEGORY COUNTS */
 
-    const rings =
-        staticProducts.filter(
-            p => p.category === "Rings"
-        ).length
-        +
-        databaseProducts.filter(
-            p => p.category === "Rings"
-        ).length;
+    let rings = 0;
+    let necklaces = 0;
+    let bracelets = 0;
 
 
-    const necklaces =
-        staticProducts.filter(
-            p => p.category === "Necklaces"
-        ).length
-        +
-        databaseProducts.filter(
-            p => p.category === "Necklaces"
-        ).length;
+    databaseProducts.forEach(product => {
+
+        const category =
+            getCategory(product);
 
 
-    const bracelets =
-        staticProducts.filter(
-            p => p.category === "Bracelets"
-        ).length
-        +
-        databaseProducts.filter(
-            p => p.category === "Bracelets"
-        ).length;
+        if(category === "Rings"){
+            rings++;
+        }
+
+        else if(category === "Bracelets"){
+            bracelets++;
+        }
+
+        else if(category === "Necklaces"){
+            necklaces++;
+        }
+
+    });
 
 
     document.getElementById(
@@ -1151,7 +1222,9 @@ function updateDashboard(supabaseProducts){
         percentage(bracelets) + "%";
 
 
-    /* RECENT PRODUCTS */
+    /* =================================
+       RECENT PRODUCTS
+    ================================= */
 
     const recentBox =
         document.getElementById(
@@ -1163,17 +1236,47 @@ function updateDashboard(supabaseProducts){
 
 
     const recentProducts =
-        databaseProducts.length > 0
-            ? [...databaseProducts].reverse().slice(0,5)
-            : staticProducts.slice(0,5);
+        [...databaseProducts]
+        .reverse()
+        .slice(0,5);
+
+
+    if(recentProducts.length === 0){
+
+        recentBox.innerHTML = `
+
+            <tr>
+
+                <td colspan="3"
+                    style="
+                    text-align:center;
+                    color:#888;
+                    padding:25px;
+                    ">
+
+                    No products found.
+
+                </td>
+
+            </tr>
+
+        `;
+
+    }
 
 
     recentProducts.forEach(product => {
 
         const image =
-            product.image ||
-            product.image_url ||
-            "";
+            getImage(product);
+
+
+        const name =
+            getName(product);
+
+
+        const category =
+            getCategory(product);
 
 
         recentBox.innerHTML += `
@@ -1208,7 +1311,7 @@ function updateDashboard(supabaseProducts){
                     }
 
                     <span>
-                        ${product.name || "Unnamed Product"}
+                        ${name}
                     </span>
 
                 </div>
@@ -1216,7 +1319,7 @@ function updateDashboard(supabaseProducts){
             </td>
 
             <td>
-                ${product.category || "—"}
+                ${category}
             </td>
 
             <td>
@@ -1234,9 +1337,12 @@ function updateDashboard(supabaseProducts){
     });
 
 
-    /* FEATURED PRODUCTS */
+    /* =================================
+       FEATURED PRODUCTS
+    ================================= */
 
     let featured = [];
+
 
     try{
 
@@ -1247,7 +1353,8 @@ function updateDashboard(supabaseProducts){
                 )
             ) || [];
 
-    }catch(error){
+    }
+    catch(error){
 
         featured = [];
 
@@ -1262,9 +1369,9 @@ function updateDashboard(supabaseProducts){
 }
 
 
-/* ================================
-   START
-================================ */
+/* =====================================
+   START DASHBOARD
+===================================== */
 
 loadSupabaseProducts();
 
