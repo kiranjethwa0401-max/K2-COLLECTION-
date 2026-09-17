@@ -3,27 +3,20 @@
 <html lang="en">
 
 <head>
-
 <meta charset="UTF-8">
-
-<meta name="viewport"
-content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>K2 Collection | Elegant Jewellery</title>
 
 <meta name="description"
-content="K2 Collection - Elegant and trendy jewellery styles for every beautiful occasion.">
+content="K2 Collection - elegant jewellery, timeless beauty and trendy styles.">
 
 <style>
 
-/* =========================
-   RESET
-========================= */
-
 *{
+    box-sizing:border-box;
     margin:0;
     padding:0;
-    box-sizing:border-box;
 }
 
 html{
@@ -31,950 +24,390 @@ html{
 }
 
 body{
-    font-family:
-        "Segoe UI",
-        Arial,
-        sans-serif;
-
-    background:#f7f2e9;
-    color:#33291f;
+    font-family:Arial, Helvetica, sans-serif;
+    background:#f8f4ed;
+    color:#2c241d;
     line-height:1.6;
 }
 
-
-/* =========================
-   HEADER
-========================= */
+/* HEADER */
 
 header{
-
     background:#fffdf9;
-
-    border-bottom:1px solid #e7dccb;
-
-    position:sticky;
-    top:0;
-    z-index:1000;
-
-    box-shadow:
-        0 4px 18px rgba(70,50,30,0.05);
-}
-
-.header-inner{
-
-    max-width:1200px;
-
-    margin:auto;
-
-    padding:18px 25px;
-
-    display:flex;
-
-    align-items:center;
-
-    justify-content:space-between;
-
-    gap:30px;
-}
-
-
-/* LOGO */
-
-.logo-area{
-    text-decoration:none;
-    color:#33291f;
+    text-align:center;
+    padding:24px 20px 18px;
+    border-bottom:1px solid #eadfce;
 }
 
 .logo{
-
-    font-family:Georgia,serif;
-
-    font-size:27px;
-
-    font-weight:bold;
-
-    letter-spacing:3px;
-
-    color:#b58b45;
-}
-
-.logo-tagline{
-
-    font-size:10px;
-
+    font-size:28px;
+    font-weight:700;
     letter-spacing:2px;
-
-    color:#776755;
-
-    margin-top:2px;
+    color:#2c241d;
+    text-decoration:none;
 }
 
+.tagline{
+    margin-top:6px;
+    font-size:12px;
+    letter-spacing:2px;
+    color:#8b765d;
+}
 
 /* NAVIGATION */
 
 nav{
-
     display:flex;
-
-    align-items:center;
-
-    gap:30px;
+    justify-content:center;
+    flex-wrap:wrap;
+    gap:28px;
+    margin-top:20px;
 }
 
 nav a{
-
     text-decoration:none;
-
-    color:#4a3a2a;
-
+    color:#3b3027;
     font-size:14px;
-
-    font-weight:500;
-
-    letter-spacing:.5px;
-
-    transition:.3s;
+    font-weight:600;
 }
 
 nav a:hover{
-
-    color:#b58b45;
+    color:#a98242;
 }
 
-
-/* =========================
-   HERO
-========================= */
+/* HERO */
 
 .hero{
-
-    min-height:570px;
-
-    display:flex;
-
-    align-items:center;
-
-    justify-content:center;
-
+    max-width:1150px;
+    margin:auto;
+    padding:85px 20px 75px;
     text-align:center;
-
-    padding:70px 20px;
-
-    position:relative;
-
-    overflow:hidden;
-
-    background:
-        radial-gradient(
-            circle at 20% 20%,
-            rgba(211,180,125,.18),
-            transparent 32%
-        ),
-        radial-gradient(
-            circle at 80% 75%,
-            rgba(211,180,125,.14),
-            transparent 30%
-        ),
-        #f7f2e9;
 }
 
-
-/* decorative circles */
-
-.hero::before{
-
-    content:"";
-
-    position:absolute;
-
-    width:330px;
-    height:330px;
-
-    border:1px solid rgba(181,139,69,.18);
-
-    border-radius:50%;
-
-    left:-100px;
-    top:-100px;
-}
-
-.hero::after{
-
-    content:"";
-
-    position:absolute;
-
-    width:260px;
-    height:260px;
-
-    border:1px solid rgba(181,139,69,.16);
-
-    border-radius:50%;
-
-    right:-80px;
-    bottom:-80px;
-}
-
-
-.hero-content{
-
-    max-width:750px;
-
-    position:relative;
-
-    z-index:2;
-}
-
-
-/* small label */
-
-.hero-label{
-
-    font-size:12px;
-
-    letter-spacing:4px;
-
+.hero-small{
+    font-size:13px;
+    letter-spacing:3px;
+    color:#a98242;
+    margin-bottom:14px;
     text-transform:uppercase;
-
-    color:#a27a3e;
-
-    margin-bottom:18px;
 }
-
-
-/* heading */
 
 .hero h1{
-
-    font-family:Georgia,serif;
-
-    font-size:64px;
-
-    font-weight:normal;
-
-    line-height:1.1;
-
-    color:#30261d;
-
-    margin-bottom:20px;
+    font-family:Georgia, "Times New Roman", serif;
+    font-size:54px;
+    font-weight:500;
+    margin-bottom:18px;
+    color:#2c241d;
 }
-
-
-/* line */
-
-.hero-line{
-
-    width:65px;
-
-    height:1px;
-
-    background:#b58b45;
-
-    margin:0 auto 20px;
-}
-
 
 .hero p{
-
-    font-size:17px;
-
-    color:#66584a;
-
-    max-width:570px;
-
-    margin:0 auto 32px;
+    max-width:650px;
+    margin:0 auto 30px;
+    color:#6e6257;
+    font-size:16px;
 }
 
-
-/* button */
-
-.hero-button{
-
+.hero-btn{
     display:inline-block;
-
-    padding:14px 32px;
-
-    background:#33291f;
-
+    padding:13px 26px;
+    background:#2c241d;
     color:white;
-
     text-decoration:none;
-
     border-radius:30px;
-
     font-size:14px;
-
-    letter-spacing:1px;
-
-    transition:.3s;
-
-    box-shadow:
-        0 8px 20px rgba(51,41,31,.12);
+    font-weight:600;
+    transition:0.3s;
 }
 
-.hero-button:hover{
-
-    background:#b58b45;
-
-    transform:translateY(-2px);
+.hero-btn:hover{
+    background:#a98242;
 }
 
-
-/* =========================
-   SECTION
-========================= */
+/* NEW ARRIVALS */
 
 .section{
-
-    max-width:1200px;
-
+    max-width:1150px;
     margin:auto;
-
-    padding:75px 25px;
+    padding:65px 20px;
 }
 
-
 .section-heading{
-
     text-align:center;
-
-    margin-bottom:45px;
+    margin-bottom:35px;
 }
 
 .section-heading span{
-
     display:block;
-
-    font-size:11px;
-
-    letter-spacing:3px;
-
-    text-transform:uppercase;
-
-    color:#b58b45;
-
-    margin-bottom:10px;
-}
-
-.section-heading h2{
-
-    font-family:Georgia,serif;
-
-    font-size:38px;
-
-    font-weight:normal;
-
-    color:#33291f;
-
-    margin-bottom:12px;
-}
-
-.section-heading p{
-
-    color:#756758;
-
-    font-size:14px;
-}
-
-
-/* =========================
-   NEW ARRIVALS
-========================= */
-
-.product-grid{
-
-    display:grid;
-
-    grid-template-columns:
-        repeat(3,1fr);
-
-    gap:25px;
-}
-
-
-.product-card{
-
-    background:#fffdf9;
-
-    border:1px solid #e8ddcd;
-
-    border-radius:16px;
-
-    overflow:hidden;
-
-    box-shadow:
-        0 8px 25px rgba(65,48,30,.06);
-
-    transition:.3s;
-
-    position:relative;
-}
-
-.product-card:hover{
-
-    transform:translateY(-5px);
-
-    box-shadow:
-        0 15px 30px rgba(65,48,30,.11);
-}
-
-
-.product-image{
-
-    width:100%;
-
-    height:280px;
-
-    object-fit:cover;
-
-    display:block;
-
-    background:#eee5d8;
-}
-
-
-.product-info{
-
-    padding:20px;
-}
-
-
-.product-category{
-
-    font-size:10px;
-
-    letter-spacing:2px;
-
-    text-transform:uppercase;
-
-    color:#b58b45;
-
-    margin-bottom:7px;
-}
-
-
-.product-name{
-
-    font-family:Georgia,serif;
-
-    font-size:19px;
-
-    color:#33291f;
-
-    margin-bottom:12px;
-}
-
-
-.amazon-text{
-
-    font-size:13px;
-
-    color:#756758;
-
-    margin-bottom:14px;
-}
-
-
-.buy-button{
-
-    display:inline-block;
-
-    text-decoration:none;
-
-    color:#33291f;
-
-    border:1px solid #b58b45;
-
-    padding:9px 18px;
-
-    border-radius:22px;
-
     font-size:12px;
-
-    letter-spacing:.5px;
-
-    transition:.3s;
-}
-
-.buy-button:hover{
-
-    background:#b58b45;
-
-    color:white;
-}
-
-
-/* =========================
-   LOADING
-========================= */
-
-.loading{
-
-    grid-column:1/-1;
-
-    text-align:center;
-
-    padding:40px;
-
-    color:#756758;
-
-    font-size:14px;
-}
-
-
-/* =========================
-   WHY K2
-========================= */
-
-.why-section{
-
-    background:#eee5d7;
-
-    max-width:none;
-}
-
-.why-inner{
-
-    max-width:1200px;
-
-    margin:auto;
-
-    padding:75px 25px;
-}
-
-
-.why-grid{
-
-    display:grid;
-
-    grid-template-columns:
-        repeat(3,1fr);
-
-    gap:25px;
-}
-
-
-.why-card{
-
-    background:#fffdf9;
-
-    border-radius:15px;
-
-    padding:30px 25px;
-
-    text-align:center;
-
-    border:1px solid #e5d9c9;
-}
-
-
-.why-icon{
-
-    font-size:30px;
-
-    margin-bottom:15px;
-}
-
-
-.why-card h3{
-
-    font-family:Georgia,serif;
-
-    font-size:20px;
-
-    font-weight:normal;
-
-    margin-bottom:10px;
-}
-
-
-.why-card p{
-
-    font-size:13px;
-
-    color:#756758;
-}
-
-
-/* =========================
-   COLLECTION CTA
-========================= */
-
-.collection-box{
-
-    background:#33291f;
-
-    border-radius:20px;
-
-    padding:55px 30px;
-
-    text-align:center;
-
-    color:white;
-
-    position:relative;
-
-    overflow:hidden;
-}
-
-.collection-box::before{
-
-    content:"";
-
-    position:absolute;
-
-    width:260px;
-    height:260px;
-
-    border:1px solid rgba(255,255,255,.12);
-
-    border-radius:50%;
-
-    left:-100px;
-
-    top:-130px;
-}
-
-.collection-box::after{
-
-    content:"";
-
-    position:absolute;
-
-    width:220px;
-    height:220px;
-
-    border:1px solid rgba(255,255,255,.10);
-
-    border-radius:50%;
-
-    right:-80px;
-
-    bottom:-110px;
-}
-
-.collection-content{
-
-    position:relative;
-
-    z-index:2;
-}
-
-.collection-box span{
-
-    font-size:11px;
-
-    letter-spacing:3px;
-
-    color:#d7b77a;
-
-    text-transform:uppercase;
-}
-
-.collection-box h2{
-
-    font-family:Georgia,serif;
-
-    font-size:35px;
-
-    font-weight:normal;
-
-    margin:10px 0 15px;
-}
-
-.collection-box p{
-
-    max-width:600px;
-
-    margin:auto auto 25px;
-
-    color:#e6ddd1;
-
-    font-size:14px;
-}
-
-.collection-button{
-
-    display:inline-block;
-
-    text-decoration:none;
-
-    background:#d2ad68;
-
-    color:#33291f;
-
-    padding:12px 28px;
-
-    border-radius:25px;
-
-    font-size:13px;
-
-    font-weight:600;
-
-    transition:.3s;
-}
-
-.collection-button:hover{
-
-    background:white;
-}
-
-
-/* =========================
-   AFFILIATE NOTE
-========================= */
-
-.affiliate-note{
-
-    text-align:center;
-
-    padding:25px;
-
-    font-size:11px;
-
-    color:#887968;
-
-    max-width:850px;
-
-    margin:auto;
-}
-
-
-/* =========================
-   FOOTER
-========================= */
-
-footer{
-
-    background:#292118;
-
-    color:#eee5d7;
-
-    text-align:center;
-
-    padding:35px 20px;
-}
-
-.footer-logo{
-
-    font-family:Georgia,serif;
-
-    color:#d2ad68;
-
-    font-size:22px;
-
     letter-spacing:2px;
-
+    color:#a98242;
+    text-transform:uppercase;
     margin-bottom:8px;
 }
 
-footer p{
-
-    font-size:11px;
-
-    color:#bdb1a2;
-
+.section-heading h2{
+    font-family:Georgia, "Times New Roman", serif;
+    font-size:34px;
+    font-weight:500;
 }
 
+.section-heading p{
+    margin-top:8px;
+    color:#75695e;
+}
 
-/* =========================
-   MOBILE
-========================= */
+/* PRODUCTS */
 
-@media(max-width:850px){
+.products{
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    gap:24px;
+}
 
-    .header-inner{
+.product-card{
+    background:#fffdf9;
+    border:1px solid #eadfce;
+    border-radius:16px;
+    overflow:hidden;
+    transition:0.3s;
+}
 
-        flex-direction:column;
+.product-card:hover{
+    transform:translateY(-4px);
+    box-shadow:0 10px 25px rgba(60,45,30,0.08);
+}
 
-        gap:15px;
+.product-card img{
+    width:100%;
+    height:260px;
+    object-fit:cover;
+    display:block;
+}
 
-        padding:15px 18px;
-    }
+.product-info{
+    padding:18px;
+}
 
-    nav{
+.product-category{
+    font-size:11px;
+    letter-spacing:1.5px;
+    text-transform:uppercase;
+    color:#a98242;
+    margin-bottom:6px;
+}
 
-        gap:18px;
+.product-name{
+    font-family:Georgia, "Times New Roman", serif;
+    font-size:18px;
+    margin-bottom:8px;
+}
 
-        flex-wrap:wrap;
+.product-description{
+    font-size:13px;
+    color:#75695e;
+    margin-bottom:15px;
+}
 
-        justify-content:center;
-    }
+.amazon-link{
+    display:inline-block;
+    text-decoration:none;
+    color:#8a6a35;
+    font-size:13px;
+    font-weight:600;
+}
 
-    nav a{
+/* WHY K2 */
 
-        font-size:12px;
-    }
+.why-section{
+    background:#eee5d7;
+}
+
+.why-grid{
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    gap:25px;
+}
+
+.why-card{
+    text-align:center;
+    background:#fffdf9;
+    padding:32px 22px;
+    border-radius:16px;
+    border:1px solid #eadfce;
+}
+
+.icon{
+    font-size:28px;
+    margin-bottom:12px;
+}
+
+.why-card h3{
+    font-family:Georgia, "Times New Roman", serif;
+    font-size:20px;
+    margin-bottom:8px;
+}
+
+.why-card p{
+    color:#75695e;
+    font-size:14px;
+}
+
+/* COLLECTION CTA */
+
+.collection-section{
+    text-align:center;
+    padding:75px 20px;
+}
+
+.collection-section h2{
+    font-family:Georgia, "Times New Roman", serif;
+    font-size:36px;
+    font-weight:500;
+    margin-bottom:14px;
+}
+
+.collection-section p{
+    max-width:650px;
+    margin:0 auto 25px;
+    color:#75695e;
+}
+
+/* AFFILIATE */
+
+.affiliate{
+    max-width:850px;
+    margin:0 auto;
+    padding:0 20px 55px;
+    text-align:center;
+}
+
+.affiliate p{
+    font-size:12px;
+    color:#817568;
+}
+
+/* FOOTER */
+
+footer{
+    background:#2c241d;
+    color:#eee4d7;
+    text-align:center;
+    padding:30px 20px;
+}
+
+footer strong{
+    display:block;
+    font-size:15px;
+    letter-spacing:1.5px;
+    margin-bottom:5px;
+}
+
+footer p{
+    font-size:12px;
+    color:#cfc1b0;
+}
+
+/* MOBILE */
+
+@media(max-width:800px){
 
     .hero{
-
-        min-height:500px;
-
-        padding:55px 20px;
+        padding:65px 20px;
     }
 
     .hero h1{
-
-        font-size:46px;
+        font-size:42px;
     }
 
-    .product-grid{
-
-        grid-template-columns:
-            repeat(2,1fr);
-
-        gap:18px;
+    .products{
+        grid-template-columns:repeat(2, 1fr);
     }
 
     .why-grid{
-
         grid-template-columns:1fr;
     }
-
 }
-
 
 @media(max-width:550px){
 
-    .logo{
+    header{
+        padding:20px 15px 16px;
+    }
 
+    .logo{
         font-size:23px;
     }
 
-    .logo-tagline{
-
-        font-size:8px;
-    }
-
     nav{
-
-        gap:13px;
+        gap:16px;
     }
 
     nav a{
-
-        font-size:11px;
+        font-size:13px;
     }
 
     .hero h1{
-
-        font-size:40px;
+        font-size:36px;
     }
 
     .hero p{
-
-        font-size:15px;
+        font-size:14px;
     }
 
-    .section{
+    .products{
+        grid-template-columns:1fr;
+    }
 
-        padding:55px 15px;
+    .product-card img{
+        height:280px;
     }
 
     .section-heading h2{
-
-        font-size:30px;
-    }
-
-    .product-grid{
-
-        grid-template-columns:1fr;
-
-    }
-
-    .product-image{
-
-        height:300px;
-    }
-
-    .collection-box{
-
-        padding:45px 20px;
-    }
-
-    .collection-box h2{
-
         font-size:29px;
     }
 
-}
-
-
-/* =========================
-   HIDE EMPTY PRODUCT AREA
-========================= */
-
-#productGrid:empty{
-
-    display:none;
+    .collection-section h2{
+        font-size:30px;
+    }
 }
 
 </style>
-
 </head>
-
 
 <body>
 
-
-<!-- =========================
-     HEADER
-========================= -->
+<!-- HEADER -->
 
 <header>
 
-<div class="header-inner">
-
-<a href="index.html"
-class="logo-area">
-
-<div class="logo">
+<a href="index.html" class="logo">
 K2 COLLECTION
-</div>
+</a>
 
-<div class="logo-tagline">
+<div class="tagline">
 ELEGANT JEWELLERY • TIMELESS BEAUTY
 </div>
 
-</a>
-
-
 <nav>
 
-<a href="index.html">
-Home
-</a>
+<a href="index.html">Home</a>
 
-<a href="all-products.html">
-All Products
-</a>
+<a href="all-products.html">All Products</a>
 
-<a href="collection.html">
-Collection
-</a>
+<a href="categories.html">Collection</a>
 
-<a href="about.html">
-About
-</a>
+<a href="about.html">About</a>
 
 </nav>
-
-</div>
 
 </header>
 
 
+<!-- HERO -->
 
-<!-- =========================
-     HERO
-========================= -->
+<section class="hero">
 
-<section class="hero"
-id="home">
-
-<div class="hero-content">
-
-<div class="hero-label">
+<div class="hero-small">
 K2 COLLECTION
 </div>
 
@@ -982,30 +415,18 @@ K2 COLLECTION
 Discover Your Style
 </h1>
 
-<div class="hero-line"></div>
-
 <p>
-Elegant jewellery, timeless beauty and
-trendy styles carefully selected for
-every beautiful occasion.
+Elegant jewellery, timeless beauty and trendy styles carefully selected for every beautiful occasion.
 </p>
 
-<a href="collection.html"
-class="hero-button">
-
+<a href="categories.html" class="hero-btn">
 Shop Collection →
-
 </a>
-
-</div>
 
 </section>
 
 
-
-<!-- =========================
-     NEW ARRIVALS
-========================= -->
+<!-- NEW ARRIVALS -->
 
 <section class="section">
 
@@ -1025,27 +446,20 @@ Discover our latest jewellery selections.
 
 </div>
 
+<div id="newArrivals" class="products">
 
-<div class="product-grid"
-id="productGrid">
-
-<div class="loading">
-Loading latest jewellery...
-</div>
+<p style="text-align:center; grid-column:1/-1; color:#75695e;">
+New arrivals are being updated. Please visit All Products to explore the collection.
+</p>
 
 </div>
 
 </section>
 
 
+<!-- WHY K2 -->
 
-<!-- =========================
-     WHY K2 COLLECTION
-========================= -->
-
-<section class="why-section">
-
-<div class="why-inner">
+<section class="section why-section">
 
 <div class="section-heading">
 
@@ -1058,8 +472,7 @@ Simple. Elegant. Beautiful.
 </h2>
 
 <p>
-Jewellery choices made for your everyday
-moments and special occasions.
+Jewellery choices made for your everyday moments and special occasions.
 </p>
 
 </div>
@@ -1067,10 +480,9 @@ moments and special occasions.
 
 <div class="why-grid">
 
-
 <div class="why-card">
 
-<div class="why-icon">
+<div class="icon">
 ✦
 </div>
 
@@ -1079,8 +491,7 @@ Elegant Styles
 </h3>
 
 <p>
-Beautiful jewellery styles selected
-with a focus on elegance and timeless appeal.
+Beautiful jewellery styles selected with a focus on elegance and timeless appeal.
 </p>
 
 </div>
@@ -1088,7 +499,7 @@ with a focus on elegance and timeless appeal.
 
 <div class="why-card">
 
-<div class="why-icon">
+<div class="icon">
 ♡
 </div>
 
@@ -1097,8 +508,7 @@ Curated Choices
 </h3>
 
 <p>
-Explore carefully selected rings,
-bracelets and necklaces in one place.
+Explore carefully selected rings, bracelets and necklaces in one place.
 </p>
 
 </div>
@@ -1106,7 +516,7 @@ bracelets and necklaces in one place.
 
 <div class="why-card">
 
-<div class="why-icon">
+<div class="icon">
 ✧
 </div>
 
@@ -1115,12 +525,8 @@ Easy Shopping
 </h3>
 
 <p>
-Choose your favourite piece and
-continue directly to Amazon to shop.
+Choose your favourite piece and continue directly to Amazon to shop.
 </p>
-
-</div>
-
 
 </div>
 
@@ -1129,16 +535,11 @@ continue directly to Amazon to shop.
 </section>
 
 
+<!-- COLLECTION CTA -->
 
-<!-- =========================
-     COLLECTION CTA
-========================= -->
+<section class="collection-section">
 
-<section class="section">
-
-<div class="collection-box">
-
-<div class="collection-content">
+<div class="section-heading">
 
 <span>
 Explore K2
@@ -1149,50 +550,37 @@ Find Your Signature Piece
 </h2>
 
 <p>
-From delicate rings to elegant bracelets
-and beautiful necklaces, explore the
-K2 Collection made for every style.
+From delicate rings to elegant bracelets and beautiful necklaces, explore the K2 Collection made for every style.
 </p>
 
-<a href="collection.html"
-class="collection-button">
+</div>
 
+<a href="categories.html" class="hero-btn">
 Explore Collection →
-
 </a>
-
-</div>
-
-</div>
 
 </section>
 
 
+<!-- AFFILIATE DISCLOSURE -->
 
-<!-- =========================
-     AFFILIATE DISCLOSURE
-========================= -->
+<div class="affiliate">
 
-<div class="affiliate-note">
-
-K2 Collection may earn a small commission
-when you purchase through our Amazon
-affiliate links. This does not change the
-price you pay.
+<p>
+K2 Collection may earn a small commission when you purchase through our Amazon affiliate links.
+This does not change the price you pay.
+</p>
 
 </div>
 
 
-
-<!-- =========================
-     FOOTER
-========================= -->
+<!-- FOOTER -->
 
 <footer>
 
-<div class="footer-logo">
+<strong>
 K2 COLLECTION
-</div>
+</strong>
 
 <p>
 Elegant Jewellery • Timeless Beauty
@@ -1205,10 +593,7 @@ Elegant Jewellery • Timeless Beauty
 </footer>
 
 
-
-<!-- =========================
-     SUPABASE
-========================= -->
+<!-- SUPABASE NEW ARRIVALS -->
 
 <script>
 
@@ -1219,328 +604,147 @@ const SUPABASE_KEY =
 "sb_publishable_l_ViECvF-pUEp0Bzf_0aHA_09R-QHIo";
 
 
-/* =========================
-   HELPERS
-========================= */
-
-function escapeHTML(value){
-
-    if(value === null || value === undefined){
-        return "";
-    }
-
-    return String(value)
-        .replace(/&/g,"&amp;")
-        .replace(/</g,"&lt;")
-        .replace(/>/g,"&gt;")
-        .replace(/"/g,"&quot;")
-        .replace(/'/g,"&#039;");
-}
-
-
-function getCorrectCategory(product){
-
-    const savedCategory =
-        product.category ||
-        product.Category ||
-        "";
-
-    if(savedCategory){
-
-        const category =
-            String(savedCategory)
-            .toLowerCase();
-
-        if(category.includes("ring")){
-            return "Rings";
-        }
-
-        if(category.includes("bracelet")){
-            return "Bracelets";
-        }
-
-        if(category.includes("necklace")){
-            return "Necklaces";
-        }
-    }
-
-
-    const text = (
-
-        (product.name || "") +
-        " " +
-        (product.title || "") +
-        " " +
-        (product.description || "")
-
-    ).toLowerCase();
-
-
-    if(
-        text.includes("ring")
-    ){
-        return "Rings";
-    }
-
-
-    if(
-        text.includes("bracelet") ||
-        text.includes("bangle")
-    ){
-        return "Bracelets";
-    }
-
-
-    return "Necklaces";
-}
-
-
-
 function getProductImage(product){
 
-    return (
-        product.image ||
-        product.image_url ||
-        product.imageUrl ||
-        product.photo ||
-        product.photo_url ||
-        "https://via.placeholder.com/600x600?text=K2+Collection"
-    );
-
+    return product.image ||
+           product.image_url ||
+           product.imageUrl ||
+           "https://via.placeholder.com/500x500?text=K2+Collection";
 }
-
-
-
-function getProductLink(product){
-
-    return (
-        product.amazon_link ||
-        product.amazonLink ||
-        product.affiliate_link ||
-        product.affiliateLink ||
-        product.link ||
-        "#"
-    );
-
-}
-
 
 
 function getProductName(product){
 
-    return (
-        product.name ||
-        product.title ||
-        product.product_name ||
-        "Beautiful Jewellery"
-    );
-
+    return product.name ||
+           product.product_name ||
+           product.title ||
+           "Beautiful Jewellery";
 }
 
 
+function getProductCategory(product){
 
-/* =========================
-   PRODUCT CARD
-========================= */
-
-function addProductCard(product){
-
-    const grid =
-        document.getElementById("productGrid");
-
-    if(!grid){
-        return;
-    }
-
-
-    const image =
-        getProductImage(product);
-
-    const link =
-        getProductLink(product);
-
-    const name =
-        getProductName(product);
-
-    const category =
-        getCorrectCategory(product);
-
-
-    const card =
-        document.createElement("div");
-
-    card.className =
-        "product-card";
-
-
-    card.innerHTML = `
-
-        <a href="${escapeHTML(link)}"
-           target="_blank"
-           rel="nofollow sponsored noopener">
-
-            <img
-                class="product-image"
-                src="${escapeHTML(image)}"
-                alt="${escapeHTML(name)}"
-                loading="lazy"
-                onerror="this.src='https://via.placeholder.com/600x600?text=K2+Collection'"
-            >
-
-        </a>
-
-
-        <div class="product-info">
-
-            <div class="product-category">
-                ${escapeHTML(category)}
-            </div>
-
-            <div class="product-name">
-                ${escapeHTML(name)}
-            </div>
-
-            <div class="amazon-text">
-                View on Amazon
-            </div>
-
-            <a
-                href="${escapeHTML(link)}"
-                target="_blank"
-                rel="nofollow sponsored noopener"
-                class="buy-button">
-
-                Buy Now →
-
-            </a>
-
-        </div>
-
-    `;
-
-
-    grid.appendChild(card);
-
+    return product.category ||
+           product.product_category ||
+           "Jewellery";
 }
 
 
+function getProductDescription(product){
 
-/* =========================
-   LOAD SUPABASE PRODUCTS
-========================= */
-
-async function loadSupabaseProductsOnHome(){
-
-    const grid =
-        document.getElementById("productGrid");
+    return product.description ||
+           product.product_description ||
+           "Elegant jewellery selected by K2 Collection.";
+}
 
 
-    if(!grid){
-        return;
-    }
+function getProductLink(product){
 
+    return product.amazon_link ||
+           product.amazonLink ||
+           product.affiliate_link ||
+           product.link ||
+           "#";
+}
+
+
+async function loadNewArrivals(){
+
+    const container =
+        document.getElementById("newArrivals");
 
     try{
 
-        const response =
-            await fetch(
-                SUPABASE_URL +
-                "/rest/v1/products?select=*&order=created_at.desc&limit=6",
-                {
-
-                    headers:{
-                        "apikey":SUPABASE_KEY,
-                        "Authorization":
-                            "Bearer " + SUPABASE_KEY
-                    }
-
+        const response = await fetch(
+            SUPABASE_URL +
+            "/rest/v1/products?select=*&order=created_at.desc&limit=6",
+            {
+                headers:{
+                    "apikey":SUPABASE_KEY,
+                    "Authorization":"Bearer " + SUPABASE_KEY
                 }
-            );
-
+            }
+        );
 
         if(!response.ok){
-
-            throw new Error(
-                "Unable to load products"
-            );
-
+            throw new Error("Unable to load products");
         }
 
+        const products = await response.json();
 
-        const products =
-            await response.json();
+        if(!products.length){
+            return;
+        }
 
+        container.innerHTML = "";
 
-        grid.innerHTML = "";
+        products.forEach(product => {
 
+            const card =
+                document.createElement("div");
 
-        if(
-            !products ||
-            products.length === 0
-        ){
+            card.className = "product-card";
 
-            grid.innerHTML = `
+            card.innerHTML = `
 
-                <div class="loading">
+                <a href="${getProductLink(product)}"
+                   target="_blank"
+                   rel="nofollow sponsored noopener">
 
-                    New jewellery selections
-                    will appear here soon.
+                    <img
+                        src="${getProductImage(product)}"
+                        alt="${getProductName(product)}"
+                        onerror="this.src='https://via.placeholder.com/500x500?text=K2+Collection';"
+                    >
+
+                </a>
+
+                <div class="product-info">
+
+                    <div class="product-category">
+                        ${getProductCategory(product)}
+                    </div>
+
+                    <div class="product-name">
+                        ${getProductName(product)}
+                    </div>
+
+                    <div class="product-description">
+                        ${getProductDescription(product)}
+                    </div>
+
+                    <a
+                        class="amazon-link"
+                        href="${getProductLink(product)}"
+                        target="_blank"
+                        rel="nofollow sponsored noopener">
+                        View on Amazon →
+                    </a>
 
                 </div>
 
             `;
 
-            return;
-        }
+            container.appendChild(card);
 
+        });
 
-        products.forEach(
-            product => addProductCard(product)
+    }catch(error){
+
+        console.log(
+            "New arrivals could not be loaded:",
+            error
         );
-
-
-    }
-
-    catch(error){
-
-        console.error(error);
-
-
-        grid.innerHTML = `
-
-            <div class="loading">
-
-                New arrivals are being updated.
-                Please visit All Products to
-                explore the collection.
-
-            </div>
-
-        `;
 
     }
 
 }
 
 
-
-/* =========================
-   START
-========================= */
-
-document.addEventListener(
-    "DOMContentLoaded",
-    function(){
-
-        loadSupabaseProductsOnHome();
-
-    }
-);
+loadNewArrivals();
 
 </script>
 
-
 </body>
-
 </html>
 ```
