@@ -3,6 +3,7 @@
 <html lang="en">
 
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -14,6 +15,10 @@
     box-sizing:border-box;
     margin:0;
     padding:0;
+}
+
+html{
+    scroll-behavior:smooth;
 }
 
 body{
@@ -46,7 +51,7 @@ header{
     color:#8b765d;
 }
 
-/* NAV */
+/* NAVIGATION */
 
 nav{
     display:flex;
@@ -72,7 +77,16 @@ nav a:hover{
 .container{
     max-width:1150px;
     margin:auto;
-    padding:55px 20px 70px;
+    padding:35px 20px 70px;
+}
+
+/* BACK TO HOME */
+
+.back-row{
+    width:100%;
+    display:flex;
+    justify-content:flex-start;
+    margin-bottom:10px;
 }
 
 .back{
@@ -80,12 +94,15 @@ nav a:hover{
     text-decoration:none;
     color:#6e6257;
     font-size:14px;
-    margin-bottom:35px;
+    font-weight:600;
+    padding:8px 0;
 }
 
 .back:hover{
     color:#a98242;
 }
+
+/* HEADING */
 
 .heading{
     text-align:center;
@@ -112,7 +129,7 @@ nav a:hover{
     color:#75695e;
 }
 
-/* CATEGORY LINKS */
+/* CATEGORY BUTTONS */
 
 .category-nav{
     display:flex;
@@ -131,6 +148,7 @@ nav a:hover{
     color:#3b3027;
     font-weight:600;
     font-size:14px;
+    transition:0.3s;
 }
 
 .category-nav a:hover{
@@ -142,6 +160,7 @@ nav a:hover{
 
 .category-section{
     margin-bottom:65px;
+    scroll-margin-top:25px;
 }
 
 .category-title{
@@ -182,11 +201,15 @@ nav a:hover{
     box-shadow:0 10px 25px rgba(60,45,30,0.08);
 }
 
+/* FULL PRODUCT IMAGE */
+
 .product-card img{
     width:100%;
-    height:280px;
-    object-fit:cover;
+    height:320px;
+    object-fit:contain;
     display:block;
+    background:#fffdf9;
+    padding:10px;
 }
 
 .product-info{
@@ -211,6 +234,10 @@ nav a:hover{
     color:#8a6a35;
     font-size:13px;
     font-weight:600;
+}
+
+.amazon-link:hover{
+    color:#2c241d;
 }
 
 /* EMPTY */
@@ -245,7 +272,7 @@ footer p{
     color:#cfc1b0;
 }
 
-/* MOBILE */
+/* TABLET */
 
 @media(max-width:800px){
 
@@ -253,9 +280,19 @@ footer p{
         grid-template-columns:repeat(2, 1fr);
     }
 
+    .product-card img{
+        height:300px;
+    }
+
 }
 
+/* MOBILE */
+
 @media(max-width:550px){
+
+    header{
+        padding:20px 15px 16px;
+    }
 
     .logo{
         font-size:23px;
@@ -269,8 +306,26 @@ footer p{
         font-size:13px;
     }
 
+    .container{
+        padding:28px 15px 55px;
+    }
+
     .heading h1{
         font-size:34px;
+    }
+
+    .heading p{
+        font-size:14px;
+    }
+
+    .category-nav{
+        gap:10px;
+        margin-bottom:45px;
+    }
+
+    .category-nav a{
+        padding:11px 17px;
+        font-size:13px;
     }
 
     .products{
@@ -278,15 +333,17 @@ footer p{
     }
 
     .product-card img{
-        height:300px;
+        height:320px;
     }
 
 }
 
 </style>
+
 </head>
 
 <body>
+
 
 <!-- HEADER -->
 
@@ -319,9 +376,19 @@ ELEGANT JEWELLERY • TIMELESS BEAUTY
 
 <main class="container">
 
+
+<!-- BACK BUTTON ON LEFT -->
+
+<div class="back-row">
+
 <a href="index.html" class="back">
 ← Back to Home
 </a>
+
+</div>
+
+
+<!-- COLLECTION HEADING -->
 
 <div class="heading">
 
@@ -421,6 +488,7 @@ Timeless necklaces and jewellery sets.
 
 </section>
 
+
 </main>
 
 
@@ -445,180 +513,176 @@ Elegant Jewellery • Timeless Beauty
 
 <script>
 
-/*
-    Existing 20 products
-    These are kept here so the Collection page
-    continues to show the existing products.
-*/
+/* EXISTING PRODUCTS */
 
 const staticProducts = [
 
 /* NECKLACES */
 
 {
-    name:"Pearl Double Layered Jewellery Set",
-    category:"Necklaces",
-    image:"necklace-1.jpg",
-    description:"Elegant pearl layered jewellery set.",
-    link:"https://www.amazon.in/dp/B0H5FS8DJ6?tag=k2collection0-21"
+name:"Pearl Double Layered Jewellery Set",
+category:"Necklaces",
+image:"necklace-1.jpg",
+description:"Elegant pearl layered jewellery set.",
+link:"https://www.amazon.in/dp/B0H5FS8DJ6?tag=k2collection0-21"
 },
 
 {
-    name:"Shining Diva Fashion Jewellery Set",
-    category:"Necklaces",
-    image:"necklace-2.jpg",
-    description:"Beautiful fashion jewellery set.",
-    link:"https://www.amazon.in/dp/B0CV4XL72Z?tag=k2collection0-21"
+name:"Shining Diva Fashion Jewellery Set",
+category:"Necklaces",
+image:"necklace-2.jpg",
+description:"Beautiful fashion jewellery set.",
+link:"https://www.amazon.in/dp/B0CV4XL72Z?tag=k2collection0-21"
 },
 
 {
-    name:"Double Strand Pearl Necklace Set",
-    category:"Necklaces",
-    image:"necklace-3.jpg",
-    description:"Classic double strand pearl necklace.",
-    link:"https://www.amazon.in/dp/B0H7WLPZ1L?tag=k2collection0-21"
+name:"Double Strand Pearl Necklace Set",
+category:"Necklaces",
+image:"necklace-3.jpg",
+description:"Classic double strand pearl necklace.",
+link:"https://www.amazon.in/dp/B0H7WLPZ1L?tag=k2collection0-21"
 },
 
 {
-    name:"Gold Plated Pearl Beaded Jewellery Set",
-    category:"Necklaces",
-    image:"necklace-4.jpg",
-    description:"Elegant gold plated pearl jewellery.",
-    link:"https://www.amazon.in/dp/B0CJ74NX6Z?tag=k2collection0-21"
+name:"Gold Plated Pearl Beaded Jewellery Set",
+category:"Necklaces",
+image:"necklace-4.jpg",
+description:"Elegant gold plated pearl jewellery.",
+link:"https://www.amazon.in/dp/B0CJ74NX6Z?tag=k2collection0-21"
 },
 
 {
-    name:"Pearl Necklace, Earrings & Bracelet Set",
-    category:"Necklaces",
-    image:"necklace-5.jpg",
-    description:"Beautiful pearl jewellery set.",
-    link:"https://www.amazon.in/dp/B0BXJB7T4B?tag=k2collection0-21"
+name:"Pearl Necklace, Earrings & Bracelet Set",
+category:"Necklaces",
+image:"necklace-5.jpg",
+description:"Beautiful pearl jewellery set.",
+link:"https://www.amazon.in/dp/B0BXJB7T4B?tag=k2collection0-21"
 },
 
 {
-    name:"Rubans Jewellery Set",
-    category:"Necklaces",
-    image:"0001 Nacklace.jpg",
-    description:"Elegant Rubans jewellery selection.",
-    link:"https://www.amazon.in/dp/B0D6RVTXLP?tag=k2collection0-21"
+name:"Rubans Jewellery Set",
+category:"Necklaces",
+image:"0001 Nacklace.jpg",
+description:"Elegant Rubans jewellery selection.",
+link:"https://www.amazon.in/dp/B0D6RVTXLP?tag=k2collection0-21"
 },
 
 {
-    name:"Zaveri Pearls Jewellery",
-    category:"Necklaces",
-    image:"0002 nacklace.jpg",
-    description:"Beautiful Zaveri Pearls jewellery.",
-    link:"https://www.amazon.in/dp/B084KK1XL6?tag=k2collection0-21"
+name:"Zaveri Pearls Jewellery",
+category:"Necklaces",
+image:"0002 nacklace.jpg",
+description:"Beautiful Zaveri Pearls jewellery.",
+link:"https://www.amazon.in/dp/B084KK1XL6?tag=k2collection0-21"
 },
 
 {
-    name:"Pearl Flower Jewellery",
-    category:"Necklaces",
-    image:"0003 nacklace.jpg",
-    description:"Elegant pearl flower jewellery.",
-    link:"https://www.amazon.in/dp/B0H6KG2Q4X?tag=k2collection0-21"
+name:"Pearl Flower Jewellery",
+category:"Necklaces",
+image:"0003 nacklace.jpg",
+description:"Elegant pearl flower jewellery.",
+link:"https://www.amazon.in/dp/B0H6KG2Q4X?tag=k2collection0-21"
 },
 
 {
-    name:"Shidara Jewellery Set",
-    category:"Necklaces",
-    image:"0004 nacklace.jpg",
-    description:"Beautiful Shidara jewellery set.",
-    link:"https://www.amazon.in/dp/B0GVPNLFDC?tag=k2collection0-21"
+name:"Shidara Jewellery Set",
+category:"Necklaces",
+image:"0004 nacklace.jpg",
+description:"Beautiful Shidara jewellery set.",
+link:"https://www.amazon.in/dp/B0GVPNLFDC?tag=k2collection0-21"
 },
 
 {
-    name:"Red Stone Floral Jewellery",
-    category:"Necklaces",
-    image:"0005 nacklace.jpg",
-    description:"Elegant red stone floral jewellery.",
-    link:"https://www.amazon.in/dp/B0H6SSJ19R?tag=k2collection0-21"
+name:"Red Stone Floral Jewellery",
+category:"Necklaces",
+image:"0005 nacklace.jpg",
+description:"Elegant red stone floral jewellery.",
+link:"https://www.amazon.in/dp/B0H6SSJ19R?tag=k2collection0-21"
 },
 
 
 /* BRACELETS */
 
 {
-    name:"Nilu's Collection Sparkling Bracelet",
-    category:"Bracelets",
-    image:"bracelet-1.jpg",
-    description:"Sparkling bracelet for an elegant look.",
-    link:"https://www.amazon.in/dp/B0GL86G9FZ?tag=k2collection0-21"
+name:"Nilu's Collection Sparkling Bracelet",
+category:"Bracelets",
+image:"bracelet-1.jpg",
+description:"Sparkling bracelet for an elegant look.",
+link:"https://www.amazon.in/dp/B0GL86G9FZ?tag=k2collection0-21"
 },
 
 {
-    name:"MINUTIAE Infinity Crystal Bracelet",
-    category:"Bracelets",
-    image:"bracelet-2.jpg",
-    description:"Elegant infinity crystal bracelet.",
-    link:"https://www.amazon.in/dp/B094H79X6L?tag=k2collection0-21"
+name:"MINUTIAE Infinity Crystal Bracelet",
+category:"Bracelets",
+image:"bracelet-2.jpg",
+description:"Elegant infinity crystal bracelet.",
+link:"https://www.amazon.in/dp/B094H79X6L?tag=k2collection0-21"
 },
 
 {
-    name:"Nilu's Collection Heart Adjustable Bracelet",
-    category:"Bracelets",
-    image:"bracelet-3.jpg",
-    description:"Beautiful adjustable heart bracelet.",
-    link:"https://www.amazon.in/dp/B0B2R5JWV1?tag=k2collection0-21"
+name:"Nilu's Collection Heart Adjustable Bracelet",
+category:"Bracelets",
+image:"bracelet-3.jpg",
+description:"Beautiful adjustable heart bracelet.",
+link:"https://www.amazon.in/dp/B0B2R5JWV1?tag=k2collection0-21"
 },
 
 {
-    name:"Shining Diva Rose Gold Bangle Bracelet",
-    category:"Bracelets",
-    image:"bracelet-4.jpg",
-    description:"Elegant rose gold bracelet.",
-    link:"https://www.amazon.in/dp/B07NPWRJVH?tag=k2collection0-21"
+name:"Shining Diva Rose Gold Bangle Bracelet",
+category:"Bracelets",
+image:"bracelet-4.jpg",
+description:"Elegant rose gold bracelet.",
+link:"https://www.amazon.in/dp/B07NPWRJVH?tag=k2collection0-21"
 },
 
 {
-    name:"Versatile Vault Pearl Bracelet",
-    category:"Bracelets",
-    image:"bracelet-5.jpg",
-    description:"Classic pearl bracelet design.",
-    link:"https://www.amazon.in/dp/B0H271K2RC?tag=k2collection0-21"
+name:"Versatile Vault Pearl Bracelet",
+category:"Bracelets",
+image:"bracelet-5.jpg",
+description:"Classic pearl bracelet design.",
+link:"https://www.amazon.in/dp/B0H271K2RC?tag=k2collection0-21"
 },
 
 
 /* RINGS */
 
 {
-    name:"Shining Diva Rose Gold Solitaire Ring",
-    category:"Rings",
-    image:"ring-1.jpg",
-    description:"Elegant rose gold solitaire ring.",
-    link:"https://www.amazon.in/dp/B09QKTDS2N?tag=k2collection0-21"
+name:"Shining Diva Rose Gold Solitaire Ring",
+category:"Rings",
+image:"ring-1.jpg",
+description:"Elegant rose gold solitaire ring.",
+link:"https://www.amazon.in/dp/B09QKTDS2N?tag=k2collection0-21"
 },
 
 {
-    name:"Zaveri Pearls Set of 3 Rings",
-    category:"Rings",
-    image:"ring-2.jpg",
-    description:"Beautiful set of three rings.",
-    link:"https://www.amazon.in/dp/B09FKBV55G?tag=k2collection0-21"
+name:"Zaveri Pearls Set of 3 Rings",
+category:"Rings",
+image:"ring-2.jpg",
+description:"Beautiful set of three rings.",
+link:"https://www.amazon.in/dp/B09FKBV55G?tag=k2collection0-21"
 },
 
 {
-    name:"Natural Purple Amethyst Adjustable Ring",
-    category:"Rings",
-    image:"ring-3.jpg",
-    description:"Elegant adjustable amethyst ring.",
-    link:"https://www.amazon.in/dp/B0DFH63SPY?tag=k2collection0-21"
+name:"Natural Purple Amethyst Adjustable Ring",
+category:"Rings",
+image:"ring-3.jpg",
+description:"Elegant adjustable amethyst ring.",
+link:"https://www.amazon.in/dp/B0DFH63SPY?tag=k2collection0-21"
 },
 
 {
-    name:"KONPJE Sunflower Adjustable Ring",
-    category:"Rings",
-    image:"ring-4.jpg",
-    description:"Beautiful sunflower inspired ring.",
-    link:"https://www.amazon.in/dp/B0DCJ34XFS?tag=k2collection0-21"
+name:"KONPJE Sunflower Adjustable Ring",
+category:"Rings",
+image:"ring-4.jpg",
+description:"Beautiful sunflower inspired ring.",
+link:"https://www.amazon.in/dp/B0DCJ34XFS?tag=k2collection0-21"
 },
 
 {
-    name:"Nilu's Collection Floral Sparkling Ring",
-    category:"Rings",
-    image:"ring-5.jpg",
-    description:"Elegant floral sparkling ring.",
-    link:"https://www.amazon.in/dp/B0D1QVVPJW?tag=k2collection0-21"
+name:"Nilu's Collection Floral Sparkling Ring",
+category:"Rings",
+image:"ring-5.jpg",
+description:"Elegant floral sparkling ring.",
+link:"https://www.amazon.in/dp/B0D1QVVPJW?tag=k2collection0-21"
 }
 
 ];
@@ -635,308 +699,320 @@ const SUPABASE_KEY =
 
 function getName(product){
 
-    return product.name ||
-           product.product_name ||
-           product.title ||
-           "Beautiful Jewellery";
+return product.name ||
+product.product_name ||
+product.title ||
+"Beautiful Jewellery";
 
 }
 
 
 function getCategory(product){
 
-    return product.category ||
-           product.product_category ||
-           "";
+return product.category ||
+product.product_category ||
+"";
 
 }
 
 
 function getImage(product){
 
-    return product.image ||
-           product.image_url ||
-           product.imageUrl ||
-           "https://via.placeholder.com/500x500?text=K2+Collection";
+return product.image ||
+product.image_url ||
+product.imageUrl ||
+"https://via.placeholder.com/500x500?text=K2+Collection";
 
 }
 
 
 function getDescription(product){
 
-    return product.description ||
-           product.product_description ||
-           "Elegant jewellery selected by K2 Collection.";
+return product.description ||
+product.product_description ||
+"Elegant jewellery selected by K2 Collection.";
 
 }
 
 
 function getLink(product){
 
-    return product.amazon_link ||
-           product.amazonLink ||
-           product.affiliate_link ||
-           product.link ||
-           "#";
+return product.amazon_link ||
+product.amazonLink ||
+product.affiliate_link ||
+product.link ||
+"#";
 
 }
 
 
-/*
-    Category check.
-    Saved category is used first.
-*/
+/* CORRECT CATEGORY */
 
 function correctCategory(product){
 
-    const saved =
-        getCategory(product).toLowerCase().trim();
-
-    if(saved.includes("ring")){
-        return "Rings";
-    }
-
-    if(saved.includes("bracelet")){
-        return "Bracelets";
-    }
-
-    if(saved.includes("necklace")){
-        return "Necklaces";
-    }
+const saved =
+getCategory(product).toLowerCase().trim();
 
 
-    const text =
-        (
-            getName(product) +
-            " " +
-            getDescription(product)
-        ).toLowerCase();
+if(saved.includes("ring")){
+return "Rings";
+}
 
+if(saved.includes("bracelet")){
+return "Bracelets";
+}
 
-    if(
-        text.includes("ring") ||
-        text.includes("amethyst") ||
-        text.includes("solitaire") ||
-        text.includes("sunflower ring")
-    ){
-        return "Rings";
-    }
-
-
-    if(
-        text.includes("bracelet") ||
-        text.includes("bangle")
-    ){
-        return "Bracelets";
-    }
-
-
-    if(
-        text.includes("necklace") ||
-        text.includes("jewellery set") ||
-        text.includes("jewelry set")
-    ){
-        return "Necklaces";
-    }
-
-
-    return "";
+if(saved.includes("necklace")){
+return "Necklaces";
 }
 
 
-/* CREATE CARD */
+const text =
+(
+getName(product) +
+" " +
+getDescription(product)
+).toLowerCase();
+
+
+if(
+text.includes("ring") ||
+text.includes("amethyst") ||
+text.includes("solitaire")
+){
+return "Rings";
+}
+
+
+if(
+text.includes("bracelet") ||
+text.includes("bangle")
+){
+return "Bracelets";
+}
+
+
+if(
+text.includes("necklace") ||
+text.includes("jewellery set") ||
+text.includes("jewelry set")
+){
+return "Necklaces";
+}
+
+
+return "";
+
+}
+
+
+/* PRODUCT CARD */
 
 function createCard(product){
 
-    const card =
-        document.createElement("div");
+const card =
+document.createElement("div");
 
-    card.className = "product-card";
-
-    const name =
-        getName(product);
-
-    const image =
-        getImage(product);
-
-    const description =
-        getDescription(product);
-
-    const link =
-        getLink(product);
+card.className =
+"product-card";
 
 
-    card.innerHTML = `
+const name =
+getName(product);
 
-        <a
-            href="${link}"
-            target="_blank"
-            rel="nofollow sponsored noopener"
-        >
+const image =
+getImage(product);
 
-            <img
-                src="${image}"
-                alt="${name}"
-                onerror="this.src='https://via.placeholder.com/500x500?text=K2+Collection';"
-            >
+const description =
+getDescription(product);
 
-        </a>
+const link =
+getLink(product);
 
-        <div class="product-info">
 
-            <div class="product-name">
-                ${name}
-            </div>
+card.innerHTML = `
 
-            <div class="product-description">
-                ${description}
-            </div>
+<a
+href="${link}"
+target="_blank"
+rel="nofollow sponsored noopener"
+>
 
-            <a
-                class="amazon-link"
-                href="${link}"
-                target="_blank"
-                rel="nofollow sponsored noopener"
-            >
-                View on Amazon →
-            </a>
+<img
+src="${image}"
+alt="${name}"
+onerror="this.src='https://via.placeholder.com/500x500?text=K2+Collection';"
+>
 
-        </div>
+</a>
 
-    `;
+<div class="product-info">
 
-    return card;
+<div class="product-name">
+${name}
+</div>
+
+<div class="product-description">
+${description}
+</div>
+
+<a
+class="amazon-link"
+href="${link}"
+target="_blank"
+rel="nofollow sponsored noopener"
+>
+View on Amazon →
+</a>
+
+</div>
+
+`;
+
+
+return card;
 
 }
 
 
-/* ADD PRODUCTS TO CATEGORY */
+/* ADD PRODUCT */
 
 function addProduct(product){
 
-    const category =
-        correctCategory(product);
+const category =
+correctCategory(product);
+
+let container = null;
 
 
-    let container = null;
+if(category === "Rings"){
 
-
-    if(category === "Rings"){
-        container =
-            document.getElementById("ringsProducts");
-    }
-
-
-    if(category === "Bracelets"){
-        container =
-            document.getElementById("braceletsProducts");
-    }
-
-
-    if(category === "Necklaces"){
-        container =
-            document.getElementById("necklacesProducts");
-    }
-
-
-    if(container){
-        container.appendChild(
-            createCard(product)
-        );
-    }
+container =
+document.getElementById("ringsProducts");
 
 }
 
 
-/* LOAD ALL PRODUCTS */
+if(category === "Bracelets"){
+
+container =
+document.getElementById("braceletsProducts");
+
+}
+
+
+if(category === "Necklaces"){
+
+container =
+document.getElementById("necklacesProducts");
+
+}
+
+
+if(container){
+
+container.appendChild(
+createCard(product)
+);
+
+}
+
+}
+
+
+/* LOAD PRODUCTS */
 
 async function loadCollection(){
 
-    /*
-        First show existing static products.
-    */
+/* EXISTING PRODUCTS */
 
-    staticProducts.forEach(product => {
-        addProduct(product);
-    });
+staticProducts.forEach(product => {
 
+addProduct(product);
 
-    /*
-        Then load Supabase products.
-    */
-
-    try{
-
-        const response =
-            await fetch(
-                SUPABASE_URL +
-                "/rest/v1/products?select=*",
-                {
-                    headers:{
-                        "apikey":SUPABASE_KEY,
-                        "Authorization":
-                            "Bearer " + SUPABASE_KEY
-                    }
-                }
-            );
+});
 
 
-        if(!response.ok){
-            throw new Error(
-                "Supabase products could not be loaded"
-            );
-        }
+/* SUPABASE PRODUCTS */
+
+try{
+
+const response =
+await fetch(
+SUPABASE_URL +
+"/rest/v1/products?select=*",
+{
+headers:{
+"apikey":SUPABASE_KEY,
+"Authorization":
+"Bearer " + SUPABASE_KEY
+}
+}
+);
 
 
-        const products =
-            await response.json();
+if(!response.ok){
+
+throw new Error(
+"Supabase products could not be loaded"
+);
+
+}
 
 
-        products.forEach(product => {
-
-            addProduct(product);
-
-        });
+const products =
+await response.json();
 
 
-    }catch(error){
+products.forEach(product => {
 
-        console.log(
-            "Supabase products:",
-            error
-        );
+addProduct(product);
 
-    }
+});
 
 
-    /*
-        Show message if category has no products.
-    */
+}catch(error){
 
-    const containers = [
-        "ringsProducts",
-        "braceletsProducts",
-        "necklacesProducts"
-    ];
+console.log(
+"Supabase products:",
+error
+);
 
-
-    containers.forEach(id => {
-
-        const container =
-            document.getElementById(id);
+}
 
 
-        if(container &&
-           container.children.length === 0){
+/* EMPTY CATEGORY MESSAGE */
 
-            container.innerHTML =
-                `<div class="empty">
-                    Products will be added soon.
-                </div>`;
+const containers = [
 
-        }
+"ringsProducts",
+"braceletsProducts",
+"necklacesProducts"
 
-    });
+];
+
+
+containers.forEach(id => {
+
+const container =
+document.getElementById(id);
+
+
+if(
+container &&
+container.children.length === 0
+){
+
+container.innerHTML =
+`
+<div class="empty">
+Products will be added soon.
+</div>
+`;
+
+}
+
+});
 
 }
 
@@ -946,5 +1022,6 @@ loadCollection();
 </script>
 
 </body>
+
 </html>
 ```
