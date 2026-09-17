@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 
@@ -6,9 +7,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title> Collection</title>
-    
-    
+<title>Collection</title>
+
 <style>
 
 *{
@@ -27,51 +27,6 @@ body{
     color:#2c241d;
 }
 
-/* HEADER */
-
-header{
-    background:#fffdf9;
-    text-align:center;
-    padding:24px 20px 18px;
-    border-bottom:1px solid #eadfce;
-}
-
-.logo{
-    font-size:28px;
-    font-weight:700;
-    letter-spacing:2px;
-    color:#2c241d;
-    text-decoration:none;
-}
-
-.tagline{
-    margin-top:6px;
-    font-size:12px;
-    letter-spacing:2px;
-    color:#8b765d;
-}
-
-/* NAVIGATION */
-
-nav{
-    display:flex;
-    justify-content:center;
-    flex-wrap:wrap;
-    gap:28px;
-    margin-top:20px;
-}
-
-nav a{
-    text-decoration:none;
-    color:#3b3027;
-    font-size:14px;
-    font-weight:600;
-}
-
-nav a:hover{
-    color:#a98242;
-}
-
 /* MAIN */
 
 .container{
@@ -86,20 +41,28 @@ nav a:hover{
     width:100%;
     display:flex;
     justify-content:flex-start;
-    margin-bottom:10px;
+    margin-bottom:35px;
 }
 
 .back{
     display:inline-block;
     text-decoration:none;
-    color:#6e6257;
+    color:#3b3027;
+    background:#fffdf9;
+    border:1px solid #d8c8b2;
+    border-radius:30px;
+    padding:11px 20px;
     font-size:14px;
     font-weight:600;
-    padding:8px 0;
+    transition:0.3s;
+    box-shadow:0 3px 10px rgba(60,45,30,0.05);
 }
 
 .back:hover{
-    color:#a98242;
+    background:#2c241d;
+    color:white;
+    border-color:#2c241d;
+    transform:translateY(-2px);
 }
 
 /* HEADING */
@@ -290,24 +253,17 @@ footer p{
 
 @media(max-width:550px){
 
-    header{
-        padding:20px 15px 16px;
-    }
-
-    .logo{
-        font-size:23px;
-    }
-
-    nav{
-        gap:16px;
-    }
-
-    nav a{
-        font-size:13px;
-    }
-
     .container{
         padding:28px 15px 55px;
+    }
+
+    .back-row{
+        margin-bottom:28px;
+    }
+
+    .back{
+        padding:10px 17px;
+        font-size:13px;
     }
 
     .heading h1{
@@ -343,17 +299,6 @@ footer p{
 </head>
 
 <body>
-
-
-<!-- HEADER -->
-
-<header>
-
-<a href="index.html" class="logo">
-K2 COLLECTION
-</a>
-
-</header>
 
 
 <!-- MAIN -->
@@ -1008,3 +953,4 @@ loadCollection();
 </body>
 
 </html>
+```
