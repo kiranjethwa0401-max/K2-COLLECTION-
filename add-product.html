@@ -412,7 +412,22 @@ footer{
 </footer>
 
 
+```html
 <script>
+
+/* ================================
+   K2 COLLECTION
+   SUPABASE ADD PRODUCT
+================================ */
+
+const SUPABASE_URL =
+    "https://mixhdtkzrcjtcfefdbyf.supabase.co";
+
+const SUPABASE_KEY =
+    "sb_publishable_l_ViECvF-pUEp0Bzf_0aHA_09R-QHIo";
+
+
+/* ELEMENTS */
 
 const productForm =
     document.getElementById("productForm");
@@ -454,217 +469,349 @@ const addProductBtn =
 let selectedPhoto = "";
 
 
-/* PHOTO PREVIEW */
+/* ================================
+   PHOTO PREVIEW
+================================ */
 
-productPhoto.addEventListener("change", function(){
+productPhoto.addEventListener(
+    "change",
+    function(){
 
-    const file = this.files[0];
+        const file =
+            this.files[0];
 
-    if(!file){
-        return;
+
+        if(!file){
+            return;
+        }
+
+
+        if(!file.type.startsWith("image/")){
+
+            alert(
+                "Please select a valid image."
+            );
+
+            this.value = "";
+
+            return;
+        }
+
+
+        photoName.textContent =
+            "Selected: " + file.name;
+
+
+        const reader =
+            new FileReader();
+
+
+        reader.onload =
+            function(e){
+
+                selectedPhoto =
+                    e.target.result;
+
+
+                photoPreview.src =
+                    selectedPhoto;
+
+
+                photoBox.style.display =
+                    "block";
+
+
+                removePhoto.style.display =
+                    "block";
+
+            };
+
+
+        reader.readAsDataURL(file);
+
     }
+);
 
 
-    if(!file.type.startsWith("image/")){
+/* ================================
+   REMOVE PHOTO
+================================ */
 
-        alert("Please select a valid image.");
+removePhoto.addEventListener(
+    "click",
+    function(){
 
-        this.value = "";
+        productPhoto.value = "";
 
-        return;
-    }
+        photoPreview.src = "";
 
+        photoName.textContent = "";
 
-    photoName.textContent =
-        "Selected: " + file.name;
-
-
-    const reader =
-        new FileReader();
-
-
-    reader.onload = function(e){
-
-        selectedPhoto =
-            e.target.result;
-
-        photoPreview.src =
-            selectedPhoto;
+        selectedPhoto = "";
 
         photoBox.style.display =
-            "block";
+            "none";
 
         removePhoto.style.display =
-            "block";
+            "none";
 
-    };
-
-
-    reader.readAsDataURL(file);
-
-});
-
-
-/* REMOVE PHOTO */
-
-removePhoto.addEventListener("click", function(){
-
-    productPhoto.value = "";
-
-    photoPreview.src = "";
-
-    photoName.textContent = "";
-
-    selectedPhoto = "";
-
-    photoBox.style.display =
-        "none";
-
-    removePhoto.style.display =
-        "none";
-
-});
+    }
+);
 
 
 photoBox.style.display = "none";
 
 
-/* ADD PRODUCT */
+/* ================================
+   ADD PRODUCT
+================================ */
 
-productForm.addEventListener("submit", function(e){
+productForm.addEventListener(
+    "submit",
+    async function(e){
 
-    e.preventDefault();
-
-
-    const name =
-        productName.value.trim();
-
-    const category =
-        productCategory.value;
-
-    const price =
-        productPrice.value.trim();
-
-    const link =
-        affiliateLink.value.trim();
-
-    const description =
-        productDescription.value.trim();
+        e.preventDefault();
 
 
-    /* VALIDATION */
+        const name =
+            productName.value.trim();
 
-    if(name === ""){
 
-        alert("Please enter Product Name.");
+        const category =
+            productCategory.value;
 
-        productName.focus();
 
-        return;
+        const price =
+            productPrice.value.trim();
+
+
+        const link =
+            affiliateLink.value.trim();
+
+
+        const description =
+            productDescription.value.trim();
+
+
+        /* VALIDATION */
+
+        if(name === ""){
+
+            alert(
+                "Please enter Product Name."
+            );
+
+            productName.focus();
+
+            return;
+        }
+
+
+        if(category === ""){
+
+            alert(
+                "Please select Category."
+            );
+
+            productCategory.focus();
+
+            return;
+        }
+
+
+        if(price === ""){
+
+            alert(
+                "Please enter Price."
+            );
+
+            productPrice.focus();
+
+            return;
+        }
+
+
+        if(selectedPhoto === ""){
+
+            alert(
+                "Please upload Product Photo."
+            );
+
+            return;
+        }
+
+
+        if(link === ""){
+
+            alert(
+                "Please enter Amazon Affiliate Link."
+            );
+
+            affiliateLink.focus();
+
+            return;
+        }
+
+
+        /* BUTTON LOCK */
+
+        addProductBtn.disabled = true;
+
+        addProductBtn.textContent =
+            "Adding Product...";
+
+
+        try{
+
+            /* ================================
+               SAVE TO SUPABASE
+            ================================= */
+
+            const response =
+                await fetch(
+                    SUPABASE_URL +
+                    "/rest/v1/products",
+                    {
+
+                        method:"POST",
+
+                        headers:{
+
+                            "Content-Type":
+                                "application/json",
+
+                            "apikey":
+                                SUPABASE_KEY,
+
+                            "Authorization":
+                                "Bearer " +
+                                SUPABASE_KEY,
+
+                            "Prefer":
+                                "return=representation"
+
+                        },
+
+                        body:JSON.stringify({
+
+                            name:name,
+
+                            category:category,
+
+                            price:price,
+
+                            image:selectedPhoto,
+
+                            link:link,
+
+                            description:description
+
+                        })
+
+                    }
+                );
+
+
+            const result =
+                await response.json();
+
+
+            if(!response.ok){
+
+                console.error(
+                    "Supabase error:",
+                    result
+                );
+
+
+                throw new Error(
+                    result.message ||
+                    "Product could not be saved."
+                );
+
+            }
+
+
+            /* ================================
+               TEMPORARY LOCAL STORAGE
+               KEEP CURRENT WEBSITE WORKING
+            ================================= */
+
+            const newProduct = {
+
+                id:
+                    result[0]?.id ||
+                    Date.now(),
+
+                name:name,
+
+                category:category,
+
+                price:price,
+
+                image:selectedPhoto,
+
+                link:link,
+
+                description:description
+
+            };
+
+
+            let products =
+                JSON.parse(
+                    localStorage.getItem(
+                        "k2Products"
+                    ) || "[]"
+                );
+
+
+            products.push(
+                newProduct
+            );
+
+
+            localStorage.setItem(
+                "k2Products",
+                JSON.stringify(products)
+            );
+
+
+            /* SUCCESS */
+
+            alert(
+                "Product added successfully! ❤️"
+            );
+
+
+            /* GO TO ALL PRODUCTS */
+
+            window.location.href =
+                "all-products.html";
+
+
+        }catch(error){
+
+            console.error(error);
+
+
+            alert(
+                "Product save nahi hua.\n\n" +
+                "Please check Supabase connection."
+            );
+
+
+            addProductBtn.disabled =
+                false;
+
+
+            addProductBtn.textContent =
+                "Add Product";
+
+        }
+
     }
-
-
-    if(category === ""){
-
-        alert("Please select Category.");
-
-        productCategory.focus();
-
-        return;
-    }
-
-
-    if(price === ""){
-
-        alert("Please enter Price.");
-
-        productPrice.focus();
-
-        return;
-    }
-
-
-    if(selectedPhoto === ""){
-
-        alert("Please upload Product Photo.");
-
-        return;
-    }
-
-
-    if(link === ""){
-
-        alert("Please enter Amazon Affiliate Link.");
-
-        affiliateLink.focus();
-
-        return;
-    }
-
-
-    /* BUTTON LOCK */
-
-    addProductBtn.disabled = true;
-
-    addProductBtn.textContent =
-        "Adding Product...";
-
-
-    /* NEW PRODUCT */
-
-    const newProduct = {
-
-        id: Date.now(),
-
-        name: name,
-
-        category: category,
-
-        price: price,
-
-        image: selectedPhoto,
-
-        link: link,
-
-        description: description
-
-    };
-
-
-    /* GET EXISTING PRODUCTS */
-
-    let products =
-        JSON.parse(
-            localStorage.getItem("k2Products") || "[]"
-        );
-
-
-    /* ADD NEW PRODUCT */
-
-    products.push(newProduct);
-
-
-    /* SAVE */
-
-    localStorage.setItem(
-        "k2Products",
-        JSON.stringify(products)
-    );
-
-
-    /* SUCCESS */
-
-    alert(
-        "Product added successfully! ❤️"
-    );
-
-
-    /* GO TO ALL PRODUCTS */
-
-    window.location.href =
-        "all-products.html";
-
-});
+);
 
 </script>
 
