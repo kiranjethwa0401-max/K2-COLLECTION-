@@ -1,7 +1,9 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -11,6 +13,10 @@
 content="K2 Collection - elegant and trendy jewellery picks for women.">
 
 <style>
+
+/* =========================
+   RESET
+========================= */
 
 *{
     box-sizing:border-box;
@@ -23,395 +29,717 @@ html{
 }
 
 body{
-    font-family:Arial,Helvetica,sans-serif;
-    background:#f7f3ec;
-    color:#2b241d;
+    font-family:
+        "Segoe UI",
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    background:#f7f2e9;
+    color:#33291f;
 }
 
-/* HEADER */
+
+/* =========================
+   HEADER
+========================= */
 
 header{
-    background:#fffaf2;
-    padding:22px 20px;
+
+    background:#fffdf9;
+
+    padding:20px;
+
     text-align:center;
-    border-bottom:1px solid #eadfce;
+
+    border-bottom:1px solid #e7dccb;
+
+    box-shadow:
+        0 4px 18px rgba(70,50,30,0.05);
 }
+
+
+.back-button{
+
+    display:inline-block;
+
+    text-decoration:none;
+
+    color:#4a3b2b;
+
+    border:1px solid #d8c7ad;
+
+    background:#fffdf9;
+
+    padding:9px 20px;
+
+    border-radius:25px;
+
+    font-size:13px;
+
+    font-weight:600;
+
+    transition:.3s;
+
+    margin-bottom:18px;
+}
+
+.back-button:hover{
+
+    background:#b08d57;
+
+    color:white;
+
+    border-color:#b08d57;
+}
+
 
 .logo{
-    font-size:30px;
+
+    font-family:Georgia,serif;
+
+    font-size:28px;
+
     font-weight:bold;
-    letter-spacing:2px;
-    color:#8b6b3f;
-}
 
-.tagline{
-    margin-top:7px;
-    font-size:13px;
-    letter-spacing:1.5px;
-    color:#9a8260;
-}
+    letter-spacing:3px;
 
-/* NAVIGATION */
-
-nav{
-    display:flex;
-    justify-content:center;
-    flex-wrap:wrap;
-    gap:25px;
-    margin-top:18px;
-}
-
-nav a{
-    text-decoration:none;
-    color:#4a3b2b;
-    font-size:14px;
-    font-weight:600;
-}
-
-nav a:hover{
     color:#b08d57;
 }
 
-/* PAGE TITLE */
 
-.page-title{
-    text-align:center;
-    padding:45px 20px 25px;
+.tagline{
+
+    margin-top:7px;
+
+    font-size:11px;
+
+    letter-spacing:2px;
+
+    color:#776755;
 }
 
-.page-title h1{
-    font-size:32px;
-    color:#6e5330;
+
+/* =========================
+   PAGE TITLE
+========================= */
+
+.page-title{
+
+    text-align:center;
+
+    padding:50px 20px 30px;
+}
+
+
+.page-title span{
+
+    display:block;
+
+    font-size:11px;
+
+    letter-spacing:3px;
+
+    text-transform:uppercase;
+
+    color:#b08d57;
+
     margin-bottom:10px;
 }
 
-.page-title p{
-    color:#8a7760;
-    font-size:15px;
+
+.page-title h1{
+
+    font-family:Georgia,serif;
+
+    font-size:40px;
+
+    font-weight:normal;
+
+    color:#33291f;
+
+    margin-bottom:10px;
 }
 
-/* SEARCH */
+
+.page-title p{
+
+    color:#756758;
+
+    font-size:14px;
+}
+
+
+/* =========================
+   SEARCH
+========================= */
 
 .search-area{
-    max-width:700px;
+
+    max-width:650px;
+
     margin:0 auto 25px;
+
     padding:0 20px;
 }
+
 
 .search-box{
+
     width:100%;
-    padding:14px 18px;
+
+    padding:14px 20px;
+
     border:1px solid #dccdb8;
+
     border-radius:30px;
+
     background:white;
+
     outline:none;
-    font-size:15px;
+
+    font-size:14px;
+
+    color:#33291f;
+
+    box-shadow:
+        0 4px 15px rgba(70,50,30,.04);
 }
+
+
+.search-box::placeholder{
+
+    color:#9a8977;
+}
+
 
 .search-box:focus{
+
     border-color:#b08d57;
+
+    box-shadow:
+        0 0 0 3px rgba(176,141,87,.10);
 }
 
-/* FILTER BUTTONS */
+
+/* =========================
+   FILTERS
+========================= */
 
 .filters{
+
     display:flex;
+
     justify-content:center;
+
     flex-wrap:wrap;
+
     gap:10px;
-    margin:0 auto 35px;
+
+    margin:0 auto 40px;
+
     padding:0 20px;
 }
 
+
 .filter-btn{
-    border:1px solid #cdbb9f;
-    background:#fffaf3;
+
+    border:1px solid #d4c2a8;
+
+    background:#fffdf9;
+
     color:#6e5330;
-    padding:10px 20px;
+
+    padding:10px 21px;
+
     border-radius:25px;
+
     cursor:pointer;
-    font-size:14px;
+
+    font-size:13px;
+
     font-weight:600;
+
+    transition:.3s;
 }
+
 
 .filter-btn:hover,
 .filter-btn.active{
+
     background:#b08d57;
+
     color:white;
+
     border-color:#b08d57;
 }
 
-/* PRODUCTS */
+
+/* =========================
+   PRODUCTS
+========================= */
 
 .products-container{
+
     max-width:1200px;
+
     margin:0 auto;
-    padding:0 20px 60px;
+
+    padding:0 20px 70px;
 }
 
+
 .product-grid{
+
     display:grid;
-    grid-template-columns:repeat(4,1fr);
+
+    grid-template-columns:
+        repeat(4,1fr);
+
     gap:25px;
 }
 
-/* PRODUCT CARD */
+
+/* =========================
+   PRODUCT CARD
+========================= */
 
 .product-card{
-    background:white;
-    border:1px solid #eadfce;
+
+    background:#fffdf9;
+
+    border:1px solid #e8ddcd;
+
     border-radius:16px;
+
     overflow:hidden;
-    box-shadow:0 5px 18px rgba(80,55,30,0.08);
-    transition:0.25s;
+
+    box-shadow:
+        0 7px 22px rgba(65,48,30,.06);
+
+    transition:.3s;
+
     position:relative;
 }
 
+
 .product-card:hover{
-    transform:translateY(-4px);
-    box-shadow:0 10px 25px rgba(80,55,30,0.13);
+
+    transform:translateY(-5px);
+
+    box-shadow:
+        0 14px 30px rgba(65,48,30,.11);
 }
 
+
 .product-image-link{
+
     display:block;
+
     text-decoration:none;
 }
 
+
 .product-image{
+
     width:100%;
+
     height:270px;
+
     object-fit:cover;
+
     display:block;
+
+    background:#eee5d8;
 }
+
 
 .product-info{
-    padding:18px;
+
+    padding:19px;
 }
+
 
 .category{
-    font-size:11px;
+
+    font-size:10px;
+
     text-transform:uppercase;
-    letter-spacing:1.2px;
+
+    letter-spacing:2px;
+
     color:#b08d57;
-    margin-bottom:7px;
-    font-weight:bold;
+
+    margin-bottom:8px;
+
+    font-weight:600;
 }
+
 
 .product-name{
-    font-size:17px;
-    font-weight:bold;
-    color:#3d3024;
-    line-height:1.35;
-    margin-bottom:8px;
+
+    font-family:Georgia,serif;
+
+    font-size:18px;
+
+    font-weight:normal;
+
+    color:#33291f;
+
+    line-height:1.4;
+
+    margin-bottom:9px;
 }
 
+
 .description{
-    font-size:13px;
-    line-height:1.5;
-    color:#857461;
-    margin-bottom:15px;
+
+    font-size:12px;
+
+    line-height:1.55;
+
+    color:#806f5d;
+
+    margin-bottom:16px;
 }
+
 
 /* PRICE HIDDEN */
 
 .price{
+
     display:none;
 }
 
-/* BUY BUTTON */
+
+/* =========================
+   BUY BUTTON
+========================= */
 
 .buy-btn{
+
     display:block;
+
     width:100%;
+
     text-align:center;
+
     text-decoration:none;
-    background:#b08d57;
+
+    background:#33291f;
+
     color:white;
+
     padding:12px 15px;
-    border-radius:8px;
-    font-size:14px;
-    font-weight:bold;
-    transition:0.2s;
+
+    border-radius:25px;
+
+    font-size:13px;
+
+    font-weight:600;
+
+    letter-spacing:.3px;
+
+    transition:.3s;
 }
+
 
 .buy-btn:hover{
-    background:#8f6f42;
+
+    background:#b08d57;
+
+    transform:translateY(-1px);
 }
 
-/* ADMIN DELETE */
+
+/* =========================
+   ADMIN DELETE
+========================= */
 
 .delete-btn{
+
     display:none;
+
     position:absolute;
+
     top:10px;
+
     right:10px;
+
     border:none;
+
     background:#9b3d3d;
+
     color:white;
+
     padding:7px 10px;
+
     border-radius:6px;
+
     cursor:pointer;
+
     font-size:11px;
 }
 
+
 .admin-mode .delete-btn{
+
     display:block;
 }
 
-/* LOADING */
+
+/* =========================
+   LOADING
+========================= */
 
 .loading{
+
+    grid-column:1/-1;
+
     text-align:center;
-    padding:30px;
-    color:#8a7760;
+
+    padding:40px;
+
+    color:#806f5d;
+
     font-size:14px;
 }
 
-/* NO RESULTS */
+
+/* =========================
+   NO RESULTS
+========================= */
 
 .no-results{
+
     display:none;
+
     text-align:center;
-    padding:50px 20px;
-    color:#8a7760;
-    font-size:16px;
+
+    padding:55px 20px;
+
+    color:#806f5d;
+
+    font-size:15px;
 }
 
-/* FOOTER */
+
+/* =========================
+   FOOTER
+========================= */
 
 footer{
-    background:#fffaf2;
-    border-top:1px solid #eadfce;
+
+    background:#292118;
+
     text-align:center;
-    padding:25px 20px;
-    color:#8a7760;
-    font-size:13px;
+
+    padding:32px 20px;
+
+    color:#d9cfc2;
+
+    font-size:12px;
 }
 
-/* TABLET */
+
+.footer-logo{
+
+    font-family:Georgia,serif;
+
+    color:#d2ad68;
+
+    font-size:21px;
+
+    letter-spacing:2px;
+
+    margin-bottom:8px;
+}
+
+
+/* =========================
+   TABLET
+========================= */
 
 @media(max-width:1000px){
 
     .product-grid{
-        grid-template-columns:repeat(3,1fr);
+
+        grid-template-columns:
+            repeat(3,1fr);
     }
 
 }
 
-/* MOBILE */
+
+/* =========================
+   MOBILE
+========================= */
 
 @media(max-width:700px){
 
     .logo{
-        font-size:24px;
+
+        font-size:23px;
     }
 
-    nav{
-        gap:14px;
+
+    .tagline{
+
+        font-size:9px;
+
+        letter-spacing:1.5px;
     }
 
-    nav a{
-        font-size:13px;
-    }
 
     .page-title{
-        padding-top:35px;
+
+        padding-top:38px;
     }
+
 
     .page-title h1{
-        font-size:27px;
+
+        font-size:32px;
     }
 
+
     .product-grid{
-        grid-template-columns:repeat(2,1fr);
+
+        grid-template-columns:
+            repeat(2,1fr);
+
         gap:15px;
     }
 
+
     .product-image{
+
         height:210px;
     }
 
+
     .product-info{
+
         padding:13px;
     }
 
+
     .product-name{
+
         font-size:15px;
     }
 
+
     .description{
+
+        font-size:11px;
+    }
+
+
+    .buy-btn{
+
+        padding:10px 7px;
+
         font-size:12px;
     }
 
 }
 
-/* SMALL MOBILE */
+
+/* =========================
+   SMALL MOBILE
+========================= */
 
 @media(max-width:450px){
 
     .product-grid{
-        grid-template-columns:1fr 1fr;
+
+        grid-template-columns:
+            repeat(2,1fr);
     }
 
+
     .product-image{
+
         height:180px;
     }
 
-    .buy-btn{
-        padding:10px 8px;
-        font-size:13px;
+
+    .back-button{
+
+        font-size:12px;
+
+        padding:8px 16px;
     }
 
 }
 
 </style>
+
 </head>
+
 
 <body>
 
+
+<!-- =========================
+     HEADER
+========================= -->
+
 <header>
 
+    <a
+        href="index.html"
+        class="back-button">
+
+        ← Back to Home
+
+    </a>
+
+
     <div class="logo">
+
         💎 K2 COLLECTION 💎
+
     </div>
+
 
     <div class="tagline">
+
         ELEGANT JEWELLERY • TIMELESS BEAUTY
+
     </div>
-
-    <nav>
-
-        <a href="index.html">
-            Home
-        </a>
-
-        <a href="all-products.html">
-            All Products
-        </a>
-
-        <a href="categories.html">
-            Collection
-        </a>
-
-        <a href="index.html#about">
-            About
-        </a>
-
-    </nav>
 
 </header>
 
 
+
+<!-- =========================
+     PAGE TITLE
+========================= -->
+
 <section class="page-title">
 
-    <h1>All Products</h1>
+    <span>
+        K2 Collection
+    </span>
+
+    <h1>
+        All Products
+    </h1>
 
     <p>
-        Discover elegant and trendy jewellery for every occasion.
+        Discover elegant and trendy jewellery
+        for every occasion.
     </p>
 
 </section>
 
+
+
+<!-- =========================
+     SEARCH
+========================= -->
 
 <div class="search-area">
 
@@ -426,49 +754,76 @@ footer{
 </div>
 
 
+
+<!-- =========================
+     FILTERS
+========================= -->
+
 <div class="filters">
 
     <button
         class="filter-btn active"
         onclick="filterProducts('All',this)">
+
         All
+
     </button>
+
 
     <button
         class="filter-btn"
         onclick="filterProducts('Rings',this)">
+
         Rings
+
     </button>
+
 
     <button
         class="filter-btn"
         onclick="filterProducts('Bracelets',this)">
+
         Bracelets
+
     </button>
+
 
     <button
         class="filter-btn"
         onclick="filterProducts('Necklaces',this)">
+
         Necklaces
+
     </button>
 
 </div>
 
 
+
+<!-- =========================
+     PRODUCTS
+========================= -->
+
 <main class="products-container">
+
 
     <div
         id="loading"
         class="loading">
+
         Loading products...
+
     </div>
+
 
     <div
         id="productGrid"
         class="product-grid">
 
 
-        <!-- NECKLACE 1 -->
+        <!-- =========================
+             NECKLACE 1
+        ========================= -->
 
         <div
             class="product-card"
@@ -478,7 +833,8 @@ footer{
             <a
                 class="product-image-link"
                 href="https://www.amazon.in/dp/B0H5FS8DJ6?tag=k2collection0-21"
-                target="_blank">
+                target="_blank"
+                rel="nofollow sponsored noopener">
 
                 <img
                     class="product-image"
@@ -486,6 +842,7 @@ footer{
                     alt="Pearl Double Layered Jewellery Set">
 
             </a>
+
 
             <div class="product-info">
 
@@ -504,8 +861,11 @@ footer{
                 <a
                     class="buy-btn"
                     href="https://www.amazon.in/dp/B0H5FS8DJ6?tag=k2collection0-21"
-                    target="_blank">
+                    target="_blank"
+                    rel="nofollow sponsored noopener">
+
                     Buy Now →
+
                 </a>
 
             </div>
@@ -513,7 +873,10 @@ footer{
         </div>
 
 
-        <!-- NECKLACE 2 -->
+
+        <!-- =========================
+             NECKLACE 2
+        ========================= -->
 
         <div
             class="product-card"
@@ -523,7 +886,8 @@ footer{
             <a
                 class="product-image-link"
                 href="https://www.amazon.in/dp/B0CV4XL72Z?tag=k2collection0-21"
-                target="_blank">
+                target="_blank"
+                rel="nofollow sponsored noopener">
 
                 <img
                     class="product-image"
@@ -531,6 +895,7 @@ footer{
                     alt="Shining Diva Fashion Jewellery Set">
 
             </a>
+
 
             <div class="product-info">
 
@@ -549,8 +914,11 @@ footer{
                 <a
                     class="buy-btn"
                     href="https://www.amazon.in/dp/B0CV4XL72Z?tag=k2collection0-21"
-                    target="_blank">
+                    target="_blank"
+                    rel="nofollow sponsored noopener">
+
                     Buy Now →
+
                 </a>
 
             </div>
@@ -558,7 +926,10 @@ footer{
         </div>
 
 
-        <!-- NECKLACE 3 -->
+
+        <!-- =========================
+             NECKLACE 3
+        ========================= -->
 
         <div
             class="product-card"
@@ -568,7 +939,8 @@ footer{
             <a
                 class="product-image-link"
                 href="https://www.amazon.in/dp/B0H7WLPZ1L?tag=k2collection0-21"
-                target="_blank">
+                target="_blank"
+                rel="nofollow sponsored noopener">
 
                 <img
                     class="product-image"
@@ -576,6 +948,7 @@ footer{
                     alt="Double Strand Pearl Necklace Set">
 
             </a>
+
 
             <div class="product-info">
 
@@ -594,8 +967,11 @@ footer{
                 <a
                     class="buy-btn"
                     href="https://www.amazon.in/dp/B0H7WLPZ1L?tag=k2collection0-21"
-                    target="_blank">
+                    target="_blank"
+                    rel="nofollow sponsored noopener">
+
                     Buy Now →
+
                 </a>
 
             </div>
@@ -603,7 +979,10 @@ footer{
         </div>
 
 
-        <!-- NECKLACE 4 -->
+
+        <!-- =========================
+             NECKLACE 4
+        ========================= -->
 
         <div
             class="product-card"
@@ -613,7 +992,8 @@ footer{
             <a
                 class="product-image-link"
                 href="https://www.amazon.in/dp/B0CJ74NX6Z?tag=k2collection0-21"
-                target="_blank">
+                target="_blank"
+                rel="nofollow sponsored noopener">
 
                 <img
                     class="product-image"
@@ -621,6 +1001,7 @@ footer{
                     alt="Gold Plated Pearl Beaded Jewellery Set">
 
             </a>
+
 
             <div class="product-info">
 
@@ -639,8 +1020,11 @@ footer{
                 <a
                     class="buy-btn"
                     href="https://www.amazon.in/dp/B0CJ74NX6Z?tag=k2collection0-21"
-                    target="_blank">
+                    target="_blank"
+                    rel="nofollow sponsored noopener">
+
                     Buy Now →
+
                 </a>
 
             </div>
@@ -648,7 +1032,10 @@ footer{
         </div>
 
 
-        <!-- NECKLACE 5 -->
+
+        <!-- =========================
+             NECKLACE 5
+        ========================= -->
 
         <div
             class="product-card"
@@ -658,7 +1045,8 @@ footer{
             <a
                 class="product-image-link"
                 href="https://www.amazon.in/dp/B0BXJB7T4B?tag=k2collection0-21"
-                target="_blank">
+                target="_blank"
+                rel="nofollow sponsored noopener">
 
                 <img
                     class="product-image"
@@ -666,6 +1054,7 @@ footer{
                     alt="Pearl Necklace Earrings Bracelet Set">
 
             </a>
+
 
             <div class="product-info">
 
@@ -684,8 +1073,11 @@ footer{
                 <a
                     class="buy-btn"
                     href="https://www.amazon.in/dp/B0BXJB7T4B?tag=k2collection0-21"
-                    target="_blank">
+                    target="_blank"
+                    rel="nofollow sponsored noopener">
+
                     Buy Now →
+
                 </a>
 
             </div>
@@ -693,7 +1085,10 @@ footer{
         </div>
 
 
-        <!-- NECKLACE 6 -->
+
+        <!-- =========================
+             NECKLACE 6
+        ========================= -->
 
         <div
             class="product-card"
@@ -703,7 +1098,8 @@ footer{
             <a
                 class="product-image-link"
                 href="https://www.amazon.in/dp/B0D6RVTXLP?tag=k2collection0-21"
-                target="_blank">
+                target="_blank"
+                rel="nofollow sponsored noopener">
 
                 <img
                     class="product-image"
@@ -711,6 +1107,7 @@ footer{
                     alt="Rubans Jewellery Set">
 
             </a>
+
 
             <div class="product-info">
 
@@ -729,8 +1126,11 @@ footer{
                 <a
                     class="buy-btn"
                     href="https://www.amazon.in/dp/B0D6RVTXLP?tag=k2collection0-21"
-                    target="_blank">
+                    target="_blank"
+                    rel="nofollow sponsored noopener">
+
                     Buy Now →
+
                 </a>
 
             </div>
@@ -738,7 +1138,10 @@ footer{
         </div>
 
 
-        <!-- NECKLACE 7 -->
+
+        <!-- =========================
+             NECKLACE 7
+        ========================= -->
 
         <div
             class="product-card"
@@ -748,7 +1151,8 @@ footer{
             <a
                 class="product-image-link"
                 href="https://www.amazon.in/dp/B084KK1XL6?tag=k2collection0-21"
-                target="_blank">
+                target="_blank"
+                rel="nofollow sponsored noopener">
 
                 <img
                     class="product-image"
@@ -756,6 +1160,7 @@ footer{
                     alt="Zaveri Pearls Jewellery">
 
             </a>
+
 
             <div class="product-info">
 
@@ -774,8 +1179,11 @@ footer{
                 <a
                     class="buy-btn"
                     href="https://www.amazon.in/dp/B084KK1XL6?tag=k2collection0-21"
-                    target="_blank">
+                    target="_blank"
+                    rel="nofollow sponsored noopener">
+
                     Buy Now →
+
                 </a>
 
             </div>
@@ -783,7 +1191,10 @@ footer{
         </div>
 
 
-        <!-- NECKLACE 8 -->
+
+        <!-- =========================
+             NECKLACE 8
+        ========================= -->
 
         <div
             class="product-card"
@@ -793,7 +1204,8 @@ footer{
             <a
                 class="product-image-link"
                 href="https://www.amazon.in/dp/B0H6KG2Q4X?tag=k2collection0-21"
-                target="_blank">
+                target="_blank"
+                rel="nofollow sponsored noopener">
 
                 <img
                     class="product-image"
@@ -801,6 +1213,7 @@ footer{
                     alt="Pearl Flower Jewellery">
 
             </a>
+
 
             <div class="product-info">
 
@@ -819,8 +1232,11 @@ footer{
                 <a
                     class="buy-btn"
                     href="https://www.amazon.in/dp/B0H6KG2Q4X?tag=k2collection0-21"
-                    target="_blank">
+                    target="_blank"
+                    rel="nofollow sponsored noopener">
+
                     Buy Now →
+
                 </a>
 
             </div>
@@ -828,7 +1244,10 @@ footer{
         </div>
 
 
-        <!-- NECKLACE 9 -->
+
+        <!-- =========================
+             NECKLACE 9
+        ========================= -->
 
         <div
             class="product-card"
@@ -838,7 +1257,8 @@ footer{
             <a
                 class="product-image-link"
                 href="https://www.amazon.in/dp/B0GVPNLFDC?tag=k2collection0-21"
-                target="_blank">
+                target="_blank"
+                rel="nofollow sponsored noopener">
 
                 <img
                     class="product-image"
@@ -846,6 +1266,7 @@ footer{
                     alt="Shidara Jewellery Set">
 
             </a>
+
 
             <div class="product-info">
 
@@ -864,8 +1285,11 @@ footer{
                 <a
                     class="buy-btn"
                     href="https://www.amazon.in/dp/B0GVPNLFDC?tag=k2collection0-21"
-                    target="_blank">
+                    target="_blank"
+                    rel="nofollow sponsored noopener">
+
                     Buy Now →
+
                 </a>
 
             </div>
@@ -873,7 +1297,10 @@ footer{
         </div>
 
 
-        <!-- NECKLACE 10 -->
+
+        <!-- =========================
+             NECKLACE 10
+        ========================= -->
 
         <div
             class="product-card"
@@ -883,7 +1310,8 @@ footer{
             <a
                 class="product-image-link"
                 href="https://www.amazon.in/dp/B0H6SSJ19R?tag=k2collection0-21"
-                target="_blank">
+                target="_blank"
+                rel="nofollow sponsored noopener">
 
                 <img
                     class="product-image"
@@ -891,6 +1319,7 @@ footer{
                     alt="Red Stone Floral Jewellery">
 
             </a>
+
 
             <div class="product-info">
 
@@ -909,8 +1338,11 @@ footer{
                 <a
                     class="buy-btn"
                     href="https://www.amazon.in/dp/B0H6SSJ19R?tag=k2collection0-21"
-                    target="_blank">
+                    target="_blank"
+                    rel="nofollow sponsored noopener">
+
                     Buy Now →
+
                 </a>
 
             </div>
@@ -918,7 +1350,10 @@ footer{
         </div>
 
 
-        <!-- BRACELET 1 -->
+
+        <!-- =========================
+             BRACELET 1
+        ========================= -->
 
         <div
             class="product-card"
@@ -928,7 +1363,8 @@ footer{
             <a
                 class="product-image-link"
                 href="https://www.amazon.in/dp/B0GL86G9FZ?tag=k2collection0-21"
-                target="_blank">
+                target="_blank"
+                rel="nofollow sponsored noopener">
 
                 <img
                     class="product-image"
@@ -936,6 +1372,7 @@ footer{
                     alt="Nilu's Collection Sparkling Bracelet">
 
             </a>
+
 
             <div class="product-info">
 
@@ -954,8 +1391,11 @@ footer{
                 <a
                     class="buy-btn"
                     href="https://www.amazon.in/dp/B0GL86G9FZ?tag=k2collection0-21"
-                    target="_blank">
+                    target="_blank"
+                    rel="nofollow sponsored noopener">
+
                     Buy Now →
+
                 </a>
 
             </div>
@@ -963,7 +1403,10 @@ footer{
         </div>
 
 
-        <!-- BRACELET 2 -->
+
+        <!-- =========================
+             BRACELET 2
+        ========================= -->
 
         <div
             class="product-card"
@@ -973,7 +1416,8 @@ footer{
             <a
                 class="product-image-link"
                 href="https://www.amazon.in/dp/B094H79X6L?tag=k2collection0-21"
-                target="_blank">
+                target="_blank"
+                rel="nofollow sponsored noopener">
 
                 <img
                     class="product-image"
@@ -981,6 +1425,7 @@ footer{
                     alt="MINUTIAE Infinity Crystal Bracelet">
 
             </a>
+
 
             <div class="product-info">
 
@@ -999,8 +1444,11 @@ footer{
                 <a
                     class="buy-btn"
                     href="https://www.amazon.in/dp/B094H79X6L?tag=k2collection0-21"
-                    target="_blank">
+                    target="_blank"
+                    rel="nofollow sponsored noopener">
+
                     Buy Now →
+
                 </a>
 
             </div>
@@ -1008,7 +1456,10 @@ footer{
         </div>
 
 
-        <!-- BRACELET 3 -->
+
+        <!-- =========================
+             BRACELET 3
+        ========================= -->
 
         <div
             class="product-card"
@@ -1018,7 +1469,8 @@ footer{
             <a
                 class="product-image-link"
                 href="https://www.amazon.in/dp/B0B2R5JWV1?tag=k2collection0-21"
-                target="_blank">
+                target="_blank"
+                rel="nofollow sponsored noopener">
 
                 <img
                     class="product-image"
@@ -1026,6 +1478,7 @@ footer{
                     alt="Nilu's Collection Heart Adjustable Bracelet">
 
             </a>
+
 
             <div class="product-info">
 
@@ -1044,8 +1497,11 @@ footer{
                 <a
                     class="buy-btn"
                     href="https://www.amazon.in/dp/B0B2R5JWV1?tag=k2collection0-21"
-                    target="_blank">
+                    target="_blank"
+                    rel="nofollow sponsored noopener">
+
                     Buy Now →
+
                 </a>
 
             </div>
@@ -1053,7 +1509,10 @@ footer{
         </div>
 
 
-        <!-- BRACELET 4 -->
+
+        <!-- =========================
+             BRACELET 4
+        ========================= -->
 
         <div
             class="product-card"
@@ -1063,7 +1522,8 @@ footer{
             <a
                 class="product-image-link"
                 href="https://www.amazon.in/dp/B07NPWRJVH?tag=k2collection0-21"
-                target="_blank">
+                target="_blank"
+                rel="nofollow sponsored noopener">
 
                 <img
                     class="product-image"
@@ -1071,6 +1531,7 @@ footer{
                     alt="Shining Diva Rose Gold Bangle Bracelet">
 
             </a>
+
 
             <div class="product-info">
 
@@ -1089,8 +1550,11 @@ footer{
                 <a
                     class="buy-btn"
                     href="https://www.amazon.in/dp/B07NPWRJVH?tag=k2collection0-21"
-                    target="_blank">
+                    target="_blank"
+                    rel="nofollow sponsored noopener">
+
                     Buy Now →
+
                 </a>
 
             </div>
@@ -1098,7 +1562,10 @@ footer{
         </div>
 
 
-        <!-- BRACELET 5 -->
+
+        <!-- =========================
+             BRACELET 5
+        ========================= -->
 
         <div
             class="product-card"
@@ -1108,7 +1575,8 @@ footer{
             <a
                 class="product-image-link"
                 href="https://www.amazon.in/dp/B0H271K2RC?tag=k2collection0-21"
-                target="_blank">
+                target="_blank"
+                rel="nofollow sponsored noopener">
 
                 <img
                     class="product-image"
@@ -1116,6 +1584,7 @@ footer{
                     alt="Versatile Vault Pearl Bracelet">
 
             </a>
+
 
             <div class="product-info">
 
@@ -1134,8 +1603,11 @@ footer{
                 <a
                     class="buy-btn"
                     href="https://www.amazon.in/dp/B0H271K2RC?tag=k2collection0-21"
-                    target="_blank">
+                    target="_blank"
+                    rel="nofollow sponsored noopener">
+
                     Buy Now →
+
                 </a>
 
             </div>
@@ -1143,7 +1615,10 @@ footer{
         </div>
 
 
-        <!-- RING 1 -->
+
+        <!-- =========================
+             RING 1
+        ========================= -->
 
         <div
             class="product-card"
@@ -1153,7 +1628,8 @@ footer{
             <a
                 class="product-image-link"
                 href="https://www.amazon.in/dp/B09QKTDS2N?tag=k2collection0-21"
-                target="_blank">
+                target="_blank"
+                rel="nofollow sponsored noopener">
 
                 <img
                     class="product-image"
@@ -1161,6 +1637,7 @@ footer{
                     alt="Shining Diva Rose Gold Solitaire Ring">
 
             </a>
+
 
             <div class="product-info">
 
@@ -1179,8 +1656,11 @@ footer{
                 <a
                     class="buy-btn"
                     href="https://www.amazon.in/dp/B09QKTDS2N?tag=k2collection0-21"
-                    target="_blank">
+                    target="_blank"
+                    rel="nofollow sponsored noopener">
+
                     Buy Now →
+
                 </a>
 
             </div>
@@ -1188,7 +1668,10 @@ footer{
         </div>
 
 
-        <!-- RING 2 -->
+
+        <!-- =========================
+             RING 2
+        ========================= -->
 
         <div
             class="product-card"
@@ -1198,7 +1681,8 @@ footer{
             <a
                 class="product-image-link"
                 href="https://www.amazon.in/dp/B09FKBV55G?tag=k2collection0-21"
-                target="_blank">
+                target="_blank"
+                rel="nofollow sponsored noopener">
 
                 <img
                     class="product-image"
@@ -1206,6 +1690,7 @@ footer{
                     alt="Zaveri Pearls Set of 3 Rings">
 
             </a>
+
 
             <div class="product-info">
 
@@ -1224,8 +1709,11 @@ footer{
                 <a
                     class="buy-btn"
                     href="https://www.amazon.in/dp/B09FKBV55G?tag=k2collection0-21"
-                    target="_blank">
+                    target="_blank"
+                    rel="nofollow sponsored noopener">
+
                     Buy Now →
+
                 </a>
 
             </div>
@@ -1233,7 +1721,10 @@ footer{
         </div>
 
 
-        <!-- RING 3 -->
+
+        <!-- =========================
+             RING 3
+        ========================= -->
 
         <div
             class="product-card"
@@ -1243,7 +1734,8 @@ footer{
             <a
                 class="product-image-link"
                 href="https://www.amazon.in/dp/B0DFH63SPY?tag=k2collection0-21"
-                target="_blank">
+                target="_blank"
+                rel="nofollow sponsored noopener">
 
                 <img
                     class="product-image"
@@ -1251,6 +1743,7 @@ footer{
                     alt="Natural Purple Amethyst Adjustable Ring">
 
             </a>
+
 
             <div class="product-info">
 
@@ -1269,8 +1762,11 @@ footer{
                 <a
                     class="buy-btn"
                     href="https://www.amazon.in/dp/B0DFH63SPY?tag=k2collection0-21"
-                    target="_blank">
+                    target="_blank"
+                    rel="nofollow sponsored noopener">
+
                     Buy Now →
+
                 </a>
 
             </div>
@@ -1278,7 +1774,10 @@ footer{
         </div>
 
 
-        <!-- RING 4 -->
+
+        <!-- =========================
+             RING 4
+        ========================= -->
 
         <div
             class="product-card"
@@ -1288,7 +1787,8 @@ footer{
             <a
                 class="product-image-link"
                 href="https://www.amazon.in/dp/B0DCJ34XFS?tag=k2collection0-21"
-                target="_blank">
+                target="_blank"
+                rel="nofollow sponsored noopener">
 
                 <img
                     class="product-image"
@@ -1296,6 +1796,7 @@ footer{
                     alt="KONPJE Sunflower Adjustable Ring">
 
             </a>
+
 
             <div class="product-info">
 
@@ -1314,8 +1815,11 @@ footer{
                 <a
                     class="buy-btn"
                     href="https://www.amazon.in/dp/B0DCJ34XFS?tag=k2collection0-21"
-                    target="_blank">
+                    target="_blank"
+                    rel="nofollow sponsored noopener">
+
                     Buy Now →
+
                 </a>
 
             </div>
@@ -1323,7 +1827,10 @@ footer{
         </div>
 
 
-        <!-- RING 5 -->
+
+        <!-- =========================
+             RING 5
+        ========================= -->
 
         <div
             class="product-card"
@@ -1333,7 +1840,8 @@ footer{
             <a
                 class="product-image-link"
                 href="https://www.amazon.in/dp/B0D1QVVPJW?tag=k2collection0-21"
-                target="_blank">
+                target="_blank"
+                rel="nofollow sponsored noopener">
 
                 <img
                     class="product-image"
@@ -1341,6 +1849,7 @@ footer{
                     alt="Nilu's Collection Floral Sparkling Ring">
 
             </a>
+
 
             <div class="product-info">
 
@@ -1359,8 +1868,11 @@ footer{
                 <a
                     class="buy-btn"
                     href="https://www.amazon.in/dp/B0D1QVVPJW?tag=k2collection0-21"
-                    target="_blank">
+                    target="_blank"
+                    rel="nofollow sponsored noopener">
+
                     Buy Now →
+
                 </a>
 
             </div>
@@ -1382,36 +1894,52 @@ footer{
 </main>
 
 
+
+<!-- =========================
+     FOOTER
+========================= -->
+
 <footer>
 
-    © 2026 K2 Collection • Elegant Jewellery • Beautiful Choices
+    <div class="footer-logo">
+        K2 COLLECTION
+    </div>
+
+    <div>
+        Elegant Jewellery • Timeless Beauty
+    </div>
+
+    <div style="margin-top:7px;">
+        © 2026 K2 Collection. All rights reserved.
+    </div>
 
 </footer>
 
 
+
 <script>
 
-/* ================================
+/* =========================
    SUPABASE
-================================ */
+========================= */
 
 const SUPABASE_URL =
-    "https://mixhdtkzrcjtcfefdbyf.supabase.co";
+"https://mixhdtkzrcjtcfefdbyf.supabase.co";
 
 const SUPABASE_KEY =
-    "sb_publishable_l_ViECvF-pUEp0Bzf_0aHA_09R-QHIo";
+"sb_publishable_l_ViECvF-pUEp0Bzf_0aHA_09R-QHIo";
 
 
-/* ================================
+/* =========================
    VARIABLES
-================================ */
+========================= */
 
 let currentCategory = "All";
 
 
-/* ================================
+/* =========================
    ESCAPE HTML
-================================ */
+========================= */
 
 function escapeHtml(value){
 
@@ -1425,30 +1953,294 @@ function escapeHtml(value){
 }
 
 
-/* ================================
-   LOAD SUPABASE PRODUCTS
-================================ */
+/* =========================
+   CORRECT CATEGORY
+========================= */
+
+function getCorrectCategory(product){
+
+    const savedCategory =
+        product.category ||
+        product.Category ||
+        "";
+
+
+    if(savedCategory){
+
+        const category =
+            String(savedCategory)
+            .toLowerCase();
+
+
+        if(category.includes("ring")){
+            return "Rings";
+        }
+
+
+        if(category.includes("bracelet")){
+            return "Bracelets";
+        }
+
+
+        if(category.includes("necklace")){
+            return "Necklaces";
+        }
+
+    }
+
+
+    const text = (
+
+        (product.name || "") +
+        " " +
+        (product.title || "") +
+        " " +
+        (product.description || "")
+
+    ).toLowerCase();
+
+
+    if(text.includes("ring")){
+        return "Rings";
+    }
+
+
+    if(
+        text.includes("bracelet") ||
+        text.includes("bangle")
+    ){
+
+        return "Bracelets";
+
+    }
+
+
+    return "Necklaces";
+
+}
+
+
+/* =========================
+   PRODUCT IMAGE
+========================= */
+
+function getProductImage(product){
+
+    return (
+
+        product.image ||
+        product.image_url ||
+        product.imageUrl ||
+        product.photo ||
+        product.photo_url ||
+        ""
+
+    );
+
+}
+
+
+/* =========================
+   PRODUCT LINK
+========================= */
+
+function getProductLink(product){
+
+    return (
+
+        product.amazon_link ||
+        product.amazonLink ||
+        product.affiliate_link ||
+        product.affiliateLink ||
+        product.link ||
+        "#"
+
+    );
+
+}
+
+
+/* =========================
+   PRODUCT NAME
+========================= */
+
+function getProductName(product){
+
+    return (
+
+        product.name ||
+        product.Name ||
+        product.title ||
+        product.product_name ||
+        "Beautiful Jewellery"
+
+    );
+
+}
+
+
+/* =========================
+   PRODUCT DESCRIPTION
+========================= */
+
+function getProductDescription(product){
+
+    return (
+
+        product.description ||
+        product.Description ||
+        "Beautiful K2 Collection jewellery selected for an elegant look."
+
+    );
+
+}
+
+
+/* =========================
+   ADD SUPABASE CARD
+========================= */
+
+function addSupabaseProduct(product){
+
+    const grid =
+        document.getElementById(
+            "productGrid"
+        );
+
+
+    const name =
+        getProductName(product);
+
+
+    const category =
+        getCorrectCategory(product);
+
+
+    const image =
+        getProductImage(product);
+
+
+    const link =
+        getProductLink(product);
+
+
+    const description =
+        getProductDescription(product);
+
+
+    const card =
+        document.createElement("div");
+
+
+    card.className =
+        "product-card";
+
+
+    card.dataset.category =
+        category;
+
+
+    card.dataset.name =
+        name;
+
+
+    card.innerHTML = `
+
+        <a
+            class="product-image-link"
+            href="${escapeHtml(link)}"
+            target="_blank"
+            rel="nofollow sponsored noopener">
+
+            <img
+                class="product-image"
+                src="${escapeHtml(image)}"
+                alt="${escapeHtml(name)}"
+                loading="lazy"
+                onerror="this.src='https://via.placeholder.com/600x600?text=K2+Collection'">
+
+        </a>
+
+
+        <div class="product-info">
+
+            <div class="category">
+                ${escapeHtml(category)}
+            </div>
+
+
+            <div class="product-name">
+                ${escapeHtml(name)}
+            </div>
+
+
+            <div class="description">
+                ${escapeHtml(description)}
+            </div>
+
+
+            <div class="price">
+                ${escapeHtml(product.price || "")}
+            </div>
+
+
+            <a
+                class="buy-btn"
+                href="${escapeHtml(link)}"
+                target="_blank"
+                rel="nofollow sponsored noopener">
+
+                Buy Now →
+
+            </a>
+
+        </div>
+
+    `;
+
+
+    grid.appendChild(card);
+
+}
+
+
+/* =========================
+   LOAD SUPABASE
+========================= */
 
 async function loadSupabaseProducts(){
 
     const loading =
-        document.getElementById("loading");
+        document.getElementById(
+            "loading"
+        );
+
 
     try{
 
         const response =
             await fetch(
+
                 SUPABASE_URL +
                 "/rest/v1/products?select=*",
+
                 {
+
                     method:"GET",
 
                     headers:{
-                        "apikey":SUPABASE_KEY,
+
+                        "apikey":
+                            SUPABASE_KEY,
+
                         "Authorization":
-                            "Bearer " + SUPABASE_KEY
+                            "Bearer " +
+                            SUPABASE_KEY
+
                     }
+
                 }
+
             );
 
 
@@ -1466,96 +2258,10 @@ async function loadSupabaseProducts(){
             await response.json();
 
 
-        const grid =
-            document.getElementById("productGrid");
-
-
-        products.forEach(product => {
-
-            const name =
-                product.Name ||
-                product.name ||
-                product.title ||
-                "K2 Collection Jewellery";
-
-
-            const category =
-                product.category ||
-                "Jewellery";
-
-
-            const image =
-                product.image_url ||
-                "";
-
-
-            const affiliate =
-                product.affiliate_link ||
-                "#";
-
-
-            const card =
-                document.createElement("div");
-
-
-            card.className =
-                "product-card";
-
-
-            card.dataset.category =
-                category;
-
-
-            card.dataset.name =
-                name;
-
-
-            card.innerHTML = `
-
-                <a
-                    class="product-image-link"
-                    href="${escapeHtml(affiliate)}"
-                    target="_blank">
-
-                    <img
-                        class="product-image"
-                        src="${escapeHtml(image)}"
-                        alt="${escapeHtml(name)}">
-
-                </a>
-
-                <div class="product-info">
-
-                    <div class="category">
-                        ${escapeHtml(category)}
-                    </div>
-
-                    <div class="product-name">
-                        ${escapeHtml(name)}
-                    </div>
-
-                    <div class="description">
-                        Beautiful K2 Collection jewellery
-                        selected for an elegant look.
-                    </div>
-
-                    <a
-                        class="buy-btn"
-                        href="${escapeHtml(affiliate)}"
-                        target="_blank">
-
-                        Buy Now →
-
-                    </a>
-
-                </div>
-
-            `;
-
-
-            grid.appendChild(card);
-
-        });
+        products.forEach(
+            product =>
+            addSupabaseProduct(product)
+        );
 
 
         loading.style.display =
@@ -1566,12 +2272,15 @@ async function loadSupabaseProducts(){
 
     }
 
+
     catch(error){
 
         console.error(error);
 
-        loading.textContent =
-            "Products are loading from K2 Collection.";
+
+        loading.style.display =
+            "none";
+
 
         applyFilters();
 
@@ -1580,28 +2289,37 @@ async function loadSupabaseProducts(){
 }
 
 
-/* ================================
-   FILTER PRODUCTS
-================================ */
+/* =========================
+   FILTER
+========================= */
 
-function filterProducts(category,button){
+function filterProducts(
+    category,
+    button
+){
 
     currentCategory =
         category;
 
 
     document
-        .querySelectorAll(".filter-btn")
+        .querySelectorAll(
+            ".filter-btn"
+        )
         .forEach(btn => {
 
-            btn.classList.remove("active");
+            btn.classList.remove(
+                "active"
+            );
 
         });
 
 
     if(button){
 
-        button.classList.add("active");
+        button.classList.add(
+            "active"
+        );
 
     }
 
@@ -1611,9 +2329,9 @@ function filterProducts(category,button){
 }
 
 
-/* ================================
+/* =========================
    SEARCH
-================================ */
+========================= */
 
 function searchProducts(){
 
@@ -1622,18 +2340,21 @@ function searchProducts(){
 }
 
 
-/* ================================
+/* =========================
    APPLY FILTERS
-================================ */
+========================= */
 
 function applyFilters(){
 
     const searchInput =
-        document.getElementById("searchInput");
+        document.getElementById(
+            "searchInput"
+        );
 
 
     const search =
-        searchInput.value
+        searchInput
+        .value
         .trim()
         .toLowerCase();
 
@@ -1664,14 +2385,19 @@ function applyFilters(){
 
 
         const matchesCategory =
+
             currentCategory === "All" ||
+
             category ===
             currentCategory.toLowerCase();
 
 
         const matchesSearch =
+
             !search ||
+
             name.includes(search) ||
+
             category.includes(search);
 
 
@@ -1686,6 +2412,7 @@ function applyFilters(){
             visibleCount++;
 
         }
+
         else{
 
             card.style.display =
@@ -1708,6 +2435,7 @@ function applyFilters(){
             "block";
 
     }
+
     else{
 
         noResults.style.display =
@@ -1718,9 +2446,9 @@ function applyFilters(){
 }
 
 
-/* ================================
+/* =========================
    ADMIN MODE
-================================ */
+========================= */
 
 const urlParams =
     new URLSearchParams(
@@ -1739,9 +2467,9 @@ if(
 }
 
 
-/* ================================
+/* =========================
    START
-================================ */
+========================= */
 
 document.addEventListener(
     "DOMContentLoaded",
@@ -1756,5 +2484,8 @@ document.addEventListener(
 
 </script>
 
+
 </body>
+
 </html>
+```
