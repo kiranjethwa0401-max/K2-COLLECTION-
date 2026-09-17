@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 
@@ -923,7 +924,7 @@ td{
 
 /* =====================================
    K2 COLLECTION DASHBOARD
-   SUPABASE CONNECTION
+   CORRECT PRODUCT COUNT
 ===================================== */
 
 const SUPABASE_URL =
@@ -931,6 +932,39 @@ const SUPABASE_URL =
 
 const SUPABASE_KEY =
     "sb_publishable_l_ViECvF-pUEp0Bzf_0aHA_09R-QHIo";
+
+
+/* =====================================
+   EXISTING 20 K2 PRODUCTS
+===================================== */
+
+const staticProducts = [
+
+    {name:"Pearl Double Layered Jewellery Set", category:"Necklaces", asin:"B0H5FS8DJ6"},
+    {name:"Shining Diva Fashion Jewellery Set", category:"Necklaces", asin:"B0CV4XL72Z"},
+    {name:"Double Strand Pearl Necklace Set", category:"Necklaces", asin:"B0H7WLPZ1L"},
+    {name:"Gold Plated Pearl Beaded Jewellery Set", category:"Necklaces", asin:"B0CJ74NX6Z"},
+    {name:"Pearl Necklace, Earrings & Bracelet Set", category:"Necklaces", asin:"B0BXJB7T4B"},
+
+    {name:"Rubans Jewellery Set", category:"Necklaces", asin:"B0D6RVTXLP"},
+    {name:"Zaveri Pearls Jewellery", category:"Necklaces", asin:"B084KK1XL6"},
+    {name:"Pearl Flower Jewellery", category:"Necklaces", asin:"B0H6KG2Q4X"},
+    {name:"Shidara Jewellery Set", category:"Necklaces", asin:"B0GVPNLFDC"},
+    {name:"Red Stone Floral Jewellery", category:"Necklaces", asin:"B0H6SSJ19R"},
+
+    {name:"Nilu's Collection Sparkling Bracelet", category:"Bracelets", asin:"B0GL86G9FZ"},
+    {name:"MINUTIAE Infinity Crystal Bracelet", category:"Bracelets", asin:"B094H79X6L"},
+    {name:"Nilu's Collection Heart Adjustable Bracelet", category:"Bracelets", asin:"B0B2R5JWV1"},
+    {name:"Shining Diva Rose Gold Bangle Bracelet", category:"Bracelets", asin:"B07NPWRJVH"},
+    {name:"Versatile Vault Pearl Bracelet", category:"Bracelets", asin:"B0H271K2RC"},
+
+    {name:"Shining Diva Rose Gold Solitaire Ring", category:"Rings", asin:"B09QKTDS2N"},
+    {name:"Zaveri Pearls Set of 3 Rings", category:"Rings", asin:"B09FKBV55G"},
+    {name:"Natural Purple Amethyst Adjustable Ring", category:"Rings", asin:"B0DFH63SPY"},
+    {name:"KONPJE Sunflower Adjustable Ring", category:"Rings", asin:"B0DCJ34XFS"},
+    {name:"Nilu's Collection Floral Sparkling Ring", category:"Rings", asin:"B0D1QVVPJW"}
+
+];
 
 
 /* =====================================
@@ -942,6 +976,8 @@ function getCategory(product){
     const savedCategory =
         product.category ||
         product.Category ||
+        product.product_category ||
+        product.productCategory ||
         "";
 
     if(savedCategory){
@@ -953,7 +989,8 @@ function getCategory(product){
             return "Rings";
         }
 
-        if(category.includes("bracelet")){
+        if(category.includes("bracelet") ||
+           category.includes("bangle")){
             return "Bracelets";
         }
 
@@ -965,11 +1002,15 @@ function getCategory(product){
 
 
     const text = (
+
         (product.name || "") +
         " " +
         (product.title || "") +
         " " +
+        (product.product_name || "") +
+        " " +
         (product.description || "")
+
     ).toLowerCase();
 
 
@@ -986,6 +1027,11 @@ function getCategory(product){
     }
 
 
+    if(text.includes("necklace")){
+        return "Necklaces";
+    }
+
+
     return "Necklaces";
 
 }
@@ -998,12 +1044,15 @@ function getCategory(product){
 function getImage(product){
 
     return (
+
         product.image ||
         product.image_url ||
         product.imageUrl ||
         product.photo ||
         product.photo_url ||
+        product.img ||
         ""
+
     );
 
 }
@@ -1016,74 +1065,217 @@ function getImage(product){
 function getName(product){
 
     return (
+
         product.name ||
         product.Name ||
         product.title ||
         product.product_name ||
+        product.productName ||
         "Unnamed Product"
+
     );
 
 }
 
 
 /* =====================================
-   LOAD SUPABASE PRODUCTS
+   AMAZON / AFFILIATE LINK CHECK
 ===================================== */
 
-async function loadSupabaseProducts(){
+function hasAffiliateLink(product){
 
-    try{
+    return Boolean(
 
-        const response =
-            await fetch(
-                SUPABASE_URL +
-                "/rest/v1/products?select=*",
-                {
-                    method:"GET",
+        product.amazon_link ||
+        product.amazonLink ||
+        product.affiliate_link ||
+        product.affiliateLink ||
+        product.amazon_url ||
+        product.amazonUrl ||
+        product.link ||
+        product.url
 
-                    headers:{
-                        "apikey":SUPABASE_KEY,
-                        "Authorization":
-                            "Bearer " +
-                            SUPABASE_KEY
+    );
+
+}
+
+
+/* =====================================
+   NORMALIZE PRODUCT
+===================================== */
+
+function normalizeProduct(product){
+
+    return {
+
+        ...product,
+
+        name:getName(product),
+
+        category:getCategory(product),
+
+        image:getImage(product)
+
+    };
+
+}
+
+
+/* =====================================
+   UNIQUE PRODUCT KEY
+===================================== */
+
+function productKey(product){
+
+    const asin =
+
+        product.asin ||
+        product.ASIN ||
+        product.product_asin ||
+        product.productAsin ||
+        "";
+
+    if(asin){
+
+        return "asin:" +
+            String(asin)
+            .trim()
+            .toLowerCase();
+
+    }
+
+
+    return "name:" +
+
+        getName(product)
+        .trim()
+        .toLowerCase();
+
+}
+
+
+/* =====================================
+   MERGE WITHOUT DUPLICATES
+===================================== */
+
+function mergeProducts(...lists){
+
+    const map = new Map();
+
+
+    lists.forEach(list => {
+
+        if(!Array.isArray(list)){
+            return;
+        }
+
+
+        list.forEach(product => {
+
+            if(!product){
+                return;
+            }
+
+
+            const normalized =
+                normalizeProduct(product);
+
+
+            const key =
+                productKey(normalized);
+
+
+            if(!map.has(key)){
+
+                map.set(
+                    key,
+                    normalized
+                );
+
+            }
+
+            else{
+
+                const existing =
+                    map.get(key);
+
+
+                map.set(
+
+                    key,
+
+                    {
+
+                        ...existing,
+                        ...normalized
+
                     }
-                }
-            );
+
+                );
+
+            }
+
+        });
+
+    });
 
 
-        if(!response.ok){
+    return Array.from(map.values());
 
-            throw new Error(
-                "Supabase error: " +
-                response.status
+}
+
+
+/* =====================================
+   LOAD LOCAL STORAGE PRODUCTS
+===================================== */
+
+function getLocalProducts(){
+
+    const possibleKeys = [
+
+        "k2Products",
+        "products",
+        "k2ProductsData"
+
+    ];
+
+
+    let result = [];
+
+
+    possibleKeys.forEach(key => {
+
+        try{
+
+            const saved =
+                JSON.parse(
+                    localStorage.getItem(key)
+                );
+
+
+            if(Array.isArray(saved)){
+
+                result = [
+                    ...result,
+                    ...saved
+                ];
+
+            }
+
+        }
+        catch(error){
+
+            console.log(
+                "Local storage read error:",
+                key
             );
 
         }
 
-
-        const products =
-            await response.json();
+    });
 
 
-        updateDashboard(
-            Array.isArray(products)
-                ? products
-                : []
-        );
-
-
-    }
-    catch(error){
-
-        console.error(
-            "Supabase connection error:",
-            error
-        );
-
-
-        updateDashboard([]);
-
-    }
+    return result;
 
 }
 
@@ -1092,24 +1284,30 @@ async function loadSupabaseProducts(){
    UPDATE DASHBOARD
 ===================================== */
 
-function updateDashboard(products){
+function updateDashboard(
 
-    const databaseProducts =
-        Array.isArray(products)
-            ? products
-            : [];
+    supabaseProducts
+
+){
+
+    const localProducts =
+        getLocalProducts();
 
 
-    /*
-       IMPORTANT:
-       Supabase is the main product source.
+    const allProducts =
+        mergeProducts(
 
-       Static products are NOT added here.
-       This prevents double counting.
-    */
+            staticProducts,
+
+            supabaseProducts,
+
+            localProducts
+
+        );
+
 
     const totalProducts =
-        databaseProducts.length;
+        allProducts.length;
 
 
     /* TOTAL PRODUCTS */
@@ -1122,18 +1320,22 @@ function updateDashboard(products){
 
     /* AFFILIATE PRODUCTS */
 
-    const affiliateCount =
-        databaseProducts.filter(product => {
+    let affiliateCount = 0;
 
-            return Boolean(
-                product.amazon_link ||
-                product.amazonLink ||
-                product.affiliate_link ||
-                product.affiliateLink ||
-                product.link
-            );
 
-        }).length;
+    allProducts.forEach(product => {
+
+        if(
+            hasAffiliateLink(product) ||
+            product.asin ||
+            product.ASIN
+        ){
+
+            affiliateCount++;
+
+        }
+
+    });
 
 
     document.getElementById(
@@ -1149,22 +1351,28 @@ function updateDashboard(products){
     let bracelets = 0;
 
 
-    databaseProducts.forEach(product => {
+    allProducts.forEach(product => {
 
         const category =
             getCategory(product);
 
 
         if(category === "Rings"){
+
             rings++;
+
         }
 
         else if(category === "Bracelets"){
+
             bracelets++;
+
         }
 
         else if(category === "Necklaces"){
+
             necklaces++;
+
         }
 
     });
@@ -1193,11 +1401,16 @@ function updateDashboard(products){
     function percentage(count){
 
         if(totalProducts === 0){
+
             return 0;
+
         }
 
+
         return Math.round(
+
             (count / totalProducts) * 100
+
         );
 
     }
@@ -1221,9 +1434,7 @@ function updateDashboard(products){
         percentage(bracelets) + "%";
 
 
-    /* =================================
-       RECENT PRODUCTS
-    ================================= */
+    /* RECENT PRODUCTS */
 
     const recentBox =
         document.getElementById(
@@ -1235,7 +1446,7 @@ function updateDashboard(products){
 
 
     const recentProducts =
-        [...databaseProducts]
+        [...supabaseProducts]
         .reverse()
         .slice(0,5);
 
@@ -1246,12 +1457,14 @@ function updateDashboard(products){
 
             <tr>
 
-                <td colspan="3"
+                <td
+                    colspan="3"
                     style="
                     text-align:center;
                     color:#888;
                     padding:25px;
-                    ">
+                    "
+                >
 
                     No products found.
 
@@ -1288,12 +1501,16 @@ function updateDashboard(products){
 
                     ${
                         image
+
                         ?
+
                         `<img
                             src="${image}"
                             alt=""
                         >`
+
                         :
+
                         `<div
                             style="
                             width:42px;
@@ -1317,9 +1534,11 @@ function updateDashboard(products){
 
             </td>
 
+
             <td>
                 ${category}
             </td>
+
 
             <td>
 
@@ -1336,9 +1555,7 @@ function updateDashboard(products){
     });
 
 
-    /* =================================
-       FEATURED PRODUCTS
-    ================================= */
+    /* FEATURED PRODUCTS */
 
     let featured = [];
 
@@ -1347,9 +1564,11 @@ function updateDashboard(products){
 
         featured =
             JSON.parse(
+
                 localStorage.getItem(
                     "k2Featured"
                 )
+
             ) || [];
 
     }
@@ -1369,14 +1588,90 @@ function updateDashboard(products){
 
 
 /* =====================================
-   START DASHBOARD
+   LOAD SUPABASE
 ===================================== */
+
+async function loadSupabaseProducts(){
+
+    try{
+
+        const response =
+            await fetch(
+
+                SUPABASE_URL +
+                "/rest/v1/products?select=*",
+
+                {
+
+                    method:"GET",
+
+                    headers:{
+
+                        "apikey":
+                            SUPABASE_KEY,
+
+                        "Authorization":
+                            "Bearer " +
+                            SUPABASE_KEY
+
+                    }
+
+                }
+
+            );
+
+
+        if(!response.ok){
+
+            throw new Error(
+
+                "Supabase error: " +
+                response.status
+
+            );
+
+        }
+
+
+        const products =
+            await response.json();
+
+
+        updateDashboard(
+
+            Array.isArray(products)
+                ? products
+                : []
+
+        );
+
+    }
+
+
+    catch(error){
+
+        console.error(
+
+            "Supabase connection error:",
+            error
+
+        );
+
+
+        updateDashboard([]);
+
+    }
+
+}
+
+
+/* START DASHBOARD */
 
 loadSupabaseProducts();
 
 </script>
 
-
 </body>
 
 </html>
+```
