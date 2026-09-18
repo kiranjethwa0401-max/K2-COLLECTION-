@@ -29,6 +29,8 @@ body{
     color:#33291f;
 }
 
+/* HEADER */
+
 header{
     background:#fffdf9;
     padding:20px;
@@ -52,6 +54,8 @@ header{
     color:#776755;
 }
 
+/* PAGE TITLE */
+
 .page-title{
     text-align:center;
     padding:50px 20px 30px;
@@ -69,6 +73,8 @@ header{
     color:#756758;
     font-size:14px;
 }
+
+/* SEARCH */
 
 .search-area{
     max-width:650px;
@@ -96,6 +102,8 @@ header{
     border-color:#b08d57;
     box-shadow:0 0 0 3px rgba(176,141,87,.10);
 }
+
+/* FILTERS */
 
 .filters{
     display:flex;
@@ -125,6 +133,8 @@ header{
     border-color:#b08d57;
 }
 
+/* PRODUCTS */
+
 .products-container{
     max-width:1200px;
     margin:0 auto;
@@ -136,6 +146,8 @@ header{
     grid-template-columns:repeat(4,1fr);
     gap:25px;
 }
+
+/* PRODUCT CARD */
 
 .product-card{
     background:#fffdf9;
@@ -152,6 +164,8 @@ header{
     box-shadow:0 14px 30px rgba(65,48,30,.11);
 }
 
+/* IMAGE */
+
 .product-image-link{
     display:block;
     text-decoration:none;
@@ -160,10 +174,13 @@ header{
 .product-image{
     width:100%;
     height:270px;
-    object-fit:cover;
+    object-fit:contain;
     display:block;
     background:#eee5d8;
+    padding:10px;
 }
+
+/* PRODUCT INFO */
 
 .product-info{
     padding:19px;
@@ -194,9 +211,13 @@ header{
     margin-bottom:16px;
 }
 
+/* PRICE HIDDEN */
+
 .price{
     display:none;
 }
+
+/* AMAZON BUTTON */
 
 .buy-btn{
     display:block;
@@ -218,39 +239,40 @@ header{
     transform:translateY(-1px);
 }
 
-.delete-btn{
-    display:none;
-    position:absolute;
-    top:10px;
-    right:10px;
-    border:none;
-    background:#9b3d3d;
-    color:white;
-    padding:7px 10px;
-    border-radius:6px;
-    cursor:pointer;
-    font-size:11px;
-}
-
-.admin-mode .delete-btn{
-    display:block;
-}
+/* LOADING */
 
 .loading{
     grid-column:1/-1;
     text-align:center;
-    padding:40px;
+    padding:50px;
     color:#806f5d;
     font-size:14px;
 }
 
+/* NO RESULTS */
+
 .no-results{
     display:none;
+    grid-column:1/-1;
     text-align:center;
     padding:55px 20px;
     color:#806f5d;
     font-size:15px;
 }
+
+/* ERROR */
+
+.error-message{
+    grid-column:1/-1;
+    text-align:center;
+    padding:50px 20px;
+    color:#9b3d3d;
+    background:#fffdf9;
+    border:1px solid #ead8d0;
+    border-radius:16px;
+}
+
+/* FOOTER */
 
 footer{
     background:#292118;
@@ -268,6 +290,8 @@ footer{
     margin-bottom:8px;
 }
 
+/* TABLET */
+
 @media(max-width:1000px){
 
     .product-grid{
@@ -275,6 +299,8 @@ footer{
     }
 
 }
+
+/* MOBILE */
 
 @media(max-width:700px){
 
@@ -339,7 +365,10 @@ footer{
 
 </head>
 
+
 <body>
+
+<!-- HEADER -->
 
 <header>
 
@@ -353,6 +382,8 @@ footer{
 
 </header>
 
+
+<!-- PAGE TITLE -->
 
 <section class="page-title">
 
@@ -368,6 +399,8 @@ footer{
 </section>
 
 
+<!-- SEARCH -->
+
 <div class="search-area">
 
     <input
@@ -375,178 +408,673 @@ footer{
         id="searchInput"
         class="search-box"
         placeholder="Search jewellery..."
-        oninput="searchProducts()"
     >
 
 </div>
 
 
+<!-- FILTERS -->
+
 <div class="filters">
 
     <button
         class="filter-btn active"
-        onclick="filterProducts('All',this)">
+        data-category="All">
         All
     </button>
 
     <button
         class="filter-btn"
-        onclick="filterProducts('Rings',this)">
+        data-category="Rings">
         Rings
     </button>
 
     <button
         class="filter-btn"
-        onclick="filterProducts('Bracelets',this)">
+        data-category="Bracelets">
         Bracelets
     </button>
 
     <button
         class="filter-btn"
-        onclick="filterProducts('Necklaces',this)">
+        data-category="Necklaces">
         Necklaces
     </button>
 
 </div>
 
 
-<main class="products-container">
+<!-- PRODUCTS -->
 
-    <div
-        id="loading"
-        class="loading">
-        Loading products...
-    </div>
+<main class="products-container">
 
     <div
         id="productGrid"
         class="product-grid">
 
-        <!-- NECKLACES -->
+        <div
+            id="loading"
+            class="loading">
 
-        <div class="product-card"
-             data-category="Necklaces"
-             data-name="Pearl Double Layered Jewellery Set">
-
-            <a class="product-image-link"
-               href="https://www.amazon.in/dp/B0H5FS8DJ6?tag=k2collection0-21"
-               target="_blank"
-               rel="nofollow sponsored noopener">
-
-                <img class="product-image"
-                     src="necklace-1.jpg"
-                     alt="Pearl Double Layered Jewellery Set">
-
-            </a>
-
-            <div class="product-info">
-
-                <div class="category">
-                    Necklaces
-                </div>
-
-                <div class="product-name">
-                    Pearl Double Layered Jewellery Set
-                </div>
-
-                <div class="description">
-                    Elegant pearl jewellery set for a beautiful and graceful look.
-                </div>
-
-                <a class="buy-btn"
-                   href="https://www.amazon.in/dp/B0H5FS8DJ6?tag=k2collection0-21"
-                   target="_blank"
-                   rel="nofollow sponsored noopener">
-                    Buy Now →
-                </a>
-
-            </div>
+            Loading K2 Collection products...
 
         </div>
 
+    </div>
 
-        <div class="product-card"
-             data-category="Necklaces"
-             data-name="Shining Diva Fashion Jewellery Set">
+</main>
 
-            <a class="product-image-link"
-               href="https://www.amazon.in/dp/B0CV4XL72Z?tag=k2collection0-21"
-               target="_blank"
-               rel="nofollow sponsored noopener">
 
-                <img class="product-image"
-                     src="necklace-2.jpg"
-                     alt="Shining Diva Fashion Jewellery Set">
+<!-- FOOTER -->
 
-            </a>
+<footer>
 
-            <div class="product-info">
+    <div class="footer-logo">
+        K2 COLLECTION
+    </div>
 
-                <div class="category">
-                    Necklaces
-                </div>
+    Elegant Jewellery • Timeless Beauty
 
-                <div class="product-name">
-                    Shining Diva Fashion Jewellery Set
-                </div>
+</footer>
 
-                <div class="description">
-                    Stylish fashion jewellery designed for special occasions.
-                </div>
 
-                <a class="buy-btn"
-                   href="https://www.amazon.in/dp/B0CV4XL72Z?tag=k2collection0-21"
-                   target="_blank"
-                   rel="nofollow sponsored noopener">
-                    Buy Now →
-                </a>
+<script>
 
-            </div>
+/* =====================================================
+   K2 COLLECTION
+   SUPABASE ALL PRODUCTS
+===================================================== */
+
+
+/* =====================================================
+   SUPABASE SETTINGS
+===================================================== */
+
+const supabaseUrl =
+"https://mixhdtkzrcjtcfefdbyf.supabase.co";
+
+const supabaseKey =
+"sb_publishable_l_ViECvF-pUEp0Bzf_0aHA_09R-QHIo";
+
+const affiliateTag =
+"k2collection0-21";
+
+
+/* =====================================================
+   VARIABLES
+===================================================== */
+
+let allProducts = [];
+
+let selectedCategory = "All";
+
+
+/* =====================================================
+   ELEMENTS
+===================================================== */
+
+const productGrid =
+document.getElementById("productGrid");
+
+const searchInput =
+document.getElementById("searchInput");
+
+const filterButtons =
+document.querySelectorAll(".filter-btn");
+
+
+/* =====================================================
+   GET PRODUCT NAME
+===================================================== */
+
+function getProductName(product){
+
+    return (
+        product.Name ||
+        product.name ||
+        product.product_name ||
+        product.productName ||
+        "K2 Jewellery"
+    );
+
+}
+
+
+/* =====================================================
+   GET CATEGORY
+===================================================== */
+
+function getProductCategory(product){
+
+    const category =
+        String(
+            product.category ||
+            ""
+        ).trim();
+
+    const lowerCategory =
+        category.toLowerCase();
+
+
+    if(lowerCategory.includes("ring")){
+
+        return "Rings";
+
+    }
+
+
+    if(lowerCategory.includes("bracelet") ||
+       lowerCategory.includes("bangle")){
+
+        return "Bracelets";
+
+    }
+
+
+    if(lowerCategory.includes("necklace")){
+
+        return "Necklaces";
+
+    }
+
+
+    return category || "Jewellery";
+
+}
+
+
+/* =====================================================
+   GET DESCRIPTION
+===================================================== */
+
+function getProductDescription(product){
+
+    return (
+        product.description ||
+        "Beautiful jewellery selected by K2 Collection."
+    );
+
+}
+
+
+/* =====================================================
+   GET AMAZON LINK
+===================================================== */
+
+function getAmazonLink(product){
+
+    if(product.affiliate_link){
+
+        return product.affiliate_link;
+
+    }
+
+
+    if(product.affiliateLink){
+
+        return product.affiliateLink;
+
+    }
+
+
+    if(product.amazon_link){
+
+        return product.amazon_link;
+
+    }
+
+
+    if(product.amazonLink){
+
+        return product.amazonLink;
+
+    }
+
+
+    return "#";
+
+}
+
+
+/* =====================================================
+   GET IMAGE
+===================================================== */
+
+function getProductImage(product){
+
+    return (
+        product.image_url ||
+        product.imageUrl ||
+        product.image ||
+        ""
+    );
+
+}
+
+
+/* =====================================================
+   IMAGE FALLBACK
+===================================================== */
+
+function handleImageError(img){
+
+    const original =
+        img.dataset.original;
+
+
+    if(
+        !original ||
+        original.includes(".")
+    ){
+
+        img.style.display = "none";
+
+        return;
+
+    }
+
+
+    img.onerror = function(){
+
+        img.style.display = "none";
+
+    };
+
+
+    img.src =
+        original + ".jpg";
+
+}
+
+
+/* =====================================================
+   LOAD SUPABASE PRODUCTS
+===================================================== */
+
+async function loadProducts(){
+
+    productGrid.innerHTML = `
+
+        <div class="loading">
+
+            Loading K2 Collection products...
 
         </div>
 
+    `;
 
-        <div class="product-card"
-             data-category="Necklaces"
-             data-name="Double Strand Pearl Necklace Set">
 
-            <a class="product-image-link"
-               href="https://www.amazon.in/dp/B0H7WLPZ1L?tag=k2collection0-21"
-               target="_blank"
-               rel="nofollow sponsored noopener">
+    try{
 
-                <img class="product-image"
-                     src="necklace-3.jpg"
-                     alt="Double Strand Pearl Necklace Set">
+        const response =
+            await fetch(
+                supabaseUrl +
+                "/rest/v1/products?select=*",
+                {
+                    method:"GET",
 
-            </a>
+                    headers:{
+                        "apikey":supabaseKey,
+                        "Authorization":
+                            "Bearer " + supabaseKey
+                    }
+                }
+            );
 
-            <div class="product-info">
 
-                <div class="category">
-                    Necklaces
-                </div>
+        if(!response.ok){
 
-                <div class="product-name">
-                    Double Strand Pearl Necklace Set
-                </div>
+            throw new Error(
+                "Supabase request failed"
+            );
 
-                <div class="description">
-                    Classic double strand pearl design with an elegant finish.
-                </div>
+        }
 
-                <a class="buy-btn"
-                   href="https://www.amazon.in/dp/B0H7WLPZ1L?tag=k2collection0-21"
-                   target="_blank"
-                   rel="nofollow sponsored noopener">
-                    Buy Now →
-                </a>
+
+        const data =
+            await response.json();
+
+
+        if(!Array.isArray(data)){
+
+            throw new Error(
+                "Invalid product data"
+            );
+
+        }
+
+
+        allProducts = data;
+
+
+        renderProducts();
+
+
+    }catch(error){
+
+        console.error(
+            "Supabase Error:",
+            error
+        );
+
+
+        productGrid.innerHTML = `
+
+            <div class="error-message">
+
+                <h3>
+                    Products could not be loaded
+                </h3>
+
+                <br>
+
+                <p>
+                    Please refresh the page and try again.
+                </p>
 
             </div>
 
+        `;
+
+    }
+
+}
+
+
+/* =====================================================
+   RENDER PRODUCTS
+===================================================== */
+
+function renderProducts(){
+
+    const searchText =
+        searchInput.value
+        .toLowerCase()
+        .trim();
+
+
+    let filteredProducts =
+        allProducts.filter(product => {
+
+
+            const name =
+                getProductName(product)
+                .toLowerCase();
+
+
+            const description =
+                getProductDescription(product)
+                .toLowerCase();
+
+
+            const category =
+                getProductCategory(product);
+
+
+            const categoryMatch =
+                selectedCategory === "All" ||
+                category === selectedCategory;
+
+
+            const searchMatch =
+                !searchText ||
+                name.includes(searchText) ||
+                description.includes(searchText) ||
+                category.toLowerCase()
+                .includes(searchText);
+
+
+            return (
+                categoryMatch &&
+                searchMatch
+            );
+
+        });
+
+
+    productGrid.innerHTML = "";
+
+
+    if(filteredProducts.length === 0){
+
+        productGrid.innerHTML = `
+
+            <div
+                class="no-results"
+                style="display:block;"
+            >
+
+                No products found.
+
+            </div>
+
+        `;
+
+        return;
+
+    }
+
+
+    filteredProducts.forEach(
+        product => {
+
+            createProductCard(product);
+
+        }
+    );
+
+}
+
+
+/* =====================================================
+   CREATE PRODUCT CARD
+===================================================== */
+
+function createProductCard(product){
+
+    const name =
+        getProductName(product);
+
+
+    const category =
+        getProductCategory(product);
+
+
+    const description =
+        getProductDescription(product);
+
+
+    const amazonLink =
+        getAmazonLink(product);
+
+
+    const image =
+        getProductImage(product);
+
+
+    const card =
+        document.createElement("div");
+
+
+    card.className =
+        "product-card";
+
+
+    /* IMAGE */
+
+    let imageHTML = "";
+
+
+    if(image){
+
+        imageHTML = `
+
+            <a
+                class="product-image-link"
+                href="${amazonLink}"
+                target="_blank"
+                rel="nofollow sponsored noopener"
+            >
+
+                <img
+                    class="product-image"
+                    src="${image}"
+                    data-original="${image}"
+                    alt="${escapeHTML(name)}"
+                    loading="lazy"
+                    onerror="handleImageError(this)"
+                >
+
+            </a>
+
+        `;
+
+    }else{
+
+        imageHTML = `
+
+            <div
+                class="product-image"
+                style="
+                    display:flex;
+                    align-items:center;
+                    justify-content:center;
+                    font-size:45px;
+                "
+            >
+                💎
+            </div>
+
+        `;
+
+    }
+
+
+    /* CARD */
+
+    card.innerHTML = `
+
+        ${imageHTML}
+
+        <div class="product-info">
+
+            <div class="category">
+
+                ${escapeHTML(category)}
+
+            </div>
+
+
+            <div class="product-name">
+
+                ${escapeHTML(name)}
+
+            </div>
+
+
+            <div class="description">
+
+                ${escapeHTML(description)}
+
+            </div>
+
+
+            <a
+                class="buy-btn"
+                href="${amazonLink}"
+                target="_blank"
+                rel="nofollow sponsored noopener"
+            >
+
+                Buy Now →
+
+            </a>
+
         </div>
 
+    `;
 
-        <div class="product-card"
-             data-category="Necklaces"
-             data-name="Gold Plated Pearl Beaded Jewe
+
+    productGrid.appendChild(card);
+
+}
+
+
+/* =====================================================
+   ESCAPE HTML
+===================================================== */
+
+function escapeHTML(value){
+
+    return String(value)
+        .replace(/&/g,"&amp;")
+        .replace(/</g,"&lt;")
+        .replace(/>/g,"&gt;")
+        .replace(/"/g,"&quot;")
+        .replace(/'/g,"&#039;");
+
+}
+
+
+/* =====================================================
+   SEARCH
+===================================================== */
+
+searchInput.addEventListener(
+    "input",
+    function(){
+
+        renderProducts();
+
+    }
+);
+
+
+/* =====================================================
+   CATEGORY FILTER
+===================================================== */
+
+filterButtons.forEach(
+    button => {
+
+        button.addEventListener(
+            "click",
+            function(){
+
+                filterButtons.forEach(
+                    btn =>
+                        btn.classList.remove(
+                            "active"
+                        )
+                );
+
+
+                this.classList.add(
+                    "active"
+                );
+
+
+                selectedCategory =
+                    this.dataset.category;
+
+
+                renderProducts();
+
+            }
+        );
+
+    }
+);
+
+
+/* =====================================================
+   START
+===================================================== */
+
+loadProducts();
+
+</script>
+
+</body>
+
+</html>
