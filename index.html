@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 
@@ -24,7 +25,11 @@ html{
 
 body{
     font-family:Arial, Helvetica, sans-serif;
-    background:#f8f4ed;
+    background:
+        radial-gradient(circle at 15% 20%, rgba(212,178,112,0.18), transparent 28%),
+        radial-gradient(circle at 85% 25%, rgba(236,215,177,0.28), transparent 30%),
+        radial-gradient(circle at 50% 80%, rgba(214,183,126,0.12), transparent 32%),
+        linear-gradient(135deg, #fffdf9 0%, #f8f1e6 45%, #fffaf2 100%);
     color:#2c241d;
     line-height:1.6;
 }
@@ -32,10 +37,11 @@ body{
 /* HEADER */
 
 header{
-    background:#fffdf9;
+    background:rgba(255,253,249,0.94);
     text-align:center;
     padding:24px 20px 18px;
     border-bottom:1px solid #eadfce;
+    backdrop-filter:blur(8px);
 }
 
 .logo{
@@ -68,6 +74,7 @@ nav a{
     color:#3b3027;
     font-size:14px;
     font-weight:600;
+    transition:0.3s;
 }
 
 nav a:hover{
@@ -78,9 +85,39 @@ nav a:hover{
 
 .hero{
     max-width:1150px;
-    margin:auto;
-    padding:85px 20px 75px;
+    margin:35px auto 0;
+    padding:95px 30px 90px;
     text-align:center;
+    border-radius:28px;
+    position:relative;
+    overflow:hidden;
+
+    background:
+        radial-gradient(circle at 20% 30%, rgba(255,255,255,0.96), transparent 32%),
+        radial-gradient(circle at 80% 20%, rgba(218,184,119,0.20), transparent 30%),
+        radial-gradient(circle at 70% 85%, rgba(231,211,177,0.25), transparent 28%),
+        linear-gradient(135deg, #fffdf9, #f5ecdd, #fffaf2);
+
+    border:1px solid rgba(169,130,66,0.18);
+    box-shadow:0 18px 45px rgba(72,55,35,0.08);
+}
+
+.hero::before{
+    content:"✦";
+    position:absolute;
+    top:25px;
+    left:45px;
+    font-size:32px;
+    color:rgba(169,130,66,0.35);
+}
+
+.hero::after{
+    content:"✧";
+    position:absolute;
+    right:50px;
+    bottom:25px;
+    font-size:42px;
+    color:rgba(169,130,66,0.28);
 }
 
 .hero-small{
@@ -97,6 +134,7 @@ nav a:hover{
     font-weight:500;
     margin-bottom:18px;
     color:#2c241d;
+    letter-spacing:0.5px;
 }
 
 .hero p{
@@ -116,10 +154,12 @@ nav a:hover{
     font-size:14px;
     font-weight:600;
     transition:0.3s;
+    box-shadow:0 7px 18px rgba(44,36,29,0.12);
 }
 
 .hero-btn:hover{
     background:#a98242;
+    transform:translateY(-2px);
 }
 
 /* NEW ARRIVALS */
@@ -164,7 +204,7 @@ nav a:hover{
 }
 
 .product-card{
-    background:#fffdf9;
+    background:rgba(255,253,249,0.96);
     border:1px solid #eadfce;
     border-radius:16px;
     overflow:hidden;
@@ -217,10 +257,16 @@ nav a:hover{
     font-weight:600;
 }
 
+.amazon-link:hover{
+    color:#a98242;
+}
+
 /* WHY K2 */
 
 .why-section{
-    background:#eee5d7;
+    background:
+        radial-gradient(circle at 20% 30%, rgba(255,255,255,0.7), transparent 30%),
+        linear-gradient(135deg,#eee5d7,#f7efe3);
 }
 
 .why-grid{
@@ -231,7 +277,7 @@ nav a:hover{
 
 .why-card{
     text-align:center;
-    background:#fffdf9;
+    background:rgba(255,253,249,0.94);
     padding:32px 22px;
     border-radius:16px;
     border:1px solid #eadfce;
@@ -240,6 +286,7 @@ nav a:hover{
 .icon{
     font-size:28px;
     margin-bottom:12px;
+    color:#a98242;
 }
 
 .why-card h3{
@@ -258,6 +305,8 @@ nav a:hover{
 .collection-section{
     text-align:center;
     padding:75px 20px;
+    background:
+        radial-gradient(circle at 50% 40%, rgba(218,184,119,0.12), transparent 35%);
 }
 
 .collection-section h2{
@@ -313,7 +362,9 @@ footer p{
 @media(max-width:800px){
 
     .hero{
-        padding:65px 20px;
+        margin:20px 15px 0;
+        padding:70px 20px;
+        border-radius:22px;
     }
 
     .hero h1{
@@ -345,6 +396,21 @@ footer p{
 
     nav a{
         font-size:13px;
+    }
+
+    .hero{
+        margin:15px 10px 0;
+        padding:60px 18px;
+    }
+
+    .hero::before{
+        left:20px;
+        top:18px;
+    }
+
+    .hero::after{
+        right:20px;
+        bottom:18px;
     }
 
     .hero h1{
@@ -1004,3 +1070,4 @@ Elegant Jewellery • Timeless Beauty
 
 </body>
 </html>
+```
