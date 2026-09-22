@@ -539,28 +539,29 @@ async function loadProducts(){
 
         const data = await response.json();
 
-        if(Array.isArray(data)){
+      if(Array.isArray(data)){
 
-            data.forEach(item => {
+    data.forEach(item => {
 
-                const itemName =
-                    getName(item).toLowerCase().trim();
+        const itemName =
+            getName(item).toLowerCase().trim();
 
-                const exists =
-                    allProducts.some(product =>
-                        getName(product).toLowerCase().trim()
-                        === itemName
-                    );
+        const exists =
+            allProducts.some(product =>
+                getName(product).toLowerCase().trim()
+                === itemName
+            );
 
-                if(!exists){
-
-                    allProducts.push(item);
-
-                }
-
-            });
-
+        if(!exists){
+            allProducts.push(item);
         }
+
+    });
+
+    // NEW PRODUCTS FIRST
+    allProducts.reverse();
+
+}
 
     }catch(error){
 
