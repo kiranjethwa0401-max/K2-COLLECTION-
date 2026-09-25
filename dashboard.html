@@ -2,6 +2,7 @@
 <html lang="en">
 
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -928,40 +929,7 @@ const SUPABASE_KEY =
 
 
 /* =====================================
-   EXISTING K2 PRODUCTS
-===================================== */
-
-const staticProducts = [
-
-    {name:"Pearl Double Layered Jewellery Set", category:"Necklaces", asin:"B0H5FS8DJ6"},
-    {name:"Shining Diva Fashion Jewellery Set", category:"Necklaces", asin:"B0CV4XL72Z"},
-    {name:"Double Strand Pearl Necklace Set", category:"Necklaces", asin:"B0H7WLPZ1L"},
-    {name:"Gold Plated Pearl Beaded Jewellery Set", category:"Necklaces", asin:"B0CJ74NX6Z"},
-    {name:"Pearl Necklace, Earrings & Bracelet Set", category:"Necklaces", asin:"B0BXJB7T4B"},
-
-    {name:"Rubans Jewellery Set", category:"Necklaces", asin:"B0D6RVTXLP"},
-    {name:"Zaveri Pearls Jewellery", category:"Necklaces", asin:"B084KK1XL6"},
-    {name:"Pearl Flower Jewellery", category:"Necklaces", asin:"B0H6KG2Q4X"},
-    {name:"Shidara Jewellery Set", category:"Necklaces", asin:"B0GVPNLFDC"},
-    {name:"Red Stone Floral Jewellery", category:"Necklaces", asin:"B0H6SSJ19R"},
-
-    {name:"Nilu's Collection Sparkling Bracelet", category:"Bracelets", asin:"B0GL86G9FZ"},
-    {name:"MINUTIAE Infinity Crystal Bracelet", category:"Bracelets", asin:"B094H79X6L"},
-    {name:"Nilu's Collection Heart Adjustable Bracelet", category:"Bracelets", asin:"B0B2R5JWV1"},
-    {name:"Shining Diva Rose Gold Bangle Bracelet", category:"Bracelets", asin:"B07NPWRJVH"},
-    {name:"Versatile Vault Pearl Bracelet", category:"Bracelets", asin:"B0H271K2RC"},
-
-    {name:"Shining Diva Rose Gold Solitaire Ring", category:"Rings", asin:"B09QKTDS2N"},
-    {name:"Zaveri Pearls Set of 3 Rings", category:"Rings", asin:"B09FKBV55G"},
-    {name:"Natural Purple Amethyst Adjustable Ring", category:"Rings", asin:"B0DFH63SPY"},
-    {name:"KONPJE Sunflower Adjustable Ring", category:"Rings", asin:"B0DCJ34XFS"},
-    {name:"Nilu's Collection Floral Sparkling Ring", category:"Rings", asin:"B0D1QVVPJW"}
-
-];
-
-
-/* =====================================
-   CATEGORY
+   GET CATEGORY
 ===================================== */
 
 function getCategory(product){
@@ -1003,9 +971,12 @@ function getCategory(product){
 
     }
 
+
     const text = (
 
         (product.name || "") +
+        " " +
+        (product.Name || "") +
         " " +
         (product.title || "") +
         " " +
@@ -1039,13 +1010,13 @@ function getCategory(product){
         return "Earrings";
     }
 
-    return "Necklaces";
+    return "Jewellery";
 
 }
 
 
 /* =====================================
-   IMAGE
+   GET IMAGE
 ===================================== */
 
 function getImage(product){
@@ -1066,7 +1037,7 @@ function getImage(product){
 
 
 /* =====================================
-   NAME
+   GET NAME
 ===================================== */
 
 function getName(product){
@@ -1086,7 +1057,7 @@ function getName(product){
 
 
 /* =====================================
-   AFFILIATE
+   GET AFFILIATE
 ===================================== */
 
 function hasAffiliateLink(product){
@@ -1100,282 +1071,163 @@ function hasAffiliateLink(product){
         product.amazon_url ||
         product.amazonUrl ||
         product.link ||
-        product.url
-
-    );
-
-}
-
-
-/* =====================================
-   NORMALIZE
-===================================== */
-
-function normalizeProduct(product){
-
-    return {
-
-        ...product,
-
-        name:getName(product),
-
-        category:getCategory(product),
-
-        image:getImage(product)
-
-    };
-
-}
-
-
-/* =====================================
-   PRODUCT KEY
-===================================== */
-
-function productKey(product){
-
-    const asin =
-
+        product.url ||
         product.asin ||
-        product.ASIN ||
-        product.product_asin ||
-        product.productAsin ||
-        "";
+        product.ASIN
 
-    if(asin){
-
-        return "asin:" +
-            String(asin)
-            .trim()
-            .toLowerCase();
-
-    }
-
-    return "name:" +
-        getName(product)
-        .trim()
-        .toLowerCase();
-
-}
-
-
-/* =====================================
-   MERGE
-===================================== */
-
-function mergeProducts(...lists){
-
-    const map = new Map();
-
-    lists.forEach(list => {
-
-        if(!Array.isArray(list)){
-            return;
-        }
-
-        list.forEach(product => {
-
-            if(!product){
-                return;
-            }
-
-            const normalized =
-                normalizeProduct(product);
-
-            const key =
-                productKey(normalized);
-
-            if(!map.has(key)){
-
-                map.set(
-                    key,
-                    normalized
-                );
-
-            }else{
-
-                const existing =
-                    map.get(key);
-
-                map.set(
-                    key,
-                    {
-                        ...existing,
-                        ...normalized
-                    }
-                );
-
-            }
-
-        });
-
-    });
-
-    return Array.from(map.values());
-
-}
-
-
-/* =====================================
-   TRASH SYSTEM
-   Dashboard only
-===================================== */
-
-function getTrash(){
-
-    try{
-
-        const trash =
-            JSON.parse(
-                localStorage.getItem(
-                    "k2DashboardTrash"
-                )
-            );
-
-        return Array.isArray(trash)
-            ? trash
-            : [];
-
-    }catch(error){
-
-        return [];
-
-    }
-
-}
-
-
-function saveTrash(trash){
-
-    localStorage.setItem(
-        "k2DashboardTrash",
-        JSON.stringify(trash)
     );
 
 }
 
 
-function isInTrash(product){
+/* =====================================
+   ESCAPE HTML
+===================================== */
 
-    const key =
-        productKey(product);
+function escapeHTML(value){
 
-    return getTrash().some(item => {
+    return String(value)
 
-        return productKey(item) === key;
+        .replace(/&/g,"&amp;")
 
-    });
+        .replace(/</g,"&lt;")
+
+        .replace(/>/g,"&gt;")
+
+        .replace(/"/g,"&quot;")
+
+        .replace(/'/g,"&#039;");
 
 }
 
 
 /* =====================================
-   MOVE PRODUCT TO TRASH
+   MOVE TO SUPABASE TRASH
 ===================================== */
 
-function moveToTrash(product){
+async function moveToTrash(product){
 
     const name =
         getName(product);
 
+
+    if(!product.id){
+
+        alert(
+            "This product does not have a Supabase ID."
+        );
+
+        return;
+
+    }
+
+
     const confirmDelete =
         confirm(
+
             "Move this product to Trash?\n\n" +
             name +
             "\n\n" +
             "It will NOT be permanently deleted."
+
         );
 
+
     if(!confirmDelete){
+
         return;
-    }
-
-
-    const trash =
-        getTrash();
-
-
-    const key =
-        productKey(product);
-
-
-    const alreadyThere =
-        trash.some(item => {
-
-            return productKey(item) === key;
-
-        });
-
-
-    if(!alreadyThere){
-
-        trash.push(product);
-
-        saveTrash(trash);
 
     }
 
 
-    renderDashboardProducts(
-        window.currentSupabaseProducts || []
-    );
+    try{
 
-    alert(
-        "Product moved to Trash.\n\n" +
-        "It has NOT been permanently deleted."
-    );
+        const response =
+            await fetch(
 
-}
+                SUPABASE_URL +
+                "/rest/v1/products?id=eq." +
+                encodeURIComponent(product.id),
+
+                {
+
+                    method:"PATCH",
+
+                    headers:{
+
+                        "apikey":
+                            SUPABASE_KEY,
+
+                        "Authorization":
+                            "Bearer " +
+                            SUPABASE_KEY,
+
+                        "Content-Type":
+                            "application/json",
+
+                        "Prefer":
+                            "return=representation"
+
+                    },
+
+                    body:JSON.stringify({
+
+                        trashed:true
+
+                    })
+
+                }
+
+            );
 
 
-/* =====================================
-   LOCAL PRODUCTS
-===================================== */
+        if(!response.ok){
 
-function getLocalProducts(){
+            const errorText =
+                await response.text();
 
-    const possibleKeys = [
+            console.error(
+                "Trash Error:",
+                errorText
+            );
 
-        "k2Products",
-        "products",
-        "k2ProductsData"
-
-    ];
-
-    let result = [];
-
-
-    possibleKeys.forEach(key => {
-
-        try{
-
-            const saved =
-                JSON.parse(
-                    localStorage.getItem(key)
-                );
-
-            if(Array.isArray(saved)){
-
-                result = [
-                    ...result,
-                    ...saved
-                ];
-
-            }
-
-        }catch(error){
-
-            console.log(
-                "Local storage read error:",
-                key
+            throw new Error(
+                "Could not move product to Trash."
             );
 
         }
 
-    });
+
+        alert(
+
+            "Product moved to Trash successfully! 🗑️\n\n" +
+            name +
+            "\n\n" +
+            "It has NOT been permanently deleted."
+
+        );
 
 
-    return result;
+        loadSupabaseProducts();
+
+    }
+
+    catch(error){
+
+        console.error(
+            "Supabase Trash Error:",
+            error
+        );
+
+
+        alert(
+
+            "Product could not be moved to Trash.\n\n" +
+            "Please try again."
+
+        );
+
+    }
 
 }
 
@@ -1397,16 +1249,16 @@ function renderDashboardProducts(
     recentBox.innerHTML = "";
 
 
-    const visibleProducts =
+    const activeProducts =
         supabaseProducts.filter(product => {
 
-            return !isInTrash(product);
+            return product.trashed !== true;
 
         });
 
 
     const recentProducts =
-        [...visibleProducts]
+        [...activeProducts]
         .reverse()
         .slice(0,5);
 
@@ -1451,9 +1303,11 @@ function renderDashboardProducts(
             getCategory(product);
 
 
-        recentBox.innerHTML += `
+        const row =
+            document.createElement("tr");
 
-        <tr>
+
+        row.innerHTML = `
 
             <td>
 
@@ -1465,7 +1319,7 @@ function renderDashboardProducts(
                         ?
 
                         `<img
-                            src="${image}"
+                            src="${escapeHTML(image)}"
                             alt=""
                         >`
 
@@ -1484,21 +1338,20 @@ function renderDashboardProducts(
                         >
                             💎
                         </div>`
+
                     }
 
                     <span>
-                        ${name}
+                        ${escapeHTML(name)}
                     </span>
 
                 </div>
 
             </td>
 
-
             <td>
-                ${category}
+                ${escapeHTML(category)}
             </td>
-
 
             <td>
 
@@ -1508,21 +1361,37 @@ function renderDashboardProducts(
 
             </td>
 
-
             <td>
 
                 <button
                     class="delete-btn"
-                    onclick='moveToTrash(${JSON.stringify(product).replace(/'/g,"&#39;")})'
+                    type="button"
                 >
                     🗑️ Trash
                 </button>
 
             </td>
 
-        </tr>
-
         `;
+
+
+        const trashButton =
+            row.querySelector(
+                ".delete-btn"
+            );
+
+
+        trashButton.addEventListener(
+            "click",
+            function(){
+
+                moveToTrash(product);
+
+            }
+        );
+
+
+        recentBox.appendChild(row);
 
     });
 
@@ -1537,54 +1406,30 @@ function updateDashboard(
     supabaseProducts
 ){
 
-    window.currentSupabaseProducts =
-        supabaseProducts;
-
-
-    const localProducts =
-        getLocalProducts();
-
-
-    const allProducts =
-        mergeProducts(
-
-            staticProducts,
-
-            supabaseProducts,
-
-            localProducts
-
-        );
-
-
     const activeProducts =
-        allProducts.filter(product => {
+        supabaseProducts.filter(product => {
 
-            return !isInTrash(product);
+            return product.trashed !== true;
 
         });
 
 
-    const totalProducts =
-        activeProducts.length;
-
+    /* TOTAL PRODUCTS */
 
     document.getElementById(
         "totalProducts"
     ).textContent =
-        totalProducts;
+        activeProducts.length;
 
+
+    /* AFFILIATE PRODUCTS */
 
     let affiliateCount = 0;
 
 
     activeProducts.forEach(product => {
 
-        if(
-            hasAffiliateLink(product) ||
-            product.asin ||
-            product.ASIN
-        ){
+        if(hasAffiliateLink(product)){
 
             affiliateCount++;
 
@@ -1598,6 +1443,8 @@ function updateDashboard(
     ).textContent =
         affiliateCount;
 
+
+    /* CATEGORY COUNTS */
 
     let rings = 0;
     let necklaces = 0;
@@ -1654,14 +1501,18 @@ function updateDashboard(
         earrings;
 
 
+    /* CATEGORY BARS */
+
     function percentage(count){
 
-        if(totalProducts === 0){
+        if(activeProducts.length === 0){
+
             return 0;
+
         }
 
         return Math.round(
-            (count / totalProducts) * 100
+            (count / activeProducts.length) * 100
         );
 
     }
@@ -1691,10 +1542,14 @@ function updateDashboard(
         percentage(earrings) + "%";
 
 
+    /* RECENT PRODUCTS */
+
     renderDashboardProducts(
         supabaseProducts
     );
 
+
+    /* FEATURED PRODUCTS */
 
     let featured = [];
 
@@ -1708,7 +1563,9 @@ function updateDashboard(
                 )
             ) || [];
 
-    }catch(error){
+    }
+
+    catch(error){
 
         featured = [];
 
@@ -1759,6 +1616,14 @@ async function loadSupabaseProducts(){
 
         if(!response.ok){
 
+            const errorText =
+                await response.text();
+
+            console.error(
+                "Supabase Error:",
+                errorText
+            );
+
             throw new Error(
                 "Supabase error: " +
                 response.status
@@ -1797,7 +1662,7 @@ async function loadSupabaseProducts(){
 
 
 /* =====================================
-   SEARCH DASHBOARD PRODUCTS
+   DASHBOARD SEARCH
 ===================================== */
 
 document
@@ -1836,7 +1701,9 @@ document
 );
 
 
-/* START */
+/* =====================================
+   START
+===================================== */
 
 loadSupabaseProducts();
 
