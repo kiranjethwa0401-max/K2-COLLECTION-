@@ -857,19 +857,28 @@ td{
         </div>
 
     </div>
-<div class="category-card">
-    <div class="category-icon">✨</div>
-    <div class="category-info">
-        <h3>Earrings</h3>
-        <p id="earringsCount">0 Products</p>
-    </div>
-    <div class="category-progress">
-        <div class="progress-bar">
-            <div class="progress-fill" id="earringsBar"></div>
+
+
+    <div class="category-item">
+
+        <div class="category-row">
+
+            <span>
+                Earrings
+            </span>
+
+            <strong id="earringsCount">
+                0
+            </strong>
+
         </div>
+
+        <div class="progress">
+            <span id="earringsBar" style="width:0%"></span>
+        </div>
+
     </div>
-</div>
-    
+
 </div>
 
 
@@ -903,7 +912,7 @@ td{
         </strong>
 
         <p>
-            Manage Rings, Necklaces and Bracelets
+            Manage Rings, Necklaces, Bracelets and Earrings
         </p>
 
     </div>
@@ -1009,6 +1018,12 @@ function getCategory(product){
             return "Necklaces";
         }
 
+        if(category.includes("earring") ||
+           category.includes("stud") ||
+           category.includes("jhumka")){
+            return "Earrings";
+        }
+
     }
 
 
@@ -1040,6 +1055,12 @@ function getCategory(product){
 
     if(text.includes("necklace")){
         return "Necklaces";
+    }
+
+    if(text.includes("earring") ||
+       text.includes("stud") ||
+       text.includes("jhumka")){
+        return "Earrings";
     }
 
 
@@ -1360,6 +1381,7 @@ function updateDashboard(
     let rings = 0;
     let necklaces = 0;
     let bracelets = 0;
+    let earrings = 0;
 
 
     allProducts.forEach(product => {
@@ -1386,6 +1408,12 @@ function updateDashboard(
 
         }
 
+        else if(category === "Earrings"){
+
+            earrings++;
+
+        }
+
     });
 
 
@@ -1405,6 +1433,12 @@ function updateDashboard(
         "braceletsCount"
     ).textContent =
         bracelets;
+
+
+    document.getElementById(
+        "earringsCount"
+    ).textContent =
+        earrings;
 
 
     /* CATEGORY PROGRESS */
@@ -1443,6 +1477,12 @@ function updateDashboard(
         "braceletsBar"
     ).style.width =
         percentage(bracelets) + "%";
+
+
+    document.getElementById(
+        "earringsBar"
+    ).style.width =
+        percentage(earrings) + "%";
 
 
     /* RECENT PRODUCTS */
