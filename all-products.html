@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 
@@ -162,6 +163,34 @@ header{
 .product-card:hover{
     transform:translateY(-5px);
     box-shadow:0 14px 30px rgba(65,48,30,.11);
+}
+
+/* ADMIN TRASH BUTTON */
+
+.admin-trash{
+    display:none;
+    position:absolute;
+    top:10px;
+    right:10px;
+    z-index:20;
+    border:none;
+    background:#9b3d3d;
+    color:white;
+    padding:8px 11px;
+    border-radius:20px;
+    cursor:pointer;
+    font-size:12px;
+    font-weight:600;
+    box-shadow:0 3px 10px rgba(0,0,0,.18);
+}
+
+.admin-trash:hover{
+    background:#7d2929;
+    transform:scale(1.03);
+}
+
+body.admin-mode .admin-trash{
+    display:block;
 }
 
 /* IMAGE */
@@ -359,6 +388,11 @@ footer{
         height:180px;
     }
 
+    .admin-trash{
+        padding:6px 8px;
+        font-size:11px;
+    }
+
 }
 
 </style>
@@ -482,7 +516,7 @@ footer{
 
 /* =====================================================
    K2 COLLECTION
-   SUPABASE ALL PRODUCTS
+   SUPABASE ALL PRODUCTS + ADMIN TRASH
 ===================================================== */
 
 
@@ -498,6 +532,23 @@ const supabaseKey =
 
 const affiliateTag =
 "k2collection0-21";
+
+
+/* =====================================================
+   ADMIN MODE
+===================================================== */
+
+const urlParams =
+new URLSearchParams(window.location.search);
+
+const isAdmin =
+urlParams.get("admin") === "true";
+
+if(isAdmin){
+
+    document.body.classList.add("admin-mode");
+
+}
 
 
 /* =====================================================
@@ -688,6 +739,126 @@ function handleImageError(img){
 
 
 /* =====================================================
+   MOVE PRODUCT TO TRASH
+===================================================== */
+
+async function moveToTrash(product){
+
+    if(!isAdmin){
+
+        return;
+
+    }
+
+
+    const name =
+        getProductName(product);
+
+
+    if(!product.id){
+
+        alert(
+            "This product does not have a Supabase ID."
+        );
+
+        return;
+
+    }
+
+
+    const confirmTrash =
+        confirm(
+            "Move this product to Trash?\n\n" +
+            name +
+            "\n\n" +
+            "It will NOT be permanently deleted."
+        );
+
+
+    if(!confirmTrash){
+
+        return;
+
+    }
+
+
+    try{
+
+        const response =
+            await fetch(
+                supabaseUrl +
+                "/rest/v1/products?id=eq." +
+                encodeURIComponent(product.id),
+                {
+                    method:"PATCH",
+
+                    headers:{
+                        "apikey":supabaseKey,
+
+                        "Authorization":
+                            "Bearer " + supabaseKey,
+
+                        "Content-Type":
+                            "application/json",
+
+                        "Prefer":
+                            "return=representation"
+                    },
+
+                    body:JSON.stringify({
+                        trashed:true
+                    })
+                }
+            );
+
+
+        if(!response.ok){
+
+            const errorText =
+                await response.text();
+
+            console.error(
+                "Trash Error:",
+                errorText
+            );
+
+            throw new Error(
+                "Could not move product to Trash."
+            );
+
+        }
+
+
+        alert(
+            "Product moved to Trash successfully! 🗑️\n\n" +
+            name +
+            "\n\n" +
+            "It has NOT been permanently deleted."
+        );
+
+
+        await loadProducts();
+
+
+    }catch(error){
+
+        console.error(
+            "Supabase Trash Error:",
+            error
+        );
+
+
+        alert(
+            "Product could not be moved to Trash.\n\n" +
+            "Please try again."
+        );
+
+    }
+
+}
+
+
+/* =====================================================
    LOAD SUPABASE PRODUCTS
 ===================================================== */
 
@@ -715,6 +886,7 @@ async function loadProducts(){
 
                     headers:{
                         "apikey":supabaseKey,
+
                         "Authorization":
                             "Bearer " + supabaseKey
                     }
@@ -744,7 +916,16 @@ async function loadProducts(){
         }
 
 
-        allProducts = data;
+        /*
+           TRASHED PRODUCTS ARE HIDDEN
+           FROM ALL PRODUCTS
+        */
+
+        allProducts =
+            data.filter(
+                product =>
+                    product.trashed !== true
+            );
 
 
         renderProducts();
@@ -820,7 +1001,8 @@ function renderProducts(){
                 !searchText ||
                 name.includes(searchText) ||
                 description.includes(searchText) ||
-                category.toLowerCase()
+                category
+                .toLowerCase()
                 .includes(searchText);
 
 
@@ -900,6 +1082,25 @@ function createProductCard(product){
         "product-card";
 
 
+    /* =================================================
+       ADMIN TRASH BUTTON
+    ================================================= */
+
+    const trashButton = `
+
+        <button
+            class="admin-trash"
+            type="button"
+            title="Move to Trash"
+        >
+
+            🗑️ Trash
+
+        </button>
+
+    `;
+
+
     /* IMAGE */
 
     let imageHTML = "";
@@ -942,7 +1143,9 @@ function createProductCard(product){
                     font-size:45px;
                 "
             >
+
                 💎
+
             </div>
 
         `;
@@ -953,6 +1156,8 @@ function createProductCard(product){
     /* CARD */
 
     card.innerHTML = `
+
+        ${trashButton}
 
         ${imageHTML}
 
@@ -993,6 +1198,28 @@ function createProductCard(product){
         </div>
 
     `;
+
+
+    /* =================================================
+       TRASH BUTTON ACTION
+    ================================================= */
+
+    const trashBtn =
+        card.querySelector(".admin-trash");
+
+
+    trashBtn.addEventListener(
+        "click",
+        function(event){
+
+            event.preventDefault();
+
+            event.stopPropagation();
+
+            moveToTrash(product);
+
+        }
+    );
 
 
     productGrid.appendChild(card);
@@ -1078,3 +1305,4 @@ loadProducts();
 </body>
 
 </html>
+```
