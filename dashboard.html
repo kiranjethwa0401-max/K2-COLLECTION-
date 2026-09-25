@@ -21,8 +21,6 @@ body{
     color:#1c1c1c;
 }
 
-/* SIDEBAR */
-
 .sidebar{
     position:fixed;
     left:0;
@@ -81,14 +79,10 @@ body{
     width:28px;
 }
 
-/* MAIN */
-
 .main{
     margin-left:290px;
     min-height:100vh;
 }
-
-/* TOP BAR */
 
 .topbar{
     height:70px;
@@ -139,8 +133,6 @@ body{
     color:#fff;
 }
 
-/* CONTENT */
-
 .content{
     padding:30px;
 }
@@ -162,8 +154,6 @@ body{
 .welcome p{
     color:#ccc;
 }
-
-/* STATS */
 
 .stats{
     display:grid;
@@ -194,8 +184,6 @@ body{
     color:#777;
     font-size:13px;
 }
-
-/* QUICK ACTIONS */
 
 .section-heading{
     display:flex;
@@ -246,15 +234,11 @@ body{
     font-size:12px;
 }
 
-/* LOWER GRID */
-
 .dashboard-grid{
     display:grid;
     grid-template-columns:2fr 1fr;
     gap:22px;
 }
-
-/* CARD */
 
 .card{
     background:#fff;
@@ -269,8 +253,6 @@ body{
     font-size:20px;
     margin-bottom:18px;
 }
-
-/* TABLE */
 
 table{
     width:100%;
@@ -312,7 +294,22 @@ td{
     font-size:11px;
 }
 
-/* CATEGORY BOX */
+.delete-btn{
+    border:none;
+    background:#fff0f0;
+    color:#b42318;
+    border:1px solid #f2c7c7;
+    padding:7px 10px;
+    border-radius:8px;
+    cursor:pointer;
+    font-size:12px;
+    white-space:nowrap;
+}
+
+.delete-btn:hover{
+    background:#b42318;
+    color:#fff;
+}
 
 .category-item{
     margin-bottom:18px;
@@ -339,8 +336,6 @@ td{
     border-radius:10px;
 }
 
-/* ACTIVITY */
-
 .activity{
     padding:12px 0;
     border-bottom:1px solid #eee;
@@ -356,7 +351,20 @@ td{
     margin-top:3px;
 }
 
-/* MOBILE */
+.trash-box{
+    margin-top:20px;
+    padding:15px;
+    background:#faf7f2;
+    border:1px solid #e5ded3;
+    border-radius:10px;
+}
+
+.trash-box a{
+    color:#7b5d32;
+    text-decoration:none;
+    font-weight:bold;
+    font-size:13px;
+}
 
 @media(max-width:1000px){
 
@@ -410,7 +418,7 @@ td{
     }
 
     table{
-        min-width:650px;
+        min-width:800px;
     }
 
     .card{
@@ -425,9 +433,6 @@ td{
 
 <body>
 
-
-<!-- SIDEBAR -->
-
 <aside class="sidebar">
 
     <div class="logo">
@@ -437,7 +442,6 @@ td{
     <div class="logo-sub">
         COLLECTION DASHBOARD
     </div>
-
 
     <div class="menu-title">
         Main
@@ -459,31 +463,25 @@ td{
         <span>📂</span> Categories
     </a>
 
-
     <div class="menu-title">
         Management
     </div>
-
 
     <a href="amazon-products.html">
         <span>🛒</span> Amazon Products
     </a>
 
-
     <a href="affiliate-links.html">
         <span>🔗</span> Affiliate Links
     </a>
-
 
     <a href="#">
         <span>⭐</span> Featured Products
     </a>
 
-
     <a href="collections.html">
         <span>✨</span> Collections
     </a>
-
 
     <div class="menu-title">
         Deleted / Draft
@@ -492,7 +490,6 @@ td{
     <a href="trash.html">
         <span>🗑️</span> Trash / Draft
     </a>
-
 
     <div class="menu-title">
         Settings
@@ -509,13 +506,7 @@ td{
 </aside>
 
 
-
-<!-- MAIN -->
-
 <div class="main">
-
-
-<!-- TOP BAR -->
 
 <div class="topbar">
 
@@ -523,11 +514,11 @@ td{
 
         <input
             type="text"
+            id="dashboardSearch"
             placeholder="Search dashboard..."
         >
 
     </div>
-
 
     <div class="top-right">
 
@@ -552,13 +543,8 @@ td{
 </div>
 
 
-
-<!-- CONTENT -->
-
 <div class="content">
 
-
-<!-- WELCOME -->
 
 <div class="welcome">
 
@@ -573,11 +559,7 @@ td{
 </div>
 
 
-
-<!-- STATS -->
-
 <div class="stats">
-
 
 <div class="stat">
 
@@ -646,12 +628,8 @@ td{
 
 </div>
 
-
 </div>
 
-
-
-<!-- QUICK ACTIONS -->
 
 <div class="section-heading">
 
@@ -663,7 +641,6 @@ td{
 
 
 <div class="quick-actions">
-
 
 <a href="add-product.html" class="action">
 
@@ -732,17 +709,11 @@ td{
 
 </a>
 
-
 </div>
 
 
-
-<!-- LOWER CONTENT -->
-
 <div class="dashboard-grid">
 
-
-<!-- RECENT PRODUCTS -->
 
 <div class="card">
 
@@ -768,6 +739,10 @@ td{
                     STATUS
                 </th>
 
+                <th>
+                    ACTION
+                </th>
+
             </tr>
 
         </thead>
@@ -778,16 +753,21 @@ td{
 
     </table>
 
+
+    <div class="trash-box">
+
+        🗑️
+        <a href="trash.html">
+            Open Trash / Draft
+        </a>
+
+    </div>
+
 </div>
 
 
-
-<!-- RIGHT SIDE -->
-
 <div>
 
-
-<!-- PRODUCTS BY CATEGORY -->
 
 <div class="card">
 
@@ -885,8 +865,6 @@ td{
 <br>
 
 
-<!-- RECENT ACTIVITY -->
-
 <div class="card">
 
     <div class="card-title">
@@ -942,11 +920,6 @@ td{
 
 <script>
 
-/* =====================================
-   K2 COLLECTION DASHBOARD
-   CORRECT PRODUCT COUNT
-===================================== */
-
 const SUPABASE_URL =
     "https://mixhdtkzrcjtcfefdbyf.supabase.co";
 
@@ -955,7 +928,7 @@ const SUPABASE_KEY =
 
 
 /* =====================================
-   EXISTING 20 K2 PRODUCTS
+   EXISTING K2 PRODUCTS
 ===================================== */
 
 const staticProducts = [
@@ -988,7 +961,7 @@ const staticProducts = [
 
 
 /* =====================================
-   CATEGORY HELPER
+   CATEGORY
 ===================================== */
 
 function getCategory(product){
@@ -1009,8 +982,10 @@ function getCategory(product){
             return "Rings";
         }
 
-        if(category.includes("bracelet") ||
-           category.includes("bangle")){
+        if(
+            category.includes("bracelet") ||
+            category.includes("bangle")
+        ){
             return "Bracelets";
         }
 
@@ -1018,14 +993,15 @@ function getCategory(product){
             return "Necklaces";
         }
 
-        if(category.includes("earring") ||
-           category.includes("stud") ||
-           category.includes("jhumka")){
+        if(
+            category.includes("earring") ||
+            category.includes("stud") ||
+            category.includes("jhumka")
+        ){
             return "Earrings";
         }
 
     }
-
 
     const text = (
 
@@ -1044,7 +1020,6 @@ function getCategory(product){
         return "Rings";
     }
 
-
     if(
         text.includes("bracelet") ||
         text.includes("bangle")
@@ -1052,17 +1027,17 @@ function getCategory(product){
         return "Bracelets";
     }
 
-
     if(text.includes("necklace")){
         return "Necklaces";
     }
 
-    if(text.includes("earring") ||
-       text.includes("stud") ||
-       text.includes("jhumka")){
+    if(
+        text.includes("earring") ||
+        text.includes("stud") ||
+        text.includes("jhumka")
+    ){
         return "Earrings";
     }
-
 
     return "Necklaces";
 
@@ -1070,7 +1045,7 @@ function getCategory(product){
 
 
 /* =====================================
-   PRODUCT IMAGE
+   IMAGE
 ===================================== */
 
 function getImage(product){
@@ -1091,7 +1066,7 @@ function getImage(product){
 
 
 /* =====================================
-   PRODUCT NAME
+   NAME
 ===================================== */
 
 function getName(product){
@@ -1111,7 +1086,7 @@ function getName(product){
 
 
 /* =====================================
-   AMAZON / AFFILIATE LINK CHECK
+   AFFILIATE
 ===================================== */
 
 function hasAffiliateLink(product){
@@ -1133,7 +1108,7 @@ function hasAffiliateLink(product){
 
 
 /* =====================================
-   NORMALIZE PRODUCT
+   NORMALIZE
 ===================================== */
 
 function normalizeProduct(product){
@@ -1154,7 +1129,7 @@ function normalizeProduct(product){
 
 
 /* =====================================
-   UNIQUE PRODUCT KEY
+   PRODUCT KEY
 ===================================== */
 
 function productKey(product){
@@ -1176,9 +1151,7 @@ function productKey(product){
 
     }
 
-
     return "name:" +
-
         getName(product)
         .trim()
         .toLowerCase();
@@ -1187,13 +1160,12 @@ function productKey(product){
 
 
 /* =====================================
-   MERGE WITHOUT DUPLICATES
+   MERGE
 ===================================== */
 
 function mergeProducts(...lists){
 
     const map = new Map();
-
 
     lists.forEach(list => {
 
@@ -1201,21 +1173,17 @@ function mergeProducts(...lists){
             return;
         }
 
-
         list.forEach(product => {
 
             if(!product){
                 return;
             }
 
-
             const normalized =
                 normalizeProduct(product);
 
-
             const key =
                 productKey(normalized);
-
 
             if(!map.has(key)){
 
@@ -1224,25 +1192,17 @@ function mergeProducts(...lists){
                     normalized
                 );
 
-            }
-
-            else{
+            }else{
 
                 const existing =
                     map.get(key);
 
-
                 map.set(
-
                     key,
-
                     {
-
                         ...existing,
                         ...normalized
-
                     }
-
                 );
 
             }
@@ -1251,14 +1211,125 @@ function mergeProducts(...lists){
 
     });
 
-
     return Array.from(map.values());
 
 }
 
 
 /* =====================================
-   LOAD LOCAL STORAGE PRODUCTS
+   TRASH SYSTEM
+   Dashboard only
+===================================== */
+
+function getTrash(){
+
+    try{
+
+        const trash =
+            JSON.parse(
+                localStorage.getItem(
+                    "k2DashboardTrash"
+                )
+            );
+
+        return Array.isArray(trash)
+            ? trash
+            : [];
+
+    }catch(error){
+
+        return [];
+
+    }
+
+}
+
+
+function saveTrash(trash){
+
+    localStorage.setItem(
+        "k2DashboardTrash",
+        JSON.stringify(trash)
+    );
+
+}
+
+
+function isInTrash(product){
+
+    const key =
+        productKey(product);
+
+    return getTrash().some(item => {
+
+        return productKey(item) === key;
+
+    });
+
+}
+
+
+/* =====================================
+   MOVE PRODUCT TO TRASH
+===================================== */
+
+function moveToTrash(product){
+
+    const name =
+        getName(product);
+
+    const confirmDelete =
+        confirm(
+            "Move this product to Trash?\n\n" +
+            name +
+            "\n\n" +
+            "It will NOT be permanently deleted."
+        );
+
+    if(!confirmDelete){
+        return;
+    }
+
+
+    const trash =
+        getTrash();
+
+
+    const key =
+        productKey(product);
+
+
+    const alreadyThere =
+        trash.some(item => {
+
+            return productKey(item) === key;
+
+        });
+
+
+    if(!alreadyThere){
+
+        trash.push(product);
+
+        saveTrash(trash);
+
+    }
+
+
+    renderDashboardProducts(
+        window.currentSupabaseProducts || []
+    );
+
+    alert(
+        "Product moved to Trash.\n\n" +
+        "It has NOT been permanently deleted."
+    );
+
+}
+
+
+/* =====================================
+   LOCAL PRODUCTS
 ===================================== */
 
 function getLocalProducts(){
@@ -1270,7 +1341,6 @@ function getLocalProducts(){
         "k2ProductsData"
 
     ];
-
 
     let result = [];
 
@@ -1284,7 +1354,6 @@ function getLocalProducts(){
                     localStorage.getItem(key)
                 );
 
-
             if(Array.isArray(saved)){
 
                 result = [
@@ -1294,8 +1363,7 @@ function getLocalProducts(){
 
             }
 
-        }
-        catch(error){
+        }catch(error){
 
             console.log(
                 "Local storage read error:",
@@ -1313,179 +1381,12 @@ function getLocalProducts(){
 
 
 /* =====================================
-   UPDATE DASHBOARD
+   RENDER PRODUCTS
 ===================================== */
 
-function updateDashboard(
-
+function renderDashboardProducts(
     supabaseProducts
-
 ){
-
-    const localProducts =
-        getLocalProducts();
-
-
-    const allProducts =
-        mergeProducts(
-
-            staticProducts,
-
-            supabaseProducts,
-
-            localProducts
-
-        );
-
-
-    const totalProducts =
-        allProducts.length;
-
-
-    /* TOTAL PRODUCTS */
-
-    document.getElementById(
-        "totalProducts"
-    ).textContent =
-        totalProducts;
-
-
-    /* AFFILIATE PRODUCTS */
-
-    let affiliateCount = 0;
-
-
-    allProducts.forEach(product => {
-
-        if(
-            hasAffiliateLink(product) ||
-            product.asin ||
-            product.ASIN
-        ){
-
-            affiliateCount++;
-
-        }
-
-    });
-
-
-    document.getElementById(
-        "affiliateProducts"
-    ).textContent =
-        affiliateCount;
-
-
-    /* CATEGORY COUNTS */
-
-    let rings = 0;
-    let necklaces = 0;
-    let bracelets = 0;
-    let earrings = 0;
-
-
-    allProducts.forEach(product => {
-
-        const category =
-            getCategory(product);
-
-
-        if(category === "Rings"){
-
-            rings++;
-
-        }
-
-        else if(category === "Bracelets"){
-
-            bracelets++;
-
-        }
-
-        else if(category === "Necklaces"){
-
-            necklaces++;
-
-        }
-
-        else if(category === "Earrings"){
-
-            earrings++;
-
-        }
-
-    });
-
-
-    document.getElementById(
-        "ringsCount"
-    ).textContent =
-        rings;
-
-
-    document.getElementById(
-        "necklacesCount"
-    ).textContent =
-        necklaces;
-
-
-    document.getElementById(
-        "braceletsCount"
-    ).textContent =
-        bracelets;
-
-
-    document.getElementById(
-        "earringsCount"
-    ).textContent =
-        earrings;
-
-
-    /* CATEGORY PROGRESS */
-
-    function percentage(count){
-
-        if(totalProducts === 0){
-
-            return 0;
-
-        }
-
-
-        return Math.round(
-
-            (count / totalProducts) * 100
-
-        );
-
-    }
-
-
-    document.getElementById(
-        "ringsBar"
-    ).style.width =
-        percentage(rings) + "%";
-
-
-    document.getElementById(
-        "necklacesBar"
-    ).style.width =
-        percentage(necklaces) + "%";
-
-
-    document.getElementById(
-        "braceletsBar"
-    ).style.width =
-        percentage(bracelets) + "%";
-
-
-    document.getElementById(
-        "earringsBar"
-    ).style.width =
-        percentage(earrings) + "%";
-
-
-    /* RECENT PRODUCTS */
 
     const recentBox =
         document.getElementById(
@@ -1496,8 +1397,16 @@ function updateDashboard(
     recentBox.innerHTML = "";
 
 
+    const visibleProducts =
+        supabaseProducts.filter(product => {
+
+            return !isInTrash(product);
+
+        });
+
+
     const recentProducts =
-        [...supabaseProducts]
+        [...visibleProducts]
         .reverse()
         .slice(0,5);
 
@@ -1509,7 +1418,7 @@ function updateDashboard(
             <tr>
 
                 <td
-                    colspan="3"
+                    colspan="4"
                     style="
                     text-align:center;
                     color:#888;
@@ -1525,6 +1434,8 @@ function updateDashboard(
 
         `;
 
+        return;
+
     }
 
 
@@ -1533,10 +1444,8 @@ function updateDashboard(
         const image =
             getImage(product);
 
-
         const name =
             getName(product);
-
 
         const category =
             getCategory(product);
@@ -1599,14 +1508,193 @@ function updateDashboard(
 
             </td>
 
+
+            <td>
+
+                <button
+                    class="delete-btn"
+                    onclick='moveToTrash(${JSON.stringify(product).replace(/'/g,"&#39;")})'
+                >
+                    🗑️ Trash
+                </button>
+
+            </td>
+
         </tr>
 
         `;
 
     });
 
+}
 
-    /* FEATURED PRODUCTS */
+
+/* =====================================
+   UPDATE DASHBOARD
+===================================== */
+
+function updateDashboard(
+    supabaseProducts
+){
+
+    window.currentSupabaseProducts =
+        supabaseProducts;
+
+
+    const localProducts =
+        getLocalProducts();
+
+
+    const allProducts =
+        mergeProducts(
+
+            staticProducts,
+
+            supabaseProducts,
+
+            localProducts
+
+        );
+
+
+    const activeProducts =
+        allProducts.filter(product => {
+
+            return !isInTrash(product);
+
+        });
+
+
+    const totalProducts =
+        activeProducts.length;
+
+
+    document.getElementById(
+        "totalProducts"
+    ).textContent =
+        totalProducts;
+
+
+    let affiliateCount = 0;
+
+
+    activeProducts.forEach(product => {
+
+        if(
+            hasAffiliateLink(product) ||
+            product.asin ||
+            product.ASIN
+        ){
+
+            affiliateCount++;
+
+        }
+
+    });
+
+
+    document.getElementById(
+        "affiliateProducts"
+    ).textContent =
+        affiliateCount;
+
+
+    let rings = 0;
+    let necklaces = 0;
+    let bracelets = 0;
+    let earrings = 0;
+
+
+    activeProducts.forEach(product => {
+
+        const category =
+            getCategory(product);
+
+
+        if(category === "Rings"){
+            rings++;
+        }
+
+        else if(category === "Bracelets"){
+            bracelets++;
+        }
+
+        else if(category === "Necklaces"){
+            necklaces++;
+        }
+
+        else if(category === "Earrings"){
+            earrings++;
+        }
+
+    });
+
+
+    document.getElementById(
+        "ringsCount"
+    ).textContent =
+        rings;
+
+
+    document.getElementById(
+        "necklacesCount"
+    ).textContent =
+        necklaces;
+
+
+    document.getElementById(
+        "braceletsCount"
+    ).textContent =
+        bracelets;
+
+
+    document.getElementById(
+        "earringsCount"
+    ).textContent =
+        earrings;
+
+
+    function percentage(count){
+
+        if(totalProducts === 0){
+            return 0;
+        }
+
+        return Math.round(
+            (count / totalProducts) * 100
+        );
+
+    }
+
+
+    document.getElementById(
+        "ringsBar"
+    ).style.width =
+        percentage(rings) + "%";
+
+
+    document.getElementById(
+        "necklacesBar"
+    ).style.width =
+        percentage(necklaces) + "%";
+
+
+    document.getElementById(
+        "braceletsBar"
+    ).style.width =
+        percentage(bracelets) + "%";
+
+
+    document.getElementById(
+        "earringsBar"
+    ).style.width =
+        percentage(earrings) + "%";
+
+
+    renderDashboardProducts(
+        supabaseProducts
+    );
+
 
     let featured = [];
 
@@ -1615,15 +1703,12 @@ function updateDashboard(
 
         featured =
             JSON.parse(
-
                 localStorage.getItem(
                     "k2Featured"
                 )
-
             ) || [];
 
-    }
-    catch(error){
+    }catch(error){
 
         featured = [];
 
@@ -1675,10 +1760,8 @@ async function loadSupabaseProducts(){
         if(!response.ok){
 
             throw new Error(
-
                 "Supabase error: " +
                 response.status
-
             );
 
         }
@@ -1698,14 +1781,11 @@ async function loadSupabaseProducts(){
 
     }
 
-
     catch(error){
 
         console.error(
-
             "Supabase connection error:",
             error
-
         );
 
 
@@ -1716,7 +1796,47 @@ async function loadSupabaseProducts(){
 }
 
 
-/* START DASHBOARD */
+/* =====================================
+   SEARCH DASHBOARD PRODUCTS
+===================================== */
+
+document
+.getElementById("dashboardSearch")
+.addEventListener(
+    "input",
+    function(){
+
+        const search =
+            this.value
+            .toLowerCase()
+            .trim();
+
+
+        const rows =
+            document.querySelectorAll(
+                "#recentProducts tr"
+            );
+
+
+        rows.forEach(row => {
+
+            const text =
+                row.textContent
+                .toLowerCase();
+
+
+            row.style.display =
+                text.includes(search)
+                    ? ""
+                    : "none";
+
+        });
+
+    }
+);
+
+
+/* START */
 
 loadSupabaseProducts();
 
